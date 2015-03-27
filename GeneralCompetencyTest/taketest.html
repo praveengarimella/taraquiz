@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	
+	
+</head>
+<body>
+	<script type="text/javascript">
+	var quizdata;
+	$.getJSON('quizdata.json', function(json) {
+		quizdata = json;
+
+		// display title of the page
+		console.log(json.name);
+
+		// populate the subsections of the quiz
+		// loop through the sections to populate the dropdown
+		console.log(json.section[0].name);
+
+    });
+
+	// on select of the section from the dropdown
+	// load the questions into the following variable
+	// show the first question with the continue button
+	var questions;
+</script>
+
+<!-- Page Header -->
+<header>
+	<div class="container">
+		<div class="row ">
+			<div class="col-md-12">
+				<select id="selectSection">
+					<option value="-1">Select Test</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Quiz Window -->
+<div id="div" class="container">
+
+	<!-- Progress bar for the quiz -->
+	
+
+	<!-- Row which displays a single solid line after preogress bar row -->
+	<div class="row">
+		<div class="col-md-12">
+			<hr>
+		</div>
+	</div>
+
+	<!-- Row which displays computer image along with some content -->
+	<div class="row" style="padding-bottom:25px">
+		<!-- Content box, where required data is parsed from JSON -->
+		<div id="contentbox" class="col-md-7">
+		Sample
+		</div>
+	</div>
+
+	<!-- Footer bar or last row in main container which displays continue and previous buttons -->
+	<div class="row">
+		<div id="previousbutton" class="col-md-6">
+		</div>
+		<div id="continuebutton" class="col-md-6 text-right">
+			<button id="continue" type="submit" class="myButton">Continue</button>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+
+</body>
+</html>

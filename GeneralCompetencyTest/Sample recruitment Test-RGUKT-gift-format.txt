@@ -1,0 +1,324 @@
+﻿General Instructions
+
+The paper consists of three main sections:
+
+I.	SECTION 1 – Aptitude (This section assesses your ability on arithmetic problems, reasoning, and sentence correction, reading comprehension & writing)
+   Time given to complete this section: 30 Minutes
+
+A1. Numerical Ability
+A2. Reasoning 
+A3. Sentence Correction
+A4. Reading Comprehension
+A5. Composition
+
+II. SECTION 2 – English Language proficiency Test – (This section assesses your ability of listening, speaking, reading and writing in English)
+Time given to complete this section: 25 minutes
+
+E1. Listening
+E2. Reading
+E3. Speaking
+E4. Writing
+
+III. SECTION 3 – Telugu Language proficiency Test (This section assesses your ability of listening, reading in Telugu)
+            Time given to complete this section 15 minutes
+T1. Listening
+T2. Reading
+
+_ All questions carry equal marks except Essay Writing which carries 10 marks and English Speaking Section carries 10 marks.
+_ Overall the test timing is 70 minutes.
+
+
+**********************************APTITUDE TEST (30 MINUTES)***********************************************
+
+::A1-01:: sECTION A1 - QUESTION 01 - A grocer has a sale of Rs. 6435, Rs.6927, Rs. 6855, Rs.7230 and Rs.6562 for 5 consecutive months. How much sale must he have in the sixth month, so that he gets an average sale of Rs. 6500?
+{
+=Rs 4991
+~Rs 5991
+~Rs 6001
+~Rs 6991
+}
+
+::A1-02:: sECTION A1 - QUESTION 02 - Ayesha’s father was 38 years of age when she was born. Her mother was 36 years old when her brother 4 years younger to her was born. What is the difference between the ages of her parents?
+{
+~2 years
+~4 years
+=6 years
+~8 years
+}
+
+::A1-03:: sECTION A1 - QUESTION 03 - In an election between candidates one got 55% of the total valid votes, 20% of the votes were invalid. If the total number of votes is 7500, the number of valid votes that the other candidate got, was  
+{
+=2700
+~2900
+~3000
+~3100
+}
+
+::A1-04:: sECTION A1 - QUESTION 04 - The average age of 3 boys is 25 years and their ages are in the proportion 3:5:7. The age of the youngest boy is
+{
+~21 years
+~18 years  
+=15 years
+~09 years
+}
+
+
+::A1-05:: sECTION A1 - QUESTION 05 - Today is Monday. After 61 days, it will be 
+{
+~Wednesday
+=Saturday
+~Tuesday
+~Thursday
+}
+
+::A2-06:: sECTION A2 - QUESTION 06 - You should take about 3 minutes to complete this part of the question paper
+
+Find out the wrong number in the series: 10, 25, 45, 54, 60, 75, 80 
+{
+~10
+~45
+=54
+~75
+}
+
+
+::A2-07:: sECTION A2 - QUESTION 07 - A, P, R, X, S and Z are sitting in a row. S and Z are in the centre. A and P are at the ends. R is sitting to the left of A. Who is to the right of P?
+{
+~A
+=X
+~S
+~Z
+}
+
+::A3-08:: You should take about 4 minutes to complete this part of the question paper
+
+Read the following passage and answer the question given below:
+
+Memorandum
+
+We want to inform that the University has decided to implement new benefits program, which is a new insurance program. The program comes with the benefit of group health insurance policy that would take care of health care expenses of the staff. All the employees need to enroll within next thirty days. The employees need to enroll in person with the administration department or online through the administration portal of the University. In case the staff has any questions or concerns, please contact benefits specialist in administrative department.
+
+
+sECTION A3 - QUESTION 08 - The main focus of this memorandum is to:
+{
+~Reminding the staff of deadline
+~Direct them to administrative department for enrollment
+=Introduce the new benefits program to staff
+~Clarify employees’ questions and concerns
+}
+
+::A4-09:: Select the correct form of the sentence for the following questions.
+
+sECTION A4 - QUESTION 09 - He like dogs.
+​{
+~She like dogs.
+=He likes dogs.
+~He liked dogs.
+~​none of the above​​
+}
+
+::A4-10:: sECTION A4 - QUESTION 10 - What time it is?
+​{
+~What time it is?
+=What time is it?
+~What time are it?
+~What time it are?​
+}
+
+
+::A4-11:: sECTION A4 - QUESTION 11 - He don’t like vegetables
+{
+~He don't like vegetables.
+=He ​doesn't like vegetables.
+~He has not like vegetables.
+~He shall not like vegetables.
+}
+
+::A4-12:: sECTION A4 - QUESTION 12 - I went near to the edge of the water.
+{
+~I went near to the edge of the water.
+~I went near by the edge of the water.
+~I went near beside the edge of the water.
+=none of the above
+}
+
+::A4-13:: sECTION A4 - QUESTION 13 - She does her homework every night.
+{
+=She ​does her homework every night.
+~She ​do her homework every night.
+~She did her homework every night.
+~She done​ her homework every night.
+}
+
+::A4-14:: sECTION A4 - QUESTION 14 - I need to get new job.
+{
+~I need to ​get new job.
+=I need to ​get a new job.
+~I need to get the new job.
+~I need to get an new job​.
+}
+
+::A4-15:: sECTION A4 - QUESTION 15 - Monday is the day before Tuesday
+{
+=​Monday is the day before Tuesday
+~​​Monday ​was the day before Tuesday​ 
+~​​Monday will be the day before Tuesday​
+~​Monday may be the day before Tuesday
+}
+
+::A4-16:: sECTION A4 - QUESTION 16 - There is not nothing in the box
+{
+​~There is not nothing in the box.
+~There is not anything in the box.
+=There is nothing in the box
+~None of the above​ 
+}
+
+::A4-17:: sECTION A4 - QUESTION 17 - My friends gone to the fair
+​{
+~My friends gone to the fair.
+~My friends going to the fair.
+=My friends went to the fair.
+~My friends go​ to the fair.
+}
+
+::A4-18:: sECTION A4 - QUESTION 18 - The Games are fun
+​{
+=The games are fun.
+~The games is fun.
+~The games was fun.
+~None of the above​.
+}
+
+::A4-19:: sECTION A4 - QUESTION 19 - Ravi has lot of homework.
+​{
+~Ravi has lot of homework.
+~Ravi has the lot of homework.
+~Ravi have a lot of homework.
+=Ravi has a lot of​ homework
+}
+
+::A5-20:: sECTION A5 - Writing composition (1 question)
+
+You should take about 11 minutes to complete this part of the question paper
+
+Write an essay to explain your views on the issue given below:
+
+“Indian Administrative services are a better option for the youth because they are recession-proof”
+
+Be sure to support your position with specific points and examples. (You may use personal examples or examples from your reading, observations, or, knowledge of subjects such as history, literature, science.)
+
+*****************************ENGLISH LANGUAGE PROFICIENCY TEST (25 MINUTES) *********************
+
+::E1-21:: sECTION E1 - Listening Section 
+
+You should take about 7 minutes to complete this part of the question paper
+
+Listen to the video given and answer the following questions: (1 Question)
+
+http://www.youtube.com/watch?v=BpxVIwCbBK0
+
+SECTION E1 - QUESTION 21 - According to You tube provides you with an opportunity to
+{
+=Become famous
+~Entertainment
+~Become notorious
+~Become knowledgeable
+}
+
+::E1-22::SECTION E1 - QUESTION 22 - Number of hours of video uploaded to internet every minute:
+{
+~28
+~45
+=48
+~34
+}
+
+::E1-23:: SECTION E1 - QUESTION 23 - Initially Kevin talks about a video on:
+{
+~Rain
+~Rainbow
+=Double Rainbow
+~Nature
+}
+
+::E1-24:: SECTION E1 - QUESTION 24 - People on internet don’t just watch but
+{
+~Blog
+~Comment
+=Participate
+~Create
+}
+
+
+::E2-25:: SECTION E2 - Reading Section
+
+You should take about 7 minutes to complete this part of the question paper
+
+Under the Taliban regime Afghan women and girls were excluded from all levels of the education system; schools were destroyed and female teachers were prevented from working. Unfortunately, nowadays many girls are still missing out because of obstacles such as early marriage and cultural norms that oppose their education (over 60% of girls remain out of schools). Girl’s schools also remain a target for Taliban attacks.
+
+Since the regime’s fall in 2001, a record number of students have enrolled, including the highest percentage (36%) of female students in decades, but significant challenges remain. Continuing conflict coupled with the lack of infrastructure and trained teachers hinder the delivery of education. In Afghanistan, an estimated 68% of schoolteachers do not have the minimum teaching qualification (source: Afghanistan Ministry of Education). Alternatively, many schools in Afghanistan do not have washing or sanitary facilities and thus girls are reluctant to attend school, especially during menstruation. Play areas and sports facilities are in disrepair and lead to little or no physical play for many girls in school.
+
+In 2008, the Government of Afghanistan laid out an ambitious 5-year strategy for a national education program. It includes commitments to construct new schools; to increase the enrolment of girls; to provide more training for teachers; and to introduce an updated curriculum. Even so, the quality of education remains in question, with benchmarks undefined and underfunded. Quality is a key to keep children at school longer and into higher levels of education. And, quality education will ultimately accelerate progress in Afghan society.
+
+Since 2007, the Womanity Foundation has supported Afghanistan’s largest girls’ school – the Al Fatah School in Kabul – to become a model of excellence in girls’ education. Based on this experience, Womanity has developed a holistic approach that focuses on the quality of education offered to girls up to secondary school. 
+
+SECTION E2 - QUESTION 25 - Who were excluded from education system in Afghanistan?
+{
+~Afghan children
+=Afghan women and girls
+~Children who belonged private schools in Afghanistan
+~Only select 36% of female students were not allowed
+}
+
+::E2-26:: SECTION E2 - QUESTION 26 - Why were the students not attending schools?
+{
+~Early marriage 
+~Cultural norms that oppose their education
+~Lack of proper facilities in schools
+=All the above.
+}
+
+
+::E2-27:: SECTION E2 - QUESTION 27 - What is the main reason to lay out strategies for promoting education of women and girls in Afghanistan?
+{
+~To provide more training for teachers
+~to introduce an updated curriculum       
+~to construct new schools 
+=to aim at quality education of women and girls and thereby enhance progress of Afghanistan society
+}
+
+::E2-28:: SECTION E2 - QUESTION 28 - When and where did Womanity Foundation support education system ?
+{
+=It was in the year 2007 and in Kabul
+~It was in the year of 2011 and in Heart
+~It was in 2014 and in Loman
+~It was much before the year 2007 and across the country
+}
+
+::E3-29:: SECTION E3 - Speaking Section
+
+You should take about 4 minutes to complete this part of the question paper
+
+Take one minute to prepare a talk on the following subject.
+Take notes if you like and remember to include reasons and examples.
+You should then speak for between one and two minutes in the Audacity tool provided on desktop.
+Describe your favorite family tradition.
+
+You should say:
+	•	what the tradition is
+	•	when it occurs
+	•	what you do
+	•	and explain why it is your favorite tradition.
+
+::E4-30:: SECTION E4 - Writing Section
+
+You should take about 7 minutes to complete this part of the question paper
+Write about the following topic:
+“Violence in the media causes violence in children”
+Do you agree or disagree?
+
+Write at least 150 words.
+
+
+**********************************TELUGU LANGUAGE PROFICIENCY TEST (15 MINUTES) **********************************************

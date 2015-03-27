@@ -1,0 +1,113 @@
+{
+    "name": "General Competency Test",
+    "section": [
+        {
+            "name": "Section 1 Aptitude",
+            "subsection": [
+                {
+                    "name": "Numerical Ability",
+                    "questions": [
+                        {
+                            "question": "A grocer has a sale of Rs. 6435, Rs.6927, Rs. 6855, Rs.7230 and Rs.6562 for 5 consecutive months. How much sale must he have in the sixth month, so that he gets an average sale of Rs. 6500?",
+                            "options": [
+                                "=Rs. 4991",
+                                "~Rs. 5991",
+                                "~Rs. 6001",
+                                "~Rs. 6991"
+                            ]
+                        },
+                        {
+                            "question": "Ayesha’s father was 38 years of age when she was born. Her mother was 36 years old when her brother 4 years younger to her was born. What is the difference between the ages of her parents?",
+                            "options": [
+                                "~2 years",
+                                "~4 years",
+                                "=6 years",
+                                "~8 years"
+                            ]
+                        },
+                        {
+                            "question": "In an election between candidates one got 55% of the total valid votes, 20% of the votes were invalid. If the total number of votes is 7500, the number of valid votes that the other candidate got, was?",
+                            "options": [
+                                "=2700",
+                                "~2900",
+                                "~3000",
+                                "~3100"
+                            ]
+                        },
+                        {
+                            "question": "The average age of 3 boys is 25 years and their ages are in the proportion 3:5:7. The age of the youngest boy is?",
+                            "options": [
+                                "~21 years",
+                                "~18 years",
+                                "=15 years",
+                                "~09 years"
+                            ]
+                        },
+                        {
+                            "question": "Today is Monday. After 61 days, it will be?",
+                            "options": [
+                                "~Wednesday",
+                                "=Saturday",
+                                "~Tuesday",
+                                "~Thursday"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Reasoning",
+                    "question": [
+                        {
+                            "question": "Find out the wrong number in the series: 10, 25, 45, 54, 60, 75, 80",
+                            "options": [
+                                "~10",
+                                "~45",
+                                "=54",
+                                "~75"
+                            ]
+                        },
+                        {
+                            "question": "A, P, R, X, S and Z are sitting in a row. S and Z are in the centre. A and P are at the ends. R is sitting to the left of A. Who is to the right of P?",
+                            "options": [
+                                "~A",
+                                "=X",
+                                "~S",
+                                "~Z"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Sentence Completion",
+                    "question": []
+                },
+                {
+                    "name": "Reading Comprehension",
+                    "question": []
+                },
+                {
+                    "name": "Composition",
+                    "question": []
+                }
+            ]
+        },
+        {
+            "name": "Section 2: English Language Proficiency Test",
+            "slides": [
+                "More printing",
+                "Variables",
+                "Assignment",
+                "Printing variables",
+                "Keywords",
+                "Operators",
+                "Order of operations",
+                "Operators for Strings",
+                "Composition"
+            ]
+        },
+        {
+            "name": "Section 3: Telugu Language Proficiency Test",
+            "slides": []
+        }
+    ]
+}
