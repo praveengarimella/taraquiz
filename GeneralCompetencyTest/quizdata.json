@@ -56,7 +56,7 @@
                 },
                 {
                     "name": "Reasoning",
-                    "question": [
+                    "questions": [
                         {
                             "question": "Find out the wrong number in the series: 10, 25, 45, 54, 60, 75, 80",
                             "options": [
@@ -79,15 +79,130 @@
                 },
                 {
                     "name": "Sentence Completion",
-                    "question": []
+                    "questions": [
+                        {
+                            "question": "The main focus of this memorandum is to:",
+                            "options": [
+                                "~Reminding the staff of deadline",
+                                "~Direct them to administrative department for enrollment",
+                                "=Introduce the new benefits program to staff",
+                                "~Clarify employees’ questions and concerns"
+                            ]
+                        }
+                    ],
+                    "note": "Read the following passage and answer the question given below: ",
+                    "passage": "We want to inform that the University has decided to implement new benefits program, which is a new insurance program. The program comes with the benefit of group health insurance policy that would take care of health care expenses of the staff. All the employees need to enroll within next thirty days. The employees need to enroll in person with the administration department or online through the administration portal of the University. In case the staff has any questions or concerns, please contact benefits specialist in administrative department."
                 },
                 {
                     "name": "Reading Comprehension",
-                    "question": []
+                    "questions": [
+                        {
+                            "question": "He like dogs.",
+                            "options": [
+                                "~She like dogs.",
+                                "=He likes dogs.",
+                                "~He liked dogs.",
+                                "~​none of the above"
+                            ]
+                        },
+                        {
+                            "question": "What time it is?",
+                            "options": [
+                                "~What time it is?",
+                                "=What time is it?",
+                                "~What time are it?",
+                                "~What time it are?​"
+                            ]
+                        },
+                        {
+                            "question": "He don’t like vegetables",
+                            "options": [
+                                "~He don't like vegetables.",
+                                "=He ​doesn't like vegetables.",
+                                "~He has not like vegetables.",
+                                "~He shall not like vegetables."
+                            ]
+                        },
+                        {
+                            "question": "I went near to the edge of the water.",
+                            "options": [
+                                "~I went near to the edge of the water.",
+                                "~I went near by the edge of the water.",
+                                "~I went near beside the edge of the water.",
+                                "=none of the above"
+                            ]
+                        },
+                        {
+                            "question": "She does her homework every night.",
+                            "options": [
+                                "=She ​does her homework every night.",
+                                "~She ​do her homework every night.",
+                                "~She did her homework every night.",
+                                "~She done​ her homework every night."
+                            ]
+                        },
+                        {
+                            "question": "I need to get new job.",
+                            "options": [
+                                "~I need to ​get new job.",
+                                "=I need to ​get a new job.",
+                                "~I need to get the new job.",
+                                "~I need to get an new job​."
+                            ]
+                        },
+                        {
+                            "question": "Monday is the day before Tuesday",
+                            "options": [
+                                "=​Monday is the day before Tuesday",
+                                "~​​Monday ​was the day before Tuesday​",
+                                "~​​Monday will be the day before Tuesday",
+                                "~​Monday may be the day before Tuesday"
+                            ]
+                        },
+                        {
+                            "question": "There is not nothing in the box",
+                            "options": [
+                                "~There is not nothing in the box.",
+                                "~There is not anything in the box.",
+                                "=There is nothing in the box",
+                                "~None of the above"
+                            ]
+                        },
+                        {
+                            "question": "My friends gone to the fair",
+                            "options": [
+                                "~My friends gone to the fair.",
+                                "~My friends going to the fair.",
+                                "=My friends went to the fair.",
+                                "~My friends go​ to the fair."
+                            ]
+                        },
+                        {
+                            "question": "The Games are fun",
+                            "options": [
+                                "=The games are fun.",
+                                "~The games is fun.",
+                                "~The games was fun.",
+                                "~None of the above​."
+                            ]
+                        },
+                        {
+                            "question": "Ravi has lot of homework.",
+                            "options": [
+                                "~Ravi has lot of homework.",
+                                "~Ravi has the lot of homework.",
+                                "~Ravi have a lot of homework.",
+                                "=Ravi has a lot of​ homework"
+                            ]
+                        }
+                    ],
+                    "note": "Select the correct form of the sentence for the following questions."
                 },
                 {
                     "name": "Composition",
-                    "question": []
+                    "questions": {
+                        "question": "Write an essay to explain your views on the issue given below: “Indian Administrative services are a better option for the youth because they are recession-proof”. Be sure to support your position with specific points and examples. (You may use personal examples or examples from your reading, observations, or, knowledge of subjects such as history, literature, science.)"
+                    }
                 }
             ]
         },
