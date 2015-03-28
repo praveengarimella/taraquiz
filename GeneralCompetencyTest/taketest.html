@@ -18,69 +18,124 @@
 <body>
 	<script type="text/javascript">
 	var quizdata;
+	var currentSection = 0, currentSubsection = 0, currentQuestion = 0;
+	function displayQuestion(section, subsection, question) {
+		var path = quizdata.section[currentSection].subsection[currentSubsection].questions[currentQuestion];
+		var optionsHTML = '<h3>'+ quizdata.section[currentSection].subsection[currentSubsection].name +'</h3><div>' + path.question + '</div>';
+		for (var i = 0; i < path.options.length; i++) {
+			var optionText = path.options[i].substring(1, path.options[i].length)
+			optionsHTML += '<div class="radio">'
+			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
+			optionsHTML += '</div>'
+		} 
+		return optionsHTML;
+	}
+
 	$.getJSON('quizdata.json', function(json) {
 		quizdata = json;
 
 		// display title of the page
-		console.log(json.name);
+		$("h1").append(quizdata.name);
 
 		// populate the subsections of the quiz
-		// loop through the sections to populate the dropdown
-		console.log(json.section[0].name);
+		for (var i=0; i<quizdata.section.length; i++){
+			$("#selectSection").append('<option value="'+i+'">'+quizdata.section[i].name+'</option>');
+		}
 
-    });
+		// on select of the section from the dropdown
+		$('#selectSection').change(function() {
+			// show the test description with a start test button
+			currentSection = this.value;
+			$("#contentbox").html(
+				"<h2>" + quizdata.section[this.value].name + "</h2>" +
+				"<button id='starttest' class='btn btn-success'>Click to Start Test</button>"
+			);
 
-	// on select of the section from the dropdown
-	// load the questions into the following variable
-	// show the first question with the continue button
-	var questions;
-</script>
+			//onclick for statrttest button
+			$("#starttest").click(function(){
+				var selectedSection = $("#selectSection").val();
+				$(this).hide();
+				$("#continuebutton").html('<button id="submitanswer" class="btn btn-success">Submit Answer</button>')
+				var path = quizdata.section[selectedSection].subsection[currentSubsection].questions[currentQuestion];
+				var optionsHTML = '<h3>'+ quizdata.section[selectedSection].subsection[currentSubsection].name +'</h3><div>' + path.question + '</div>';
+				for (var i = 0; i < path.options.length; i++) {
+					var optionText = path.options[i].substring(1, path.options[i].length)
+					optionsHTML += '<div class="radio">'
+					optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
+					optionsHTML += '</div>'
+				} 
+				$("#contentbox").append(optionsHTML);
+				
+				//onclick for submit answer
+				$("#submitanswer").click(function () {
+					// get selected radio button
+					var selectedAnswer = $("input:checked").val();
+					
+					// submit to selected answer to the server
+					
+					// show next question
+					$("#nextbutton").html('&nbsp; <button id="nextquestion" class="btn btn-info">Continue to Next Question</button>')
 
-<!-- Page Header -->
-<header>
-	<div class="container">
-		<div class="row ">
+					$("#nextquestion").click(function () {
+						$(this).hide();
+						if (quizdata.section[currentSection].subsection[currentSubsection].questions.length == currentQuestion+1) {
+							currentSubsection++;
+							currentQuestion = -1;
+						}
+						currentQuestion++;
+						$("#contentbox").html("<h2>" + quizdata.section[$("#selectSection").val()].name + "</h2>" + displayQuestion(currentSection, currentSubsection, currentQuestion));
+					});
+				});
+
+			});
+		});
+	});
+
+	</script>
+
+	<!-- Page Header -->
+	<header>
+		<div class="container">
+			<div class="row ">
+				<div class="col-md-12">
+					<h1></h1>
+					<select id="selectSection" value="Select Text">
+						<option value="-1" disabled="disabled">Select Test</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Quiz Window -->
+	<div id="div" class="container">
+
+		<!-- Progress bar for the quiz -->
+
+
+		<!-- Row which displays a single solid line after preogress bar row -->
+		<div class="row">
 			<div class="col-md-12">
-				<select id="selectSection">
-					<option value="-1">Select Test</option>
-				</select>
+				<hr>
+			</div>
+		</div>
+
+		<!-- Row which displays computer image along with some content -->
+		<div class="row" style="padding-bottom:25px">
+			<!-- Content box, where required data is parsed from JSON -->
+			<div id="contentbox" class="col-md-7"></div>
+		</div>
+
+		<!-- Footer bar or last row in main container which displays continue and previous buttons -->
+		<div class="row">
+			<div class="col-md-12 text-left" style="display: flex">
+				<div id="continuebutton"></div>
+				<div id="nextbutton"></div>
 			</div>
 		</div>
 	</div>
-</header>
 
-<!-- Quiz Window -->
-<div id="div" class="container">
-
-	<!-- Progress bar for the quiz -->
-	
-
-	<!-- Row which displays a single solid line after preogress bar row -->
-	<div class="row">
-		<div class="col-md-12">
-			<hr>
-		</div>
-	</div>
-
-	<!-- Row which displays computer image along with some content -->
-	<div class="row" style="padding-bottom:25px">
-		<!-- Content box, where required data is parsed from JSON -->
-		<div id="contentbox" class="col-md-7">
-		Sample
-		</div>
-	</div>
-
-	<!-- Footer bar or last row in main container which displays continue and previous buttons -->
-	<div class="row">
-		<div id="previousbutton" class="col-md-6">
-		</div>
-		<div id="continuebutton" class="col-md-6 text-right">
-			<button id="continue" type="submit" class="myButton">Continue</button>
-		</div>
-	</div>
-</div>
-
-<!-- Footer -->
+	<!-- Footer -->
 
 </body>
 </html>
