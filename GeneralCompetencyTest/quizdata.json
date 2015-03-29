@@ -52,7 +52,8 @@
                                 "~Thursday"
                             ]
                         }
-                    ]
+                    ],
+                    "types" : "question"
                 },
                 {
                     "name": "Reasoning",
@@ -75,7 +76,8 @@
                                 "~Z"
                             ]
                         }
-                    ]
+                    ],
+                    "types" : "question"
                 },
                 {
                     "name": "Sentence Completion",
@@ -91,7 +93,8 @@
                         }
                     ],
                     "note": "Read the following passage and answer the question given below: ",
-                    "passage": "We want to inform that the University has decided to implement new benefits program, which is a new insurance program. The program comes with the benefit of group health insurance policy that would take care of health care expenses of the staff. All the employees need to enroll within next thirty days. The employees need to enroll in person with the administration department or online through the administration portal of the University. In case the staff has any questions or concerns, please contact benefits specialist in administrative department."
+                    "passage": "We want to inform that the University has decided to implement new benefits program, which is a new insurance program. The program comes with the benefit of group health insurance policy that would take care of health care expenses of the staff. All the employees need to enroll within next thirty days. The employees need to enroll in person with the administration department or online through the administration portal of the University. In case the staff has any questions or concerns, please contact benefits specialist in administrative department.",
+                    "types" : "passage"   
                 },
                 {
                     "name": "Reading Comprehension",
@@ -196,33 +199,137 @@
                             ]
                         }
                     ],
-                    "note": "Select the correct form of the sentence for the following questions."
+                    "note": "Select the correct form of the sentence for the following questions.",
+                    "types" : "question"
                 },
                 {
                     "name": "Composition",
-                    "questions": {
-                        "question": "Write an essay to explain your views on the issue given below: “Indian Administrative services are a better option for the youth because they are recession-proof”. Be sure to support your position with specific points and examples. (You may use personal examples or examples from your reading, observations, or, knowledge of subjects such as history, literature, science.)"
-                    }
+                    "questions": [
+                        {
+                            "question": "Write an essay to explain your views on the issue given below: “Indian Administrative services are a better option for the youth because they are recession-proof”. Be sure to support your position with specific points and examples. (You may use personal examples or examples from your reading, observations, or, knowledge of subjects such as history, literature, science.)",
+                            "options": []
+                        }
+                    ],
+                    "types" : "essay"
                 }
             ]
         },
         {
             "name": "Section 2: English Language Proficiency Test",
-            "slides": [
-                "More printing",
-                "Variables",
-                "Assignment",
-                "Printing variables",
-                "Keywords",
-                "Operators",
-                "Order of operations",
-                "Operators for Strings",
-                "Composition"
+            "subsection": [
+                {
+                    "name" : "Listening",
+                    "questions" : [
+                        {
+                            "question" : "According to You tube provides you with an opportunity to",
+                            "options" : [
+                                "=Become famous",
+                                "~Entertainment",
+                                "~Become notorious",
+                                "~Become knowledgeable"
+                            ]
+                        },
+                        {
+                            "question" : "Number of hours of video uploaded to internet every minute:",
+                            "options" : [
+                                "~28",
+                                "~45",
+                                "=48",
+                                "~34"
+                            ]
+                        },
+                        {
+                            "question" : "Initially Kevin talks about a video on:",
+                            "options" : [
+                                "~Rain",
+                                "~Rainbow",
+                                "=Double Rainbow",
+                                "~Nature"
+                            ]
+                        },
+                        {
+                            "question" : "People on internet don’t just watch but",
+                            "options" : [
+                                "~Blog",
+                                "~Comment",
+                                "=Participate",
+                                "~Create"
+                            ]
+                        }
+                    ],
+                    "note" : "Listen to the video given and answer the following questions:",
+                    "types" : "video",
+                    "link" : "http://www.youtube.com/watch?v=BpxVIwCbBK0"
+                },
+                {
+                    "name" : "Reading",
+                    "questions" : [
+                        {
+                            "question" : "Who were excluded from education system in Afghanistan?",
+                            "options" : [
+                                "~Afghan children",
+                                "=Afghan women and girls",
+                                "~Children who belonged private schools in Afghanistan",
+                                "~Only select 36% of female students were not allowed"
+                            ]
+                        },
+                        {
+                            "question" : "Why were the students not attending schools?",
+                            "options" : [
+                                "~Early marriage ",
+                                "~Cultural norms that oppose their education",
+                                "~Lack of proper facilities in schools",
+                                "=All the above."
+                            ]
+                        },
+                        {
+                            "question" : "What is the main reason to lay out strategies for promoting education of women and girls in Afghanistan?",
+                            "options" : [
+                                "~To provide more training for teachers",
+                                "~to introduce an updated curriculum ",
+                                "~to construct new schools ",
+                                "=to aim at quality education of women and girls and thereby enhance progress of Afghanistan society"
+                            ]
+                        },
+                        {
+                            "question" : "When and where did Womanity Foundation support education system?",
+                            "options" : [
+                                "=It was in the year 2007 and in Kabul",
+                                "~It was in the year of 2011 and in Heart",
+                                "~It was in 2014 and in Loman",
+                                "~It was much before the year 2007 and across the country"
+                            ]
+                        }
+                    ],
+                    "passage" : "Under the Taliban regime Afghan women and girls were excluded from all levels of the education system; schools were destroyed and female teachers were prevented from working. Unfortunately, nowadays many girls are still missing out because of obstacles such as early marriage and cultural norms that oppose their education (over 60% of girls remain out of schools). Girl’s schools also remain a target for Taliban attacks. Since the regime’s fall in 2001, a record number of students have enrolled, including the highest percentage (36%) of female students in decades, but significant challenges remain. Continuing conflict coupled with the lack of infrastructure and trained teachers hinder the delivery of education. In Afghanistan, an estimated 68% of schoolteachers do not have the minimum teaching qualification (source: Afghanistan Ministry of Education). Alternatively, many schools in Afghanistan do not have washing or sanitary facilities and thus girls are reluctant to attend school, especially during menstruation. Play areas and sports facilities are in disrepair and lead to little or no physical play for many girls in school. In 2008, the Government of Afghanistan laid out an ambitious 5-year strategy for a national education program. It includes commitments to construct new schools; to increase the enrolment of girls; to provide more training for teachers; and to introduce an updated curriculum. Even so, the quality of education remains in question, with benchmarks undefined and underfunded. Quality is a key to keep children at school longer and into higher levels of education. And, quality education will ultimately accelerate progress in Afghan society. Since 2007, the Womanity Foundation has supported Afghanistan’s largest girls’ school – the Al Fatah School in Kabul – to become a model of excellence in girls’ education. Based on this experience, Womanity has developed a holistic approach that focuses on the quality of education offered to girls up to secondary school.",
+                    "types" : "passage"
+                }, 
+                {
+                    "name" : "Speaking",
+                    "questions" : [
+                        {
+                            "question" : "Describe your favorite family tradition. You should say: what the tradition is, when it occurs, what you do, and explain why it is your favorite tradition.",
+                            "options" : []
+                        }
+                    ],
+                    "note" : "Take one minute to prepare a talk on the following subject. Take notes if you like and remember to include reasons and examples. You should then speak for between one and two minutes in the Audacity tool provided on desktop.", 
+                    "types" : "record"
+                },
+                {
+                    "name" : "Writing",
+                    "questions" : [
+                        {
+                            "question" : "Write about the following topic: 'Violence in the media causes violence in children' Do you agree or disagree?",
+                            "options" : []
+                        } 
+                    ],
+                    "types" : "essay"
+                }
             ]
         },
         {
             "name": "Section 3: Telugu Language Proficiency Test",
-            "slides": []
+            "subsection": []
         }
     ]
 }
