@@ -27,7 +27,7 @@
 			optionsHTML += '<div class="radio">'
 			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
 			optionsHTML += '</div>'
-		} 
+		}
 		return optionsHTML;
 	}
 
@@ -78,12 +78,19 @@
 
 					$("#nextquestion").click(function () {
 						$(this).hide();
+						if (quizdata.section[currentSection].subsection.length == currentSubsection+1) {
+							currentSection++;
+							currentSubsection = -1;
+							currentQuestion = -1;
+							currentSubsection++;
+						}
 						if (quizdata.section[currentSection].subsection[currentSubsection].questions.length == currentQuestion+1) {
 							currentSubsection++;
 							currentQuestion = -1;
 						}
 						currentQuestion++;
 						$("#contentbox").html("<h2>" + quizdata.section[$("#selectSection").val()].name + "</h2>" + displayQuestion(currentSection, currentSubsection, currentQuestion));
+						$("h2").html(quizdata.section[currentSection].name);
 					});
 				});
 
