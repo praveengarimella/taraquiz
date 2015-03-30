@@ -21,49 +21,96 @@
 	var currentSection = 0, currentSubsection = 0, currentQuestion = 0;
 	function displayQuestion(section, subsection, question) {
 		var path = quizdata.section[currentSection].subsection[currentSubsection].questions[currentQuestion];
-		var optionsHTML = '<h3>'+ quizdata.section[currentSection].subsection[currentSubsection].name +'</h3><div>' + path.question + '</div>';
+		if(quizdata.section[currentSection].subsection[currentSubsection].types == "essay"){
+			var optionsHTML = '<div>' + path.question + '</div><br><div id="typeBox"></div>';
+		}
+		else if(quizdata.section[currentSection].subsection[currentSubsection].types == "passage"){
+		var optionsHTML = '<div id="typeBox" style="overflow-y: scroll; height: 200px"></div><br><div>' + path.question + '</div>';
+		}
+		else{
+			var optionsHTML = '<div id="typeBox"></div><div>' + path.question + '</div>';
+		}
 		for (var i = 0; i < path.options.length; i++) {
 			var optionText = path.options[i].substring(1, path.options[i].length)
 			optionsHTML += '<div class="radio">'
 			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
 			optionsHTML += '</div>'
 		}
+			optionsHTML += '<div class="radio">'
+			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
+			optionsHTML += '</div>'
 		return optionsHTML;
 	}
 
 	$.getJSON('quizdata.json', function(json) {
 		quizdata = json;
 
+		function displayPassage() {
+			if(quizdata.section[currentSection].subsection[currentSubsection].types == "passage"){
+				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div>'+quizdata.section[currentSection].subsection[currentSubsection].passage+'</div>');
+			}
+		}
+
+		function displayEssay() {
+			if(quizdata.section[currentSection].subsection[currentSubsection].types == "essay"){
+				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><textarea style="width: 600px; height: 200px">');
+			}
+		}
+
+		function displayVideo() {
+			if(quizdata.section[currentSection].subsection[currentSubsection].types == "video"){
+				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><iframe>'+quizdata.section[currentSection].subsection[currentSubsection].link+'</iframe>');
+			}
+		}
+
+		function displayRecording() {
+			if(quizdata.section[currentSection].subsection[currentSubsection].types == "record"){
+				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div></div>');
+			}
+		}
+
+		function displayNothing(){
+			if(quizdata.section[currentSection].subsection[currentSubsection].types == "question"){
+				$("#typeBox").hide();
+			}
+		}
 		// display title of the page
 		$("h1").append(quizdata.name);
-
+		
 		// populate the subsections of the quiz
 		for (var i=0; i<quizdata.section.length; i++){
 			$("#selectSection").append('<option value="'+i+'">'+quizdata.section[i].name+'</option>');
 		}
 
 		// on select of the section from the dropdown
-		$('#selectSection').change(function() {
+		$(function() {
 			// show the test description with a start test button
-			currentSection = this.value;
 			$("#contentbox").html(
-				"<h2>" + quizdata.section[this.value].name + "</h2>" +
 				"<button id='starttest' class='btn btn-success'>Click to Start Test</button>"
 			);
-
+			$("#1").addClass('disabled');
 			//onclick for statrttest button
 			$("#starttest").click(function(){
-				var selectedSection = $("#selectSection").val();
+				for (var i=2; i<=30; i++){
+					$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+					$("#"+i).addClass('disabled');
+				}
+				var selectedSection = 0;
 				$(this).hide();
 				$("#continuebutton").html('<button id="submitanswer" class="btn btn-success">Submit Answer</button>')
+				$("#h2").html(quizdata.section[currentSection].name + ' - ' + quizdata.section[currentSection].subsection[currentSubsection].name);
+				$("#h4").html(quizdata.section[currentSection].subsection[currentSubsection].name);
 				var path = quizdata.section[selectedSection].subsection[currentSubsection].questions[currentQuestion];
-				var optionsHTML = '<h3>'+ quizdata.section[selectedSection].subsection[currentSubsection].name +'</h3><div>' + path.question + '</div>';
+				var optionsHTML = '<div>' + path.question + '</div>';
 				for (var i = 0; i < path.options.length; i++) {
 					var optionText = path.options[i].substring(1, path.options[i].length)
 					optionsHTML += '<div class="radio">'
 					optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
 					optionsHTML += '</div>'
 				} 
+				optionsHTML += '<div class="radio">'
+				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
+				optionsHTML += '</div>'
 				$("#contentbox").append(optionsHTML);
 				
 				//onclick for submit answer
@@ -75,9 +122,12 @@
 					
 					// show next question
 					$("#nextbutton").html('&nbsp; <button id="nextquestion" class="btn btn-info">Continue to Next Question</button>')
-
+					var k = 0;
 					$("#nextquestion").click(function () {
-						$(this).hide();
+						k++;
+						$("#"+k).removeClass('disabled', 'btn-default');
+						$("#"+k).addClass('btn-info');
+
 						if (quizdata.section[currentSection].subsection.length == currentSubsection+1) {
 							currentSection++;
 							currentSubsection = -1;
@@ -89,8 +139,13 @@
 							currentQuestion = -1;
 						}
 						currentQuestion++;
-						$("#contentbox").html("<h2>" + quizdata.section[$("#selectSection").val()].name + "</h2>" + displayQuestion(currentSection, currentSubsection, currentQuestion));
-						$("h2").html(quizdata.section[currentSection].name);
+						$("#h2").html(quizdata.section[currentSection].name + ' - ' + quizdata.section[currentSection].subsection[currentSubsection].name);
+						$("#contentbox").html(displayQuestion(currentSection, currentSubsection, currentQuestion));
+						displayPassage();
+						displayEssay();
+						displayVideo();
+						displayRecording();
+						displayNothing();
 					});
 				});
 
@@ -106,9 +161,9 @@
 			<div class="row ">
 				<div class="col-md-12">
 					<h1></h1>
-					<select id="selectSection" value="Select Text">
-						<option value="-1" disabled="disabled">Select Test</option>
-					</select>
+					<div style="display: flex">
+						<h4 id="h2"></h4>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -119,18 +174,25 @@
 
 		<!-- Progress bar for the quiz -->
 
-
 		<!-- Row which displays a single solid line after preogress bar row -->
 		<div class="row">
 			<div class="col-md-12">
-				<hr>
+				<hr style="margin-top: 0px; margin-bottom: 10px">
+				<div id="buttonBar">
+					<button type="button" id="1" class="btn btn-default btn-xs">1</button>
+				</div>
+				<hr style="margin-top: 10px">
 			</div>
 		</div>
 
 		<!-- Row which displays computer image along with some content -->
 		<div class="row" style="padding-bottom:25px">
 			<!-- Content box, where required data is parsed from JSON -->
-			<div id="contentbox" class="col-md-7"></div>
+
+			<div id="contentbox" class="col-md-6">
+
+			</div>
+			
 		</div>
 
 		<!-- Footer bar or last row in main container which displays continue and previous buttons -->
