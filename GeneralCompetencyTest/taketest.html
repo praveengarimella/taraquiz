@@ -41,10 +41,10 @@
 			optionsHTML += '</div>'
 		return optionsHTML;
 	}
-	
+
 	$.getJSON('stylesheets/quizdata.json', function(json) {
 		quizdata = json;
-		alert("json loaded");
+
 		function displayPassage() {
 			if(quizdata.section[currentSection].subsection[currentSubsection].types == "passage"){
 				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div>'+quizdata.section[currentSection].subsection[currentSubsection].passage+'</div>');
@@ -74,6 +74,7 @@
 				$("#typeBox").hide();
 			}
 		}
+		// submit 
 		function submitAnswer(data){
 						$.ajax({
 							   url: "/submitanswer",
@@ -100,6 +101,7 @@
 								}
 			 });
 		}
+		
 		// display title of the page
 		$("h1").append(quizdata.name);
 		
@@ -140,24 +142,35 @@
 				$("#contentbox").append(optionsHTML);
 				
 				//onclick for submit answer
+				var k = 0;
 				$("#submitanswer").click(function () {
 					// get selected radio button
 					var selectedAnswer = $("input:checked").val();
-					
+					console.log($("input:checked").val());
+					$(this).addClass('disabled');
+					//enable buttons in buttonbar after every next question
+					k++;
+						if($("input:checked").val() == "skip"){
+							$("#"+k).removeClass('disabled', 'btn-default');
+							$("#"+k).addClass('btn-warning');
+						}
+						else{
+							$("#"+k).removeClass('disabled', 'btn-default');
+							$("#"+k).addClass('btn-info');
+						}
+
 					// submit to selected answer to the server
-					 var data = {"useremailid":"rr@cmu.edu","qid":"currentQuestion", "ans":selectedAnswer, "qshowntime":"qappearedTS","qattemptedtime":"asubmittedTS" , "score":"1"}
+					 var data = {"useremailid":"rr@cmu.edu","qid":currentQuestion, "ans":selectedAnswer, "qshowntime":"qappearedTS","qattemptedtime":"asubmittedTS" , "score":"1"}
 					 data=JSON.stringify(data);
 					 console.log(data);
 					 submitAnswer(data);
-					
+					 
 					// show next question
 					$("#nextbutton").html('&nbsp; <button id="nextquestion" class="btn btn-info">Continue to Next Question</button>')
-					var k = 0;
+					
 					$("#nextquestion").click(function () {
-						k++;
-						$("#"+k).removeClass('disabled', 'btn-default');
-						$("#"+k).addClass('btn-info');
-
+						$("#submitanswer").removeClass('disabled');
+						$(this).hide();
 						if (quizdata.section[currentSection].subsection.length == currentSubsection+1) {
 							currentSection++;
 							currentSubsection = -1;
@@ -175,8 +188,27 @@
 						displayEssay();
 						displayVideo();
 						displayRecording();
-						displayNothing();
+						displayNothing();	
 					});
+
+					$("#"+k).click(function(){
+							if(this.id<=quizdata.section[0].subsection[0].questions.length)
+							var path = quizdata.section[0].subsection[0].questions[this.id-1];
+							else if(this.id>=quizdata.section[0].subsection[0].questions.length){
+								var path = quizdata.section[0].subsection[1].questions[this.id-1-quizdata.section[0].subsection[0].questions.length];
+							}
+							var optionsHTML = '<div>' + path.question + '</div>';
+							for (var i = 0; i < path.options.length; i++) {
+								var optionText = path.options[i].substring(1, path.options[i].length)
+								optionsHTML += '<div class="radio">'
+								optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
+								optionsHTML += '</div>'
+							} 
+							optionsHTML += '<div class="radio">'
+							optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
+							optionsHTML += '</div>'
+							$("#contentbox").html(optionsHTML);
+						});
 				});
 
 			});
@@ -208,8 +240,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<hr style="margin-top: 0px; margin-bottom: 10px">
-				<div id="buttonBar">
+				<div id="buttonBar" style="display: flex">
+					<h4 style="margin-top: 0px; margin-bottom: 0px; margin-right:10px">Test Progress: </h4>
 					<button type="button" id="1" class="btn btn-default btn-xs">1</button>
+					&nbsp;
 				</div>
 				<hr style="margin-top: 10px">
 			</div>
