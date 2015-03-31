@@ -1,12 +1,15 @@
-application: inner-deck-87315
+application: maximal-ship-90105
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
 - url: /.*
-  script: main.application
+  script: submit.application
 
 
 libraries:

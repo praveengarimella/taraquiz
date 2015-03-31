@@ -41,10 +41,10 @@
 			optionsHTML += '</div>'
 		return optionsHTML;
 	}
-
-	$.getJSON('quizdata.json', function(json) {
+	
+	$.getJSON('stylesheets/quizdata.json', function(json) {
 		quizdata = json;
-
+		alert("json loaded");
 		function displayPassage() {
 			if(quizdata.section[currentSection].subsection[currentSubsection].types == "passage"){
 				$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div>'+quizdata.section[currentSection].subsection[currentSubsection].passage+'</div>');
@@ -73,6 +73,32 @@
 			if(quizdata.section[currentSection].subsection[currentSubsection].types == "question"){
 				$("#typeBox").hide();
 			}
+		}
+		function submitAnswer(data){
+						$.ajax({
+							   url: "/submitanswer",
+							   type: 'GET',
+							   contentType:'application/json',
+							   data: {
+									jsonData: data
+								},
+							   dataType:'json',
+							   success: function(data){
+								 //On ajax success do this
+								 console.log(data);
+								  },
+							   error: function(xhr, ajaxOptions, thrownError) {
+								  //On error do this
+									if (xhr.status == 200) {
+
+										 console.log(ajaxOptions);
+									}
+									else {
+										console.log(xhr.status);
+										console.log(thrownError);
+									}
+								}
+			 });
 		}
 		// display title of the page
 		$("h1").append(quizdata.name);
@@ -119,6 +145,10 @@
 					var selectedAnswer = $("input:checked").val();
 					
 					// submit to selected answer to the server
+					 var data = {"useremailid":"rr@cmu.edu","qid":"currentQuestion", "ans":selectedAnswer, "qshowntime":"qappearedTS","qattemptedtime":"asubmittedTS" , "score":"1"}
+					 data=JSON.stringify(data);
+					 console.log(data);
+					 submitAnswer(data);
 					
 					// show next question
 					$("#nextbutton").html('&nbsp; <button id="nextquestion" class="btn btn-info">Continue to Next Question</button>')
