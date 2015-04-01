@@ -1,20 +1,31 @@
 $(function() {
 	
 	var quizModel = {
+
 		data : [],
 
-		init : function() {
-			$.getJSON('stylesheets/quizdata.json', function(data) {
-				this.data = data;
-			});
+		init : function(data) {
+			this.data = data;
+		},
+
+		getData : function() {
+			return this.data;
 		}
 
 	};
 
 	var octopus = {
 		init : function() {
-			quizModel.init();
-			view.init();
+			$.ajax({
+				url: "quizdata.json",
+				dataType: 'json',
+				async: false,
+				success: function(data) {
+					quizModel.init(data);	
+				}
+			});
+			console.log(quizModel.getData());
+			//view.init();
 		}
 	};
 
@@ -49,7 +60,7 @@ $(function() {
 		},
 
 		render : function() {
-			
+
 		}
 
 	};
