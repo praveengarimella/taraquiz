@@ -21,12 +21,47 @@
 				<div class="col-md-12">
 					<h1 class="title"></h1>
 					<div style="display: flex">
-						<h4 id="h2"></h4>
+						<h4 id="h4"></h4>
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
+
+	<div id="div" class="container">
+
+		<!-- Progress bar for the quiz -->
+
+		<!-- Row which displays a single solid line after preogress bar row -->
+		<div class="row">
+			<div class="col-md-12">
+				<hr style="margin-top: 0px; margin-bottom: 10px">
+				<div id="buttonBar" style="display: flex">
+					<h4 style="margin-top: 0px; margin-bottom: 0px; margin-right:10px">Test Progress: </h4>
+					&nbsp;
+				</div>
+				<hr style="margin-top: 10px">
+			</div>
+		</div>
+
+		<!-- Row which displays computer image along with some content -->
+		<div class="row" style="padding-bottom:25px">
+			<!-- Content box, where required data is parsed from JSON -->
+
+			<div id="contentbox" class="col-md-6">
+
+			</div>
+			
+		</div>
+
+		<!-- Footer bar or last row in main container which displays continue and previous buttons -->
+		<div class="row">
+			<div class="col-md-12 text-left" style="display: flex">
+				<div id="continuebutton"></div>
+				<div id="nextbutton"></div>
+			</div>
+		</div>
+	</div>
 	<script src="app.js"></script>
 </body>
 </html>
