@@ -7,6 +7,14 @@ $(function() {
 		init : function(data) {
 			this.data = data;
 		}
+
+		setQuizState : function(state) {
+			this.quizState = state;
+		},
+
+		getQuizState : function() {
+			return this.quizState;
+		}
 	};
 
 	var octopus = {
@@ -25,6 +33,13 @@ $(function() {
 			testResultView.init();
 		},
 
+		startQuiz : function() {
+			// ajax call to the server side to indicate start of quiz
+
+			// update model to reflect start of quiz
+			quizModel.setQuizState("INPROGRESS");
+		},
+
 		getQuizTitle : function() {
 			return quizModel.data.name;
 		},
@@ -41,10 +56,21 @@ $(function() {
 				$("#"+i).addClass('disabled');
 			}
 		},
-		initStartButton : function() {
-			$("#contentbox").html(
-				"<button id='starttest' class='btn btn-success'>Click to Start Test</button>"
-			);
+
+		submitAnswer : function(responseAnswer, responseTS) {
+			// grab the current question object from model
+			// update the question object
+			// with response answer and response time
+			// call server side submit function
+			// render question view
+			// render test progress
+		},
+
+		nextQuestion : function() {
+			// check if time limit exceeded
+			// update the current question to the next
+			// call render of question view
+			// call render of test progress view
 		}
 	};
 
@@ -69,17 +95,55 @@ $(function() {
 	var questionView = {
 			
 		init : function() {
+
+			// grab ui objects for question view
+			this.answerButton = $("#answer");
+			this.nextButton = $("#nextquestion");
+			this.questionPane = $("#contentbox");
+			this.startButton = $("#startbutton");
+
+			// hide all buttons on init
+			// using jquery hide function
+			this.answerButton.hide();
+			this.nextButton.hide();
+			this.questionPane.hide();
+			this.startButton.hide();
+
+			// add event handlers
+			this.answerButton.click(function(){
+				// get selected answer
+				var selectedAnswer;
+				var responseTS = now();
+				octopus.submitAnswer(selectedAnswer, responseTS);
+			});
+
+			this.nextButton.click(function() {
+				octopus.nextQuestion();
+			});
+
 			this.render();
 		},
 
 		render : function() {
-			// initialize with a start button
-				octopus.initStartButton();
-			// initialize the submit answer button
 
-			// initialize the continue button
+			// Get test status START, INPROGRESS, END
+			var status = octopus.getStatus();
+			var currentQuestion = octopus.getCurrentQuestion();
+			
+			// initialize with a start button if test not started
+			if (status == "START") {
+				this.startButton.show();
+				return;
+			}
 
-			// dispaly the question using the question type and data template approach
+			if (status == "INPROGRESS") {
+				// display the current question
+				// use template for question
+				// and bind with its data
+				this.answerButton.show();
+				this.nextButton.show();
+				return;
+			}
 		}
 	};
 
