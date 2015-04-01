@@ -6,12 +6,7 @@ $(function() {
 
 		init : function(data) {
 			this.data = data;
-		},
-
-		getData : function() {
-			return this.data;
 		}
-
 	};
 
 	var octopus = {
@@ -24,18 +19,30 @@ $(function() {
 					quizModel.init(data);	
 				}
 			});
-			console.log(quizModel.getData());
-			//view.init();
+
+			testProgressView.init();
+			questionView.init();
+			testResultView.init();
+		},
+
+		getQuizTitle : function() {
+			return quizModel.data.name;
 		}
 	};
 
 	var testProgressView = {
+
+		title : $(".title"),
+
 		init : function() {
 			// initialize the test progress view
+			this.render();
 		},
 
 		render : function() {
 			// render the test progress view
+			console.log("inside render" + octopus.getQuizTitle());
+			this.title.html(octopus.getQuizTitle());
 		}
 	};
 
