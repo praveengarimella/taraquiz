@@ -1,43 +1,74 @@
 $(function() {
 	
 	var quizModel = {
-
-		data : [],
-
 		init : function(data) {
 			this.data = data;
-		}
-
-		setQuizState : function(state) {
-			this.quizState = state;
+			this.quizState = "START";
+			this.questionIndex = 0;
+			this.subSectionIndex = 0;
+			this.sectionIndex = 0;
+			this.currentSection = data.section[this.sectionIndex];
+			this.sections = data.section;
+			this.currentSubsection = this.currentSection.subsection[this.subSectionIndex];
+			this.subsections = this.currentSection.subsection;
+			this.questions = this.currentSection.subsection[0].questions;
 		},
 
-		getQuizState : function() {
-			return this.quizState;
+		nextSubsection : function() {
+			if (this.subSectionIndex < this.subsections.length) {
+				this.subSectionIndex++;
+				this.currentSubsection = this.subsections[this.subSectionIndex];
+				this.questionIndex = 0;
+				this.questions = this.currentSubsection.questions;
+			}
+
+			if (this.subSectionIndex == this.subsections.length) {
+				this.nextSection();
+			}
+		},
+
+		nextSection : function() {
+			if (this.sectionIndex <= this.sections.length) {
+				this.sectionIndex++;
+				this.currentSection = this.sections[this.sectionIndex];
+				this.subsections = this.currentSection.subsection;
+				this.subSectionIndex = 0;
+				this.currentSubsection = this.subsections[this.subSectionIndex];
+				this.questions = this.currentSubsection.questions;
+				this.questionIndex = 0;
+			}
+
+			if (this.sectionIndex == this.sections.length)
+				this.quizState = "END";
 		}
 	};
 
 	var octopus = {
+		
 		init : function() {
+
+			// load json and assign to quiz model
+			// note: ajax call is sync
 			$.ajax({
 				url: "quizdata.json",
 				dataType: 'json',
 				async: false,
 				success: function(data) {
-					quizModel.init(data);	
+					quizModel.init(data);
 				}
 			});
 
-			testProgressView.init();
+			//testProgressView.init();
 			questionView.init();
-			testResultView.init();
+			//testResultView.init();
 		},
 
 		startQuiz : function() {
 			// ajax call to the server side to indicate start of quiz
 
 			// update model to reflect start of quiz
-			quizModel.setQuizState("INPROGRESS");
+			quizModel.quizState = "INPROGRESS";
+			questionView.render();
 		},
 
 		getQuizTitle : function() {
@@ -50,6 +81,7 @@ $(function() {
 			return quizModel.data.section[currentSection].name + ' - ' + quizModel.data.section[currentSection].subsection[currentSubsection].name;
 		},
 
+		// todo fix MVC pattern issue
 		ProgressButtonsBar : function() {
 			for (var i=1; i<=30; i++){
 				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
@@ -66,28 +98,43 @@ $(function() {
 			// render test progress
 		},
 
+		getStatus : function() {
+			return quizModel.quizState;
+		},
+
+		getCurrentQuestion : function() {
+			return quizModel.questions[quizModel.questionIndex];
+		},
+
 		nextQuestion : function() {
-			// check if time limit exceeded
-			// update the current question to the next
-			// call render of question view
-			// call render of test progress view
+			console.log(quizModel.questionIndex + " " + quizModel.questions.length);
+
+			if (quizModel.questionIndex <= quizModel.questions.length)
+				quizModel.questionIndex++;
+
+			if (quizModel.questionIndex == quizModel.questions.length) {
+				quizModel.nextSubsection();
+			}
+
+			questionView.render();
 		}
 	};
 
 	var testProgressView = {
 
-		title : $(".title"),
-		subsection : $("#h4"),
-
 		init : function() {
+			this.pageTitle = $(".title"),
+			this.subSection = $("#h4"),
 			// initialize the test progress view
 			this.render();
 		},
 
 		render : function() {
 			// render the test progress view
-			this.title.html(octopus.getQuizTitle());
-			this.subsection.html(octopus.getQuizSubsection());
+			this.pageTitle.html(octopus.getQuizTitle());
+			this.subSection.html(octopus.getQuizSubsection());
+			
+			// todo fix the MVC pattern issue
 			octopus.ProgressButtonsBar();
 		}
 	};
@@ -106,19 +153,23 @@ $(function() {
 			// using jquery hide function
 			this.answerButton.hide();
 			this.nextButton.hide();
-			this.questionPane.hide();
+			//this.questionPane.hide();
 			this.startButton.hide();
 
 			// add event handlers
 			this.answerButton.click(function(){
 				// get selected answer
 				var selectedAnswer;
-				var responseTS = now();
+				var responseTS = Date.now();
 				octopus.submitAnswer(selectedAnswer, responseTS);
 			});
 
 			this.nextButton.click(function() {
 				octopus.nextQuestion();
+			});
+
+			this.startButton.click(function() {
+				octopus.startQuiz();
 			});
 
 			this.render();
@@ -128,22 +179,39 @@ $(function() {
 
 			// Get test status START, INPROGRESS, END
 			var status = octopus.getStatus();
-			var currentQuestion = octopus.getCurrentQuestion();
+			
 			
 			// initialize with a start button if test not started
 			if (status == "START") {
 				this.startButton.show();
-				return;
 			}
 
 			if (status == "INPROGRESS") {
+				var currentQuestion = octopus.getCurrentQuestion();
+				if (currentQuestion) {
+					this.questionPane.html(this.displayQuestion(currentQuestion));
+				}
 				// display the current question
 				// use template for question
 				// and bind with its data
+				this.startButton.hide();
 				this.answerButton.show();
 				this.nextButton.show();
-				return;
 			}
+		},
+
+		displayQuestion : function(path) {
+			var optionsHTML = '<div id="typeBox"></div><div>' + path.question + '</div>';
+			for (var i = 0; i < path.options.length; i++) {
+				var optionText = path.options[i].substring(1, path.options[i].length);
+				optionsHTML += '<div class="radio">';
+				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
+				optionsHTML += '</div>';
+			}
+			optionsHTML += '<div class="radio">';
+				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
+				optionsHTML += '</div>';
+			return optionsHTML;
 		}
 	};
 
