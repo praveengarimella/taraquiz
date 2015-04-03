@@ -4,31 +4,33 @@ $(function() {
 		init : function(data) {
 			this.data = data;
 			this.quizState = "START";
+
 			this.questionIndex = 0;
 			this.subSectionIndex = 0;
 			this.sectionIndex = 0;
+
 			this.currentSection = data.section[this.sectionIndex];
 			this.sections = data.section;
+
 			this.currentSubsection = this.currentSection.subsection[this.subSectionIndex];
 			this.subsections = this.currentSection.subsection;
+
 			this.questions = this.currentSection.subsection[0].questions;
 		},
 
 		nextSubsection : function() {
-			if (this.subSectionIndex < this.subsections.length) {
+			if (this.subSectionIndex < this.subsections.length - 1) {
 				this.subSectionIndex++;
 				this.currentSubsection = this.subsections[this.subSectionIndex];
 				this.questionIndex = 0;
 				this.questions = this.currentSubsection.questions;
-			}
-
-			if (this.subSectionIndex == this.subsections.length) {
+			} else if (this.subSectionIndex == this.subsections.length - 1) {
 				this.nextSection();
 			}
 		},
 
 		nextSection : function() {
-			if (this.sectionIndex <= this.sections.length) {
+			if (this.sectionIndex < this.sections.length - 1) {
 				this.sectionIndex++;
 				this.currentSection = this.sections[this.sectionIndex];
 				this.subsections = this.currentSection.subsection;
@@ -36,9 +38,7 @@ $(function() {
 				this.currentSubsection = this.subsections[this.subSectionIndex];
 				this.questions = this.currentSubsection.questions;
 				this.questionIndex = 0;
-			}
-
-			if (this.sectionIndex == this.sections.length)
+			} else if (this.sectionIndex == this.sections.length - 1)
 				this.quizState = "END";
 		}
 	};
@@ -60,7 +60,7 @@ $(function() {
 
 			//testProgressView.init();
 			questionView.init();
-			//testResultView.init();
+			testResultView.init();
 		},
 
 		startQuiz : function() {
@@ -107,8 +107,7 @@ $(function() {
 		},
 
 		nextQuestion : function() {
-			console.log(quizModel.questionIndex + " " + quizModel.questions.length);
-
+			
 			if (quizModel.questionIndex <= quizModel.questions.length)
 				quizModel.questionIndex++;
 
@@ -198,6 +197,12 @@ $(function() {
 				this.answerButton.show();
 				this.nextButton.show();
 			}
+
+			if (status == "END") {
+				this.answerButton.hide();
+				this.nextButton.hide();
+				testResultView.render();
+			}
 		},
 
 		displayQuestion : function(path) {
@@ -218,11 +223,11 @@ $(function() {
 	var testResultView = {
 
 		init : function() {
-
+			this.contentbox = $("#contentbox");
 		},
 
 		render : function() {
-
+			this.contentbox.html("End of the test!");
 		}
 
 	};
