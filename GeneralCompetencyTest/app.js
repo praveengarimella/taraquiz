@@ -89,10 +89,15 @@ $(function() {
 			}
 		},
 
-		submitAnswer : function(responseAnswer, responseTS) {
+		submitAnswer : function(responseAnswer, appearedTS, responseTS) {
 			// grab the current question object from model
+			var q = this.getCurrentQuestion();
+
 			// update the question object
 			// with response answer and response time
+			q.responseAnswer = responseAnswer;
+			q.responseTime = (responseTS - appearedTS) / (1000 * 60);
+			console.log(q);
 			// call server side submit function
 			// render question view
 			// render test progress
@@ -104,6 +109,10 @@ $(function() {
 
 		getCurrentQuestion : function() {
 			return quizModel.questions[quizModel.questionIndex];
+		},
+
+		getCurrentSubsection : function() {
+			return quizModel.subsections[quizModel.subSectionIndex];
 		},
 
 		nextQuestion : function() {
@@ -147,6 +156,7 @@ $(function() {
 			this.nextButton = $("#nextquestion");
 			this.questionPane = $("#contentbox");
 			this.startButton = $("#startbutton");
+			this.typeBox = $("#typeBox");
 
 			// hide all buttons on init
 			// using jquery hide function
@@ -158,9 +168,10 @@ $(function() {
 			// add event handlers
 			this.answerButton.click(function(){
 				// get selected answer
-				var selectedAnswer;
+				var selectedAnswer = $("input:checked").val();
 				var responseTS = Date.now();
-				octopus.submitAnswer(selectedAnswer, responseTS);
+				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
+				questionView.nextButton.show();
 			});
 
 			this.nextButton.click(function() {
@@ -186,16 +197,26 @@ $(function() {
 			}
 
 			if (status == "INPROGRESS") {
+				
 				var currentQuestion = octopus.getCurrentQuestion();
+				var subsection = octopus.getCurrentSubsection();
 				if (currentQuestion) {
 					this.questionPane.html(this.displayQuestion(currentQuestion));
+					if (subsection.types == "passage")
+						this.displayPassage();
+					if (subsection.types == "essay")
+						this.displayEssay();
+					if (subsection.types == "video")
+						this.displayVideo();
+					// get the appeared timestamp for response time calc
+					this.appearedTS = Date.now();
 				}
 				// display the current question
 				// use template for question
 				// and bind with its data
 				this.startButton.hide();
 				this.answerButton.show();
-				this.nextButton.show();
+				this.nextButton.hide();
 			}
 
 			if (status == "END") {
@@ -206,7 +227,7 @@ $(function() {
 		},
 
 		displayQuestion : function(path) {
-			var optionsHTML = '<div id="typeBox"></div><div>' + path.question + '</div>';
+			var optionsHTML = '<div id="typeBox"></div><br><div>' + path.question + '</div>';
 			for (var i = 0; i < path.options.length; i++) {
 				var optionText = path.options[i].substring(1, path.options[i].length);
 				optionsHTML += '<div class="radio">';
@@ -217,7 +238,32 @@ $(function() {
 				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
 				optionsHTML += '</div>';
 			return optionsHTML;
+		},
+
+		displayPassage : function() {
+			var subsection = octopus.getCurrentSubsection();
+			$("#typeBox").html('<h4>' + subsection.note + '</h4><div>' + 
+					subsection.passage+'</div>');
+		},
+
+		displayEssay : function() {
+			var subsection = octopus.getCurrentSubsection();
+			$("#typeBox").html('<h4>' + subsection.note + 
+				'</h4><textarea style="width: 600px; height: 200px">');
+		},
+
+		displayVideo : function() {
+			var subsection = octopus.getCurrentSubsection();
+			$("#typeBox").html('<h4>' + subsection.note + 
+				'</h4><iframe width="560" height="315" src="' + subsection.link +
+				 '" frameborder="0" allowfullscreen></iframe>');
 		}
+
+		// function displayRecording() {
+		// 	if(quizdata.section[currentSection].subsection[currentSubsection].types == "record"){
+		// 		$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div></div>');
+		// 	}
+		// }
 	};
 
 	var testResultView = {
