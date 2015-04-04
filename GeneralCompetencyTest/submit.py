@@ -29,6 +29,15 @@ class Response(ndb.Model):
     time = ndb.DateTimeProperty(auto_now_add=True)
     currentQuestion=ndb.StringProperty(indexed = True)
 
+class EssayTypeResponse(ndb.Model):
+    """Sub model for storing user response for essay type questions"""
+    useremailid = ndb.StringProperty(indexed = True)
+    qid = ndb.StringProperty(indexed = True)
+    ansText = ndb.StringProperty(indexed = True)
+    qshowntime = ndb.StringProperty(indexed = True)
+    qattemptedtime = ndb.StringProperty(indexed = True)
+    status = ndb.StringProperty(indexed = True)
+
 class audio(ndb.Model):
     mp3 = ndb.BlobProperty()
     date 	= ndb.DateTimeProperty(auto_now_add=True)
@@ -75,6 +84,7 @@ class getsubmitstatus(webapp2.RequestHandler):
     def get(self):
       q= Response.query(Response.q_status=="submitted").get()
       self.response.write(q.submittedans)
+
 
 class submit(webapp2.RequestHandler):
     def get(self):
@@ -133,10 +143,37 @@ class submit(webapp2.RequestHandler):
         ss=json.dumps(obj)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.write(ss)
+
+class AutosaveEssay(webapp2.RequestHandler):
+    def get(self):
+        vals = json.loads(cgi.escape(self.request.get('jsonData')))
+        useremailid = vals['useremailid']
+        qid = vals['qid']
+        ans = vals['ans']
+        qshowntime = vals['qshowntime']
+        qattemptedtime = vals['qattemptedtime']
+
+        data1 = EssayTypeResponse.query(EssayTypeResponse.useremailid == useremailid,
+                                     EssayTypeResponse.qid == qid).get()
+        if data1:
+            data1.qshowntime=qshowntime
+            data1.qattemptedtime=qattemptedtime
+            data1.ansText = ans
+            data1.status= vals['status']
+
+        else:
+            data = EssayTypeResponse(useremailid=useremailid,
+                                     qid=qid+"",
+                                     qshowntime=qshowntime,
+                                     qattemptedtime=qattemptedtime,
+                                     ansText = ans,
+                                     status= vals['status'])
+            data.put()
 application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/submitanswer', submit),
     ('/getanswers', getanswers),
     ('/audioupload', audioupload),
     ('/getsubmitstatus', getsubmitstatus),
+    ('/autosaveEssay', AutosaveEssay),
        ], debug=True)
