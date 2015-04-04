@@ -21,7 +21,7 @@ class User(ndb.Model):
 
 class Response(ndb.Model):
     """Sub model for representing question details"""
-    useremailid = ndb.StringProperty(indexed = True)
+    useremailid = ndb.StructuredProperty(User)
     submittedans = ndb.StringProperty(indexed = True)
     responsetime = ndb.FloatProperty(indexed = True)
     q_score = ndb.IntegerProperty(indexed = True)
@@ -32,11 +32,49 @@ class Response(ndb.Model):
 class audio(ndb.Model):
     mp3 = ndb.BlobProperty()
     date 	= ndb.DateTimeProperty(auto_now_add=True)
+    
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('quiz.html')
         self.response.write(template.render())
+
+
+class checkuser(webapp2.RequestHandler):
+    def get(self):
+        data=[]
+        data = json.loads(cgi.escape(self.request.get('jsonData')))
+        if User.query(User.emailid==data['email']).get() is not None :
+            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"The Email is invalid"}
+        else :
+            u1=User(name=data['name'],emailid=data['email'],pin=data['pin'])
+            u1.put();
+            obj = {u"status": "Successful", u"errorcode":1, u"errormessage":""}
+
+        ss=json.dumps(obj)
+        self.response.headers['Content-Type']='application/json'
+        self.response.write(ss)
+    
+class signpage(webapp2.RequestHandler):
+    def get(self):
+                template = JINJA_ENVIRONMENT.get_template('index.html')
+                self.response.write(template.render())
+		
+class checklogin(webapp2.RequestHandler):
+    def get(self):
+        data=[]
+        obj=[]
+        data = json.loads(cgi.escape(self.request.get('jsonData')))
+        t1=User.query(User.emailid==data['email']).get()
+        if t1 is None :
+            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"The Email is not Registered"}
+        elif(t1.pin==data['pin']):
+            obj = {u"status": "Successful", u"errorcode":1, u"errormessage":"The Login Successful"}
+        else :
+            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"Invalid Credentials"}
+        ss=json.dumps(obj)
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.write(ss)
 
 class Result(webapp2.RequestHandler):
     def get(self):
@@ -133,8 +171,12 @@ class submit(webapp2.RequestHandler):
         ss=json.dumps(obj)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.write(ss)
+	
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/index',signpage),
+    ('/signup', checkuser),
+    ('/checklogin',checklogin),
     ('/submitanswer', submit),
     ('/getanswers', getanswers),
     ('/audioupload', audioupload),

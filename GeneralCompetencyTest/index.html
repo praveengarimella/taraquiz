@@ -12,6 +12,61 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript"  >
+	function storeuserdetails() {
+		var objectData =
+		{
+		    name: document.getElementById('name').value,
+		    email: document.getElementById('email').value,
+		    pin: document.getElementById('pin1').value
+		};
+
+		var objectDataString = JSON.stringify(objectData);
+		console.log(objectDataString);
+		$.ajax({
+		    type: 'get',
+		    url: '/signup',
+		    dataType: 'json',
+		    data: {
+			jsonData: objectDataString
+		    },
+		    success: function (data) {
+			console.log( JSON.stringify(data));
+		    },
+		    error: function () {
+			alert("failure");
+		    }
+		});
+		return true;
+	}
+	function login() {
+		var f=false;
+		var objectData =
+		{
+		    email: document.getElementById('testtakerMobile').value,
+		    pin: document.getElementById('pin').value
+		};
+                var objectDataString = JSON.stringify(objectData);
+                console.log(objectDataString);
+                $.ajax({
+                    type: 'get',
+                    url: '/checklogin',
+                    dataType: 'json',
+                    data: {
+                        jsonData: objectDataString
+                    },
+                    success: function (data) {
+                        f=true;
+                        console.log( JSON.stringify(data));
+
+                    },
+                    error: function () {
+                        alert("failure");
+                    }
+                });
+                return f;
+        }
+	</script>
 	
 	
 </head>
@@ -32,23 +87,23 @@
 					<p>A 4 digit pin required to attempt the test will be sent to your mobile phone as an SMS message.</p>
 					<p>The test certificate upon completion of the test will be sent to your email address.
 					</p>
-					<form>
+					<form >
 						<div class="form-group">
 							<label for="exampleInputEmail1">Your Name</label>
-							<input type="text" class="form-control" id="testtakerName" placeholder="Enter your name">
+							<input id="name"type="text" class="form-control" id="testtakerName" placeholder="Enter your name">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
-							<input type="email" class="form-control" id="testtakerEmail" placeholder="Enter email">
+							<input id="email"type="email" class="form-control" id="testtakerEmail" placeholder="Enter email">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">4 Digit PIN</label>
-							<input type="password" class="form-control" id="testtakerPIN" placeholder="4 digit PIN">
+							<input id="pin1"type="password" class="form-control" id="testtakerPIN" placeholder="4 digit PIN">
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" onclick="storeuserdetails()"class="btn btn-primary">Submit</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
@@ -79,7 +134,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="submit" onclick="login()" class="btn btn-primary">Submit</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
