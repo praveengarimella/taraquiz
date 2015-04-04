@@ -237,6 +237,8 @@ $(function() {
 						this.displayEssay();
 					if (subsection.types == "video")
 						this.displayVideo();
+					if (subsection.types == "record")
+						this.displayRecording();
 					// get the appeared timestamp for response time calc
 					this.appearedTS = Date.now();
 				}
@@ -286,13 +288,12 @@ $(function() {
 			$("#typeBox").html('<h4>' + subsection.note + 
 				'</h4><iframe width="560" height="315" src="' + subsection.link +
 				 '" frameborder="0" allowfullscreen></iframe>');
-		}
+		},
 
-		// function displayRecording() {
-		// 	if(quizdata.section[currentSection].subsection[currentSubsection].types == "record"){
-		// 		$("#typeBox").html('<h4>'+quizdata.section[currentSection].subsection[currentSubsection].note+'</h4><div></div>');
-		// 	}
-		// }
+		displayRecording : function () {
+			var subsection = octopus.getCurrentSubsection();
+				$("#contentbox").append('<button class="btn btn-danger">Record</button>&nbsp;&nbsp<button class="btn btn-info">Stop</button>');
+		}
 	};
 
 	var testResultView = {
