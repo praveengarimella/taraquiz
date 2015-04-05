@@ -198,6 +198,9 @@ $(function() {
 			this.answerButton.click(function(){
 				// get selected answer
 				var selectedAnswer = $("input:checked").val();
+				var subsection = octopus.getCurrentSubsection();
+				if (subsection.types == "essay")
+						selectedAnswer = $("textarea").val();
 				var responseTS = Date.now();
 				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
 				questionView.nextButton.show();
