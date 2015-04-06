@@ -242,6 +242,8 @@ $(function() {
 						this.displayVideo();
 					if (subsection.types == "record")
 						this.displayRecording();
+					if (subsection.types == "question")
+						this.displayQuestionNote();
 					// get the appeared timestamp for response time calc
 					this.appearedTS = Date.now();
 				}
@@ -293,9 +295,14 @@ $(function() {
 				 '" frameborder="0" allowfullscreen></iframe>');
 		},
 
-		displayRecording : function () {
+		displayRecording : function() {
 			var subsection = octopus.getCurrentSubsection();
 				$("#contentbox").append('<button class="btn btn-danger">Record</button>&nbsp;&nbsp<button class="btn btn-info">Stop</button>');
+		},
+
+		displayQuestionNote : function() {
+			var subsection = octopus.getCurrentSubsection();
+				$("#typeBox").html('<div><b>' + subsection.note + '</b></div>');
 		}
 	};
 
