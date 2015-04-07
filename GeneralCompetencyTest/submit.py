@@ -43,19 +43,15 @@ class EssayTypeResponse(ndb.Model):
 class audio(ndb.Model):
     mp3 = ndb.BlobProperty()
     date 	= ndb.DateTimeProperty(auto_now_add=True)
-    
-class MainPage(webapp2.RequestHandler):
-
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('quiz.html')
-        self.response.write(template.render())
-    
-class signpage(webapp2.RequestHandler):
+       
+class homepage(webapp2.RequestHandler):
+    """  handles rendering of index page """
     def get(self):
                 template = JINJA_ENVIRONMENT.get_template('index.html')
                 self.response.write(template.render())
 		
 class checklogin(webapp2.RequestHandler):
+    """ handles authentication and redirects to quiz page """
     def get(self):
 	user = users.get_current_user()
         if user is None:
@@ -64,108 +60,136 @@ class checklogin(webapp2.RequestHandler):
           return
 	else:
 	    Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
-	    template= JINJA_ENVIRONMENT.get_template('taketest.html')
+	    template= JINJA_ENVIRONMENT.get_template('quiz.html')
             self.response.write(template.render())
 
-class Result(webapp2.RequestHandler):
-    def get(self):
-        jdata = json.loads(cgi.escape(self.request.body))
-        for vals in jdata:
-            useremailid = vals['useremailid']
-        q = User.query(User.emailid == useremailid ).get()
-        if q:
-            q1=Response.query().get()
-        if q1:
-            self.response.content_type = 'application/json'
-            obj = {
-					'qid': 'q1.qid',
-					'ans': 'q1.ans',
-					'score': 'q1.score',
-					'section': 'q1.section',
-					'qshowntime' : 'q1.qshowntime',
-					'qattemptedtime': 'q1.qattemptedtime'
-				}
-            self.response.write(json.encode(obj))
 
-class getanswers(webapp2.RequestHandler):
+class getquizstatus(webapp2.RequestHandler):
+    """ handling status of quiz sends a json file of responses"""
     def get(self):
-       vals = json.loads(cgi.escape(self.request.get('jsonData')))
-       print(vals)
-       logging.error("currentQuestion,submit")
-class audioupload(webapp2.RequestHandler):
+      q1= Response.query(ndb.OR(Response.q_status=="submitted" , Response.q_status=="skipped"))
+      q1.fetch()
+      questionresponses_dict = {}
+      question_records=[]
+      for q in q1:
+             question = {"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":q.currentQuestion,"responsetime":q.responsetime}
+             question_records.append(question)
+             questionresponses_dict["question"]=question_records
+      ss=json.dumps(questionresponses_dict)
+      self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+      self.response.write(ss)
+class getResult(webapp2.RequestHandler):
+    """ get result for entire quiz """
     def get(self):
-       mp3=self.request.get('audio')
-       m=audio(mp3=mp3)
-       m.put()
-       logging.error("audio uploaded")
-       self.response.write("blob saved succesfully")
-
-class getsubmitstatus(webapp2.RequestHandler):
-    def get(self):
-      q= Response.query(Response.q_status=="submitted").get()
-      self.response.write(q.submittedans)
-
-
-class submit(webapp2.RequestHandler):
-    def get(self):
-        # opening json file sent by the server
-        validresponce="false"
-        status=""
-        errortype=""
-        q_status=""
-        score=0
-        vals = json.loads(cgi.escape(self.request.get('jsonData')))
-        currentQuestion =vals['currentQuestion']
-        submittedans = vals['submittedans']
-        responsetime = vals['responsetime']
-         # opening  json file of quizdata
-        #logging.error(currentQuestion,submittedans)
-        json_data=json.loads(open('quizdata.json').read())
-        #print(json_data )
-        #logging.error("This is an error message that will show in the console")
-        # finding the correct answer and updating the score
-        for currentSection in json_data["section"]:
-            for currentSubsection in currentSection["subsection"]:
-                for q in currentSubsection["questions"]:
-                   # print(q["id"])
-                    if q["id"]==str(currentQuestion):
-                        if submittedans == "skip":
-                            validresponce="true"
-                            q_status="skipped"
-                           # print(q_status)
-                        else:
-                            for option in q["options"]:
-                                string1=option[1:len(option)]
-                               # print(string1)
-                               # print(submittedans,"submiteddfdf")
-                                #logging.error("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-                                if submittedans == string1:
-                                    #print("validrespnse")
-                                    validresponce="true"
-                                    if option[0]== "=":
-                                        score=1
-                                        #logging.error("This is an error message that will show in the console")
-
-        if validresponce=="true":
-            global status
-            status="success"
-            if q_status!="skipped":
-                q_status="submitted"
+        user = users.get_current_user()
+        if user is None:
+          login_url = users.create_login_url(self.request.path)
+          self.redirect(login_url)
+          return
         else:
-            global status
-            status="error"
-            global errortype
-                   # creating json file for error response
-        # placing in to the database
-        data=Response(currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
-        data.put()
-        obj = {u"status":status , u"q_status":q_status, u"validresponce":validresponce, u"qid":currentQuestion}
-        ss=json.dumps(obj)
-        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
-        self.response.write(ss)
+          q1= Response.query(Response.useremailid.emailid==user.email())
+          q1.fetch()
+          questionresponses_dict = {}
+          question_records=[]
+          for q in q1:
+                 question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":q.currentQuestion,"responsetime":q.responsetime}
+                 question_records.append(question)
+                 questionresponses_dict["question"]=question_records
+          ss=json.dumps(questionresponses_dict)
+          self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+          self.response.write(ss)
 
+class getScore(webapp2.RequestHandler):
+    """ get score for entire quiz """
+    def get(self):
+        score=0
+        user = users.get_current_user()
+        if user is None:
+          login_url = users.create_login_url(self.request.path)
+          self.redirect(login_url)
+          return
+        else:
+          q1= Response.query(Response.useremailid.emailid==user.email())
+          q1.fetch()
+          q1= Response.query(Response.useremailid.emailid==user.email())
+          q1.fetch()
+          for q in q1:
+            score=score+1
+          template_values = {
+                'p': q1,
+                'score1':score,
+                }
+          template = JINJA_ENVIRONMENT.get_template('testresult.html')
+          self.response.write(template.render(template_values))    
+
+class submitAnswer(webapp2.RequestHandler):
+    """ submting question response , sends a json file of response"""
+    def get(self):
+        user = users.get_current_user()
+        if user is None:
+          login_url = users.create_login_url(self.request.path)
+          self.redirect(login_url)
+          return
+        else:
+            # opening json file sent by the server
+            validresponce="false"
+            status=""
+            errortype=""
+            q_status=""
+            score=0
+            vals = json.loads(cgi.escape(self.request.get('jsonData')))
+            currentQuestion =vals['currentQuestion']
+            submittedans = vals['submittedans']
+            responsetime = vals['responsetime']
+             # opening  json file of quizdata
+            #logging.error(currentQuestion,submittedans)
+            json_data=json.loads(open('quizdata.json').read())
+            #print(json_data )
+            #logging.error("This is an error message that will show in the console")
+            # finding the correct answer and updating the score
+            for currentSection in json_data["section"]:
+                for currentSubsection in currentSection["subsection"]:
+                    for q in currentSubsection["questions"]:
+                       # print(q["id"])
+                        if q["id"]==str(currentQuestion):
+                            if submittedans == "skip":
+                                validresponce="true"
+                                q_status="skipped"
+                               # print(q_status)
+                            else:
+                                for option in q["options"]:
+                                    string1=option[1:len(option)]
+                                   # print(string1)
+                                   # print(submittedans,"submiteddfdf")
+                                    #logging.error("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                                    if submittedans == string1:
+                                        #print("validrespnse")
+                                        validresponce="true"
+                                        if option[0]== "=":
+                                            score=1
+                                            #logging.error("This is an error message that will show in the console")
+
+            if validresponce=="true":
+                global status
+                status="success"
+                if q_status!="skipped":
+                    q_status="submitted"
+            else:
+                global status
+                status="error"
+                global errortype
+            # creating json file for error response
+            # placing in to the database
+
+            data=Response(useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
+            data.put()
+            obj = {u"status":status , u"q_status":q_status, u"validresponce":validresponce, u"qid":currentQuestion}
+            ss=json.dumps(obj)
+            self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+            self.response.write(ss)
 
 class AutosaveEssay(webapp2.RequestHandler):
+    """ saving essay writing response"""
     def get(self):
         vals = json.loads(cgi.escape(self.request.get('jsonData')))
         useremailid = vals['useremailid']
@@ -192,12 +216,11 @@ class AutosaveEssay(webapp2.RequestHandler):
             data.put()
 
 application = webapp2.WSGIApplication([
-    ('/', MainPage),
-    ('/index',signpage),
+    ('/', homepage),
     ('/checklogin',checklogin),
-    ('/submitanswer', submit),
-    ('/getanswers', getanswers),
-    ('/audioupload', audioupload),
-    ('/getsubmitstatus', getsubmitstatus),
-    ('/autosaveEssay', AutosaveEssay),
+    ('/submitanswer', submitAnswer),
+    ('/getResult', getResult),
+    ('/getquizstatus', getquizstatus),
+    ('/getScore', getScore),
+    ('/autosaveEssay', AutosaveEssay),  
        ], debug=True)

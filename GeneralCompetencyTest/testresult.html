@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<meta charset="utf-8">
+<html lang="en">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<table style="width:100%">
+  <tr>
+    <th>QUSETION NUMBER</th>
+    <th>SCORE </th> 
+    <th>SUBMITTED ANSWER</th>
+	<th>TIME TAKEN</th>
+  </tr>
+  {% for value in p %}
+  <tr>
+    <td>{{value.currentQuestion}}</td>
+    <td>{{value.q_score}}</td> 
+	<td>{{value.submittedans}}</td>
+	<td>{{value.responsetime}}</td> 
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+{% endautoescape %}

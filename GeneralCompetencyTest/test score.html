@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p>YOUR SCORE IS : {{score1}}</p>
+	<table style="width:100%">
+  <tr>
+    <th>QUSETION NUMBER</th>
+    <th>SCORE </th> 
+    <th>SUBMITTED ANSWER</th>
+	<th>TIME TAKEN</th>
+  </tr>
+  {% for value in p %}
+  <tr>
+    <td>{{value.currentQuestion}}</td>
+    <td>{{value.q_score}}</td> 
+	<td>{{value.submittedans}}</td>
+	<td>{{value.responsetime}}</td> 
+  </tr>
+  {% endfor %}
+</table>
+
+    
+</body>
+</html>
+{% endautoescape %}

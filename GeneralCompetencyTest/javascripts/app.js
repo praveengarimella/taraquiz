@@ -66,7 +66,7 @@ $(function() {
 
 		startQuiz : function() {
 			// ajax call to the server side to indicate start of quiz
-
+				
 			// update model to reflect start of quiz
 			quizModel.quizState = "INPROGRESS";
 			questionView.render();
@@ -314,6 +314,8 @@ $(function() {
 
 		render : function() {
 			this.contentbox.html("End of the test!");
+			document.getElementById("result").style.display="block";
+
 		}
 
 	};
