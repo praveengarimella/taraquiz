@@ -1,6 +1,8 @@
 import os
 import cgi
 from google.appengine.ext import ndb
+from google.appengine.api import users
+from google.appengine.api import mail
 import json
 import jinja2
 import webapp2
@@ -47,22 +49,6 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('quiz.html')
         self.response.write(template.render())
-
-
-class checkuser(webapp2.RequestHandler):
-    def get(self):
-        data=[]
-        data = json.loads(cgi.escape(self.request.get('jsonData')))
-        if User.query(User.emailid==data['email']).get() is not None :
-            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"The Email is invalid"}
-        else :
-            u1=User(name=data['name'],emailid=data['email'],pin=data['pin'])
-            u1.put();
-            obj = {u"status": "Successful", u"errorcode":1, u"errormessage":""}
-
-        ss=json.dumps(obj)
-        self.response.headers['Content-Type']='application/json'
-        self.response.write(ss)
     
 class signpage(webapp2.RequestHandler):
     def get(self):
@@ -71,19 +57,15 @@ class signpage(webapp2.RequestHandler):
 		
 class checklogin(webapp2.RequestHandler):
     def get(self):
-        data=[]
-        obj=[]
-        data = json.loads(cgi.escape(self.request.get('jsonData')))
-        t1=User.query(User.emailid==data['email']).get()
-        if t1 is None :
-            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"The Email is not Registered"}
-        elif(t1.pin==data['pin']):
-            obj = {u"status": "Successful", u"errorcode":1, u"errormessage":"The Login Successful"}
-        else :
-            obj = {u"status": "UnSuccessful", u"errorcode":0, u"errormessage":"Invalid Credentials"}
-        ss=json.dumps(obj)
-        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
-        self.response.write(ss)
+	user = users.get_current_user()
+        if user is None:
+          login_url = users.create_login_url(self.request.path)
+          self.redirect(login_url)
+          return
+	else:
+	    Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
+	    template= JINJA_ENVIRONMENT.get_template('taketest.html')
+            self.response.write(template.render())
 
 class Result(webapp2.RequestHandler):
     def get(self):
@@ -212,7 +194,6 @@ class AutosaveEssay(webapp2.RequestHandler):
 application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/index',signpage),
-    ('/signup', checkuser),
     ('/checklogin',checklogin),
     ('/submitanswer', submit),
     ('/getanswers', getanswers),

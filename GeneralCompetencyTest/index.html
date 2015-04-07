@@ -39,33 +39,6 @@
 		});
 		return true;
 	}
-	function login() {
-		var f=false;
-		var objectData =
-		{
-		    email: document.getElementById('testtakerMobile').value,
-		    pin: document.getElementById('pin').value
-		};
-                var objectDataString = JSON.stringify(objectData);
-                console.log(objectDataString);
-                $.ajax({
-                    type: 'get',
-                    url: '/checklogin',
-                    dataType: 'json',
-                    data: {
-                        jsonData: objectDataString
-                    },
-                    success: function (data) {
-                        f=true;
-                        console.log( JSON.stringify(data));
-
-                    },
-                    error: function () {
-                        alert("failure");
-                    }
-                });
-                return f;
-        }
 	</script>
 	
 	
@@ -195,7 +168,7 @@
 																	</div>
 																	<div class="col-md-2">
 																		<!-- Indicates a dangerous or potentially negative action -->
-																		<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#testModal">Attempt Test</button>
+																		<button type="button" id="loginid" class="btn btn-success btn-lg" >Attempt Test</button>
 																	</div>
 																	<div class="col-md-3">
 																		<button type="button" class="btn btn-lg btn-info" data-toggle="popover" title="Contact Us" data-content="Call +91 888 888 8888">Get Help</button>
@@ -207,6 +180,10 @@
 																$(function () {
 																	$('[data-toggle="popover"]').popover()
 																})
+																
+																document.getElementById("loginid").onclick = function () {
+																		location.href = "/checklogin";
+																};
 																</script>
 															</body>
 															</html>
