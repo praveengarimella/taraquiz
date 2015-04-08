@@ -167,7 +167,7 @@ $(function() {
 			this.subSection.html(octopus.getQuizSubsection());
 			
 			// todo fix the MVC pattern issue
-			var testProgress = octopus.getTestProgress();
+			//var testProgress = octopus.getTestProgress();
 			
 		}
 	};
