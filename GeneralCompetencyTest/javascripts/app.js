@@ -50,10 +50,11 @@ $(function() {
 			// load json and assign to quiz model
 			// note: ajax call is sync
 			$.ajax({
-				url: "stylesheets/quizdata.json",
+				url: "/getquizstatus",
 				dataType: 'json',
 				async: false,
 				success: function(data) {
+					console.log(data)
 					quizModel.init(data);
 				}
 			});

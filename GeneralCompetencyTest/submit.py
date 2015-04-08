@@ -67,24 +67,31 @@ class checklogin(webapp2.RequestHandler):
 class getquizstatus(webapp2.RequestHandler):
     """ handling status of quiz sends a json file of responses"""
     def get(self):
-      json_data=json.loads(open('quizdata.json').read())
-      for key in json_data:
-          if  key == "section":
-              section = json_data[key]
-              for s in  section:
-                  for key in s:
-                      if key == "subsection":
-                          for subs in s[key]:
-                              for key in subs:
-                                  if key == "questions":
-                                      for q in subs[key]:
-                                         q1 = Response.query(Response.currentQuestion==q["id"]).get()
-                                         q["responseAnswer"]=q1.submittedans
-                                         q["responseTime"]=q1.responsetime
-                                         q["Status"]=q1.q_status
-      ss=json.dumps(json_data)
-      self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
-      self.response.write(ss)
+      user = users.get_current_user()
+      if user:
+        q1 = Response.query(Response.useremailid.emailid==user.email()).get()
+        json_data=json.loads(open('quizdata.json').read())
+        print json_data["name"]
+        logging.error("This is an error message that will show in the console")
+        if q1:
+          for key in json_data:
+              if  key == "section":
+                  section = json_data[key]
+                  for s in  section:
+                      for key in s:
+                          if key == "subsection":
+                              for subs in s[key]:
+                                  for key in subs:
+                                      if key == "questions":
+                                          for q in subs[key]:
+                                             q1 = Response.query(Response.currentQuestion==q["id"]).order(-Response.time).get()
+                                             q["responseAnswer"]=q1.submittedans
+                                             q["responseTime"]=q1.responsetime
+                                             q["Status"]=q1.q_status
+
+        ss=json.dumps(json_data)
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.write(ss)
 
 class getResult(webapp2.RequestHandler):
     """ get result for entire quiz """
