@@ -81,6 +81,7 @@ class getquizstatus(webapp2.RequestHandler):
 class getResult(webapp2.RequestHandler):
     """ get result for entire quiz """
     def get(self):
+        totalscore=0
         user = users.get_current_user()
         if user is None:
           login_url = users.create_login_url(self.request.path)
@@ -88,13 +89,19 @@ class getResult(webapp2.RequestHandler):
           return
         else:
           q1= Response.query(Response.useremailid.emailid==user.email())
-          q1.fetch()
+          q1=q1.order(Response.currentQuestion,-Response.time)
           questionresponses_dict = {}
           question_records=[]
+          totalscore=0
           for q in q1:
-                 question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":q.currentQuestion,"responsetime":q.responsetime}
-                 question_records.append(question)
-                 questionresponses_dict["question"]=question_records
+            if q.responsetime is not None:
+              if q.responsetime is not s1:
+                s1=q.currentQuestion
+                #totalscore=q.responsetime+q.q_score
+                question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.currentQuestion,"currentQuestion":s1,"responsetime":q.responsetime}
+                question_records.append(question)
+          questionresponses_dict["question"]=question_records
+          questionresponses_dict["totalscore"]=totalscore
           ss=json.dumps(questionresponses_dict)
           self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
           self.response.write(ss)
