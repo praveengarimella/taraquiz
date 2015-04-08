@@ -324,7 +324,7 @@
                     ],
                     "note": "Listen to the video given and answer the following questions:",
                     "types": "video",
-                    "link": "https://www.youtube.com/watch?v=rG6xlKzFFrI"
+                    "link": "<iframe width="560" height="315" src="https://www.youtube.com/embed/rG6xlKzFFrI" frameborder="0" allowfullscreen></iframe>"
                 },
                 {
                     "name": " E3: Speaking",
@@ -449,7 +449,7 @@
                     ],
                     "note": "Listen to the video given and answer the following questions:",
                     "types": "video",
-                    "link": "https://www.youtube.com/watch?v=_BpqSUv7fRw"
+                    "link": "<iframe width="560" height="315" src="https://www.youtube.com/embed/_BpqSUv7fRw" frameborder="0" allowfullscreen></iframe>"
                 }
             ]
         }
