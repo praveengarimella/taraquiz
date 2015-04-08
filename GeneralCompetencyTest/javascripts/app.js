@@ -58,7 +58,7 @@ $(function() {
 				}
 			});
 
-			//testProgressView.init();
+			testProgressView.init();
 			questionView.init();
 			testResultView.init();
 		},
@@ -76,15 +76,14 @@ $(function() {
 		},
 
 		getQuizSubsection : function() {
-			var currentSection = 0;
-			var currentSubsection = 0;
-			return quizModel.data.section[currentSection].name + ' - ' + quizModel.data.section[currentSection].subsection[currentSubsection].name;
+			return quizModel.currentSection.name + ' - ' 
+					+ quizModel.currentSubsection.name;
 		},
 
 		// todo fix MVC pattern issue
 		ProgressButtonsBar : function() {
 			for (var i=1; i<=30; i++){
-				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+				$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
 				$("#"+i).addClass('disabled');
 			}
 		},
@@ -157,9 +156,8 @@ $(function() {
 	var testProgressView = {
 
 		init : function() {
-			this.pageTitle = $(".title"),
-			this.subSection = $("#h4"),
-			// initialize the test progress view
+			this.pageTitle = $(".title");
+			this.subSection = $("#h4");
 			this.render();
 		},
 
@@ -169,7 +167,8 @@ $(function() {
 			this.subSection.html(octopus.getQuizSubsection());
 			
 			// todo fix the MVC pattern issue
-			octopus.ProgressButtonsBar();
+			var testProgress = octopus.getTestProgress();
+			
 		}
 	};
 
@@ -201,10 +200,13 @@ $(function() {
 				var responseTS = Date.now();
 				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
 				questionView.nextButton.show();
+
+				testProgressView.render();
 			});
 
 			this.nextButton.click(function() {
 				octopus.nextQuestion();
+				testProgressView.render();
 			});
 
 			this.startButton.click(function() {
