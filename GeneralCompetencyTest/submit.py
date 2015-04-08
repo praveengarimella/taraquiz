@@ -67,17 +67,25 @@ class checklogin(webapp2.RequestHandler):
 class getquizstatus(webapp2.RequestHandler):
     """ handling status of quiz sends a json file of responses"""
     def get(self):
-      q1= Response.query(ndb.OR(Response.q_status=="submitted" , Response.q_status=="skipped"))
-      q1.fetch()
-      questionresponses_dict = {}
-      question_records=[]
-      for q in q1:
-             question = {"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":q.currentQuestion,"responsetime":q.responsetime}
-             question_records.append(question)
-             questionresponses_dict["question"]=question_records
-      ss=json.dumps(questionresponses_dict)
+      json_data=json.loads(open('quizdata.json').read())
+      for key in json_data:
+          if  key == "section":
+              section = json_data[key]
+              for s in  section:
+                  for key in s:
+                      if key == "subsection":
+                          for subs in s[key]:
+                              for key in subs:
+                                  if key == "questions":
+                                      for q in subs[key]:
+                                         q1 = Response.query(Response.currentQuestion==q["id"]).get()
+                                         q["responseAnswer"]=q1.submittedans
+                                         q["responseTime"]=q1.responsetime
+                                         q["Status"]=q1.q_status
+      ss=json.dumps(json_data)
       self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
       self.response.write(ss)
+
 class getResult(webapp2.RequestHandler):
     """ get result for entire quiz """
     def get(self):
@@ -95,7 +103,6 @@ class getResult(webapp2.RequestHandler):
           totalscore=0
           for q in q1:
             if q.responsetime is not None:
-              if q.responsetime is not s1:
                 s1=q.currentQuestion
                 #totalscore=q.responsetime+q.q_score
                 question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.currentQuestion,"currentQuestion":s1,"responsetime":q.responsetime}
