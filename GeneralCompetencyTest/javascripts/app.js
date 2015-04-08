@@ -54,7 +54,6 @@ $(function() {
 				dataType: 'json',
 				async: false,
 				success: function(data) {
-                    console.log(data);
 					quizModel.init(data);
 				}
 			});
@@ -98,12 +97,10 @@ $(function() {
 			// with response answer and response time
 			q.responseAnswer = responseAnswer;
 			q.responseTime = (responseTS - appearedTS) / (1000 * 60);
-			console.log(q);
 			// call server side submit function
             // creating json file for submit response
                 var data = {"currentQuestion": q.id, "submittedans":responseAnswer,"responsetime":q.responseTime}
                 data=JSON.stringify(data);
-                console.log(data);
                 $.ajax({
 							   url: "/submitanswer",
 							   type: 'GET',
@@ -290,9 +287,9 @@ $(function() {
 
 		displayVideo : function() {
 			var subsection = octopus.getCurrentSubsection();
-			$("#typeBox").html('<h4>' + subsection.note + 
-				'</h4><iframe width="560" height="315" src="' + subsection.link +
-				 '" frameborder="0" allowfullscreen></iframe>');
+			$("#typeBox").html("<h4>" + subsection.note + 
+				"</h4>" + subsection.link);
+			console.log(subsection.link);
 		},
 
 		displayRecording : function() {
