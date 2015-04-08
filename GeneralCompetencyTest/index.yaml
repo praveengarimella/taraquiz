@@ -31,4 +31,11 @@ indexes:
 - kind: Response
   properties:
   - name: useremailid.emailid
+  - name: serialno
+  - name: time
+    direction: desc
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
   - name: submittedans
