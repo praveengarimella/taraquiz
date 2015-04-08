@@ -12,6 +12,36 @@ indexes:
 
 - kind: Response
   properties:
+<<<<<<< HEAD
   - name: currentQuestion
   - name: time
     direction: desc
+=======
+  - name: useremailid.emailid
+  - name: currentQuestion
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: currentQuestion
+  - name: time
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: currentQuestion
+  - name: time
+    direction: desc
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: serialno
+  - name: time
+    direction: desc
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: submittedans
+>>>>>>> d50a3bca58f14a73b77c681b33f2165eb13eeef9

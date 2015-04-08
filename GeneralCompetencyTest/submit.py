@@ -30,6 +30,7 @@ class Response(ndb.Model):
     q_status = ndb.StringProperty(indexed = True)
     time = ndb.DateTimeProperty(auto_now_add=True)
     currentQuestion=ndb.StringProperty(indexed = True)
+    serialno=ndb.IntegerProperty(indexed=True)
 
 class EssayTypeResponse(ndb.Model):
     """Sub model for storing user response for essay type questions"""
@@ -96,6 +97,7 @@ class getquizstatus(webapp2.RequestHandler):
 class getResult(webapp2.RequestHandler):
     """ get result for entire quiz """
     def get(self):
+        totalscore=0
         user = users.get_current_user()
         if user is None:
           login_url = users.create_login_url(self.request.path)
@@ -103,13 +105,20 @@ class getResult(webapp2.RequestHandler):
           return
         else:
           q1= Response.query(Response.useremailid.emailid==user.email())
-          q1.fetch()
+          q1=q1.order(Response.serialno,-Response.time)
           questionresponses_dict = {}
           question_records=[]
+          totalscore=0
+          s1="0"
           for q in q1:
-                 question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":q.currentQuestion,"responsetime":q.responsetime}
-                 question_records.append(question)
-                 questionresponses_dict["question"]=question_records
+            if q.responsetime is not None:
+                if q.currentQuestion != s1 :
+                  s1=q.currentQuestion
+                  #totalscore=q.responsetime+q.q_score
+                  question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.currentQuestion,"currentQuestion":s1,"responsetime":q.responsetime}
+                  question_records.append(question)
+          questionresponses_dict["question"]=question_records
+          questionresponses_dict["totalscore"]=totalscore
           ss=json.dumps(questionresponses_dict)
           self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
           self.response.write(ss)
@@ -195,8 +204,8 @@ class submitAnswer(webapp2.RequestHandler):
                 global errortype
             # creating json file for error response
             # placing in to the database
-
-            data=Response(useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
+            n1=int(currentQuestion)
+            data=Response(serialno=n1,useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
             data.put()
             obj = {u"status":status , u"q_status":q_status, u"validresponce":validresponce, u"qid":currentQuestion}
             ss=json.dumps(obj)

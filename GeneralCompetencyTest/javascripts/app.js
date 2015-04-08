@@ -3,6 +3,7 @@ $(function() {
 	var quizModel = {
 		init : function(data) {
 			this.data = data;
+			console.log(this.data.name);
 			this.quizState = "START";
 
 			this.questionIndex = 0;
@@ -41,6 +42,8 @@ $(function() {
 			} else if (this.sectionIndex == this.sections.length - 1)
 				this.quizState = "END";
 		}
+
+
 	};
 
 	var octopus = {
@@ -62,6 +65,7 @@ $(function() {
 			testProgressView.init();
 			questionView.init();
 			testResultView.init();
+			octopus.ProgressButtonsBar();
 		},
 
 		startQuiz : function() {
@@ -69,7 +73,9 @@ $(function() {
 				
 			// update model to reflect start of quiz
 			quizModel.quizState = "INPROGRESS";
+			testProgressView.render();
 			questionView.render();
+			
 		},
 
 		getQuizTitle : function() {
@@ -77,17 +83,41 @@ $(function() {
 		},
 
 		getQuizSubsection : function() {
-			return quizModel.currentSection.name + ' - ' 
-					+ quizModel.currentSubsection.name;
+			console.log(quizModel.data.section[quizModel.sectionIndex].name);
+			console.log(quizModel.data.section[quizModel.sectionIndex].subsection[quizModel.subSectionIndex].name);
+			return quizModel.data.section[quizModel.sectionIndex].name+ ' - ' 
+			      + quizModel.data.section[quizModel.sectionIndex].subsection[quizModel.subSectionIndex].name;
 		},
+
+		 getProgress : function()
+	    {
+	    	var i=1;
+	    	this.questionArray=[]
+	    	for( var sindex=0;sindex<quizModel.data.section.length;sindex++)
+	    	{
+               for(var ssindex=0;ssindex<quizModel.data.section[sindex].subsection.length;ssindex++)
+               {
+                    for(var qindex=0;qindex<quizModel.data.section[sindex].subsection[ssindex].questions.length;qindex++)
+                    {
+                    	this.questionArray[i]=quizModel.data.section[sindex].subsection[ssindex].questions[qindex];
+                    	i++;
+               		}       
+
+                }
+	    	}
+
+	    	return this.questionArray;
+	    },
 
 		// todo fix MVC pattern issue
 		ProgressButtonsBar : function() {
-			for (var i=1; i<=30; i++){
-				$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+			for (var i=1; i<=37; i++){
+				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
 				$("#"+i).addClass('disabled');
 			}
 		},
+
+		
 
 		submitAnswer : function(responseAnswer, appearedTS, responseTS) {
 			// grab the current question object from model
@@ -125,6 +155,7 @@ $(function() {
 									}
 								}
 			 });
+                testProgressView.init();
 			// render question view
 			// render test progress
 		},
@@ -151,6 +182,8 @@ $(function() {
 			}
 
 			questionView.render();
+			testProgressView.render();
+
 		}
 	};
 
@@ -159,6 +192,7 @@ $(function() {
 		init : function() {
 			this.pageTitle = $(".title");
 			this.subSection = $("#h4");
+			// initialize the test progress view
 			this.render();
 		},
 
@@ -166,10 +200,59 @@ $(function() {
 			// render the test progress view
 			this.pageTitle.html(octopus.getQuizTitle());
 			this.subSection.html(octopus.getQuizSubsection());
-			
+			this.qarray=octopus.getProgress();
+			var i=1;
+			 if(this.qarray[i-1].status=="undefined")
+                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+                 if(this.qarray[i-1].status=="skipped")
+                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
+                 if(this.qarray[i-1].status=="submitted")
+                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+                 if(i-1==quizModel.questionIndex+1)
+                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+
+			for( i=2;i<=this.qarray.length;i++)
+			{
+				//console.log(this.qarray[i]);
+                  if(this.qarray[i-1].status=="undefined")
+                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+                 if(this.qarray[i-1].status=="skipped")
+                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
+                 if(this.qarray[i-1].status=="submitted")
+                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+                 if(i-1==quizModel.questionIndex+1)
+                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+
+			}
 			// todo fix the MVC pattern issue
-			//var testProgress = octopus.getTestProgress();
-			
+		},
+
+		ProgressButtonsBarUpdate : function() {
+			var i=1;
+			if(i==quizModel.questionIndex+1)
+			{
+				$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+			    i++;
+		    }
+		    else 
+		    {
+			    $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+			    i++;
+		    }
+
+			for (i; i<quizModel.questionIndex+1; i++){
+				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+			}
+			if(i==quizModel.questionIndex+1)
+			{
+				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+				i++;
+			}
+			for (i; i<=30; i++){
+				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+				//$("#"+i).addClass('disabled');
+			}
+
 		}
 	};
 
@@ -201,13 +284,10 @@ $(function() {
 				var responseTS = Date.now();
 				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
 				questionView.nextButton.show();
-
-				testProgressView.render();
 			});
 
 			this.nextButton.click(function() {
 				octopus.nextQuestion();
-				testProgressView.render();
 			});
 
 			this.startButton.click(function() {
@@ -316,7 +396,9 @@ $(function() {
 			this.contentbox.html("End of the test!");
 			document.getElementById("result").style.display="block";
 
+
 		}
+
 
 	};
 
