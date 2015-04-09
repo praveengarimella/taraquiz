@@ -3,7 +3,6 @@ $(function() {
 	var quizModel = {
 		init : function(data) {
 			this.data = data;
-			console.log(this.data.name);
 			this.quizState = "START";
 
 			this.questionIndex = 0;
@@ -57,7 +56,6 @@ $(function() {
 				dataType: 'json',
 				async: false,
 				success: function(data) {
-					console.log(data)
 					quizModel.init(data);
 				}
 			});
@@ -65,7 +63,7 @@ $(function() {
 			testProgressView.init();
 			questionView.init();
 			testResultView.init();
-			octopus.ProgressButtonsBar();
+			//octopus.ProgressButtonsBar();
 		},
 
 		startQuiz : function() {
@@ -83,13 +81,11 @@ $(function() {
 		},
 
 		getQuizSubsection : function() {
-			console.log(quizModel.data.section[quizModel.sectionIndex].name);
-			console.log(quizModel.data.section[quizModel.sectionIndex].subsection[quizModel.subSectionIndex].name);
 			return quizModel.data.section[quizModel.sectionIndex].name+ ' - ' 
 			      + quizModel.data.section[quizModel.sectionIndex].subsection[quizModel.subSectionIndex].name;
 		},
 
-		 getProgress : function()
+		getProgress : function()
 	    {
 	    	var i=1;
 	    	this.questionArray=[]
@@ -109,6 +105,43 @@ $(function() {
 	    	return this.questionArray;
 	    },
 
+	    getQuestions : function() {
+	    	var questionsArray = [];
+	    	var subSectionIndex, sectionIndex;
+	    	$.each(quizModel.data, function (key, value) {
+	    		if (key == "section") {
+	    			sections = value;
+	    			$.each(sections, function(index, value){
+	    				sectionIndex = index;
+	    				var subsections = value;
+	    				$.each(subsections, function(key, value){
+	    					if (key == "subsection") {
+	    						subsection = value;
+	    						$.each(subsection, function(index, value){
+	    							subSectionIndex = index;
+	    							var questions = value;
+	    							$.each(questions, function(key, value){
+	    								if (key == "questions") {
+	    									$.each(value, function(index, value){
+	    										console.log(value.id, value.status);
+	    										if(value.status) {
+	    											octopus.nextQuestion();
+	    										}
+	    										questionsArray.push(value);
+	    									});
+	    									
+	    								}
+	    							});
+	    						});
+	    					}
+	    				});
+	    			});
+	    		}
+	    	});
+
+	    	return questionsArray;
+	    },
+
 		// todo fix MVC pattern issue
 		ProgressButtonsBar : function() {
 			for (var i=1; i<=37; i++){
@@ -126,11 +159,15 @@ $(function() {
 			// update the question object
 			// with response answer and response time
 			q.responseAnswer = responseAnswer;
+			if (q.responseAnswer == "skip")
+				q.status = "skip";
+			else
+				q.status = "submitted";
 			q.responseTime = (responseTS - appearedTS) / (1000 * 60);
 			// call server side submit function
             // creating json file for submit response
-                var data = {"currentQuestion": q.id, "submittedans":responseAnswer,"responsetime":q.responseTime}
-                data=JSON.stringify(data);
+                //var data = {"currentQuestion": q.id, "submittedans":responseAnswer,"responsetime":q.responseTime,"stat"}
+                data=JSON.stringify(q);
                 $.ajax({
 							   url: "/submitanswer",
 							   type: 'GET',
@@ -141,7 +178,6 @@ $(function() {
 							   dataType:'json',
 							   success: function(data){
 								 //On ajax success do this
-								 console.log(data);
 								  },
 							   error: function(xhr, ajaxOptions, thrownError) {
 								  //On error do this
@@ -165,6 +201,7 @@ $(function() {
 		},
 
 		getCurrentQuestion : function() {
+			console.log("current question called with " + quizModel.questionIndex);
 			return quizModel.questions[quizModel.questionIndex];
 		},
 
@@ -192,38 +229,61 @@ $(function() {
 		init : function() {
 			this.pageTitle = $(".title");
 			this.subSection = $("#h4");
+			this.progressBar = $("#buttonBar");
 			// initialize the test progress view
 			this.render();
 		},
 
 		render : function() {
+
 			// render the test progress view
 			this.pageTitle.html(octopus.getQuizTitle());
 			this.subSection.html(octopus.getQuizSubsection());
-			this.qarray=octopus.getProgress();
-			var i=1;
-			 if(this.qarray[i-1].status=="undefined")
-                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
-                 if(this.qarray[i-1].status=="skipped")
-                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
-                 if(this.qarray[i-1].status=="submitted")
-                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
-                 if(i-1==quizModel.questionIndex+1)
-                     $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+			
+			this.qarray = octopus.getQuestions();
+			this.progressBar.html("");
+			$.each(this.qarray, function(index, value){
+				if(!value.status) {
+					testProgressView.progressBar.append(
+						'<button type="button" id="' + (index + 1) +
+						'" class="btn btn-default btn-xs">' + (index + 1) +
+						'</button>&nbsp;');
+				} else if (value.status == "skip") {
+					testProgressView.progressBar.append(
+						'<button type="button" id="' + (index + 1) +
+						'" class="btn btn-danger btn-xs">' + (index + 1) +
+						'</button>&nbsp;');
+				} else if (value.status == "submitted") {
+					testProgressView.progressBar.append(
+						'<button type="button" id="' + (index + 1) +
+						'" class="btn btn-success btn-xs">' + (index + 1) +
+						'</button>&nbsp;');
+				}
+			});
+			
+			// var i=1;
+			//  if(!this.qarray[i-1].status)
+			 	
+			//  if(this.qarray[i-1].status == "skipped")
+			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
+			//  if(this.qarray[i-1].status == "submitted")
+			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+			//  if(i-1==quizModel.questionIndex+1)
+			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
 
-			for( i=2;i<=this.qarray.length;i++)
-			{
-				//console.log(this.qarray[i]);
-                  if(this.qarray[i-1].status=="undefined")
-                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
-                 if(this.qarray[i-1].status=="skipped")
-                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
-                 if(this.qarray[i-1].status=="submitted")
-                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
-                 if(i-1==quizModel.questionIndex+1)
-                     $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
+			// for( i=2;i<=this.qarray.length;i++)
+			// {
+			// 	//console.log(this.qarray[i]);
+   //                if(this.qarray[i-1].status=="undefined")
+   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
+   //               if(this.qarray[i-1].status=="skipped")
+   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
+   //               if(this.qarray[i-1].status=="submitted")
+   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+   //               if(i-1==quizModel.questionIndex+1)
+   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
 
-			}
+			// }
 			// todo fix the MVC pattern issue
 		},
 
@@ -372,12 +432,12 @@ $(function() {
 			var subsection = octopus.getCurrentSubsection();
 			$("#typeBox").html("<h4>" + subsection.note + 
 				"</h4>" + subsection.link);
-			console.log(subsection.link);
 		},
 
 		displayRecording : function() {
 			var subsection = octopus.getCurrentSubsection();
-				$("#contentbox").append('<button class="btn btn-danger">Record</button>&nbsp;&nbsp<button class="btn btn-info">Stop</button>');
+			$("#contentbox").append('<button class="btn btn-danger">Record</button>&nbsp;&nbsp<button class="btn btn-info">Stop</button>');
+
 		},
 
 		displayQuestionNote : function() {

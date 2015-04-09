@@ -70,10 +70,11 @@ class getquizstatus(webapp2.RequestHandler):
     def get(self):
       user = users.get_current_user()
       if user:
-        q1 = Response.query(Response.useremailid.emailid==user.email()).get()
+        q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
         json_data=json.loads(open('quizdata.json').read())
         print json_data["name"]
         logging.error("This is an error message that will show in the console")
+        print "hello"
         if q1:
           for key in json_data:
               if  key == "section":
@@ -86,9 +87,10 @@ class getquizstatus(webapp2.RequestHandler):
                                       if key == "questions":
                                           for q in subs[key]:
                                              q1 = Response.query(Response.currentQuestion==q["id"]).order(-Response.time).get()
-                                             q["responseAnswer"]=q1.submittedans
-                                             q["responseTime"]=q1.responsetime
-                                             q["Status"]=q1.q_status
+                                             if q1:
+                                              q["responseAnswer"]=q1.submittedans
+                                              q["responseTime"]=q1.responsetime
+                                              q["status"]=q1.q_status
 
         ss=json.dumps(json_data)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
@@ -162,9 +164,11 @@ class submitAnswer(webapp2.RequestHandler):
             q_status=""
             score=0
             vals = json.loads(cgi.escape(self.request.get('jsonData')))
-            currentQuestion =vals['currentQuestion']
-            submittedans = vals['submittedans']
-            responsetime = vals['responsetime']
+            logging.error("testing json values");
+            print vals
+            currentQuestion =vals['id']
+            submittedans = vals['responseAnswer']
+            responsetime = vals['responseTime']
              # opening  json file of quizdata
             #logging.error(currentQuestion,submittedans)
             json_data=json.loads(open('quizdata.json').read())
@@ -178,7 +182,7 @@ class submitAnswer(webapp2.RequestHandler):
                         if q["id"]==str(currentQuestion):
                             if submittedans == "skip":
                                 validresponce="true"
-                                q_status="skipped"
+                                q_status="skip"
                                # print(q_status)
                             else:
                                 for option in q["options"]:
@@ -196,7 +200,7 @@ class submitAnswer(webapp2.RequestHandler):
             if validresponce=="true":
                 global status
                 status="success"
-                if q_status!="skipped":
+                if q_status!="skip":
                     q_status="submitted"
             else:
                 global status
