@@ -3,11 +3,14 @@ $(function() {
 	var quizModel = {
 		init : function(data) {
 			this.data = data;
-			this.id=this.checkquizstatus(data);
-            console.log(this.quizState);
+			//var x=this.checkquizstatus(data);
+			//x.split(" ");
+			//this.id=parseInt(x[0]);
+			//this.sub=
+           // console.log(this.quizState);
 			this.quizState = "START";
         
-			this.questionIndex = this.id;
+			this.questionIndex = 0;
 			this.subSectionIndex = 0;
 			this.sectionIndex = 0;
 			
@@ -50,21 +53,21 @@ $(function() {
             this.subsection = data.section[0].subsection;
             for(var i=0;i<this.subsection.length;i++)
             	{
-            		for(var j=0;j<this.subsection[i].questions.length;j++)
-            		{
+            		/*for(var j=0;j<this.subsection[i].questions.length;j++)
+            		{*/
             			this.questions=this.subsection[i].questions;
             			for(var k=0;k<this.questions.length;k++)
             			{
             				this.question=this.questions[k];
-            				console.log("qstatus-"+this.question.status+" k-"+k);
+            				//console.log(this.question.id);
             				if(!this.question.status)
             				{
-            					console.log("qid"+this.question.id-1);
-            			     return this.question.id-1;
+            					console.log(this.question.id-1+" "+i);
+            			     return (this.question.id-1)+" "+i;
                                   
                             }
             			}
-            		}
+            		//}
             	}
         }
 	};
@@ -130,6 +133,7 @@ $(function() {
 	    },
 
 	    getQuestions : function() {
+	    	console.log("called getquestions");
 	    	var questionsArray = [];
 	    	var subSectionIndex, sectionIndex;
 	    	$.each(quizModel.data, function (key, value) {
@@ -147,10 +151,10 @@ $(function() {
 	    							$.each(questions, function(key, value){
 	    								if (key == "questions") {
 	    									$.each(value, function(index, value){
-	    										console.log(value.id, value.status);
-	    										/*if(value.status) {
-	    											octopus.nextQuestion();
-	    										}*/
+	    										//console.log(value.id, value.status);
+	    										if(value.status) {
+	    											console.log(sectionIndex,subSectionIndex,index);
+	    										}
 	    										questionsArray.push(value);
 	    									});
 	    									
@@ -225,7 +229,7 @@ $(function() {
 		},
 
 		getCurrentQuestion : function() {
-			console.log("current question called with " + quizModel.questionIndex);
+			//console.log("current question called with " + quizModel.questionIndex);
 			return quizModel.questions[quizModel.questionIndex];
 		},
 
@@ -270,8 +274,9 @@ $(function() {
 				if(!value.status) {
 					testProgressView.progressBar.append(
 						'<button type="button" id="' + (index + 1) +
-						'" class="btn btn-default btn-xs">' + (index + 1) +
+						'" class="btn btn-default btn-xs ">' + (index + 1) +
 						'</button>&nbsp;');
+					$("#"+i).addClass('disabled');
 				} else if (value.status == "skip") {
 					testProgressView.progressBar.append(
 						'<button type="button" id="' + (index + 1) +
@@ -284,32 +289,7 @@ $(function() {
 						'</button>&nbsp;');
 				}
 			});
-			
-			// var i=1;
-			//  if(!this.qarray[i-1].status)
-			 	
-			//  if(this.qarray[i-1].status == "skipped")
-			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
-			//  if(this.qarray[i-1].status == "submitted")
-			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
-			//  if(i-1==quizModel.questionIndex+1)
-			//  	$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
-
-			// for( i=2;i<=this.qarray.length;i++)
-			// {
-			// 	//console.log(this.qarray[i]);
-   //                if(this.qarray[i-1].status=="undefined")
-   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
-   //               if(this.qarray[i-1].status=="skipped")
-   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-warning btn-xs">'+i+'</button>&nbsp;');
-   //               if(this.qarray[i-1].status=="submitted")
-   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
-   //               if(i-1==quizModel.questionIndex+1)
-   //                   $("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
-
-			// }
-			// todo fix the MVC pattern issue
-		},
+					},
 
 		ProgressButtonsBarUpdate : function() {
 			var i=1;
