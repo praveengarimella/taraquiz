@@ -3,11 +3,14 @@ $(function() {
 	var quizModel = {
 		init : function(data) {
 			this.data = data;
+			this.id=this.checkquizstatus(data);
+            console.log(this.quizState);
 			this.quizState = "START";
-
-			this.questionIndex = 0;
+        
+			this.questionIndex = this.id;
 			this.subSectionIndex = 0;
 			this.sectionIndex = 0;
+			
 
 			this.currentSection = data.section[this.sectionIndex];
 			this.sections = data.section;
@@ -40,9 +43,30 @@ $(function() {
 				this.questionIndex = 0;
 			} else if (this.sectionIndex == this.sections.length - 1)
 				this.quizState = "END";
-		}
+		},
 
-
+        checkquizstatus: function(data) {
+        	this.data=data;
+            this.subsection = data.section[0].subsection;
+            for(var i=0;i<this.subsection.length;i++)
+            	{
+            		for(var j=0;j<this.subsection[i].questions.length;j++)
+            		{
+            			this.questions=this.subsection[i].questions;
+            			for(var k=0;k<this.questions.length;k++)
+            			{
+            				this.question=this.questions[k];
+            				console.log("qstatus-"+this.question.status+" k-"+k);
+            				if(!this.question.status)
+            				{
+            					console.log("qid"+this.question.id-1);
+            			     return this.question.id-1;
+                                  
+                            }
+            			}
+            		}
+            	}
+        }
 	};
 
 	var octopus = {
@@ -124,9 +148,9 @@ $(function() {
 	    								if (key == "questions") {
 	    									$.each(value, function(index, value){
 	    										console.log(value.id, value.status);
-	    										if(value.status) {
+	    										/*if(value.status) {
 	    											octopus.nextQuestion();
-	    										}
+	    										}*/
 	    										questionsArray.push(value);
 	    									});
 	    									
@@ -339,7 +363,7 @@ $(function() {
 				// get selected answer
 				var selectedAnswer = $("input:checked").val();
 				var subsection = octopus.getCurrentSubsection();
-				if (subsection.types == "essay")
+				if (selectedAnswer!="skip" && subsection.types == "essay")
 						selectedAnswer = $("textarea").val();
 				var responseTS = Date.now();
 				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
@@ -371,6 +395,7 @@ $(function() {
 			if (status == "INPROGRESS") {
 				
 				var currentQuestion = octopus.getCurrentQuestion();
+				//console.log("cq"+currentQuestion.id);
 				var subsection = octopus.getCurrentSubsection();
 				if (currentQuestion) {
 					this.questionPane.html(this.displayQuestion(currentQuestion));
