@@ -1,83 +1,9 @@
 $(function() {
-	
-	var quizModel = {
-		init : function(data) {
-			this.data = data;
-			//var x=this.checkquizstatus(data);
-			//x.split(" ");
-			//this.id=parseInt(x[0]);
-			//this.sub=
-           // console.log(this.quizState);
-			this.quizState = "START";
-        
-			this.questionIndex = 0;
-			this.subSectionIndex = 0;
-			this.sectionIndex = 0;
-			
-
-			this.currentSection = data.section[this.sectionIndex];
-			this.sections = data.section;
-
-			this.currentSubsection = this.currentSection.subsection[this.subSectionIndex];
-			this.subsections = this.currentSection.subsection;
-
-			this.questions = this.currentSection.subsection[0].questions;
-		},
-
-		nextSubsection : function() {
-			if (this.subSectionIndex < this.subsections.length - 1) {
-				this.subSectionIndex++;
-				this.currentSubsection = this.subsections[this.subSectionIndex];
-				this.questionIndex = 0;
-				this.questions = this.currentSubsection.questions;
-			} else if (this.subSectionIndex == this.subsections.length - 1) {
-				this.nextSection();
-			}
-		},
-
-		nextSection : function() {
-			if (this.sectionIndex < this.sections.length - 1) {
-				this.sectionIndex++;
-				this.currentSection = this.sections[this.sectionIndex];
-				this.subsections = this.currentSection.subsection;
-				this.subSectionIndex = 0;
-				this.currentSubsection = this.subsections[this.subSectionIndex];
-				this.questions = this.currentSubsection.questions;
-				this.questionIndex = 0;
-			} else if (this.sectionIndex == this.sections.length - 1)
-				this.quizState = "END";
-		},
-
-        checkquizstatus: function(data) {
-        	this.data=data;
-            this.subsection = data.section[0].subsection;
-            for(var i=0;i<this.subsection.length;i++)
-            	{
-            		/*for(var j=0;j<this.subsection[i].questions.length;j++)
-            		{*/
-            			this.questions=this.subsection[i].questions;
-            			for(var k=0;k<this.questions.length;k++)
-            			{
-            				this.question=this.questions[k];
-            				//console.log(this.question.id);
-            				if(!this.question.status)
-            				{
-            					console.log(this.question.id-1+" "+i);
-            			     return (this.question.id-1)+" "+i;
-                                  
-                            }
-            			}
-            		//}
-            	}
-        }
-	};
-
 	var octopus = {
-		
-		init : function() {
 
-			// load json and assign to quiz model
-			// note: ajax call is sync
+		init : function() {
+			startView.init();
+
 			$.ajax({
 				url: "/getquizstatus",
 				dataType: 'json',
@@ -87,332 +13,147 @@ $(function() {
 				}
 			});
 
-			testProgressView.init();
-			questionView.init();
-			testResultView.init();
-			//octopus.ProgressButtonsBar();
-		},
-
-		startQuiz : function() {
-			// ajax call to the server side to indicate start of quiz
-				
-			// update model to reflect start of quiz
-			quizModel.quizState = "INPROGRESS";
-			testProgressView.render();
-			questionView.render();
+			status = quizModel.getQuizStatus();
 			
-		},
-
-		getQuizTitle : function() {
-			return quizModel.data.name;
-		},
-
-		getQuizSubsection : function() {
-			return quizModel.data.section[quizModel.sectionIndex].name+ ' - ' 
-			      + quizModel.data.section[quizModel.sectionIndex].subsection[quizModel.subSectionIndex].name;
-		},
-
-		getProgress : function()
-	    {
-	    	var i=1;
-	    	this.questionArray=[]
-	    	for( var sindex=0;sindex<quizModel.data.section.length;sindex++)
-	    	{
-               for(var ssindex=0;ssindex<quizModel.data.section[sindex].subsection.length;ssindex++)
-               {
-                    for(var qindex=0;qindex<quizModel.data.section[sindex].subsection[ssindex].questions.length;qindex++)
-                    {
-                    	this.questionArray[i]=quizModel.data.section[sindex].subsection[ssindex].questions[qindex];
-                    	i++;
-               		}       
-
-                }
-	    	}
-
-	    	return this.questionArray;
-	    },
-
-	    getQuestions : function() {
-	    	console.log("called getquestions");
-	    	var questionsArray = [];
-	    	var subSectionIndex, sectionIndex;
-	    	$.each(quizModel.data, function (key, value) {
-	    		if (key == "section") {
-	    			sections = value;
-	    			$.each(sections, function(index, value){
-	    				sectionIndex = index;
-	    				var subsections = value;
-	    				$.each(subsections, function(key, value){
-	    					if (key == "subsection") {
-	    						subsection = value;
-	    						$.each(subsection, function(index, value){
-	    							subSectionIndex = index;
-	    							var questions = value;
-	    							$.each(questions, function(key, value){
-	    								if (key == "questions") {
-	    									$.each(value, function(index, value){
-	    										//console.log(value.id, value.status);
-	    										if(value.status) {
-	    											console.log(sectionIndex,subSectionIndex,index);
-	    										}
-	    										questionsArray.push(value);
-	    									});
-	    									
-	    								}
-	    							});
-	    						});
-	    					}
-	    				});
-	    			});
-	    		}
-	    	});
-
-	    	return questionsArray;
-	    },
-
-		// todo fix MVC pattern issue
-		ProgressButtonsBar : function() {
-			for (var i=1; i<=37; i++){
-				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
-				$("#"+i).addClass('disabled');
-			}
-		},
-
-		
-
-		submitAnswer : function(responseAnswer, appearedTS, responseTS) {
-			// grab the current question object from model
-			var q = this.getCurrentQuestion();
-
-			// update the question object
-			// with response answer and response time
-			q.responseAnswer = responseAnswer;
-			if (q.responseAnswer == "skip")
-				q.status = "skip";
+			if (status == "END")
+				resultView.init();
 			else
-				q.status = "submitted";
-			q.responseTime = (responseTS - appearedTS) / (1000 * 60);
-			// call server side submit function
-            // creating json file for submit response
-                //var data = {"currentQuestion": q.id, "submittedans":responseAnswer,"responsetime":q.responseTime,"stat"}
-                data=JSON.stringify(q);
-                $.ajax({
-							   url: "/submitanswer",
-							   type: 'GET',
-							   contentType:'application/json',
-							   data: {
-									jsonData: data
-								},
-							   dataType:'json',
-							   success: function(data){
-								 //On ajax success do this
-								  },
-							   error: function(xhr, ajaxOptions, thrownError) {
-								  //On error do this
-									if (xhr.status == 200) {
-
-										 console.log(ajaxOptions);
-									}
-									else {
-										console.log(xhr.status);
-										console.log(thrownError);
-									}
-								}
-			 });
-                testProgressView.init();
-			// render question view
-			// render test progress
-		},
-
-		getStatus : function() {
-			return quizModel.quizState;
-		},
-
-		getCurrentQuestion : function() {
-			//console.log("current question called with " + quizModel.questionIndex);
-			return quizModel.questions[quizModel.questionIndex];
-		},
-
-		getCurrentSubsection : function() {
-			return quizModel.subsections[quizModel.subSectionIndex];
-		},
-
-		nextQuestion : function() {
-			
-			if (quizModel.questionIndex <= quizModel.questions.length)
-				quizModel.questionIndex++;
-
-			if (quizModel.questionIndex == quizModel.questions.length) {
-				quizModel.nextSubsection();
-			}
-
-			questionView.render();
-			testProgressView.render();
-
+				startView.render();			
 		}
 	};
 
-	var testProgressView = {
-
+	var startView = {
 		init : function() {
-			this.pageTitle = $(".title");
-			this.subSection = $("#h4");
-			this.progressBar = $("#buttonBar");
-			// initialize the test progress view
-			this.render();
+			this.titlePane = $(".title");
+			this.sectionName = $("#section-name");
+			this.questionPane = $("#content-box");
+			
+			this.startMessage = "Click the Start Test button to begin.";
+			this.resumeMessage = "You were here before and about to resume the test." 
+			this.resumeMessage += " Click the Resume Test button to resume.";
+
+			this.navBar = $("#nav-bar");
+			this.startButton = $("#start-btn");
+			this.answerButton = $("#answer");
+			this.nextButton = $("#nextquestion");
+			this.startButton.hide();
+			this.answerButton.hide();
+			this.nextButton.hide();
+
+			this.startButton.click(function(){
+				startView.startButton.hide();
+				quizModel.nextQuestion();
+				questionView.init();
+				questionView.render();
+				progressView.init();
+			});
 		},
 
 		render : function() {
-
-			// render the test progress view
-			this.pageTitle.html(octopus.getQuizTitle());
-			this.subSection.html(octopus.getQuizSubsection());
-			
-			this.qarray = octopus.getQuestions();
-			this.progressBar.html("");
-			$.each(this.qarray, function(index, value){
-				if(!value.status) {
-					testProgressView.progressBar.append(
-						'<button type="button" id="' + (index + 1) +
-						'" class="btn btn-default btn-xs ">' + (index + 1) +
-						'</button>&nbsp;');
-					$("#"+i).addClass('disabled');
-				} else if (value.status == "skip") {
-					testProgressView.progressBar.append(
-						'<button type="button" id="' + (index + 1) +
-						'" class="btn btn-danger btn-xs">' + (index + 1) +
-						'</button>&nbsp;');
-				} else if (value.status == "submitted") {
-					testProgressView.progressBar.append(
-						'<button type="button" id="' + (index + 1) +
-						'" class="btn btn-success btn-xs">' + (index + 1) +
-						'</button>&nbsp;');
-				}
-			});
-					},
-
-		ProgressButtonsBarUpdate : function() {
-			var i=1;
-			if(i==quizModel.questionIndex+1)
-			{
-				$("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
-			    i++;
-		    }
-		    else 
-		    {
-			    $("#buttonBar").html('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
-			    i++;
-		    }
-
-			for (i; i<quizModel.questionIndex+1; i++){
-				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-success btn-xs">'+i+'</button>&nbsp;');
+			this.titlePane.html(quizModel.title);
+			var quizStatus = quizModel.getQuizStatus();
+			if(quizStatus == "START") {
+				this.questionPane.html('<h3>' + this.startMessage + '</h3><br>');
+			} else if (quizStatus == "INPROGRESS") {
+				this.questionPane.html(this.resumeMessage);
 			}
-			if(i==quizModel.questionIndex+1)
-			{
-				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-info btn-xs">'+i+'</button>&nbsp;');
-				i++;
-			}
-			for (i; i<=30; i++){
-				$("#buttonBar").append('<button type="button" id="'+i+'" class="btn btn-default btn-xs">'+i+'</button>&nbsp;');
-				//$("#"+i).addClass('disabled');
-			}
-
+			this.startButton.show();
 		}
 	};
 
 	var questionView = {
-			
 		init : function() {
+			// get references to all html elements
+			this.titlePane = $(".title");
+			this.sectionName = $("#section-name");
+			this.questionPane = $("#content-box");
+			this.questionNote = $("#question-instructions");
 
-			// grab ui objects for question view
+			this.navBar = $("#nav-bar");
+			this.startButton = $("#start-btn");
 			this.answerButton = $("#answer");
 			this.nextButton = $("#nextquestion");
-			this.questionPane = $("#contentbox");
-			this.startButton = $("#startbutton");
-			this.typeBox = $("#typeBox");
 
-			// hide all buttons on init
-			// using jquery hide function
-			this.answerButton.hide();
-			this.nextButton.hide();
-			//this.questionPane.hide();
-			this.startButton.hide();
-
-			// add event handlers
 			this.answerButton.click(function(){
-				// get selected answer
+				var q = quizModel.question;
+				console.log(q);
 				var selectedAnswer = $("input:checked").val();
-				var subsection = octopus.getCurrentSubsection();
-				if (selectedAnswer!="skip" && subsection.types == "essay")
-						selectedAnswer = $("textarea").val();
-				var responseTS = Date.now();
-				octopus.submitAnswer(selectedAnswer, questionView.appearedTS, responseTS);
-				questionView.nextButton.show();
+
+				if (q.subsections.types == "essay") {
+					selectedAnswer = $("textarea").val();
+					if (!selectedAnswer)
+						selectedAnswer = " ";
+				}
+
+				if (q.subsections.types == "record") {
+					selectedAnswer = " ";
+				}
+				
+				q.responseAnswer = selectedAnswer;
+
+				if (selectedAnswer == "skip") {
+					quizModel.question.status = "skip";
+					//octopus.submitAnswer();
+					questionView.nextButton.show();
+				} else if (selectedAnswer){
+					quizModel.question.status = "submitted";
+					//octopus.submitAnswer();
+					questionView.nextButton.show();
+				} else {
+					alert("Select a choice to submit answer.");
+				}
+				progressView.init();
 			});
 
-			this.nextButton.click(function() {
-				octopus.nextQuestion();
+			this.nextButton.click(function(){
+				questionView.nextButton.hide();
+				quizModel.nextQuestion();
+				if(quizModel.question){
+					questionView.render();
+					progressView.init();
+				}
+				else
+					resultView.init();
 			});
-
-			this.startButton.click(function() {
-				octopus.startQuiz();
-			});
-
-			this.render();
 		},
 
 		render : function() {
-
-			// Get test status START, INPROGRESS, END
-			var status = octopus.getStatus();
+			var q = quizModel.question;
+			this.sectionName.html("<h4>");
+			this.sectionName.append(q.section + "&nbsp; - &nbsp;");
+			this.sectionName.append(q.subsections.name);
+			this.sectionName.append("</h4>");
+			this.questionNote.html('<p class="lead">' + q.subsections.note + '</p>');
+			this.questionPane.html('<p class="lead">' + q.question + '</p>');
 			
+			if (q.subsections.types == "passage"){
+				this.displayPassage();
+				this.displayOptions();
+			}
+
+			if (q.subsections.types == "essay")
+				this.displayEssay();
+			if (q.subsections.types == "video"){
+				this.displayVideo();
+				this.displayOptions();
+			}
+			if (q.subsections.types == "record")
+				this.displayRecording();
+			if (q.subsections.types == "question")
+				this.displayOptions();
 			
-			// initialize with a start button if test not started
-			if (status == "START") {
-				this.startButton.show();
-			}
-
-			if (status == "INPROGRESS") {
-				
-				var currentQuestion = octopus.getCurrentQuestion();
-				//console.log("cq"+currentQuestion.id);
-				var subsection = octopus.getCurrentSubsection();
-				if (currentQuestion) {
-					this.questionPane.html(this.displayQuestion(currentQuestion));
-					if (subsection.types == "passage")
-						this.displayPassage();
-					if (subsection.types == "essay")
-						this.displayEssay();
-					if (subsection.types == "video")
-						this.displayVideo();
-					if (subsection.types == "record")
-						this.displayRecording();
-					if (subsection.types == "question")
-						this.displayQuestionNote();
-					// get the appeared timestamp for response time calc
-					this.appearedTS = Date.now();
-				}
-				// display the current question
-				// use template for question
-				// and bind with its data
-				this.startButton.hide();
-				this.answerButton.show();
-				this.nextButton.hide();
-			}
-
-			if (status == "END") {
-				this.answerButton.hide();
-				this.nextButton.hide();
-				testResultView.render();
-			}
+			this.answerButton.show();
 		},
 
-		displayQuestion : function(path) {
-			var optionsHTML = '<div id="typeBox"></div><br><div>' + path.question + '</div>';
-			for (var i = 0; i < path.options.length; i++) {
-				var optionText = path.options[i].substring(1, path.options[i].length);
+		displayQuestion : function(q) {
+			var optionsHTML = '<div>' + q.question + '</div>';
+			for (var i = 0; i < q.options.length; i++) {
+				var optionText = q.options[i].substring(1, q.options[i].length);
 				optionsHTML += '<div class="radio">';
-				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '">' + optionText + '</label>';
+				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '"';
+				if(q.status && q.responseAnswer == optionText)
+					optionsHTML += 'checked';
+				optionsHTML += '>' + optionText + '</label>';
 				optionsHTML += '</div>';
 			}
 			optionsHTML += '<div class="radio">';
@@ -422,50 +163,208 @@ $(function() {
 		},
 
 		displayPassage : function() {
-			var subsection = octopus.getCurrentSubsection();
-			$("#typeBox").html('<h4>' + subsection.note + '</h4><div>' + 
-					subsection.passage+'</div>');
+			var q = quizModel.question;
+			this.questionNote.append('<div>' + q.subsections.passage +'</div>');
 		},
 
 		displayEssay : function() {
-			var subsection = octopus.getCurrentSubsection();
-			$("#typeBox").html('<h4>' + subsection.note + 
-				'</h4><textarea style="width: 600px; height: 200px">');
+			var q = quizModel.question;
+			this.questionNote.html("");
+			this.questionPane.append('<div><textarea style="width: 600px; height: 200px"></textarea>');
 		},
 
 		displayVideo : function() {
-			var subsection = octopus.getCurrentSubsection();
-			$("#typeBox").html("<h4>" + subsection.note + 
-				"</h4>" + subsection.link);
+			var q = quizModel.question;
+			this.questionNote.append(q.subsections.link);
 		},
 
 		displayRecording : function() {
-			var subsection = octopus.getCurrentSubsection();
-			$("#contentbox").append('<button class="btn btn-danger">Record</button>&nbsp;&nbsp<button class="btn btn-info">Stop</button>');
-
+			var q = quizModel.question;
+			this.questionPane.append('<div><button class="btn btn-danger">Record</button>' + 
+				'&nbsp;&nbsp<button class="btn btn-info">Stop</button></div>');
 		},
 
-		displayQuestionNote : function() {
-			var subsection = octopus.getCurrentSubsection();
-				$("#typeBox").html('<div><b>' + subsection.note + '</b></div>');
+		displayOptions : function() {
+			var q = quizModel.question;
+			var optionsHTML = '';
+			for (var i = 0; i < q.options.length; i++) {
+				var optionText = q.options[i].substring(1, q.options[i].length);
+				optionsHTML += '<div class="radio">';
+				optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="' + optionText + '"';
+				if(q.status && q.responseAnswer == optionText)
+					optionsHTML += 'checked';
+				optionsHTML += '>' + optionText + '</label>';
+				optionsHTML += '</div>';
+			}
+			optionsHTML += '<div class="radio">';
+			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
+			optionsHTML += '</div>';
+			this.questionPane.append(optionsHTML);
 		}
 	};
 
-	var testResultView = {
-
+	var progressView = {
 		init : function() {
-			this.contentbox = $("#contentbox");
+			// get references to all html elements
+			this.progressBox = $("#progress-box");
+			this.progressBox.html("");
+			this.render();
 		},
 
 		render : function() {
-			this.contentbox.html("End of the test!");
-			document.getElementById("result").style.display="block";
+			progressView.progressBox.append('<h3>Test Progress</h3><div style="display: flex">');
+			var section, buttonCount = 0;
+			$.each(quizModel.questions, function(index, question){
 
+				if(section != question.section){
+					buttonCount = 0;
+					if(section){
+						progressView.progressBox.append("</div></div>");
+					}
+					section = question.section;
+					var sectionLabel = '<div style="display: flex"><div><b>' +
+										 section + '</b></div><div>';
+					progressView.progressBox.append(sectionLabel);
+				}
+				if(index < 8)
+					buttonLabel = '&nbsp;' + (index + 1)
+				else
+					buttonLabel = index + 1;
+				
+				if(!question.status)
+					buttonColor = "btn-default";
+				if(question.status == "skip")
+					buttonColor = "btn-warning";
+				if(question.status == "submitted")
+					buttonColor = "btn-success";
+				if(question == quizModel.question)
+					buttonColor = "btn-primary";
+				qButtonHTML = '<button class="btn btn-xs ' + buttonColor + '">' + buttonLabel + '</button>&nbsp;';
+				buttonCount++;
+				
+				progressView.progressBox.append(qButtonHTML);
 
+			});
+			//progressView.progressBox.append("</div>");
+		},
+
+		reset : function() {
+			this.progressBox.html("");
 		}
-
-
 	};
 
+	var resultView = {
+		init : function() {
+			// get references to all html elements
+			this.titlePane = $(".title");
+			this.sectionName = $("#section-name");
+			this.questionPane = $("#content-box");
+			this.questionNote = $("#question-instructions");
+
+			this.navBar = $("#nav-bar");
+			this.startButton = $("#start-btn");
+			this.answerButton = $("#answer");
+			this.nextButton = $("#nextquestion");
+			
+			this.startButton.hide();
+			this.answerButton.hide();
+			this.nextButton.hide();
+
+			this.render();
+		},
+
+		render : function() {
+			progressView.reset();
+			this.sectionName.html("You have completed the test and the following is your test report.");
+			this.questionNote.html("Your total score is: ");
+			this.questionPane.html("render test report here");
+		}
+	};
+
+	var quizModel = {
+
+		// instance variables: title, questions
+
+		init : function(data) {
+			// create questions array from the data
+			this.data = data;
+			this.createQuizModel();
+		},
+
+		createQuizModel : function() {
+			// get questions from the json and assign it to questions array
+			// add section and subsection to the question object
+			var questionsArray = [];
+			$.each(quizModel.data, function (key, value) {
+				
+				if (key == "name")
+					quizModel.title = value;
+	    		
+	    		if (key == "section") {
+		    			$.each(value, function(index, value) {
+		    			var sections = value;
+		    			$.each(sections, function(key, value) {
+		    				if (key == "subsection") {
+		    					$.each(value, function(index, value) {
+		    						var subsections = value;
+		    						$.each(subsections, function(key, value) {
+		    							if (key == "questions") {
+		    								$.each(value, function(index, value){
+		    									value.section = sections.name;
+		    									value.subsections = subsections;
+		    									questionsArray.push(value);
+		    								});
+		    							}
+		    						});
+		    					});
+	    					}
+	    				});
+	    			});
+		    	}
+	    	});
+	    	this.questions = questionsArray;
+		},
+
+		getQuizStatus : function() {
+			// get the status of the quiz by looking into the questions array
+			// returns start, inprogress, end
+			var q;
+			$.each(this.questions, function(index, value) {
+				q = index;
+				if(!value.status)
+					return false;
+			});
+
+			if (q == 0)
+				return "START";
+			else if (q == this.questions.length - 1)
+				return "END";
+			else
+				return "INPROGRESS";
+		},
+
+		nextQuestion : function() {
+			// returns the next questions and updates the pointer
+			var quizStatus = this.getQuizStatus();
+			if (quizStatus == "START")
+				this.questionIndex = 0;
+			if (quizStatus == "END"){
+				this.questionIndex = this.questions.length;
+				this.question = undefined;
+			}
+
+			if (this.questionIndex < this.questions.length)
+				this.question = this.questions[this.questionIndex++];
+		},
+
+		setQuestion : function(index) {
+			$.each(this.questions, function(i, q){
+				if (i < index)
+					q.status = "skip";
+			});
+			this.questionIndex = index - 1;
+			this.question = this.questions[this.questionIndex];
+		}
+	};
 	octopus.init();
 });
