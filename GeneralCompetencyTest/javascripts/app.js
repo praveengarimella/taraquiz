@@ -13,13 +13,43 @@ $(function() {
 				}
 			});
 
-			status = quizModel.getQuizStatus();
-			
+			var status = quizModel.getQuizStatus();
 			if (status == "END")
 				resultView.init();
 			else
 				startView.render();			
+		},
+
+		submitAnswer : function() {
+			var submittedQuestion = $.extend({},quizModel.question);
+			submittedQuestion.subsections = undefined;
+			data = JSON.stringify(submittedQuestion);
+			console.log(data);
+			$.ajax({
+				url: "/submitanswer",
+				type: 'GET',
+				contentType:'application/json',
+				data: {
+					jsonData: data
+				},
+				dataType:'json',
+				success: function(data){
+					//On ajax success do this
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					//On error do this
+					if (xhr.status == 200) {
+
+						console.log(ajaxOptions);
+					}
+					else {
+						console.log(xhr.status);
+						console.log(thrownError);
+					}
+				}
+			});
 		}
+
 	};
 
 	var startView = {
@@ -29,7 +59,7 @@ $(function() {
 			this.questionPane = $("#content-box");
 			
 			this.startMessage = "Click the Start Test button to begin.";
-			this.resumeMessage = "You were here before and about to resume the test." 
+			this.resumeMessage = "You were here before and about to resume the test.";
 			this.resumeMessage += " Click the Resume Test button to resume.";
 
 			this.navBar = $("#nav-bar");
@@ -75,29 +105,34 @@ $(function() {
 			this.nextButton = $("#nextquestion");
 
 			this.answerButton.click(function(){
+
 				var q = quizModel.question;
-				console.log(q);
 				var selectedAnswer = $("input:checked").val();
 
 				if (q.subsections.types == "essay") {
 					selectedAnswer = $("textarea").val();
 					if (!selectedAnswer)
-						selectedAnswer = " ";
+						selectedAnswer = "skip";
 				}
 
 				if (q.subsections.types == "record") {
-					selectedAnswer = " ";
+					// make a call to a separate handler
+					selectedAnswer = "skip";
 				}
-				
-				q.responseAnswer = selectedAnswer;
 
 				if (selectedAnswer == "skip") {
-					quizModel.question.status = "skip";
-					//octopus.submitAnswer();
+					q.status = "skip";
+					q.responseAnswer = "skipped";
+					this.submittedTS = Date.now();
+					q.responseTime = questionView.getResponseTime();
+					octopus.submitAnswer();
 					questionView.nextButton.show();
 				} else if (selectedAnswer){
-					quizModel.question.status = "submitted";
-					//octopus.submitAnswer();
+					q.status = "submitted";
+					q.responseAnswer = selectedAnswer;
+					questionView.submittedTS = Date.now();
+					q.responseTime = questionView.getResponseTime();
+					octopus.submitAnswer();
 					questionView.nextButton.show();
 				} else {
 					alert("Select a choice to submit answer.");
@@ -141,7 +176,7 @@ $(function() {
 				this.displayRecording();
 			if (q.subsections.types == "question")
 				this.displayOptions();
-			
+			this.appearedTS = Date.now();
 			this.answerButton.show();
 		},
 
@@ -200,6 +235,10 @@ $(function() {
 			optionsHTML += '<label><input type="radio" name="optionsRadios" id="optionsRadios1" value="skip">Skip Question</label>';
 			optionsHTML += '</div>';
 			this.questionPane.append(optionsHTML);
+		},
+
+		getResponseTime : function() {
+			return (questionView.submittedTS - questionView.appearedTS)/(100 * 60);
 		}
 	};
 
@@ -227,7 +266,7 @@ $(function() {
 					progressView.progressBox.append(sectionLabel);
 				}
 				if(index < 8)
-					buttonLabel = '&nbsp;' + (index + 1)
+					buttonLabel = '&nbsp;' + (index + 1);
 				else
 					buttonLabel = index + 1;
 				
@@ -296,10 +335,10 @@ $(function() {
 			// add section and subsection to the question object
 			var questionsArray = [];
 			$.each(quizModel.data, function (key, value) {
-				
+
 				if (key == "name")
 					quizModel.title = value;
-	    		
+
 	    		if (key == "section") {
 		    			$.each(value, function(index, value) {
 		    			var sections = value;
@@ -327,7 +366,7 @@ $(function() {
 
 		getQuizStatus : function() {
 			// get the status of the quiz by looking into the questions array
-			// returns start, inprogress, end
+			// returns START, INPROGRESS, END
 			var q;
 			$.each(this.questions, function(index, value) {
 				q = index;
