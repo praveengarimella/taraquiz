@@ -13,7 +13,7 @@
                                 "~She like dogs.",
                                 "=He likes dogs.",
                                 "~He liked dogs.",
-                                "~​none of the above"
+                                "~​They likes dogs."
                             ],
                             "id" : "1"
                         },
@@ -43,7 +43,7 @@
                                 "~I went near to the edge of the water.",
                                 "~I went near by the edge of the water.",
                                 "~I went near beside the edge of the water.",
-                                "=none of the above"
+                                "=I went near the edge of the water"
                             ],
                             "id" : "4"
                         },
@@ -68,7 +68,7 @@
                             "id" : "6"
                         },
                         {
-                            "question": "Monday is the day before Tuesday",
+                            "question": "Monday the day before Tuesday",
                             "options": [
                                 "=​Monday is the day before Tuesday",
                                 "~​​Monday ​was the day before Tuesday​",
@@ -83,7 +83,7 @@
                                 "~There is not nothing in the box.",
                                 "~There is not anything in the box.",
                                 "=There is nothing in the box",
-                                "~None of the above"
+                                "~There are nothing in the box"
                             ],
                             "id" : "8"
                         },
@@ -239,7 +239,7 @@
                                 "~Modern school system",
                                 "=Gurukula system",
                                 "~Cambridge school system",
-                                "~None of the above"     
+                                "~Western School System"     
                             ],
                             "id" : "20"
                         },
@@ -269,7 +269,7 @@
                                 "~CBSE, ICSE and UGC",
                                 "~CBSE, State level schools, convent schools",
                                 "=CBSE, ICSE and State level schools",
-                                "~None of the above"
+                                "~ICSE, Convent Schools, State level schools"
                             ],
                             "id" : "23"
                         }
@@ -297,7 +297,7 @@
                                 "~Hand written novel",
                                 "~Diary",
                                 "=Letters and Notebooks",
-                                "~None of the above"
+                                "~Stories and articles"
                             ],
                             "id" : "25"
                         },
@@ -307,7 +307,7 @@
                                 "~Describing her strengths",
                                 "~Describing her weaknesses",
                                 "~Gentle suggestions for improvement",
-                                "=All of the above"
+                                "=Her strengths, weaknesses and suggestions for her to improve"
                             ],
                             "id" : "26"
                         },

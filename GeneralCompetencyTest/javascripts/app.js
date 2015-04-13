@@ -1,4 +1,93 @@
 $(function() {
+
+	var quizModel = {
+
+		// instance variables: title, questions
+
+		init : function(data) {
+			// create questions array from the data
+			this.data = data;
+			this.createQuizModel();
+		},
+
+		createQuizModel : function() {
+			// get questions from the json and assign it to questions array
+			// add section and subsection to the question object
+			var questionsArray = [];
+			$.each(quizModel.data, function (key, value) {
+
+				if (key == "name")
+					quizModel.title = value;
+
+				if (key == "section") {
+					$.each(value, function(index, value) {
+						var sections = value;
+						$.each(sections, function(key, value) {
+							if (key == "subsection") {
+								$.each(value, function(index, value) {
+									var subsections = value;
+									$.each(subsections, function(key, value) {
+										if (key == "questions") {
+											$.each(value, function(index, value){
+												value.section = sections.name;
+												value.subsections = subsections;
+												questionsArray.push(value);
+											});
+										}
+									});
+								});
+							}
+						});
+					});
+				}
+			});
+			this.questions = questionsArray;
+		},
+
+		getQuizStatus : function() {
+			// get the status of the quiz by looking into the questions array
+			// returns START, INPROGRESS, END
+			var q;
+			$.each(this.questions, function(index, value) {
+				q = index;
+				if(!value.status)
+					return false;
+			});
+
+			this.questionIndex = q;
+
+			if (q == 0)
+				return "START";
+			else if (q == this.questions.length - 1)
+				return "END";
+			else
+				return "INPROGRESS";
+		},
+
+		nextQuestion : function() {
+			// returns the next questions and updates the pointer
+			var quizStatus = this.getQuizStatus();
+			if (quizStatus == "START")
+				this.questionIndex = 0;
+			if (quizStatus == "END"){
+				this.questionIndex = this.questions.length;
+				this.question = undefined;
+			}
+
+			if (this.questionIndex < this.questions.length)
+				this.question = this.questions[this.questionIndex++];
+		},
+
+		setQuestion : function(index) {
+			$.each(this.questions, function(i, q){
+				if (i < index)
+					q.status = "skip";
+			});
+			this.questionIndex = index - 1;
+			this.question = this.questions[this.questionIndex];
+		}
+	};
+
 	var octopus = {
 
 		init : function() {
@@ -13,6 +102,7 @@ $(function() {
 				}
 			});
 
+			console.log(quizModel.data);
 			var status = quizModel.getQuizStatus();
 			if (status == "END")
 				resultView.init();
@@ -59,7 +149,7 @@ $(function() {
 			this.questionPane = $("#content-box");
 			
 			this.startMessage = "Click the Start Test button to begin.";
-			this.resumeMessage = "You were here before and about to resume the test.";
+			this.resumeMessage = "You have started the test, click the button below to resume the test.";
 			this.resumeMessage += " Click the Resume Test button to resume.";
 
 			this.navBar = $("#nav-bar");
@@ -121,8 +211,8 @@ $(function() {
 				}
 
 				if (selectedAnswer == "skip") {
-					q.status = "skip";
-					q.responseAnswer = "skipped";
+					q.status = "Skip";
+					q.responseAnswer = "Skip";
 					this.submittedTS = Date.now();
 					q.responseTime = questionView.getResponseTime();
 					octopus.submitAnswer();
@@ -278,13 +368,16 @@ $(function() {
 					buttonColor = "btn-success";
 				if(question == quizModel.question)
 					buttonColor = "btn-primary";
-				qButtonHTML = '<button class="btn btn-xs ' + buttonColor + '">' + buttonLabel + '</button>&nbsp;';
+				qButtonHTML = '<button class="btn btn-xs ' + buttonColor + '" id="qbutton">' + buttonLabel + '</button>&nbsp;';
 				buttonCount++;
 				
 				progressView.progressBox.append(qButtonHTML);
 
+				$("#qbutton").click(function(){
+					console.log(this.label);
+				});
+
 			});
-			//progressView.progressBox.append("</div>");
 		},
 
 		reset : function() {
@@ -320,90 +413,5 @@ $(function() {
 		}
 	};
 
-	var quizModel = {
-
-		// instance variables: title, questions
-
-		init : function(data) {
-			// create questions array from the data
-			this.data = data;
-			this.createQuizModel();
-		},
-
-		createQuizModel : function() {
-			// get questions from the json and assign it to questions array
-			// add section and subsection to the question object
-			var questionsArray = [];
-			$.each(quizModel.data, function (key, value) {
-
-				if (key == "name")
-					quizModel.title = value;
-
-	    		if (key == "section") {
-		    			$.each(value, function(index, value) {
-		    			var sections = value;
-		    			$.each(sections, function(key, value) {
-		    				if (key == "subsection") {
-		    					$.each(value, function(index, value) {
-		    						var subsections = value;
-		    						$.each(subsections, function(key, value) {
-		    							if (key == "questions") {
-		    								$.each(value, function(index, value){
-		    									value.section = sections.name;
-		    									value.subsections = subsections;
-		    									questionsArray.push(value);
-		    								});
-		    							}
-		    						});
-		    					});
-	    					}
-	    				});
-	    			});
-		    	}
-	    	});
-	    	this.questions = questionsArray;
-		},
-
-		getQuizStatus : function() {
-			// get the status of the quiz by looking into the questions array
-			// returns START, INPROGRESS, END
-			var q;
-			$.each(this.questions, function(index, value) {
-				q = index;
-				if(!value.status)
-					return false;
-			});
-
-			if (q == 0)
-				return "START";
-			else if (q == this.questions.length - 1)
-				return "END";
-			else
-				return "INPROGRESS";
-		},
-
-		nextQuestion : function() {
-			// returns the next questions and updates the pointer
-			var quizStatus = this.getQuizStatus();
-			if (quizStatus == "START")
-				this.questionIndex = 0;
-			if (quizStatus == "END"){
-				this.questionIndex = this.questions.length;
-				this.question = undefined;
-			}
-
-			if (this.questionIndex < this.questions.length)
-				this.question = this.questions[this.questionIndex++];
-		},
-
-		setQuestion : function(index) {
-			$.each(this.questions, function(i, q){
-				if (i < index)
-					q.status = "skip";
-			});
-			this.questionIndex = index - 1;
-			this.question = this.questions[this.questionIndex];
-		}
-	};
 	octopus.init();
 });
