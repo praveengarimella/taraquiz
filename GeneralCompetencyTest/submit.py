@@ -180,7 +180,7 @@ class submitAnswer(webapp2.RequestHandler):
                     for q in currentSubsection["questions"]:
                        # print(q["id"])
                         if q["id"]==str(currentQuestion):
-                            if submittedans == "skip":
+                            if submittedans == "Skip":
                                 validresponce="true"
                                 q_status="skip"
                                # print(q_status)
