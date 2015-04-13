@@ -70,27 +70,29 @@ class getquizstatus(webapp2.RequestHandler):
     def get(self):
       user = users.get_current_user()
       if user:
-        q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
+        #q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
+        #print q1 
+        #logging.error("This is an error message that will show in the console")
+
         json_data=json.loads(open('quizdata.json').read())
         print json_data["name"]
         logging.error("This is an error message that will show in the console")
-        print "hello"
-        if q1:
-          for key in json_data:
-              if  key == "section":
-                  section = json_data[key]
-                  for s in  section:
-                      for key in s:
-                          if key == "subsection":
-                              for subs in s[key]:
-                                  for key in subs:
-                                      if key == "questions":
-                                          for q in subs[key]:
-                                             q1 = Response.query(Response.currentQuestion==q["id"]).order(-Response.time).get()
-                                             if q1:
-                                              q["responseAnswer"]=q1.submittedans
-                                              q["responseTime"]=q1.responsetime
-                                              q["status"]=q1.q_status
+       # if q1:
+        for key in json_data:
+            if  key == "section":
+                section = json_data[key]
+                for s in  section:
+                    for key in s:
+                        if key == "subsection":
+                            for subs in s[key]:
+                                for key in subs:
+                                    if key == "questions":
+                                        for q in subs[key]:
+                                           q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion==q["id"]).order(-Response.time).get()
+                                           if q1:
+                                            q["responseAnswer"]=q1.submittedans
+                                            q["responseTime"]=q1.responsetime
+                                            q["status"]=q1.q_status
 
         ss=json.dumps(json_data)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
@@ -158,11 +160,12 @@ class submitAnswer(webapp2.RequestHandler):
           return
         else:
             # opening json file sent by the server
-            validresponce="false"
+            validresponse="false"
             status=""
             errortype=""
             q_status=""
             score=0
+            type=""
             vals = json.loads(cgi.escape(self.request.get('jsonData')))
             logging.error("testing json values");
             print vals
@@ -177,14 +180,27 @@ class submitAnswer(webapp2.RequestHandler):
             # finding the correct answer and updating the score
             for currentSection in json_data["section"]:
                 for currentSubsection in currentSection["subsection"]:
-                    for q in currentSubsection["questions"]:
+                      type=currentSubsection["types"]
+                      logging.error("This is an error message that will show in the console")
+                      print type
+                      for q in currentSubsection["questions"]:
                        # print(q["id"])
                         if q["id"]==str(currentQuestion):
-                            if submittedans == "Skip":
-                                validresponce="true"
+                            if submittedans == "skip":
+                                validresponse="true"
                                 q_status="skip"
                                # print(q_status)
                             else:
+                              type=currentSubsection["types"]
+                              if type=="essay":
+                                q_status="submitted"
+                                status="sucess"
+                                validresponse="true"
+                              elif type=="record":
+                                q_status="submitted"
+                                status="sucess"
+                                validresponse="true"
+                              else :
                                 for option in q["options"]:
                                     string1=option[1:len(option)]
                                    # print(string1)
@@ -192,26 +208,29 @@ class submitAnswer(webapp2.RequestHandler):
                                     #logging.error("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
                                     if submittedans == string1:
                                         #print("validrespnse")
-                                        validresponce="true"
+                                        validresponse="true"
                                         if option[0]== "=":
                                             score=1
                                             #logging.error("This is an error message that will show in the console")
 
-            if validresponce=="true":
+            if validresponse=="true":
                 global status
                 status="success"
                 if q_status!="skip":
                     q_status="submitted"
+
             else:
-                global status
-                status="error"
-                global errortype
+              global status
+              status="error"
+              global errortype
+           
+
             # creating json file for error response
             # placing in to the database
             n1=int(currentQuestion)
             data=Response(serialno=n1,useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
             data.put()
-            obj = {u"status":status , u"q_status":q_status, u"validresponce":validresponce, u"qid":currentQuestion}
+            obj = {u"status":status , u"q_status":q_status, u"validresponse":validresponse, u"qid":currentQuestion}
             ss=json.dumps(obj)
             self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
             self.response.write(ss)

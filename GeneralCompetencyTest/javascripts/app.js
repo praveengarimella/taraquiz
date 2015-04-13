@@ -71,9 +71,10 @@ $(function() {
 		getQuizStatus : function() {
 			// get the status of the quiz by looking into the questions array
 			// returns START, INPROGRESS, END
-			var q;
+			var q, qStatus;
 			$.each(this.questions, function(index, value) {
 				q = index;
+				qStatus = value.status;
 				if(!value.status)
 					return false;
 			});
@@ -82,7 +83,7 @@ $(function() {
 
 			if (q == 0)
 				return "START";
-			else if (q == this.questions.length - 1)
+			else if (q == this.questions.length - 1 && qStatus)
 				return "END";
 			else
 				return "INPROGRESS";
@@ -91,6 +92,7 @@ $(function() {
 		nextQuestion : function() {
 			// returns the next questions and updates the pointer
 			var quizStatus = this.getQuizStatus();
+			console.log(quizStatus);
 			if (quizStatus == "START")
 				this.questionIndex = 0;
 			if (quizStatus == "END"){
@@ -168,13 +170,10 @@ $(function() {
 				type: 'get',
 				url: '/getResult',
 				dataType:'json',
+				async: false,
 				success: function (data) {
-					data=JSON.stringify(data);
-
-					console.log(data);
-					data=JSON.parse(data);
-					console.log(data);
-
+					data = JSON.stringify(data);
+					quizModel.result = JSON.parse(data);
 				},
 				error: function () {
 					alert("failure");
@@ -254,8 +253,8 @@ $(function() {
 				}
 
 				if (selectedAnswer == "skip") {
-					q.status = "Skip";
-					q.responseAnswer = "Skip";
+					q.status = "skip";
+					q.responseAnswer = "skip";
 					questionView.submittedTS = Date.now();
 					q.responseTime = questionView.getResponseTime();
 					octopus.submitAnswer();
@@ -404,10 +403,10 @@ $(function() {
 					buttonLabel = '&nbsp;' + (index + 1);
 				else
 					buttonLabel = index + 1;
-				
+
 				if(!question.status)
 					buttonColor = "btn-default";
-				if(question.status == "Skip")
+				if(question.status == "skip")
 					buttonColor = "btn-warning";
 				if(question.status == "submitted")
 					buttonColor = "btn-success";
@@ -447,11 +446,21 @@ $(function() {
 		},
 
 		render : function() {
+			progressView.init();
 			progressView.reset();
 			this.sectionName.html("You have completed the test and the following is your test report.");
-			this.questionNote.html("Your total score is: ");
-			this.questionPane.html("render test report here");
 			octopus.getResults();
+			var resultHTML = '<table class="table table-hover">';
+			resultHTML += '<tr><th>Q. No.</th><th>Score</th><th>Response Time</th></tr>';
+			$.each(quizModel.result.question,function(index, value){
+				//console.log(value.currentQuestion, value.q_score, value.responsetime);
+				resultHTML += '<tr><td>' + value.currentQuestion + '</td>';
+				resultHTML += '<td>' + value.q_score + '</td>'
+				resultHTML += '<td>' + Math.round(value.responsetime) + '</td></tr>';
+			});
+			resultHTML += '</table>';
+			this.questionNote.html("Your total score is: ");
+			this.questionPane.html(resultHTML);
 		}
 	};
 

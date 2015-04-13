@@ -26,6 +26,13 @@ indexes:
 
 - kind: Response
   properties:
+  - name: currentQuestion
+  - name: useremailid.emailid
+  - name: time
+    direction: desc
+
+- kind: Response
+  properties:
   - name: useremailid.emailid
   - name: currentQuestion
 
