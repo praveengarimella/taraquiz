@@ -117,7 +117,7 @@ class getResult(webapp2.RequestHandler):
                 if q.currentQuestion != s1 :
                   s1=q.currentQuestion
                   #totalscore=q.responsetime+q.q_score
-                  question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.currentQuestion,"currentQuestion":s1,"responsetime":q.responsetime}
+                  question = {"user":user.nickname(),"submittedans":q.submittedans, "q_score":q.q_score,"currentQuestion":s1,"responsetime":q.responsetime}
                   question_records.append(question)
           questionresponses_dict["question"]=question_records
           questionresponses_dict["totalscore"]=totalscore

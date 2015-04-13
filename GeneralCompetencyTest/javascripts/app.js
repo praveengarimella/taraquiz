@@ -1,5 +1,26 @@
 $(function() {
 
+	var Randomiser = {
+		shuffle : function (array) {
+			var currentIndex = array.length, temporaryValue, randomIndex ;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+	};
+
 	var quizModel = {
 
 		// instance variables: title, questions
@@ -28,9 +49,11 @@ $(function() {
 									var subsections = value;
 									$.each(subsections, function(key, value) {
 										if (key == "questions") {
+											//value = Randomiser.shuffle(value);
 											$.each(value, function(index, value){
 												value.section = sections.name;
 												value.subsections = subsections;
+												value.options = Randomiser.shuffle(value.options);
 												questionsArray.push(value);
 											});
 										}
@@ -42,6 +65,7 @@ $(function() {
 				}
 			});
 			this.questions = questionsArray;
+			console.log(this.questions.length);
 		},
 
 		getQuizStatus : function() {
@@ -76,6 +100,7 @@ $(function() {
 
 			if (this.questionIndex < this.questions.length)
 				this.question = this.questions[this.questionIndex++];
+
 		},
 
 		setQuestion : function(index) {
@@ -102,7 +127,6 @@ $(function() {
 				}
 			});
 
-			console.log(quizModel.data);
 			var status = quizModel.getQuizStatus();
 			if (status == "END")
 				resultView.init();
@@ -114,7 +138,6 @@ $(function() {
 			var submittedQuestion = $.extend({},quizModel.question);
 			submittedQuestion.subsections = undefined;
 			data = JSON.stringify(submittedQuestion);
-			console.log(data);
 			$.ajax({
 				url: "/submitanswer",
 				type: 'GET',
@@ -136,6 +159,25 @@ $(function() {
 						console.log(xhr.status);
 						console.log(thrownError);
 					}
+				}
+			});
+		},
+
+		getResults : function() {
+			$.ajax({
+				type: 'get',
+				url: '/getResult',
+				dataType:'json',
+				success: function (data) {
+					data=JSON.stringify(data);
+
+					console.log(data);
+					data=JSON.parse(data);
+					console.log(data);
+
+				},
+				error: function () {
+					alert("failure");
 				}
 			});
 		}
@@ -176,6 +218,7 @@ $(function() {
 				this.questionPane.html('<h3>' + this.startMessage + '</h3><br>');
 			} else if (quizStatus == "INPROGRESS") {
 				this.questionPane.html(this.resumeMessage);
+				this.startButton.html("Resume Test");
 			}
 			this.startButton.show();
 		}
@@ -213,7 +256,7 @@ $(function() {
 				if (selectedAnswer == "skip") {
 					q.status = "Skip";
 					q.responseAnswer = "Skip";
-					this.submittedTS = Date.now();
+					questionView.submittedTS = Date.now();
 					q.responseTime = questionView.getResponseTime();
 					octopus.submitAnswer();
 					questionView.nextButton.show();
@@ -233,6 +276,7 @@ $(function() {
 			this.nextButton.click(function(){
 				questionView.nextButton.hide();
 				quizModel.nextQuestion();
+				console.log(quizModel.question, quizModel.questionIndex);
 				if(quizModel.question){
 					questionView.render();
 					progressView.init();
@@ -333,6 +377,7 @@ $(function() {
 	};
 
 	var progressView = {
+
 		init : function() {
 			// get references to all html elements
 			this.progressBox = $("#progress-box");
@@ -362,21 +407,17 @@ $(function() {
 				
 				if(!question.status)
 					buttonColor = "btn-default";
-				if(question.status == "skip")
+				if(question.status == "Skip")
 					buttonColor = "btn-warning";
 				if(question.status == "submitted")
 					buttonColor = "btn-success";
 				if(question == quizModel.question)
 					buttonColor = "btn-primary";
-				qButtonHTML = '<button class="btn btn-xs ' + buttonColor + '" id="qbutton">' + buttonLabel + '</button>&nbsp;';
+
+				qButtonHTML = '<button class="btn btn-xs ' + buttonColor + '" id="qbutton' + index + '">' + buttonLabel + '</button>&nbsp;';
 				buttonCount++;
-				
+
 				progressView.progressBox.append(qButtonHTML);
-
-				$("#qbutton").click(function(){
-					console.log(this.label);
-				});
-
 			});
 		},
 
@@ -410,6 +451,7 @@ $(function() {
 			this.sectionName.html("You have completed the test and the following is your test report.");
 			this.questionNote.html("Your total score is: ");
 			this.questionPane.html("render test report here");
+			octopus.getResults();
 		}
 	};
 
