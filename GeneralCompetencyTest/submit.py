@@ -1,12 +1,16 @@
 import os
 import cgi
-from google.appengine.ext import ndb
-from google.appengine.api import users
-from google.appengine.api import mail
+import traceback
 import json
 import jinja2
 import webapp2
 import logging
+from google.appengine.ext import ndb
+from google.appengine.api import users
+from google.appengine.api import mail
+from google.appengine.ext import blobstore
+from google.appengine.ext.webapp import blobstore_handlers
+from google.appengine.ext.webapp.util import run_wsgi_app
 from pprint import pprint
 
 
@@ -14,7 +18,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
-
+class UserAudio(ndb.Model):
+    user = ndb.StringProperty()
+    # blob_key = blobstore.BlobReferenceProperty()
+    blob_key = ndb.BlobKeyProperty()
 class User(ndb.Model):
     """Sub model for storing user activity."""
     name = ndb.StringProperty(indexed=True)
@@ -41,10 +48,44 @@ class EssayTypeResponse(ndb.Model):
     qattemptedtime = ndb.StringProperty(indexed = True)
     status = ndb.StringProperty(indexed = True)
 
-class audio(ndb.Model):
-    mp3 = ndb.BlobProperty()
-    date 	= ndb.DateTimeProperty(auto_now_add=True)
-       
+class UploadRedirect(webapp2.RequestHandler):
+    def post(self):
+      upload_url=blobstore.create_upload_url('/upload_audio');
+      self.response.write(upload_url)
+    #self.redirect("/upload_audio")
+class AudioUploadHandler(blobstore_handlers.BlobstoreUploadHandler):
+    def post(self):
+        try:
+            #filename=self.request.get("audio-blob");
+            #blobstore_key=blobstore.create_gs_key(filename)
+            #blobkey=blobstore.BlobKey(blobstore_key)
+            user = users.get_current_user()
+            if user:           
+                upload = self.get_uploads()[0]
+                #uname=str(users.get_current_user().email())
+                user_audio = UserAudio(user=user.email(), blob_key=upload.key())
+                user_audio.put()
+            #print str(filename)
+            #logging.error("upload value")
+            # self.redirect('/view_audio/%s' % upload.key())
+            #self.response.write("Uploaded success")
+        except Exception,e:
+            traceback.print_exc()
+            logging.error("error occured.."+str(e))
+            self.response.write("Record not saved")
+# [END audio_handler]
+
+# [START download_handler]
+class ViewAudioHandler(blobstore_handlers.BlobstoreDownloadHandler):
+    def get(self, audio_key):
+        if not blobstore.get(photo_key):
+            self.error(404)
+        else:
+            resource = str(urllib.unquote(audio_key))
+            blob_info = blobstore.BlobInfo.get(resource)
+            self.send_blob(blob_info,save_as=True)
+            self.response.write(str(key))
+# # [END download_handler]    
 class homepage(webapp2.RequestHandler):
     """  handles rendering of index page """
     def get(self):
@@ -194,12 +235,18 @@ class submitAnswer(webapp2.RequestHandler):
                               type=currentSubsection["types"]
                               if type=="essay":
                                 q_status="submitted"
-                                status="sucess"
+                                status="success"
                                 validresponse="true"
                               elif type=="record":
-                                q_status="submitted"
-                                status="sucess"
-                                validresponse="true"
+                                r=UserAudio.query(UserAudio.user==user.email()).get()
+                                if r :
+                                  q_status="submitted"
+                                  status="success"
+                                  validresponse="true"
+                                else :
+                                  q_status="unknown"
+                                  status="error with record"
+                                  validresponse="false"
                               else :
                                 for option in q["options"]:
                                     string1=option[1:len(option)]
@@ -269,5 +316,8 @@ application = webapp2.WSGIApplication([
     ('/getResult', getResult),
     ('/getquizstatus', getquizstatus),
     ('/getScore', getScore),
-    ('/autosaveEssay', AutosaveEssay),  
+    ('/autosaveEssay', AutosaveEssay),
+    ('/uploadredirect',UploadRedirect),
+    ('/upload_audio', AudioUploadHandler),
+    ('/view_audio/([^/]+)?', ViewAudioHandler),  
        ], debug=True)

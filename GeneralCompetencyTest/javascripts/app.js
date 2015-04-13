@@ -150,6 +150,7 @@ $(function() {
 				dataType:'json',
 				success: function(data){
 					//On ajax success do this
+					console.log(data);
 				},
 				error: function(xhr, ajaxOptions, thrownError) {
 					//On error do this
@@ -249,7 +250,7 @@ $(function() {
 
 				if (q.subsections.types == "record") {
 					// make a call to a separate handler
-					selectedAnswer = "skip";
+					selectedAnswer = "submitted";
 				}
 
 				if (selectedAnswer == "skip") {
@@ -348,8 +349,26 @@ $(function() {
 
 		displayRecording : function() {
 			var q = quizModel.question;
-			this.questionPane.append('<div><button class="btn btn-danger">Record</button>' + 
-				'&nbsp;&nbsp<button class="btn btn-info">Stop</button></div>');
+			this.questionPane.append('<div><button id="record" class="btn btn-danger">Record</button>' + 
+				'&nbsp;&nbsp<button id="stop" class="btn btn-info">Stop</button></div>');
+				var record=document.getElementById('record');
+				var stop=document.getElementById('stop');
+				record.onclick= function(){
+					record.disabled=true;
+					stop.disabled=false;
+					interfaceRecord();
+				}
+				stop.onclick= function() {
+					record.disabled=false;
+					stop.disabled=true;
+					interfaceStop();
+				}
+				window.onbeforeunload = function() {
+                if (!!fileName) {
+                deleteAudioVideoFiles();
+                return 'It seems that you\'ve not deleted audio/video files from the server.';
+            }
+        };
 		},
 
 		displayOptions : function() {
