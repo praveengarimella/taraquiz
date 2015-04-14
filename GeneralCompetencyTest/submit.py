@@ -43,10 +43,8 @@ class EssayTypeResponse(ndb.Model):
     """Sub model for storing user response for essay type questions"""
     useremailid = ndb.StringProperty(indexed = True)
     qid = ndb.StringProperty(indexed = True)
-    ansText = ndb.StringProperty(indexed = True)
-    qshowntime = ndb.StringProperty(indexed = True)
-    qattemptedtime = ndb.StringProperty(indexed = True)
-    status = ndb.StringProperty(indexed = True)
+    ansText = ndb.StringProperty(indexed = True)    
+    qattemptedtime = ndb.FloatProperty(indexed = True)   
 
 class UploadRedirect(webapp2.RequestHandler):
     def post(self):
@@ -285,29 +283,35 @@ class submitAnswer(webapp2.RequestHandler):
 class AutosaveEssay(webapp2.RequestHandler):
     """ saving essay writing response"""
     def get(self):
-        vals = json.loads(cgi.escape(self.request.get('jsonData')))
-        useremailid = vals['useremailid']
-        qid = vals['qid']
-        ans = vals['ans']
-        qshowntime = vals['qshowntime']
-        qattemptedtime = vals['qattemptedtime']
+        user = users.get_current_user()
+        vals = json.loads(cgi.escape(self.request.get('jsonData')))        
+        qid = vals['currentQuestion']
+        ans = vals['draft']       
+        qattemptedtime = vals['responsetime']
+        print(vals)
+        logging.error("This is an error message that will show in the console")
+        data1 = EssayTypeResponse.query(EssayTypeResponse.useremailid == user.email(),
+                                     EssayTypeResponse.qid == qid).get()
+        print(user.email())
+        print(qid)   
 
-        data1 = EssayTypeResponse.query(EssayTypeResponse.useremailid == useremailid,
-                                        EssayTypeResponse.qid == qid).get()
         if data1:
-            data1.qshowntime=qshowntime
             data1.qattemptedtime=qattemptedtime
-            data1.ansText = ans
-            data1.status= vals['status']
+            data1.ansText = ans   
+            data1.put()
 
         else:
-            data = EssayTypeResponse(useremailid=useremailid,
-                                     qid=qid+"",
-                                     qshowntime=qshowntime,
+            data = EssayTypeResponse(useremailid=user.email(),
+                                     qid=qid,                                     
                                      qattemptedtime=qattemptedtime,
                                      ansText = ans,
-                                     status= vals['status'])
+                                     )
             data.put()
+         
+        ss=json.dumps(vals)
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.write(ss)
+
 
 application = webapp2.WSGIApplication([
     ('/', homepage),
