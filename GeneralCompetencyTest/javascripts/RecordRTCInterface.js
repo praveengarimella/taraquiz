@@ -60,6 +60,7 @@ function interfaceRecord() {
     }
     });
     if (isFirefox) {
+        $("#record").html("Recording...");
         recordAudio.startRecording();
     }
     if (!isFirefox) {

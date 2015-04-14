@@ -29,6 +29,7 @@ $(function() {
 			// create questions array from the data
 			this.data = data;
 			this.createQuizModel();
+			console.log(this.data);
 		},
 
 		createQuizModel : function() {
@@ -49,7 +50,8 @@ $(function() {
 									var subsections = value;
 									$.each(subsections, function(key, value) {
 										if (key == "questions") {
-											//value = Randomiser.shuffle(value);
+											//if (!quizModel.questionIndex)
+											//	value = Randomiser.shuffle(value);
 											$.each(value, function(index, value){
 												value.section = sections.name;
 												value.subsections = subsections;
@@ -159,6 +161,7 @@ $(function() {
 						console.log(ajaxOptions);
 					}
 					else {
+						console.log(data);
 						console.log(xhr.status);
 						console.log(thrownError);
 					}
@@ -354,11 +357,14 @@ $(function() {
 				var record=document.getElementById('record');
 				var stop=document.getElementById('stop');
 				record.onclick= function(){
+					alert("There is a notification on the top of the browser seeking your permission to record audio. Click Ok and then Allow recording to begin.");
 					record.disabled=true;
 					stop.disabled=false;
 					interfaceRecord();
 				}
 				stop.onclick= function() {
+					$("#record").hide();
+					$("#stop").hide();
 					record.disabled=false;
 					stop.disabled=true;
 					interfaceStop();
@@ -471,14 +477,16 @@ $(function() {
 			octopus.getResults();
 			var resultHTML = '<table class="table table-hover">';
 			resultHTML += '<tr><th>Q. No.</th><th>Score</th><th>Response Time</th></tr>';
+			totalScore = 0;
 			$.each(quizModel.result.question,function(index, value){
 				//console.log(value.currentQuestion, value.q_score, value.responsetime);
 				resultHTML += '<tr><td>' + value.currentQuestion + '</td>';
 				resultHTML += '<td>' + value.q_score + '</td>'
 				resultHTML += '<td>' + Math.round(value.responsetime) + '</td></tr>';
+				totalScore += value.q_score;
 			});
 			resultHTML += '</table>';
-			this.questionNote.html("Your total score is: ");
+			this.questionNote.html('<p class="lead">Your total score is: ' + totalScore + '</p>');
 			this.questionPane.html(resultHTML);
 		}
 	};
