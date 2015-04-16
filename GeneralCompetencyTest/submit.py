@@ -191,7 +191,7 @@ class getScore(webapp2.RequestHandler):
 
 class submitAnswer(webapp2.RequestHandler):
     """ submting question response , sends a json file of response"""
-    def get(self):
+    def post(self):
         user = users.get_current_user()
         if user is None:
             login_url = users.create_login_url(self.request.path)
@@ -205,9 +205,9 @@ class submitAnswer(webapp2.RequestHandler):
             q_status=""
             score=0
             type=""
-            vals = json.loads(cgi.escape(self.request.get('jsonData')))
-            logging.error("testing json values");
-            print vals
+            logging.error("printing json values");
+            vals = json.loads(cgi.escape(self.request.body))
+            vals = vals['jsonData']
             currentQuestion =vals['id']
             submittedans = vals['responseAnswer']
             responsetime = vals['responseTime']

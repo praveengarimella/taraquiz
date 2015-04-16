@@ -246,10 +246,10 @@
                         {
                             "question": "What did the guru in gurukula system teach?",
                             "options": [
-                                "~Only Sanskrit and Holy Scriptures",
-                                "~Only Mathematics",
-                                "~Only Metaphysics",
-                                "=They teach everything including all the above"     
+                                "~Hindi, Foreign languages, Social and sciences",
+                                "~Sanskrit, Statistics, Science and English",
+                                "~Physics, Hindi and other languages",
+                                "=Sanskrit to holy scriptures, Metaphysics to Maths"
                             ],
                             "id" : "21"
                         },

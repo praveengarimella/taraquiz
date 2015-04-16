@@ -141,9 +141,55 @@ $(function() {
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
 			submittedQuestion.subsections = undefined;
-			data = JSON.stringify(submittedQuestion);
+			data = JSON.stringify({jsonData: submittedQuestion});
+			$.post("/submitanswer", data)
+				.done(function(data){
+					console.log("Success");
+					console.log(data);
+				});
+			//$.ajax({
+			//	url: "/submitanswer",
+			//	type: 'GET',
+			//	contentType:'application/json',
+			//	data: {
+			//		jsonData: data
+			//	},
+			//	dataType:'json',
+			//	success: function(data){
+			//		//On ajax success do this
+			//		console.log(data);
+			//	},
+			//	error: function(xhr, ajaxOptions, thrownError) {
+			//		//On error do this
+			//		if (xhr.status == 200) {
+            //
+			//			console.log(ajaxOptions);
+			//		}
+			//		else {
+			//			console.log(data);
+			//			console.log(xhr.status);
+			//			console.log(thrownError);
+			//		}
+			//	}
+			//});
+		},
+
+		autosaveContent : function(responseAnswer, responseTS) {
+			// grab the current question object from model
+			var q = quizModel.question;
+
+			// update the question object
+			// with response answer and response time
+			q.responseAnswer = responseAnswer;
+			q.responseTime = responseTS;
+			console.log(q);
+			// call server side submit function
+			// creating json file for submit response
+			var data = {"currentQuestion": q.id, "draft":responseAnswer,"responsetime":q.responseTime}
+			data=JSON.stringify(data);
+			console.log(data);
 			$.ajax({
-				url: "/submitanswer",
+				url: "/autosaveEssay",
 				type: 'GET',
 				contentType:'application/json',
 				data: {
@@ -161,54 +207,13 @@ $(function() {
 						console.log(ajaxOptions);
 					}
 					else {
-						console.log(data);
 						console.log(xhr.status);
 						console.log(thrownError);
 					}
 				}
 			});
+
 		},
-
-		autosaveContent : function(responseAnswer, responseTS) {
-			// grab the current question object from model
-			var q = quizModel.question;
-
-			// update the question object
-			// with response answer and response time
-			q.responseAnswer = responseAnswer;
-			q.responseTime = responseTS;
-			console.log(q);
-			// call server side submit function
-            // creating json file for submit response
-                var data = {"currentQuestion": q.id, "draft":responseAnswer,"responsetime":q.responseTime}
-                data=JSON.stringify(data);
-                console.log(data);
-                $.ajax({
-							   url: "/autosaveEssay",
-							   type: 'GET',
-							   contentType:'application/json',
-							   data: {
-									jsonData: data
-								},
-							   dataType:'json',
-							   success: function(data){
-								 //On ajax success do this
-								 console.log(data);
-								  },
-							   error: function(xhr, ajaxOptions, thrownError) {
-								  //On error do this
-									if (xhr.status == 200) {
-
-										 console.log(ajaxOptions);
-									}
-									else {
-										console.log(xhr.status);
-										console.log(thrownError);
-									}
-								}
-			 });
-
-        },        
 
 		getResults : function() {
 			$.ajax({
@@ -347,14 +352,14 @@ $(function() {
 			if (q.subsections.types == "essay")
 			{
 				this.displayEssay();
-				
+
 				$("textarea").on('input propertychange',function() {
-				 			console.log('Textarea Change');
-							setTimeout(function() {    					
-    							var text = $('textarea').val();    					
-    							octopus.autosaveContent(text,Date.now()/(1000*60));
-    						},30000);
-						});
+					console.log('Textarea Change');
+					setTimeout(function() {
+						var text = $('textarea').val();
+						octopus.autosaveContent(text,Date.now()/(1000*60));
+					},30000);
+				});
 			}	
 			if (q.subsections.types == "video"){
 				this.displayVideo();
