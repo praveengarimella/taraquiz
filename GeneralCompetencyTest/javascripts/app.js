@@ -140,8 +140,10 @@ $(function() {
 
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
-			if(quizModel.question.type == 'essay')
-				questionView.stopautosave();
+			
+			if(quizModel.question.subsections.types == 'essay')
+					questionView.stopautosave();
+			
 			
 			submittedQuestion.subsections = undefined;
 			data = JSON.stringify(submittedQuestion);
@@ -375,8 +377,8 @@ $(function() {
 			this.answerButton.show();
 		},
 
-		stopautosave : function(myvar) {
-			clearInterval(myVar);
+		stopautosave : function() {			
+			clearInterval(this.myvar);
 		},
 
 		displayQuestion : function(q) {
