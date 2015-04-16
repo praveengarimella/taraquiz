@@ -140,6 +140,9 @@ $(function() {
 
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
+			if(quizModel.question.type == 'essay')
+				questionView.stopautosave();
+			
 			submittedQuestion.subsections = undefined;
 			data = JSON.stringify(submittedQuestion);
 			$.ajax({
@@ -347,14 +350,18 @@ $(function() {
 			if (q.subsections.types == "essay")
 			{
 				this.displayEssay();
-				
-				$("textarea").on('input propertychange',function() {
-				 			console.log('Textarea Change');
-							setTimeout(function() {    					
+				this.myvar = setInterval(function() {    					
     							var text = $('textarea').val();    					
     							octopus.autosaveContent(text,Date.now()/(1000*60));
     						},30000);
-						});
+
+				// $("textarea").on('input propertychange',function() {
+				//  			console.log('Textarea Change');
+				// 			setTimeout(function() {    					
+    // 							var text = $('textarea').val();    					
+    // 							octopus.autosaveContent(text,Date.now()/(1000*60));
+    // 						},30000);
+				// 		});
 			}	
 			if (q.subsections.types == "video"){
 				this.displayVideo();
@@ -366,6 +373,10 @@ $(function() {
 				this.displayOptions();
 			this.appearedTS = Date.now();
 			this.answerButton.show();
+		},
+
+		stopautosave : function(myvar) {
+			clearInterval(myVar);
 		},
 
 		displayQuestion : function(q) {
