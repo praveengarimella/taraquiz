@@ -140,33 +140,43 @@ $(function() {
 
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
+			
+			if(quizModel.question.subsections.types == 'essay')
+					questionView.stopautosave();
+			
+			
 			submittedQuestion.subsections = undefined;
-			data = JSON.stringify(submittedQuestion);
-			$.ajax({
-				url: "/submitanswer",
-				type: 'GET',
-				contentType:'application/json',
-				data: {
-					jsonData: data
-				},
-				dataType:'json',
-				success: function(data){
-					//On ajax success do this
+			data = JSON.stringify({jsonData: submittedQuestion});
+			$.post("/submitanswer", data)
+				.done(function(data){
+					console.log("Success");
 					console.log(data);
-				},
-				error: function(xhr, ajaxOptions, thrownError) {
-					//On error do this
-					if (xhr.status == 200) {
-
-						console.log(ajaxOptions);
-					}
-					else {
-						console.log(data);
-						console.log(xhr.status);
-						console.log(thrownError);
-					}
-				}
-			});
+				});
+			//$.ajax({
+			//	url: "/submitanswer",
+			//	type: 'GET',
+			//	contentType:'application/json',
+			//	data: {
+			//		jsonData: data
+			//	},
+			//	dataType:'json',
+			//	success: function(data){
+			//		//On ajax success do this
+			//		console.log(data);
+			//	},
+			//	error: function(xhr, ajaxOptions, thrownError) {
+			//		//On error do this
+			//		if (xhr.status == 200) {
+            //
+			//			console.log(ajaxOptions);
+			//		}
+			//		else {
+			//			console.log(data);
+			//			console.log(xhr.status);
+			//			console.log(thrownError);
+			//		}
+			//	}
+			//});
 		},
 
 		autosaveContent : function(responseAnswer, responseTS) {
@@ -179,36 +189,37 @@ $(function() {
 			q.responseTime = responseTS;
 			console.log(q);
 			// call server side submit function
-            // creating json file for submit response
-                var data = {"currentQuestion": q.id, "draft":responseAnswer,"responsetime":q.responseTime}
-                data=JSON.stringify(data);
-                console.log(data);
-                $.ajax({
-							   url: "/autosaveEssay",
-							   type: 'GET',
-							   contentType:'application/json',
-							   data: {
-									jsonData: data
-								},
-							   dataType:'json',
-							   success: function(data){
-								 //On ajax success do this
-								 console.log(data);
-								  },
-							   error: function(xhr, ajaxOptions, thrownError) {
-								  //On error do this
-									if (xhr.status == 200) {
+			// creating json file for submit response
+			var data = {"currentQuestion": q.id, "draft":responseAnswer,"responsetime":q.responseTime}
+			data=JSON.stringify(data);
+			console.log(data);
+			$.ajax({
+				url: "/autosaveEssay",
+				type: 'GET',
+				contentType:'application/json',
+				data: {
+					jsonData: data
+				},
+				dataType:'json',
+				success: function(data){
+					//On ajax success do this
+					console.log(data);
+					questionView.showNextQuestion();
+				},
+				error: function(xhr, ajaxOptions, thrownError) {
+					//On error do this
+					if (xhr.status == 200) {
 
-										 console.log(ajaxOptions);
-									}
-									else {
-										console.log(xhr.status);
-										console.log(thrownError);
-									}
-								}
-			 });
+						console.log(ajaxOptions);
+					}
+					else {
+						console.log(xhr.status);
+						console.log(thrownError);
+					}
+				}
+			});
 
-        },        
+		},
 
 		getResults : function() {
 			$.ajax({
@@ -278,8 +289,15 @@ $(function() {
 
 			this.navBar = $("#nav-bar");
 			this.startButton = $("#start-btn");
-			this.answerButton = $("#answer");
-			this.nextButton = $("#nextquestion");
+
+
+			var btn = document.createElement("BUTTON");
+    		var t = document.createTextNode("Submit Answer");
+    		btn.appendChild(t);
+			btn.setAttribute("id", "sanswer");
+    		this.navBar.append(btn);
+			this.answerButton = $("#sanswer");
+			this.answerButton.addClass("btn btn-success")
 
 			this.answerButton.click(function(){
 
@@ -316,20 +334,19 @@ $(function() {
 				}
 				progressView.init();
 			});
-
-			this.nextButton.click(function(){
-				questionView.nextButton.hide();
-				quizModel.nextQuestion();
-				console.log(quizModel.question, quizModel.questionIndex);
-				if(quizModel.question){
-					questionView.render();
-					progressView.init();
-				}
-				else
-					resultView.init();
-			});
 		},
 
+		showNextQuestion: function() {
+			quizModel.nextQuestion();
+			console.log(quizModel.question, quizModel.questionIndex);
+			if(quizModel.question){
+				questionView.render();
+				progressView.init();
+			}
+			else
+				resultView.init();
+
+		},
 		render : function() {
 			var q = quizModel.question;
 			this.sectionName.html("<h4>");
@@ -347,15 +364,13 @@ $(function() {
 			if (q.subsections.types == "essay")
 			{
 				this.displayEssay();
-				
-				$("textarea").on('input propertychange',function() {
-				 			console.log('Textarea Change');
-							setTimeout(function() {    					
+
+				this.myvar = setInterval(function() {    					
     							var text = $('textarea').val();    					
     							octopus.autosaveContent(text,Date.now()/(1000*60));
     						},30000);
-						});
-			}	
+
+			}
 			if (q.subsections.types == "video"){
 				this.displayVideo();
 				this.displayOptions();
@@ -366,6 +381,10 @@ $(function() {
 				this.displayOptions();
 			this.appearedTS = Date.now();
 			this.answerButton.show();
+		},
+
+		stopautosave : function() {			
+			clearInterval(this.myvar);
 		},
 
 		displayQuestion : function(q) {
