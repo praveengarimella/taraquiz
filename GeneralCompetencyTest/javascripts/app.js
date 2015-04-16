@@ -158,6 +158,7 @@ $(function() {
 				success: function(data){
 					//On ajax success do this
 					console.log(data);
+					questionView.showNextQuestion();
 				},
 				error: function(xhr, ajaxOptions, thrownError) {
 					//On error do this
@@ -284,7 +285,13 @@ $(function() {
 			this.navBar = $("#nav-bar");
 			this.startButton = $("#start-btn");
 			this.answerButton = $("#answer");
-			this.nextButton = $("#nextquestion");
+
+			var btn = document.createElement("BUTTON");
+    		var t = document.createTextNode("Submit");
+    		btn.appendChild(t);
+    		document.body.appendChild(btn);
+    		btn.setAttribute("id", "sanswer");
+			this.answerButton = $("#sanswer");
 
 			this.answerButton.click(function(){
 
@@ -321,20 +328,19 @@ $(function() {
 				}
 				progressView.init();
 			});
-
-			this.nextButton.click(function(){
-				questionView.nextButton.hide();
-				quizModel.nextQuestion();
-				console.log(quizModel.question, quizModel.questionIndex);
-				if(quizModel.question){
-					questionView.render();
-					progressView.init();
-				}
-				else
-					resultView.init();
-			});
 		},
 
+		showNextQuestion: function() {
+			quizModel.nextQuestion();
+			console.log(quizModel.question, quizModel.questionIndex);
+			if(quizModel.question){
+				questionView.render();
+				progressView.init();
+			}
+			else
+				resultView.init();
+
+		},
 		render : function() {
 			var q = quizModel.question;
 			this.sectionName.html("<h4>");
