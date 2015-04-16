@@ -334,9 +334,10 @@ class storetime(webapp2.RequestHandler):
 
 class AutosaveEssay(webapp2.RequestHandler):
     """ saving essay writing response"""
-    def get(self):
+    def post(self):
         user = users.get_current_user()
-        vals = json.loads(cgi.escape(self.request.get('jsonData')))        
+        vals = json.loads(cgi.escape(self.request.body))
+        vals = vals['jsonData']
         qid = vals['currentQuestion']
         ans = vals['draft']       
         qattemptedtime = vals['responsetime']
