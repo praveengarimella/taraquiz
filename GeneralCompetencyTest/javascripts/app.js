@@ -289,14 +289,15 @@ $(function() {
 
 			this.navBar = $("#nav-bar");
 			this.startButton = $("#start-btn");
-			this.answerButton = $("#answer");
+
 
 			var btn = document.createElement("BUTTON");
-    		var t = document.createTextNode("Submit");
+    		var t = document.createTextNode("Submit Answer");
     		btn.appendChild(t);
-    		document.body.appendChild(btn);
-    		btn.setAttribute("id", "sanswer");
+			btn.setAttribute("id", "sanswer");
+    		this.navBar.append(btn);
 			this.answerButton = $("#sanswer");
+			this.answerButton.addClass("btn btn-success")
 
 			this.answerButton.click(function(){
 
