@@ -60,3 +60,9 @@ indexes:
   properties:
   - name: useremailid.emailid
   - name: submittedans
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: time
+    direction: desc

@@ -11,6 +11,36 @@
 	<script type="text/javascript" src="javascripts/RecordRTC.js"></script>
 	<script type="text/javascript" src="javascripts/RecordRTCInterface.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	window.setInterval(function(){myTimer()},10000);
+	function myTimer() {
+	 var objectData =
+	     {
+	         timesec: 4000,
+	         emailid:"s@g.c" 
+	     };
+
+	    var objectDataString = JSON.stringify(objectData);
+	    console.log(objectDataString);
+	    $.ajax({
+	        type: 'get',
+	        url: '/testtime',
+	        dataType: 'json',
+	        data: {
+	            jsonData: objectDataString
+	        },
+	        success: function (data) {
+	            f=true;
+				console.log(JSON.stringify(data));
+	           //alert( JSON.stringify(data));
+
+	        },
+	        error: function () {
+	            alert("failure");
+	        }
+	    });
+	}
+</script>
 	
 </head>
 <body>

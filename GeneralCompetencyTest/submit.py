@@ -12,6 +12,8 @@ from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 from google.appengine.ext.webapp.util import run_wsgi_app
 from pprint import pprint
+import datetime
+from datetime import datetime
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -27,6 +29,15 @@ class User(ndb.Model):
     name = ndb.StringProperty(indexed=True)
     emailid = ndb.StringProperty(indexed=True)
     pin = ndb.StringProperty(indexed=True)
+    testctime=ndb.DateTimeProperty(auto_now=True)
+
+class TestDetails(ndb.Model):
+    email=ndb.StringProperty(indexed=True)
+    test= ndb.BooleanProperty(default=False)
+    teststime=ndb.DateTimeProperty(auto_now_add=True)
+    delays=ndb.FloatProperty(indexed=True)
+    testend= ndb.BooleanProperty(default=False)
+
 
 class Response(ndb.Model):
     """Sub model for representing question details"""
@@ -99,7 +110,9 @@ class checklogin(webapp2.RequestHandler):
             self.redirect(login_url)
             return
         else:
-            Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
+            ss=Response.query(Response.useremailid.emailid==user.email()).get()
+            if ss is None:
+                Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
             template= JINJA_ENVIRONMENT.get_template('quiz.html')
             self.response.write(template.render())
 
@@ -112,7 +125,9 @@ class getquizstatus(webapp2.RequestHandler):
             #q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
             #print q1
             #logging.error("This is an error message that will show in the console")
-
+            td = TestDetails.query(TestDetails.email==user.email()).get()
+            if td is None:
+                TestDetails(email=user.email(),test=True,delays=0.0).put()
             json_data=json.loads(open('quizdata.json').read())
             print json_data["name"]
             logging.error("This is an error message that will show in the console")
@@ -198,6 +213,21 @@ class submitAnswer(webapp2.RequestHandler):
             self.redirect(login_url)
             return
         else:
+            td=TestDetails.query(TestDetails.email==user.email()).get()
+            timenow=datetime.now()
+            uda= Response.query(Response.useremailid.emailid==user.email())
+            uda=uda.order(-Response.time)
+            uda.fetch(1)
+            uda=uda.get()
+            timenow=(timenow-uda.useremailid.testctime).total_seconds()
+            print(timenow)
+            logging.error("testing json values")
+            if(timenow>12):
+                td.delays=td.delays+timenow
+                td.put()
+            takentime=(datetime.now()-td.teststime).total_seconds()-td.delays
+            uda.useremailid.testctime=datetime.now()
+            uda.put()
             # opening json file sent by the server
             validresponse="false"
             status=""
@@ -206,7 +236,7 @@ class submitAnswer(webapp2.RequestHandler):
             score=0
             type=""
             vals = json.loads(cgi.escape(self.request.get('jsonData')))
-            logging.error("testing json values");
+            logging.error("testing json values")
             print vals
             currentQuestion =vals['id']
             submittedans = vals['responseAnswer']
@@ -220,7 +250,7 @@ class submitAnswer(webapp2.RequestHandler):
             for currentSection in json_data["section"]:
                 for currentSubsection in currentSection["subsection"]:
                     type=currentSubsection["types"]
-                    logging.error("This is an error message that will show in the console")
+                    #logging.error("This is an error message that will show in the console")
                     print type
                     for q in currentSubsection["questions"]:
                         # print(q["id"])
@@ -275,7 +305,29 @@ class submitAnswer(webapp2.RequestHandler):
             n1=int(currentQuestion)
             data=Response(serialno=n1,useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
             data.put()
-            obj = {u"status":status , u"q_status":q_status, u"validresponse":validresponse, u"qid":currentQuestion}
+            obj = {u"status":status , u"q_status":q_status, u"validresponse":validresponse, u"qid":currentQuestion, u"takentime" :takentime}
+            ss=json.dumps(obj)
+            self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+            self.response.write(ss)
+
+class storetime(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            td=TestDetails.query(TestDetails.email==user.email()).get()
+            timenow=datetime.now()
+            uda= Response.query(Response.useremailid.emailid==user.email())
+            uda=uda.order(-Response.time)
+            uda.fetch(1)
+            uda=uda.get()
+            timenow=(timenow-uda.useremailid.testctime).total_seconds()
+            if(timenow>15.0):
+                td.delays=td.delays+timenow-10.0
+                td.put()
+            takentime=(datetime.now()-td.teststime).total_seconds()-td.delays
+            uda.useremailid.testctime=datetime.now()
+            uda.put()
+            obj = {u"takentime":takentime, u"errorcode":"sas", u"errormessage":td.delays, u"delay":timenow}
             ss=json.dumps(obj)
             self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
             self.response.write(ss)
@@ -324,4 +376,5 @@ application = webapp2.WSGIApplication([
     ('/uploadredirect',UploadRedirect),
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
+    ('/testtime',storetime)
     ], debug=True)
