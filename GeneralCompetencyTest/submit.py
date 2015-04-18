@@ -14,6 +14,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from pprint import pprint
 import datetime
 from datetime import datetime
+from random import shuffle
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -37,7 +38,7 @@ class TestDetails(ndb.Model):
     teststime=ndb.DateTimeProperty(auto_now_add=True)
     delays=ndb.FloatProperty(indexed=True)
     testend= ndb.BooleanProperty(default=False)
-
+    lastPing = ndb.DateTimeProperty(auto_now_add=True)
 
 class Response(ndb.Model):
     """Sub model for representing question details"""
@@ -50,12 +51,17 @@ class Response(ndb.Model):
     currentQuestion=ndb.StringProperty(indexed = True)
     serialno=ndb.IntegerProperty(indexed=True)
 
+class Randomize(ndb.Model):
+    user1=ndb.StringProperty(indexed = True)
+    serialno=ndb.IntegerProperty(indexed= True)
+    qno=ndb.StringProperty(indexed = True)
+
 class EssayTypeResponse(ndb.Model):
     """Sub model for storing user response for essay type questions"""
     useremailid = ndb.StringProperty(indexed = True)
     qid = ndb.StringProperty(indexed = True)
-    ansText = ndb.StringProperty(indexed = True)    
-    qattemptedtime = ndb.FloatProperty(indexed = True)   
+    ansText = ndb.StringProperty(indexed = True)
+    qattemptedtime = ndb.FloatProperty(indexed = True)
 
 class UploadRedirect(webapp2.RequestHandler):
     def post(self):
@@ -119,18 +125,20 @@ class checklogin(webapp2.RequestHandler):
 
 class getquizstatus(webapp2.RequestHandler):
     """ handling status of quiz sends a json file of responses"""
-    def get(self):
+    def post(self):
         user = users.get_current_user()
         if user:
             #q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
             #print q1
             #logging.error("This is an error message that will show in the console")
             td = TestDetails.query(TestDetails.email==user.email()).get()
-            if td is None:
-                TestDetails(email=user.email(),test=True,delays=0.0).put()
-            json_data=json.loads(open('quizdata.json').read())
-            print json_data["name"]
-            logging.error("This is an error message that will show in the console")
+            json_data=json.loads(open('1quizdata.json').read())
+            r1 = Randomize.query(Randomize.user1==user.email()).get()
+            logging.error("examine random result set")
+            if r1:
+                isRandomized = True
+            else:
+                isRandomized = False
             # if q1:
             for key in json_data:
                 if  key == "section":
@@ -141,16 +149,32 @@ class getquizstatus(webapp2.RequestHandler):
                                 for subs in s[key]:
                                     for key in subs:
                                         if key == "questions":
+                                            if not isRandomized:
+                                                serialnos = range(0,len(subs[key]))
+                                                shuffle(serialnos)
                                             for q in subs[key]:
-                                                q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion==q["id"]).order(-Response.time).get()
+                                                if not isRandomized:
+                                                    sno = serialnos.pop()
+                                                    q["serialno"] = sno
+                                                    r = Randomize(user1=user.email(),serialno=sno,qno=q["id"])
+                                                    r.put()
+                                                else:
+                                                    r = Randomize.query(Randomize.user1==user.email(),
+                                                                        Randomize.qno==q["id"]).get()
+                                                    q["serialno"] = r.serialno
+
+                                                q1 = Response.query(Response.useremailid.emailid==user.email(),
+                                                                    Response.currentQuestion==q["id"]).order(-Response.time).get()
                                                 if q1:
                                                     q["responseAnswer"]=q1.submittedans
                                                     q["responseTime"]=q1.responsetime
                                                     q["status"]=q1.q_status
+            if td:
+                json_data['testEnd'] = td.testend
 
-            ss=json.dumps(json_data)
-            self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
-            self.response.write(ss)
+        ss=json.dumps(json_data)
+        self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+        self.response.write(ss)
 
 class getResult(webapp2.RequestHandler):
     """ get result for entire quiz """
@@ -213,121 +237,121 @@ class submitAnswer(webapp2.RequestHandler):
             self.redirect(login_url)
             return
         else:
+            # quiz timer code starts here
+            # this part will check the delay and compute the time taken
             td=TestDetails.query(TestDetails.email==user.email()).get()
-            timenow=datetime.now()
-            uda= Response.query(Response.useremailid.emailid==user.email())
-            uda=uda.order(-Response.time)
-            uda.fetch(1)
-            uda=uda.get()
-            timenow=(timenow-uda.useremailid.testctime).total_seconds()
-            print(timenow)
-            logging.error("testing json values")
-            if(timenow>12):
-                td.delays=td.delays+timenow
-                td.put()
-            takentime=(datetime.now()-td.teststime).total_seconds()-td.delays
-            uda.useremailid.testctime=datetime.now()
-            uda.put()
-            # opening json file sent by the server
-            validresponse="false"
-            status=""
-            errortype=""
-            q_status=""
-            score=0
-            type=""
-            logging.error("printing json values");
-            vals = json.loads(cgi.escape(self.request.body))
-            vals = vals['jsonData']
-            currentQuestion =vals['id']
-            submittedans = vals['responseAnswer']
-            responsetime = vals['responseTime']
-            # opening  json file of quizdata
-            #logging.error(currentQuestion,submittedans)
-            json_data=json.loads(open('quizdata.json').read())
-            #print(json_data )
-            #logging.error("This is an error message that will show in the console")
-            # finding the correct answer and updating the score
-            for currentSection in json_data["section"]:
-                for currentSubsection in currentSection["subsection"]:
-                    type=currentSubsection["types"]
-                    #logging.error("This is an error message that will show in the console")
-                    print type
-                    for q in currentSubsection["questions"]:
-                        # print(q["id"])
-                        if q["id"]==str(currentQuestion):
-                            if submittedans == "skip":
-                                validresponse="true"
-                                q_status="skip"
-                                # print(q_status)
-                            else:
-                                type=currentSubsection["types"]
-                                if type=="essay":
-                                    q_status="submitted"
-                                    status="success"
+            if td and not td.testend:
+                validresponse="false"
+                status=""
+                errortype=""
+                q_status=""
+                score=0
+                type=""
+                logging.error("printing json values");
+                vals = json.loads(cgi.escape(self.request.body))
+                vals = vals['jsonData']
+                currentQuestion =vals['id']
+                submittedans = vals['responseAnswer']
+                responsetime = vals['responseTime']
+                # opening  json file of quizdata
+                #logging.error(currentQuestion,submittedans)
+                json_data=json.loads(open('quizdata.json').read())
+
+                # finding the correct answer and updating the score
+                for currentSection in json_data["section"]:
+                    for currentSubsection in currentSection["subsection"]:
+                        type=currentSubsection["types"]
+                        #logging.error("This is an error message that will show in the console")
+                        print type
+                        for q in currentSubsection["questions"]:
+                            # print(q["id"])
+                            if q["id"]==str(currentQuestion):
+                                if submittedans == "skip":
                                     validresponse="true"
-                                elif type=="record":
-                                    r=UserAudio.query(UserAudio.user==user.email()).get()
-                                    if r :
+                                    q_status="skip"
+                                    # print(q_status)
+                                else:
+                                    type=currentSubsection["types"]
+                                    if type=="essay":
                                         q_status="submitted"
                                         status="success"
                                         validresponse="true"
-                                    else :
-                                        q_status="unknown"
-                                        status="error with record"
-                                        validresponse="false"
-                                else :
-                                    for option in q["options"]:
-                                        string1=option[1:len(option)]
-                                        # print(string1)
-                                        # print(submittedans,"submiteddfdf")
-                                        #logging.error("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-                                        if submittedans == string1:
-                                            #print("validrespnse")
+                                    elif type=="record":
+                                        r=UserAudio.query(UserAudio.user==user.email()).get()
+                                        if r :
+                                            q_status="submitted"
+                                            status="success"
                                             validresponse="true"
-                                            if option[0]== "=":
-                                                score=1
-                                                #logging.error("This is an error message that will show in the console")
+                                        else :
+                                            q_status="unknown"
+                                            status="error with record"
+                                            validresponse="false"
+                                    else :
+                                        for option in q["options"]:
+                                            string1=option[1:len(option)]
+                                            # print(string1)
+                                            # print(submittedans,"submiteddfdf")
+                                            #logging.error("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+                                            if submittedans == string1:
+                                                #print("validrespnse")
+                                                validresponse="true"
+                                                if option[0]== "=":
+                                                    score=1
+                                                    #logging.error("This is an error message that will show in the console")
 
-            if validresponse=="true":
-                global status
-                status="success"
-                if q_status!="skip":
-                    q_status="submitted"
+                if validresponse=="true":
+                    global status
+                    status="success"
+                    if q_status!="skip":
+                        q_status="submitted"
+                else:
+                    global status
+                    status="error"
+                    global errortype
+
+
+                # creating json file for error response
+                # placing in to the database
+                n1=int(currentQuestion)
+                data=Response(serialno=n1,useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
+                data.put()
+
+                # added time taken based on the timer
+                obj = {u"status":status , u"q_status":q_status, u"validresponse":validresponse, u"qid":currentQuestion}
 
             else:
-                global status
-                status="error"
-                global errortype
-
-
-            # creating json file for error response
-            # placing in to the database
-            n1=int(currentQuestion)
-            data=Response(serialno=n1,useremailid=User(emailid=user.email(),name=user.nickname()),currentQuestion=currentQuestion,submittedans=submittedans,responsetime=responsetime,q_status=q_status,q_score=score)
-            data.put()
-            obj = {u"status":status , u"q_status":q_status, u"validresponse":validresponse, u"qid":currentQuestion, u"takentime" :takentime}
+                obj = {u"testEnd" : True}
             ss=json.dumps(obj)
             self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
             self.response.write(ss)
 
+# this class is to get the ping requests every minute
 class storetime(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         user = users.get_current_user()
+        # todo handle user is None by forwarding to sign in?
         if user:
-            td=TestDetails.query(TestDetails.email==user.email()).get()
-            timenow=datetime.now()
-            uda= Response.query(Response.useremailid.emailid==user.email())
-            uda=uda.order(-Response.time)
-            uda.fetch(1)
-            uda=uda.get()
-            timenow=(timenow-uda.useremailid.testctime).total_seconds()
-            if(timenow>15.0):
-                td.delays=td.delays+timenow-10.0
-                td.put()
-            takentime=(datetime.now()-td.teststime).total_seconds()-td.delays
-            uda.useremailid.testctime=datetime.now()
-            uda.put()
-            obj = {u"takentime":takentime, u"errorcode":"sas", u"errormessage":td.delays, u"delay":timenow}
+            duration = 60 * 60
+            td = TestDetails.query(TestDetails.email==user.email()).get()
+            if td is None:
+                TestDetails(email=user.email(),test=True,delays=0.0).put()
+                obj = {u"timeSpent":0, u"timeRemaining":duration}
+            else:
+                if not td.testend:
+                    currTime = datetime.now()
+                    deltaTime = (currTime - td.lastPing).total_seconds()
+                    if(deltaTime > 65.0):
+                        td.delays = td.delays + deltaTime - 60.0
+                        td.put()
+                    timeSpent = (currTime - td.teststime).total_seconds() - td.delays
+
+                    if timeSpent >= duration:
+                        td.testend = True;
+                    obj = {u"timeSpent" : timeSpent, u"testEnd" : td.testend, u"timeRemaining" : duration - timeSpent}
+                    td.lastPing = currTime
+                    td.put()
+                else:
+                    obj = {u"testEnd":td.testend}
             ss=json.dumps(obj)
             self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
             self.response.write(ss)
@@ -339,28 +363,28 @@ class AutosaveEssay(webapp2.RequestHandler):
         vals = json.loads(cgi.escape(self.request.body))
         vals = vals['jsonData']
         qid = vals['currentQuestion']
-        ans = vals['draft']       
+        ans = vals['draft']
         qattemptedtime = vals['responsetime']
         print(vals)
         logging.error("This is an error message that will show in the console")
         data1 = EssayTypeResponse.query(EssayTypeResponse.useremailid == user.email(),
-                                     EssayTypeResponse.qid == qid).get()
+                                        EssayTypeResponse.qid == qid).get()
         print(user.email())
-        print(qid)   
+        print(qid)
 
         if data1:
             data1.qattemptedtime=qattemptedtime
-            data1.ansText = ans   
+            data1.ansText = ans
             data1.put()
 
         else:
             data = EssayTypeResponse(useremailid=user.email(),
-                                     qid=qid,                                     
+                                     qid=qid,
                                      qattemptedtime=qattemptedtime,
                                      ansText = ans,
                                      )
             data.put()
-         
+
         ss=json.dumps(vals)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.write(ss)
@@ -378,4 +402,4 @@ application = webapp2.WSGIApplication([
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
     ('/testtime',storetime)
-    ], debug=True)
+], debug=True)
