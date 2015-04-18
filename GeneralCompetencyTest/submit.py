@@ -132,7 +132,7 @@ class getquizstatus(webapp2.RequestHandler):
             #print q1
             #logging.error("This is an error message that will show in the console")
             td = TestDetails.query(TestDetails.email==user.email()).get()
-            json_data=json.loads(open('1quizdata.json').read())
+            json_data=json.loads(open('quizdata.json').read())
             r1 = Randomize.query(Randomize.user1==user.email()).get()
             logging.error("examine random result set")
             if r1:

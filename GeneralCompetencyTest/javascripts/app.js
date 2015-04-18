@@ -239,7 +239,17 @@ $(function() {
 			this.navBar.append(btn);
 
 			this.startButton = $("#start-btn");
-			this.startButton.addClass("btn btn-primary btn-lg")
+			this.answerButton = $("#answer");
+			this.startButton.hide();
+			this.answerButton.hide();
+            
+            var btn2 = document.createElement("BUTTON");
+    		var t2 = document.createTextNode("Start Test");
+    		btn2.appendChild(t2);
+			btn2.setAttribute("id", "start");
+    		this.navBar.append(btn2);
+			this.startButton = $("#start");
+			this.startButton.addClass("btn btn-success")
 
 			this.startButton.click(function(){
 				startView.startButton.hide();
