@@ -129,7 +129,7 @@ $(function() {
 					var status = quizModel.getQuizStatus();
 					console.log("quiz status" + status);
 					if (status == "END")
-						resultView.init();
+							questionView.endButton.show();
 					else
 						startView.render();
 				})
@@ -142,7 +142,7 @@ $(function() {
 			octopus.pingServer();
 			this.pingThread = window.setInterval(function(){
 				octopus.pingServer();
-			}, 60000);
+			}, 5000);
 		},
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
@@ -159,7 +159,7 @@ $(function() {
 					if(data.testEnd)
 						quizModel.testEnd = true;
 					if(quizModel.getQuizStatus() == "END")
-						resultView.init();
+						questionView.endButton.show();
 					if(quizModel.getQuizStatus() == "INPROGRESS")
 						questionView.showNextQuestion();
 				});
@@ -336,6 +336,21 @@ $(function() {
 				}
 				progressView.init();
 			});
+
+			var btn2 = document.createElement("BUTTON");
+    		var t2 = document.createTextNode("End Test");
+    		btn2.appendChild(t2);
+			btn2.setAttribute("id", "end");
+    		this.navBar.append(btn2);
+			this.endButton = $("#end");
+			this.endButton.addClass("btn btn-success");
+
+			this.endButton.hide();
+
+			this.endButton.click( function() {
+
+				resultView.init();
+			});
 		},
 
 		showQuestion : function(){
@@ -345,7 +360,7 @@ $(function() {
 				progressView.init();
 			}
 			else
-				resultView.init();
+				this.endButton.show();
 		},
 
 		showNextQuestion: function() {
@@ -356,7 +371,7 @@ $(function() {
 				progressView.init();
 			}
 			else
-				resultView.init();
+				this.endButton.show();
 
 		},
 		render : function() {
