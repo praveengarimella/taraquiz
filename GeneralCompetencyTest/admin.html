@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+		<center>
+		<table class="table table-bordered">
+
+			{% if userslist %}
+			<tr><td colspan="9" align="center"><b>List of Users</b></td><td><a href="/admin/downloadcsv/{{dateval}}">Download CSV</a></td></tr>
+			<tr><td align="left"><b>User EmailId</b></td><td align="left"><b>Aptitude Score</b></td><td align="left"><b>Aptitude Response Time</b></td><td align="left"><b>English Comprehension Score</b></td><td align="left"><b>English Comprehension Response Time</b></td><td align="left"><b>Telugu Comprehension Score</b></td><td align="left"><b>Telugu Comprehension Response Time</b></td><td align="left"><b>TotalScore</b></td><td align="left"><b>Total Time Taken</b></td><td><b>Rank</b></td></tr>
+				{% for user in userslist %}
+					<tr><td align="left"><a href="/admin/userquizreport/{{user.emailid}}/{{dateval}}">{{user.emailid}}</a></td><td align="left">{{user.aptitudeScore}}</td></td><td align="left">{{user.aptituderestime}}</td><td align="left">{{user.englishScore}}</td><td align="left">{{user.englishrestime}}</td><td align="left">{{user.teluguScore}}</td><td align="left">{{user.telugurestime}}</td><td align="left">{{user.score}}</td><td align="left">{{user.restime}}</td><td>{{loop.index}}</td></tr>
+				{% endfor %}
+				<tr><td colspan="10" align="center"><a href="/admin/"><b>Back</b></a></td></tr>
+			{% elif tests %}
+			<tr><td colspan="4" align="center"><b>List of created quizzes</b></td></tr>
+			<tr><td align="left"><b>QuizId</b></td><td align="left"><b>Participants</b></td><td align="left"><b>Status</b></td><td></td></tr>
+			{% for key,value in tests.items()%}
+			<tr><td align="left"><a href="/admin/quizdetails/{{key}}">{{key}}</a></td><td align="left">{{value}}</td><td align="left">Open</td><td><a href="/admin/sendinvitesview">Send Invites</a></td></tr>
+			{%endfor%}
+			{% elif quizdata %}
+			<tr><td align="left"><a href="/admin/quizdetails/{{dateval}}"><b>Back</b></a></td><td colspan="4" align="center"><b>Quiz Report</b></td><td><a href="/admin/downloadcsv_user/{{useremailid}}">Download CSV</a></td></tr>
+			<tr><td colspan="6" align="center"><b>Total Score: {{score}}</b></td></tr>
+			<tr><td align="left"><b>Question ID</b></td><td align="left"><b>Question</b></td><td align="left"><b>Score</b></td><td align="left"><b>Submitted Answer</b></td><td align="left"><b>Correct Answer</b></td><td align="left"><b>Response Time</b></td></tr>
+			{% for data in quizdata %}
+				
+				{% if data.q_score == 0 %}
+				<tr class="danger">
+				{% else %}
+				<tr class="success">
+				{% endif %}
+				<td align="left">{{loop.index}}</td><td align="left">{{questionslist[loop.index-1]}}</td><td align="left">{{data.q_score}}</td><td align="left">{{data.submittedans}}</td><td align="left">{{correctAnslist[loop.index-1]}}</td><td align="left">{{data.responsetime}}</td></tr>
+			{% endfor %}
+			{% else %}
+			
+			<tr><td colspan="4"><font color="red">No Data Found!</font></td></tr>
+			{% endif %}
+
+		</table>
+		</center>
+		</div>
+	</body>
+</html>

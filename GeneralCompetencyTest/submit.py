@@ -132,7 +132,7 @@ class getquizstatus(webapp2.RequestHandler):
             #print q1
             #logging.error("This is an error message that will show in the console")
             td = TestDetails.query(TestDetails.email==user.email()).get()
-            json_data=json.loads(open('1quizdata.json').read())
+            json_data=json.loads(open('quizdata.json').read())
             r1 = Randomize.query(Randomize.user1==user.email()).get()
             logging.error("examine random result set")
             if r1:
@@ -331,7 +331,7 @@ class storetime(webapp2.RequestHandler):
         user = users.get_current_user()
         # todo handle user is None by forwarding to sign in?
         if user:
-            duration = 60 * 60
+            duration = 70 * 60
             td = TestDetails.query(TestDetails.email==user.email()).get()
             if td is None:
                 TestDetails(email=user.email(),test=True,delays=0.0).put()

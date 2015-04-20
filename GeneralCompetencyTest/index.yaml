@@ -53,6 +53,11 @@ indexes:
   properties:
   - name: useremailid.emailid
   - name: serialno
+
+- kind: Response
+  properties:
+  - name: useremailid.emailid
+  - name: serialno
   - name: time
     direction: desc
 
