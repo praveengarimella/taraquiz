@@ -397,6 +397,12 @@ class AutosaveEssay(webapp2.RequestHandler):
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.write(ss)
 
+class CourseHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('course.html')
+        self.response.write(template.render())
+        #self.response.write('Hello TaraQuiz Applicant!')
+
 
 application = webapp2.WSGIApplication([
     ('/', homepage),
@@ -409,5 +415,6 @@ application = webapp2.WSGIApplication([
     ('/uploadredirect',UploadRedirect),
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
-    ('/testtime',storetime)
+    ('/testtime',storetime),
+    ('/course', CourseHandler)
 ], debug=True)
