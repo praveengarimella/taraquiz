@@ -8,102 +8,102 @@
                     "name": "A1 : Sentences",
                     "questions": [
                         {
-                            "question": "The factory workers have been on strike since January.",
+                            "question": "I'm off for two weeks at August.",
                             "options": [
-                                "=The factory workers have been on strike since January.", 
-                                "~The factory workers have been in strike since January.",
-                                "~The factory workers have been about strike since January.",
-                                "~The factory workers have been through strike since January."
+                                "~I'm off for two weeks at August.", 
+                                "=I'm off for two weeks in August.",
+                                "~I'm off for two weeks on August.",
+                                "~I'm off for two weeks between August."
                             ],
                             "id" : "1"
                         },
                         {
-                            "question": "Spain is one of a largest European countries.",
+                            "question": "Another way of saying 'old-fashioned' is 'beside the times'.",
                             "options": [
-                                "~Spain is one of a largest European countries.",
-                                "~Spain is one of an largest European countries.",
-                                "~Spain is one of largest European countries.",
-                                "=Spain is one of the largest European countries."
+                                "~Another way of saying 'old-fashioned' is 'beside the times'.",
+                                "=Another way of saying 'old-fashioned' is 'behind the times'.",
+                                "~Another way of saying 'old-fashioned' is 'outside the times'.",
+                                "~Another way of saying 'old-fashioned' is 'before the times'."
                             ],
                             "id" : "2"
                         },
                         {
-                            "question": "I got an lot of good presents for my birthday.",
+                            "question": "Do you have pen I could borrow?",
                             "options": [
-                                "~I got an lot of good presents for my birthday.",
-                                "~I got the lot of good presents for my birthday.",
-                                "=I got a lot of good presents for my birthday.",
-                                "~I got lot of good presents for my birthday."
+                                "~Do you have pen I could borrow?",
+                                "~Do you have the pen I could borrow?",
+                                "~Do you have an pen I could borrow?",
+                                "=Do you have a pen I could borrow?"
                             ],
                             "id" : "3"
                         },
                         {
-                            "question": "I can spell as well as the most students.",
+                            "question": "Do you remember exact date when the war started?",
                             "options": [
-                                "~I can spell as well as the most students.",
-                                "~I can spell as well as an most students.",
-                                "~I can spell as well as a most students.",
-                                "=I can spell as well as most students."
+                                "~Do you remember exact date when the war started?",
+                                "=Do you remember the exact date when the war started?",
+                                "~Do you remember an exact date when the war started?",
+                                "~Do you remember a exact date when the war started?"
                             ],
                             "id" : "4"
                         },
                         {
-                            "question": "I have an wonderful idea!",
+                            "question": "I know the shortcut to reach the theatre on time.",
                             "options": [
-                                "~I have an wonderful idea!",
-                                "=I have a wonderful idea!",
-                                "~I have the wonderful idea!",
-                                "~I have wonderful idea!"
+                                "~I know the shortcut to reach the theatre on time.",
+                                "~I know shortcut to reach the theatre on time.",
+                                "~I know an shortcut to reach the theatre on time.",
+                                "=I know a shortcut to reach the theatre on time."
                             ],
                             "id" : "5"
                         },
                         {
-                            "question": "Is this the bad time? Should I call you later?",
+                            "question": "Mount Everest is tallest mountain.",
                             "options": [
-                                "~Is this the bad time? Should I call you later?",
-                                "~Is this bad time? Should I call you later?",
-                                "~Is this one bad time? Should I call you later?",
-                                "=Is this a bad time? Should I call you later?"
+                                "~Mount Everest is tallest mountain.",
+                                "~Mount Everest is a tallest mountain.",
+                                "=Mount Everest is the tallest mountain.",
+                                "~Mount Everest is one tallest mountain."
                             ],
                             "id" : "6"
                         },
                         {
-                            "question": "The President of the USA lives in White House.",
+                            "question": "She cross the street.",
                             "options": [
-                                "~The President of the USA lives in White House.",
-                                "=The President of the USA lives in the White House.",
-                                "~​The President of the USA lives in a White House.",
-                                "~​The President of USA lives in an White House."
+                                "~She cross the street.",
+                                "=She crossed the street.",
+                                "~​She have crossed the street.",
+                                "~​She crossing the street."
                             ],
                             "id" : "7"
                         },
                         {
-                            "question": "Several friends played baseball together.",
+                            "question": "Ambika meet Sonia at the corner.",
                             "options": [
-                                "=Several friends played baseball together.",
-                                "~Several friends will played baseball together.",
-                                "~Several friends plays baseball together.",
-                                "~Several friends to play baseball together."
+                                "~Ambika meet Sonia at the corner.",
+                                "=Ambika met Sonia at the corner.",
+                                "~Ambika to meet Sonia at the corner.",
+                                "~Ambika meeted Sonia at the corner."
                             ],
                             "id" : "8"
                         },
                         {
-                            "question": "We playing a computer game at the moment.",
+                            "question": "They leaving work at the end of the hour.",
                             "options": [
-                                "~We playing a computer game at the moment.",
-                                "~We will playing a computer game at the moment.",
-                                "=We are playing a computer game at the moment.",
-                                "~We played a computer game at the moment."
+                                "~They leaving work at the end of the hour.",
+                                "~They leaves work at the end of the hour.",
+                                "=They leave work at the end of the hour.",
+                                "~They will left work at the end of the hour."
                             ],
                             "id" : "9"
                         },
                         {
-                            "question": "Nandini often forgotten her homework.",
+                            "question": "If we both put our cards on the table it would be easier for us to come to an agreement.",
                             "options": [
-                                "~Nandini often forgotten her homework.",
-                                "~Nandini often forget her homework.",
-                                "=Nandini often forgets her homework.",
-                                "~Nandini often forgetful her homework."
+                                "=If we both put our cards on the table it would be easier for us to come to an agreement.",
+                                "~If we both put our wallets on the table it would be easier for us to come to an agreement.",
+                                "~If we both put our plans on the table it would be easier for us to come to an agreement.",
+                                "~If we both put our thoughts on the table it would be easier for us to come to an agreement."
                             ],
                             "id" : "10"
                         }
@@ -115,70 +115,70 @@
                     "name": "A2: Reading",
                     "questions": [
                         {
-                            "question": "The main purpose of this memorandum is to",
+                            "question": "What main thought has been expressed in the above memorandum?",
                             "options": [
-                                "~Alert the librarian that it’s time to renew books collection",
-                                "~Inform the Accounts and admin officer to purchase the books",
-                                "=Guide library dept through the process of renewing their books collection",
-                                "~Inform department heads to submit details of books required"
+                                "=To  guide the employees about proper printer usage",
+                                "~To restrict printer usage all together",
+                                "~To check how much of paper is being wasted",
+                                "~To go against ‘Go Green’ movement"
                             ],
                             "id" : "11"
                         }
                     ],
                     "note": "Read the following passage and answer the question given below: ",
                     "types" : "passage",
-                    "passage": "We want to inform the library department to upgrade the collection of books currently available with the University. Each department head has been asked to list out the additional books in their domain and send it to chief librarian. Please check the available list with the proposed list of books and finalize books to be purchased. Submit the final list to the Accounts and admin officer for approval and purchase."
+                    "passage": "It has been brought to our notice that all the four printer rooms are littered with waste papers ( A4 size). Most of the waste papers are taken out of the printers in order to avoid jamming . This has increased the wastage of paper in the office. This is a humble request to all employees to adjust the “Print preview” option according to the requirement before giving the command to “Print”. Kindly abstain from wasting paper and help the organization in its endeavor to support “Go Green” movement."
                 }, 
                 {
                     "name": "A3: Numerical",
                     "questions": [
                         {
-                            "question": "A student had to secure 40% marks to pass. He got 440 marks and failed by 40 marks. Find the maximum marks.",
+                            "question": "A man spends 2/5 of his salary on house rent, 3/10 of his salary on food and 1/8 of his salary on conveyance. If he has Rs.1400 left with him, find his expenditure on food and conveyance.",
                             "options": [
-                                "~900",
-                                "~1000",
-                                "~1100",
-                                "=1200"
+                                "~3400 and 1000",
+                                "=2400 and 1000",
+                                "~2400 and 1200",
+                                "~1200 and 2400"
                             ],
                             "id" : "12" 
                         },
                         {
-                            "question": "Electricity tariff is increased by 10% and consumption is decreased by 10%. Find the percentage increase or decrease in the expenditure.",
+                            "question": "1/3 rd of the boys and one-half of the girls of a college participated in a social work project. If the number of participating students is 300 out of which 100 are boys, what is the total number of students in the college?",
                             "options": [
-                                "~No change",
-                                "~1% increase",
-                                "=1% decrease",
-                                "~5% increase"
+                                "~500",
+                                "~600",
+                                "=700",
+                                "~800"
                             ],
                             "id" : "13"
                         },
                         {
-                            "question": "A car completes a certain journey in 10 hours. It covers first half of the distance at 40 kmph and rest at 60 kmph. The total distance travelled is",
+                            "question": "The ratio between the present ages of P and Q is 6:7. If Q is 4 years old than P, what will be the ratio of the ages of P and Q after 4 years?",
                             "options": [
-                                "~500 km",
-                                "=480 km",
-                                "~520 km",
-                                "~none"
+                                "~3:4",
+                                "~3:5",
+                                "~4:3",
+                                "=7:8"
                             ],
                             "id" : "14"
                         },
                         {
-                            "question": "A and B start a business. A invests Rs 1200 for 8 months and B invests Rs 2000 for 5 months. If the profit received at the end of the year was Rs 4900, find the profit of A.",
+                            "question": "Find the difference between the greatest number of five digits and smallest number of five digits obtained by using 0, 1, 2, 3, 4 all but once.",
                             "options": [
-                                "=Rs 2400",
-                                "~Rs 2000",
-                                "~Rs 1800",
-                                "~Rs 2200"
+                                "=32976",
+                                "~32966",
+                                "~32906",
+                                "~None"
                             ],
                             "id" : "15"
                         },
                         {
-                            "question": "The average weight of a class of 20 students is 48 kg. If the weight of the teacher be included the average weight becomes 50 kg. Find the weight of teacher.",
+                            "question": "1/3 of a number is 330. What is 5/11 of that number?",
                             "options": [
-                                "~80 kgs",
-                                "=90 kgs",
-                                "~100 kgs",
-                                "~70 kgs"
+                                "~550",
+                                "~150",
+                                "=450",
+                                "~None"
                             ],
                             "id" : "16"
                         }
@@ -190,22 +190,22 @@
                     "name": "A4: Reasoning",
                     "questions": [
                         {
-                            "question": "5. Find out the wrong number in the series: 22, 66, 121, 279, 594",
+                            "question": "In the following number series a wrong number is given. Find out the wrong number: 1, 3, 10, 21, 64, 129, 356, 777",
                             "options": [
-                                "~33",
-                                "~121",
-                                "=279",
-                                "~594"
+                                "~129",
+                                "~21",
+                                "~10",
+                                "=356"
                             ],
                             "id" : "17"
                         },
                         {
-                            "question": "6. A, B, C, D and E are sitting on a bench. A is sitting next to B, C is sitting next to D, D is not sitting with E who is on the left end of the bench. C is on the second position from the right. A is to the right of B and E. A and C are sitting together. In which position A is sitting ?",
+                            "question": "9, 27, 31, 155, 161, 1127, ?",
                             "options": [
-                                "~Between B and D",
-                                "=Between B and C",
-                                "~Between E and D",
-                                "~Between C and E"
+                                "~316",
+                                "=1135",
+                                "~1288",
+                                "~2254"
                             ],
                             "id" : "18"
                         }
@@ -217,7 +217,7 @@
                     "name": "A5: Composition",
                     "questions": [
                         {
-                            "question": "Write an essay to explain your views on the issue given below in 100-150 words: 'Do backward people still need reservation, Explain?'",
+                            "question": "Write an essay to explain your views on the issue given below in 100-150 words: 'Bringing back Black Money to India will increase the Indian Revenue, but should the names be revealed?'",
                             "options": [],
                             "id" : "19"
                         }
@@ -234,49 +234,49 @@
                     "name": "E1: Reading",
                     "questions": [
                         {
-                            "question": "Why according to the passage, it is difficult to estimate the number of homeless people?",
+                            "question": "When communication happens between two people",
                             "options": [
-                                "~It is not a problem",
-                                "~The data is not sufficient",
-                                "=The number depends on how the homeless are defined",
-                                "~The data is too much to handle"     
+                                "~The scenario becomes complicated",
+                                "~The communication is not effective",
+                                "=Smooth form of communication takes place",
+                                "~There is no understanding at all"     
                             ],
                             "id" : "20"
                         },
                         {
-                            "question": "What kinds of people mostly constitute the street – homeless category?",
+                            "question": "In a group of five, when communication takes place",
                             "options": [
-                                "~Families",
-                                "=Youthful runaways",
-                                "~Old people",
-                                "~Middle aged people"     
+                                "=Each idea that is expressed must be understood by four others, who may also choose to respond.",
+                                "~There is no need for the remaining 4 to respond",
+                                "~Only the speaker will take active participation",
+                                "~It is always the speaker who plays a major role"     
                             ],
                             "id" : "21"
                         },
                         {
-                            "question": "We can understand from the reading that the number of homeless people ----",
+                            "question": "We can conclude from the reading that in large groups",
                             "options": [
-                                "~is not so great as many people think",
-                                "~is on the increase in many countries",
-                                "~is counted annually",
-                                "=is difficult to know"
+                                "=there is less opportunity for each person to speak",
+                                "~no one criticizes each other's ideas",
+                                "~before a decision is made everyone has to express their ideas individually",
+                                "~there is more opportunity for each person to speak"
                             ],
                             "id" : "22"
                         },
                         {
-                            "question": "According to the passage, liberals ----",
+                            "question": "The author of the article suggests that",
                             "options": [
-                                "~think that the problem of homelessness cannot be solved",
-                                "=want more shelters for the homeless",
-                                "~are of the opinion that most homeless people are mentally ill",
-                                "~want the government to ban sleeping on park benches"
+                                "~large groups are always superior to small groups",
+                                "=the ideal size for a small group should be five to seven",
+                                "~everyone should listen to each other's ideas no matter how large the group is",
+                                "~the number of people in a small group must not be more than five"
                             ],
                             "id" : "23"
                         }
                     ],
                     "note": "Read the following passage and answer the questions",
                     "types" : "passage",
-                    "passage": "The sad situation of the homeless remains a problem. It is difficult to estimate how many people are homeless because the number depends on how the homeless are defined. There are street people - those who sleep in bus stations, parks, and other areas. Many of these people are youthful runaways. There are the so-called sheltered homeless - those who sleep in government supported or privately funded shelters. Many of these individuals used to live with their families or friends. While street people are almost always single, the sheltered homeless include numerous families with children. Conservatives argue that many homeless are alcoholics, drug users, or mentally ill. In contrast, many liberals argue that homelessness is caused by a reduction in welfare benefits and by excessively priced housing. They want more shelters to be built for the homeless."
+                    "passage": "The sheer number of people in a group affects the amount of communication. Consider the difference between communication between two friends and communication in a group of five people. When friends talk, there are two people sending and receiving messages. In a group of five, there are five people doing the same thing. Each idea that is expressed must be understood by four others, who may also choose to respond. Consequently, the greater number of people in a group, the fewer contributions any individual may make. Because there are disadvantages to large groups, you might assume that small groups would be the most effective.  However, groups can be too small as well as too large. With a few members, a group has limited resources, which eliminates a primary advantage of groups for decision making. Also, in very small groups, members may be unwilling to disagree or criticize each other's ideas. I believe that five to seven members is the ideal size for a small group."
                 },
                 {
                     "name": "E2: Listening",
@@ -330,7 +330,7 @@
                     "name": "E3: Writing",
                     "questions": [
                         {
-                            "question": "Write about the following topic in 100 to 150 words: 'Is college education in India not world class?'",
+                            "question": "Write about the following topic in 100 to 150 words: 'Agricultural Techniques in India and the condition of farmers, Comment.'",
                             "options": [],
                             "id" : "28"
                         }

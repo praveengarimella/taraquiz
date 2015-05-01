@@ -1,43 +1,30 @@
 $(function() {
 
-	var Randomiser = {
-		shuffle : function (array) {
-			var currentIndex = array.length, temporaryValue, randomIndex ;
-
-			// While there remain elements to shuffle...
-			while (0 !== currentIndex) {
-
-				// Pick a remaining element...
-				randomIndex = Math.floor(Math.random() * currentIndex);
-				currentIndex -= 1;
-
-				// And swap it with the current element.
-				temporaryValue = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = temporaryValue;
-			}
-
-			return array;
-		}
-	};
-
 	var quizModel = {
+
 		// instance variables: title, questions
 		init : function(data) {
-			this.data = data
-			// create questions array from the data
-			this.createQuizModel();
-			console.log(this.data);
+			// create questions array from the JSON data
+			this.createQuizModel(data);
 		},
-		createQuizModel : function() {
+
+		// parse JSON data and create an array of questions
+		createQuizModel : function(data) {
 			// get questions from the json and assign it to questions array
 			// add section and subsection to the question object
 			var questionsArray = [];
-			$.each(quizModel.data, function (key, value) {
+			$.each(data, function (key, value) {
+
+				/*
+				 * store quiz title in
+				 */
 				if (key == "name")
 					quizModel.title = value;
-				if (key == "testEnd")
-					quizModel.testEnd = value;
+				/*
+				 * title and test
+				 */
+				if (key == "quizStatus")
+					quizModel.quizStatus = value;
 
 				if (key == "section") {
 					$.each(value, function(index, value) {
@@ -71,27 +58,25 @@ $(function() {
 				}
 			});
 			this.questions = questionsArray;
-			console.log(this.questions.length);
+
+			/*
+			 *	Set the question index to the first question that is not attempted
+			 */
+			var q = -1, qStatus;
+			$.each(this.questions, function(index, value) {
+				if(!value.status)
+					return false;
+				q = index;
+			});
+			this.questionIndex = q;
 		},
 		getQuizStatus : function() {
 			// get the status of the quiz by looking into the questions array
 			// returns START, INPROGRESS, END
-			var q, qStatus;
-			$.each(this.questions, function(index, value) {
-				q = index;
-				qStatus = value.status;
-				if(!value.status)
-					return false;
-			});
-
-			this.questionIndex = q;
-
-			if (q == 0)
-				return "START";
-			else if (quizModel.testEnd || q == this.questions.length - 1 && qStatus)
-				return "END";
-			else
-				return "INPROGRESS";
+			return this.quizStatus;
+		},
+		setQuizStatus : function(quizStatus) {
+			this.quizStatus = quizStatus;
 		},
 		nextQuestion : function() {
 			// returns the next questions and updates the pointer
@@ -105,8 +90,7 @@ $(function() {
 			}
 
 			if (this.questionIndex < this.questions.length)
-				this.question = this.questions[this.questionIndex++];
-
+				this.question = this.questions[++this.questionIndex];
 		},
 
 		setQuestion : function(index) {
@@ -114,7 +98,6 @@ $(function() {
 			//	if (i < index)
 			//		q.status = "skip";
 			//});
-			this.questionIndex = index;
 			this.question = this.questions[this.questionIndex];
 		}
 	};
@@ -129,7 +112,8 @@ $(function() {
 					var status = quizModel.getQuizStatus();
 					console.log("quiz status" + status);
 					if (status == "END")
-							questionView.endButton.show();
+			this.questionIndex = index;
+						resultView.init();
 					else
 						startView.render();
 				})
@@ -159,9 +143,10 @@ $(function() {
 					if(data.testEnd)
 						quizModel.testEnd = true;
 					if(quizModel.getQuizStatus() == "END")
-						questionView.endButton.show();
-					if(quizModel.getQuizStatus() == "INPROGRESS")
+						resultView.init();
+					if(quizModel.getQuizStatus() == "INPROGRESS") {
 						questionView.showNextQuestion();
+					}
 				});
 		},
 		autosaveContent : function(responseAnswer, responseTS) {
@@ -203,10 +188,10 @@ $(function() {
 				.done(function(data){
 					console.log("ping response " + data)
 					data = JSON.parse(data);
+					quizModel.setQuizStatus(data.quizStatus);
 					console.log(data.timeRemaining);
 					if(!data.timeRemaining) {
 						this.pingThread = clearInterval();
-
 					}
 					progressView.renderTime(data.timeRemaining);
 				})
@@ -496,7 +481,7 @@ $(function() {
 		},
 
 		getResponseTime : function() {
-			return (questionView.submittedTS - questionView.appearedTS)/(100 * 60);
+			return (questionView.submittedTS - questionView.appearedTS)/(1000);
 		},
 
 		reset : function() {
@@ -634,5 +619,26 @@ $(function() {
 		}
 	};
 
+	// used for shuffling the options in MCQs
+	var Randomiser = {
+		shuffle : function (array) {
+			var currentIndex = array.length, temporaryValue, randomIndex ;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+	};
 	octopus.init();
 });

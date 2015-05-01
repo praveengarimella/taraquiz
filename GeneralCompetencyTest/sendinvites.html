@@ -1,0 +1,59 @@
+<html>
+<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	<center><h2>Send Test Invites</h2></center>
+	<form method="POST" action="/admin/sendinvites">
+		<div class="row">
+			<div class="col-md-2">
+				<label for="to">Invitation Code:</label>
+			</div>
+			<div class="col-md-10">
+				<input type="text" name="invitecode" class="form-control" />
+			</div>
+		</div>
+		<div class="row"><br></div>
+		<div class="row">
+			<div class="col-md-2">
+				<label for="to">TO(Recipients list):</label>
+			</div>
+			<div class="col-md-10">
+				<textarea rows="10" name="mailids" id="mailids" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="row"><br></div>
+		<div class="row">
+			<div <div class="col-md-2">
+				<label for="mesg">Message Body:</label>
+			</div>
+			<div <div class="col-md-10">
+				<textarea rows="5" name="msg" id="msg" class="form-control">The test will commence at 6:00 PM on 18-04-2015. The test duration is 60 minutes</textarea><br><br>
+			</div>
+		</div>
+		<center><input type="submit" value="SEND" class="btn btn-primary"/>
+		<a href="/admin/" class="btn btn-primary"/>Cancel</a></center>
+	</form>
+	<!-- <form>
+	  <div class="form-group">
+	    <label for="to">TO:</label>
+	    <textarea class="form-control" rows="10" name="mailids" id="mailids"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label for="body">Message Body</label>
+	    <textarea class="form-control" rows="5" name="msg" id="msg"></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form> -->
+	</div>
+</body>
+</html>

@@ -170,7 +170,12 @@ class getquizstatus(webapp2.RequestHandler):
                                                     q["responseTime"]=q1.responsetime
                                                     q["status"]=q1.q_status
             if td:
-                json_data['testEnd'] = td.testend
+                if td.testend:
+                    json_data['quizStatus'] = 'END'
+                else:
+                    json_data['quizStatus'] = 'INPROGRESS'
+            else:
+                json_data['quizStatus'] = 'START'
 
         ss=json.dumps(json_data)
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
@@ -331,11 +336,11 @@ class storetime(webapp2.RequestHandler):
         user = users.get_current_user()
         # todo handle user is None by forwarding to sign in?
         if user:
-            duration = 60 * 60
+            duration = 70 * 60
             td = TestDetails.query(TestDetails.email==user.email()).get()
             if td is None:
                 TestDetails(email=user.email(),test=True,delays=0.0).put()
-                obj = {u"timeSpent":0, u"timeRemaining":duration}
+                obj = {u"timeSpent":0, u"timeRemaining":duration, u"quizStatus": u"INPROGRESS"}
             else:
                 if not td.testend:
                     currTime = datetime.now()
@@ -346,12 +351,15 @@ class storetime(webapp2.RequestHandler):
                     timeSpent = (currTime - td.teststime).total_seconds() - td.delays
 
                     if timeSpent >= duration:
-                        td.testend = True;
-                    obj = {u"timeSpent" : timeSpent, u"testEnd" : td.testend, u"timeRemaining" : duration - timeSpent}
+                        td.testend = True
+                        quizStatus = u"END"
+                    else:
+                        quizStatus = u"INPROGRESS"
+                    obj = {u"timeSpent" : timeSpent, u"quizStatus": quizStatus, u"timeRemaining" : duration - timeSpent}
                     td.lastPing = currTime
                     td.put()
                 else:
-                    obj = {u"testEnd":td.testend}
+                    obj = {u"quizStatus":u"END"}
             ss=json.dumps(obj)
             self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
             self.response.write(ss)
