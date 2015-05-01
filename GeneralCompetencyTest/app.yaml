@@ -13,6 +13,9 @@ handlers:
 
 - url: /javascripts
   static_dir: javascripts
+  
+- url: /video
+  static_dir: video
 
 - url: /admin/.*
   script: admin.application

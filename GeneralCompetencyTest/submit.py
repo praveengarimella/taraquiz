@@ -401,7 +401,11 @@ class CourseHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('course.html')
         self.response.write(template.render())
-        #self.response.write('Hello TaraQuiz Applicant!')
+
+class ModuleHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('module.html')
+        self.response.write(template.render())
 
 
 application = webapp2.WSGIApplication([
@@ -416,5 +420,6 @@ application = webapp2.WSGIApplication([
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
     ('/testtime',storetime),
-    ('/course', CourseHandler)
+    ('/course', CourseHandler),
+    ('/module', ModuleHandler)
 ], debug=True)
