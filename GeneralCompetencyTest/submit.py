@@ -40,6 +40,16 @@ class TestDetails(ndb.Model):
     testend= ndb.BooleanProperty(default=False)
     lastPing = ndb.DateTimeProperty(auto_now_add=True)
 
+class userDetails(ndb.Model):
+    name = ndb.StringProperty(indexed=True)
+    email=ndb.StringProperty(indexed=True)
+    phno = ndb.StringProperty(indexed=True)
+    street = ndb.StringProperty(indexed=True)
+    city = ndb.StringProperty(indexed=True)
+    state = ndb.StringProperty(indexed=True)
+    pincode = ndb.StringProperty(indexed=True)
+
+
 class Response(ndb.Model):
     """Sub model for representing question details"""
     useremailid = ndb.StructuredProperty(User)
@@ -119,7 +129,12 @@ class checklogin(webapp2.RequestHandler):
             ss=Response.query(Response.useremailid.emailid==user.email()).get()
             if ss is None:
                 Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
-            template= JINJA_ENVIRONMENT.get_template('quiz.html')
+            sp=userDetails.query(userDetails.email==user.email()).get()
+            template=None
+            if sp is not None:
+                template= JINJA_ENVIRONMENT.get_template('quiz.html')
+            else:
+                template= JINJA_ENVIRONMENT.get_template('register.html')
             self.response.write(template.render())
 
 
@@ -389,10 +404,49 @@ class AutosaveEssay(webapp2.RequestHandler):
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.write(ss)
 
+class registrationdataHandler(webapp2.RequestHandler):
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            print self.request.body
+            logging.error("self.request.body")
+            vals = json.loads(cgi.escape(self.request.body))
+            vals = vals['jsonData']
+            userDetails(name=vals['name'],email=user.email(),phno=vals['phno'],street=vals['add1'],city=vals['add2'],state=vals['add3'],pincode=vals['pincode']).put()
+            obj = {u"message": "success"}
+            ss=json.dumps(vals)
+            self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
+            self.response.write(ss)
+        else:
+            login_url = users.create_login_url(self.request.path)
+            self.redirect(login_url)
+
+    def get(self):
+        user=users.get_current_user()
+        if user:
+            template = JINJA_ENVIRONMENT.get_template('quiz.html')
+            self.response.write(template.render())
+        else:
+            login_url = users.create_login_url(self.request.path)
+            self.redirect(login_url)
+
+
+class registration(webapp2.RequestHandler):
+    def get(self):
+        user=users.get_current_user()
+        if user:
+            template = JINJA_ENVIRONMENT.get_template('register.html')
+            self.response.write(template.render())
+        else:
+            login_url = users.create_login_url(self.request.path)
+            self.redirect(login_url)
+
 
 application = webapp2.WSGIApplication([
     ('/', homepage),
     ('/checklogin',checklogin),
+    ('/startquiz',registrationdataHandler),
+    ('/registration',registration),
     ('/submitanswer', submitAnswer),
     ('/getResult', getResult),
     ('/getquizstatus', getquizstatus),

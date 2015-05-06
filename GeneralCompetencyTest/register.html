@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" >
+	function storeuserdetails() {
+		var objectData =
+		{
+		    name: document.getElementById('name').value,
+		    phone: document.getElementById('phone').value,
+		    address: document.getElementById('addl1').value
+		};
+
+		var objectDataString = JSON.stringify(objectData);
+		console.log(objectDataString);
+		$.ajax({
+		    type: 'get',
+		    url: '/signup',
+		    dataType: 'json',
+		    data: {
+			jsonData: objectDataString
+		    },
+		    success: function (data) {
+			console.log( JSON.stringify(data));
+		    },
+		    error: function () {
+			alert("failure");
+		    }
+		});
+		return true;
+	}
+
+	function removeform() {
+		document.getElementById("signupModal").style.display = "none";
+	}
+	</script>
+	
+	
+</head>
+<body>
+
+	<!-- Sign Up Modal -->
+	<div id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" onclick="removeform()"class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Sign Up for the General Competency Test</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						Fill up your name, mobile phone number and address in the form below to sign up for the test.
+					</p>
+					
+					<form >
+						<div class="form-group">
+							<label for="exampleInputEmail1">Your Name</label>
+							<input id="name" type="text" class="form-control"  placeholder="Enter your name">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone No</label>
+							<input id="phone" type="phone" class="form-control"  placeholder="Phone no.">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAddress">Address:</label>s
+							<input id="ad1"type="text" class="form-control" placeholder="Street/Flat no">
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="ad2" type="text" class="form-control" placeholder="City/Town">
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="ad3" type="text" class="form-control" placeholder="State">
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="pincode" type="number" class="form-control" placeholder="PIN Code">
+						</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="submitbtn" class="btn btn-primary">Submit</button>
+					<button type="button" onclick="removeform()" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div></form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	document.getElementById("submitbtn").onclick = function () {
+		var data = { "name" : document.getElementById("name").value, "phno" : document.getElementById("phone").value,"add1" : document.getElementById("ad1").value,"add2" : document.getElementById("ad2").value,"add3" : document.getElementById("ad3").value, "pincode":document.getElementById("pincode").value}
+		console.log(data);
+//$.post("/startquiz", data);
+//console.log(data);	
+		data=JSON.stringify({jsonData: data});
+		console.log(data);
+		$.post("/startquiz", data)
+			.done(function(){
+				location.href = "/startquiz";			
+			})
+			.fail(function(){
+				console.log("PING Failed");
+		});
+	};
+	</script>
+	
+
+	
+	</body>
+	</html>
+
+
+	
