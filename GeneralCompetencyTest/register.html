@@ -8,16 +8,48 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-    <link rel="stylesheet" type="text/css" href="stylesheet1/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="stylesheet1/font-awesome/css/font-awesome.min.css" />
-
-    <script type="text/javascript" src="stylesheet1/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="stylesheet1/bootstrap/js/bootstrap.min.js"></script>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script type="text/javascript" >
+	function mandatory() {
+
+  		 // first form on page"
+	    	var nameValue = document.getElementById("name").value; // first field in form
+	    	if (nameValue == "") {
+	      		alert("Please enter a name");
+	      		return false;
+	    	}
+	    	var phoneValue = document.getElementById("phone").value; // second field
+	    	if (phoneValue.length!=10) { // your first option does not have a value 
+	      		alert("Please give a valid phone number");
+	      		return false;
+	    	}
+	    	var addrValue1 = document.getElementById("ad1").value; // second field
+	    	if (addrValue1 == "") { // your first option does not have a value 
+	      		alert("Please give a valid address1");
+	      		return false;
+	    	}
+
+	    	var addrValue2 = document.getElementById("ad2").value; // second field
+	    	if (addrValue2 == "") { // your first option does not have a value 
+	      		alert("Please give a valid address2");
+	      		return false;
+	    	}
+	    	var addrValue3 = document.getElementById("ad3").value; // second field
+	    	if (addrValue3 == "") { // your first option does not have a value 
+	      		alert("Please give a valid address3");
+	      		return false;
+	    	}
+	    	var addrValue4 = document.getElementById("pincode").value; // second field
+	    	if (addrValue4.length!=6 ) { // your first option does not have a value 
+	      		alert("Please give a valid pin");
+	      		return false;
+	    	}
+	    	return true; // allow submission
+  		
+	}
 	</script>
 	
 	
@@ -40,27 +72,27 @@
 					<form>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Your Name</label>
-							<input id="name" type="text" class="form-control"  placeholder="Enter your name" required>
+							<input id="name" type="text" class="form-control"  placeholder="Enter your name" >
 						</div>
 						<div class="form-group">
 							<label for="exampleInputEmail1">Phone No</label>
-							<input id="phone" type="phone" class="form-control"  placeholder="Phone no." required>
+							<input id="phone" type="phone" class="form-control"  placeholder="Phone no.">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputAddress">Address:</label>
-							<input id="ad1"type="text" class="form-control" placeholder="Street/Flat no"required>
+							<input id="ad1"type="text" class="form-control" placeholder="Street/Flat no">
 						</div>
 						<div class="form-group">
 							<!-- <label for="exampleInputAddress">Address:</label> -->
-							<input id="ad2" type="text" class="form-control" placeholder="City/Town"required>
+							<input id="ad2" type="text" class="form-control" placeholder="City/Town">
 						</div>
 						<div class="form-group">
 							<!-- <label for="exampleInputAddress">Address:</label> -->
-							<input id="ad3" type="text" class="form-control" placeholder="State"required>
+							<input id="ad3" type="text" class="form-control" placeholder="State">
 						</div>
 						<div class="form-group">
 							<!-- <label for="exampleInputAddress">Address:</label> -->
-							<input id="pincode" type="number" class="form-control" placeholder="PIN Code"required>
+							<input id="pincode" type="number" class="form-control" placeholder="PIN Code">
 						</div>
 					
 				</div>
@@ -73,6 +105,10 @@
 	</div>
 	<script type="text/javascript">
 		document.getElementById("submitbtn").onclick = function () {
+
+			var result = mandatory();
+			console.log(result+" is the given error	");
+			if(result == true) {
 				var data = { 
 
 					"name" : document.getElementById("name").value, 
@@ -92,8 +128,14 @@
 						location.href = "/startquiz";			
 					})
 					.fail(function(){
-						console.log("person details Failed");
-				});	
+						console.log("PING Failed");
+				});
+
+				
+			} else {
+				return false;
+			}
+					
 		};
 	</script>
 	
