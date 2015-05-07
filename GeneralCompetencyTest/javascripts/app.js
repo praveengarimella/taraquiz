@@ -69,6 +69,7 @@ $(function() {
 				q = index;
 			});
 			this.questionIndex = q;
+			console.log("question index is:" + this.questionIndex)
 		},
 		getQuizStatus : function() {
 			// get the status of the quiz by looking into the questions array
@@ -83,14 +84,15 @@ $(function() {
 			var quizStatus = this.getQuizStatus();
 			console.log(quizStatus);
 			if (quizStatus == "START")
-				this.questionIndex = 0;
+				this.questionIndex = -1;
 			if (quizStatus == "END"){
 				this.questionIndex = this.questions.length;
 				this.question = undefined;
 			}
-
-			if (this.questionIndex < this.questions.length)
-				this.question = this.questions[++this.questionIndex];
+			if (this.questionIndex < this.questions.length) {
+				this.questionIndex++;
+				this.question = this.questions[this.questionIndex];
+			}
 		},
 
 		setQuestion : function(index) {
@@ -112,7 +114,6 @@ $(function() {
 					var status = quizModel.getQuizStatus();
 					console.log("quiz status" + status);
 					if (status == "END")
-			this.questionIndex = index;
 						resultView.init();
 					else
 						startView.render();

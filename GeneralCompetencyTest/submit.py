@@ -21,10 +21,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
 class UserAudio(ndb.Model):
     user = ndb.StringProperty()
     # blob_key = blobstore.BlobReferenceProperty()
     blob_key = ndb.BlobKeyProperty()
+
 class User(ndb.Model):
     """Sub model for storing user activity."""
     name = ndb.StringProperty(indexed=True)
@@ -128,18 +130,21 @@ class getquizstatus(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         if user:
-            #q1 = Response.query(Response.useremailid.emailid==user.email(),Response.currentQuestion!=None).get()
-            #print q1
-            #logging.error("This is an error message that will show in the console")
-            td = TestDetails.query(TestDetails.email==user.email()).get()
-            json_data=json.loads(open('quizdata.json').read())
+
+            # check if candidate is resuming the test
             r1 = Randomize.query(Randomize.user1==user.email()).get()
-            logging.error("examine random result set")
             if r1:
                 isRandomized = True
             else:
                 isRandomized = False
-            # if q1:
+
+            # TODO
+            # New json_data returned from the question bank if is randomized is false
+            # Else list of question ID should be fetched from randomize table
+            # pass the question IDs list to the question bank to get json_data
+
+            json_data = json.loads(open('quizdata.json').read())
+
             for key in json_data:
                 if  key == "section":
                     section = json_data[key]
@@ -156,11 +161,13 @@ class getquizstatus(webapp2.RequestHandler):
                                                 if not isRandomized:
                                                     sno = serialnos.pop()
                                                     q["serialno"] = sno
-                                                    r = Randomize(user1=user.email(),serialno=sno,qno=q["id"])
+                                                    r = Randomize(user1 = user.email(), serialno = q['serialno'], qno=q["id"])
                                                     r.put()
                                                 else:
-                                                    r = Randomize.query(Randomize.user1==user.email(),
-                                                                        Randomize.qno==q["id"]).get()
+                                                    print q['id']
+                                                    logging.error("question id is:")
+                                                    r = Randomize.query(Randomize.user1 == user.email(),
+                                                                        Randomize.qno == q["id"]).get()
                                                     q["serialno"] = r.serialno
 
                                                 q1 = Response.query(Response.useremailid.emailid==user.email(),
@@ -169,6 +176,8 @@ class getquizstatus(webapp2.RequestHandler):
                                                     q["responseAnswer"]=q1.submittedans
                                                     q["responseTime"]=q1.responsetime
                                                     q["status"]=q1.q_status
+
+            td = TestDetails.query(TestDetails.email==user.email()).get()
             if td:
                 if td.testend:
                     json_data['quizStatus'] = 'END'
