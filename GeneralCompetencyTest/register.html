@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet1/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheet1/font-awesome/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="stylesheet1/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="stylesheet1/bootstrap/js/bootstrap.min.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript" >
+	</script>
+	
+	
+</head>
+<body>
+
+	<!-- Sign Up Modal -->
+	<div id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!-- <button type="button" onclick="removeform()"class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+					<h4 class="modal-title" id="myModalLabel">Personal Contact Information</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						Fill up your name, mobile phone number and address in the form below to sign up for the test.
+					</p>
+					
+					<form>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Your Name</label>
+							<input id="name" type="text" class="form-control"  placeholder="Enter your name" required>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone No</label>
+							<input id="phone" type="phone" class="form-control"  placeholder="Phone no." required>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputAddress">Address:</label>
+							<input id="ad1"type="text" class="form-control" placeholder="Street/Flat no"required>
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="ad2" type="text" class="form-control" placeholder="City/Town"required>
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="ad3" type="text" class="form-control" placeholder="State"required>
+						</div>
+						<div class="form-group">
+							<!-- <label for="exampleInputAddress">Address:</label> -->
+							<input id="pincode" type="number" class="form-control" placeholder="PIN Code"required>
+						</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="submitbtn" class="btn btn-primary">Submit</button>
+					<!-- <button type="button" onclick="removeform()" class="btn btn-default" data-dismiss="modal">Close</button> -->
+				</div></form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementById("submitbtn").onclick = function () {
+				var data = { 
+
+					"name" : document.getElementById("name").value, 
+					"phno" : document.getElementById("phone").value,
+					"add1" : document.getElementById("ad1").value,
+					"add2" : document.getElementById("ad2").value,
+					"add3" : document.getElementById("ad3").value, 
+					"pincode":document.getElementById("pincode").value
+				}
+				console.log(data);
+			
+				data=JSON.stringify({jsonData: data});
+				console.log(data);
+				
+					$.post("/startquiz", data)
+					.done(function(){
+						location.href = "/startquiz";			
+					})
+					.fail(function(){
+						console.log("person details Failed");
+				});	
+		};
+	</script>
+	
+
+	
+	</body>
+	</html>
+
+
+	
