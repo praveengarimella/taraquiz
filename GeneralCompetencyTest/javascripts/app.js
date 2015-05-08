@@ -62,7 +62,7 @@ $(function() {
 			/*
 			 *	Set the question index to the first question that is not attempted
 			 */
-			var q = -1, qStatus;
+			var q = 0, qStatus;
 			$.each(this.questions, function(index, value) {
 				if(!value.status)
 					return false;
@@ -100,7 +100,7 @@ $(function() {
 			//	if (i < index)
 			//		q.status = "skip";
 			//});
-			this.question = this.questions[this.questionIndex];
+			this.question = this.questions[index];
 		}
 	};
 	var octopus = {
@@ -310,12 +310,10 @@ $(function() {
 				} else {
 					alert("Select a choice to submit answer.");
 				}
-				progressView.init();
 			});
 		},
 
 		showQuestion : function(){
-			console.log(quizModel.question);
 			if(quizModel.question){
 				questionView.render();
 				progressView.init();
@@ -326,15 +324,9 @@ $(function() {
 
 		showNextQuestion: function() {
 			quizModel.nextQuestion();
-			console.log(quizModel.question, quizModel.questionIndex);
-			if(quizModel.question){
-				questionView.render();
-				progressView.init();
-			}
-			else
-				resultView.init();
-
+			this.showQuestion();
 		},
+
 		render : function() {
 			var q = quizModel.question;
 			this.sectionName.html("<h4>");
@@ -518,6 +510,7 @@ $(function() {
 				if(!question.status)
 					$("#"+index).attr('disabled','disabled');
 				$("#"+index).click(function(){
+					console.log("progress:" + this.id);
 					quizModel.setQuestion(this.id);
 					questionView.showQuestion();
 				});
