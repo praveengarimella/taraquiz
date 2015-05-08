@@ -100,6 +100,7 @@ $(function() {
 			//	if (i < index)
 			//		q.status = "skip";
 			//});
+			this.questionIndex=index;
 			this.question = this.questions[index];
 		}
 	};
