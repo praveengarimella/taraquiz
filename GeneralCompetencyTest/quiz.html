@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href="stylesheets/bootstrap-theme.min.css">
 	<script src="javascripts/jquery.min.js"></script>
 	<script src="javascripts/bootstrap.min.js"></script>
-	<script type="text/javascript" src="javascripts/RecordRTC.js"></script>
-	<script type="text/javascript" src="javascripts/RecordRTCInterface.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
@@ -25,7 +23,7 @@
 	<div id="div" class="container">
 		<div class="row" style="padding-bottom:25px">
 			<!-- Content box, where required data is parsed from JSON -->
-			<div class="col-md-6">
+			<div id="QuestionView" class="col-md-6">
 				<div style="display: flex">
 						<h3 id="section-name"></h3>	
 				</div>
@@ -53,5 +51,10 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="javascripts/app.js"></script>
+	<!-- swfobject is a commonly used library to embed Flash content -->
+	<script type="text/javascript"	src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+	<!-- Setup the recorder interface -->
+	<script type="text/javascript" src="javascripts/recorder.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-application: wise-logic-91506
+application: speedy-coder-93515
 version: 1
 runtime: python27
 api_version: 1
@@ -13,6 +13,17 @@ handlers:
 
 - url: /javascripts
   static_dir: javascripts
+  
+- url: /crossdomain.xml
+  mime_type: text/xml
+  static_files: crossdomain.xml
+  upload: crossdomain.xml
+  
+- url: /client
+  static_dir: public/client
+
+- url: /turk
+  static_dir: public/turk
 
 - url: /admin/.*
   script: admin.application

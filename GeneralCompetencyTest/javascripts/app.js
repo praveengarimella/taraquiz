@@ -207,6 +207,7 @@ $(function() {
 			this.titlePane = $(".title");
 			this.sectionName = $("#section-name");
 			this.questionPane = $("#content-box");
+			this.QuestionV=$('#QuestionView');
 
 			this.startMessage = "Click the Start Test button to begin.";
 			this.resumeMessage = "You have started the test, click the button below to resume the test.";
@@ -226,6 +227,12 @@ $(function() {
 
 			this.startButton = $("#start-btn");
 			this.startButton.addClass("btn btn-primary btn-lg")
+			
+			var w=document.createElement("div");
+			w.setAttribute('id','flash');
+			this.QuestionV.append(w);
+			this.wami1 = $("#flash");
+			this.wami1.hide();
 
 			this.startButton.click(function(){
 				startView.startButton.hide();
@@ -291,8 +298,8 @@ $(function() {
 				}
 
 				if (q.subsections.types == "record") {
-					// make a call to a separate handler
 					selectedAnswer = "submitted";
+					Wami.stopRecording();
 				}
 
 				if (selectedAnswer == "skip") {
@@ -363,7 +370,11 @@ $(function() {
 				this.displayOptions();
 			}
 			if (q.subsections.types == "record")
+			{
+				startView.wami1.show();
 				this.displayRecording();
+			}
+				
 			if (q.subsections.types == "question")
 				this.displayOptions();
 			this.appearedTS = Date.now();
@@ -412,30 +423,28 @@ $(function() {
 		},
 
 		displayRecording : function() {
+			Wami.setup({
+					id: 'flash'
+				});
 			var q = quizModel.question;
-			this.questionPane.append('<div><button id="record" class="btn btn-danger">Record</button>' +
+			this.questionPane.append('<div><button id="record" class="btn btn-danger">Record</button>'+
 			'&nbsp;&nbsp<button id="stop" class="btn btn-info">Stop</button></div>');
 			var record=document.getElementById('record');
 			var stop=document.getElementById('stop');
-			record.onclick= function(){
-				alert("There is a notification on the top of the browser seeking your permission to record audio. Click Ok and then Allow recording to begin.");
+			stop.disabled=true;
+			record.onclick= function()
+			{
 				record.disabled=true;
 				stop.disabled=false;
-				interfaceRecord();
+				var recordingUrl ="https://speedy-coder-93515.appspot.com/audio";
+				Wami.startRecording(recordingUrl);
 			}
-			stop.onclick= function() {
-				$("#record").hide();
-				$("#stop").hide();
+			stop.onclick= function()
+			{
+				Wami.stopListening();
 				record.disabled=false;
 				stop.disabled=true;
-				interfaceStop();
 			}
-			window.onbeforeunload = function() {
-				if (!!fileName) {
-					deleteAudioVideoFiles();
-					return 'It seems that you\'ve not deleted audio/video files from the server.';
-				}
-			};
 		},
 
 		displayOptions : function() {

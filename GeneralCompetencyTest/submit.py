@@ -5,12 +5,16 @@ import json
 import jinja2
 import webapp2
 import logging
+from google.appengine.ext import db
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp import util
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import mail
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.api import files
 from pprint import pprint
 import datetime
 from datetime import datetime
@@ -23,9 +27,13 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 class UserAudio(ndb.Model):
-    user = ndb.StringProperty()
+    user = ndb.StringProperty(indexed=True)
     # blob_key = blobstore.BlobReferenceProperty()
-    blob_key = ndb.BlobKeyProperty()
+    blob1 = ndb.BlobKeyProperty(indexed=True)
+    time=ndb.DateTimeProperty(auto_now_add=True)
+class DataModel(db.Model):
+	url = db.StringProperty(required=True)
+	blob = blobstore.BlobReferenceProperty(required=True)
 
 class User(ndb.Model):
     """Sub model for storing user activity."""
@@ -135,12 +143,8 @@ class checklogin(webapp2.RequestHandler):
             print sp
             logging.error("checkllajn")
             if sp is not None:
-                print "asdjkbsd"
-                logging.error("checklogin")
                 template= JINJA_ENVIRONMENT.get_template('quiz.html')
             else:
-                print "register"
-                logging.error("checklogin")
                 template= JINJA_ENVIRONMENT.get_template('register.html')
             self.response.write(template.render())
 
@@ -430,8 +434,6 @@ class registrationdataHandler(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         if user:
-            print self.request.body
-            logging.error("self.request.body")
             vals = json.loads(cgi.escape(self.request.body))
             vals = vals['jsonData']
             userDetails(name=vals['name'],email=user.email(),phno=vals['phno'],street=vals['add1'],city=vals['add2'],state=vals['add3'],pincode=vals['pincode']).put()
@@ -461,6 +463,28 @@ class registration(webapp2.RequestHandler):
         else:
             login_url = users.create_login_url(self.request.path)
             self.redirect(login_url)
+			
+class WamiHandler(webapp2.RequestHandler):
+    def post(self):
+        user= users.get_current_user()
+        if user:
+            type = self.request.headers['Content-Type']
+            blob_file_name = files.blobstore.create(mime_type=type, _blobinfo_uploaded_filename=self.get_name())
+            with files.open(blob_file_name, 'a') as f:
+                f.write(self.request.body)
+            f.close()
+            files.finalize(blob_file_name)
+            blob_key = files.blobstore.get_blob_key(blob_file_name)
+            UserAudio(blob1=blob_key,user=user.email()).put()
+            logging.info("client-to-server: type(" + type +") key("  + str(blob_key) + ")")
+			
+		
+    def get_name(self):
+        name = "output.wav"
+        params = cgi.parse_qs(self.request.query_string)
+        if params and params['name']:
+            name = params['name'][0];
+        return name
 
 
 application = webapp2.WSGIApplication([
@@ -476,5 +500,6 @@ application = webapp2.WSGIApplication([
     ('/uploadredirect',UploadRedirect),
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
-    ('/testtime',storetime)
+    ('/testtime',storetime),
+	('/audio',WamiHandler)
 ], debug=True)
