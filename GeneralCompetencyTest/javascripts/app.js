@@ -129,6 +129,10 @@ $(function() {
 				octopus.pingServer();
 			}, 60000);
 		},
+
+		stopPing : function() {
+			clearInterval(this.pingThread);
+		},
 		submitAnswer : function() {
 			var submittedQuestion = $.extend({},quizModel.question);
 
@@ -239,6 +243,31 @@ $(function() {
 					progressView.init();
 				}
 			});
+
+			this.endtest = $('#end-test');
+			var btn = document.createElement("BUTTON");
+			var t = document.createTextNode("End test");
+			btn.appendChild(t);
+			btn.setAttribute("id", "endbtn");				
+			this.endtest.addClass("btn btn-lg btn-block")
+			this.endtest.append(btn);
+			this.endtest.hide();
+
+			this.endtest.click(function(){
+
+			confirm("Do you want to end the test?");
+			var data = {"testend":true};
+			data=JSON.stringify({jsonData: data});
+			$.post("/endtest", data)
+				.done(function(data){
+					console.log("Success:" + data);
+			 	})
+			 	.fail(function(data){
+					console.log("testend Failed");
+			 	});
+			 	octopus.stopPing();
+			 	resultView.init();
+			});
 		},
 
 		render : function() {
@@ -277,7 +306,9 @@ $(function() {
 			btn.setAttribute("id", "sanswer");
 			this.navBar.append(btn);
 			this.answerButton = $("#sanswer");
-			this.answerButton.addClass("btn btn-success")
+			this.answerButton.addClass("btn btn-success");
+
+			startView.endtest.show();
 
 			this.answerButton.click(function(){
 
@@ -319,7 +350,7 @@ $(function() {
 				progressView.init();
 			}
 			else
-				resultView.init();
+			 	alert("select End Test Button to end your test");
 		},
 
 		showNextQuestion: function() {
@@ -562,7 +593,7 @@ $(function() {
 
 			this.startButton.hide();
 			this.answerButton.hide();
-
+			startView.endtest.hide();
 			this.render();
 		},
 

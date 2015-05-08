@@ -770,7 +770,20 @@ class registration(webapp2.RequestHandler):
         else:
             login_url = users.create_login_url(self.request.path)
             self.redirect(login_url)
-
+            
+class endtest(webapp2.RequestHandler):
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            val = json.loads(cgi.escape(self.request.body))
+            val = val['jsonData']
+            testend = val['testend']
+            print(testend)
+            data1 = TestDetails.query(TestDetails.email == user.email()).get()
+            print(user.email())      
+            if data1:
+                data1.testend = testend
+                data1.put()
 
 application = webapp2.WSGIApplication([
     ('/', homepage),
@@ -785,5 +798,6 @@ application = webapp2.WSGIApplication([
     ('/uploadredirect',UploadRedirect),
     ('/upload_audio', AudioUploadHandler),
     ('/view_audio/([^/]+)?', ViewAudioHandler),
-    ('/testtime',storetime)
+    ('/testtime',storetime),
+    ('/endtest',endtest)
 ], debug=True)
