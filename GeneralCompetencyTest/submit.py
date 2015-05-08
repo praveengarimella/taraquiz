@@ -443,8 +443,6 @@ class getquizstatus(webapp2.RequestHandler):
             # pass the question IDs list to the question bank to get json_data
 
             #json_data = json.loads(open('quizdata.json').read())
-            print json_data
-            logging.error("question paper")
             for key in json_data:
                 if  key == "section":
                     section = json_data[key]
@@ -459,8 +457,8 @@ class getquizstatus(webapp2.RequestHandler):
                                                     r = Randomize(user1 = user.email(), serialno = q['serialno'], qno=q["id"])
                                                     r.put()
                                                 else:
-                                                    print q['id']
-                                                    logging.error("question id is:")
+                                                    #print q['id']
+                                                    #logging.error("question id is:")
                                                     r = Randomize.query(Randomize.user1 == user.email(),
                                                                         Randomize.qno == q["id"]).get()
                                                 q1 = Response.query(Response.useremailid.emailid==user.email(),
