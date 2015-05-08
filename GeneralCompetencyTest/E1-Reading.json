@@ -1,0 +1,1155 @@
+{
+    "name": "T2:Reading",
+    "types": "passage",
+    "passageArray": [
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "The sheer number of people in a group affects the amount of communication. Consider the difference between communication between two friends and communication in a group of five people. When friends talk, there are two people sending and receiving messages. In a group of five, there are five people doing the same thing. Each idea that is expressed must be understood by four others, who may also choose to respond. Consequently, the greater number of people in a group, the fewer contributions any individual may make. Because there are disadvantages to large groups, you might assume that small groups would be the most effective.  However, groups can be too small as well as too large. With a few members, a group has limited resources, which eliminates a primary advantage of groups for decision making. Also, in very small groups, members may be unwilling to disagree or criticize each other's ideas. I believe that five to seven members is the ideal size for a small group.",
+            "questions": [
+                {
+                    "question": " When communication happens between two people",
+                    "options": [
+                        "~The scenario becomes complicated",
+                        "~The communication is not effective",
+                        "=Smooth form of communication takes place",
+                        "~There is no understanding at all"
+                    ],
+                    "id": "601"
+                },
+                {
+                    "question": " In a group of five, when communication takes place",
+                    "options": [
+                        "=Each idea that is expressed must be understood by four others, who may also choose to respond.",
+                        "~There is no need for the remaining 4 to respond",
+                        "~Only the speaker will take active participation",
+                        "~It is always the speaker who plays a major role"
+                    ],
+                    "id": "602"
+                },
+                {
+                    "question": " We can conclude from the reading that in large groups ----.",
+                    "options": [
+                        "=there is less opportunity for each person to speak",
+                        "~no one criticizes each other's ideas",
+                        "~before a decision is made everyone has to express their ideas individually",
+                        "~there is more opportunity for each person to speak"
+                    ],
+                    "id": "603"
+                },
+                {
+                    "question": " The author of the article suggests that ----",
+                    "options": [
+                        "~large groups are always superior to small groups",
+                        "=the ideal size for a small group should be five to seven",
+                        "~everyone should listen to each other's ideas no matter how large the group is",
+                        "~the number of people in a small group must not be more than five"
+                    ],
+                    "id": "604"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "The sad situation of the homeless remains a problem. It is difficult to estimate how many people are homeless because the number depends on how the homeless are defined. There are street people - those who sleep in bus stations, parks, and other areas. Many of these people are youthful runaways. There are the so-called sheltered homeless - those who sleep in government supported or privately funded shelters. Many of these individuals used to live with their families or friends. While street people are almost always single, the sheltered homeless include numerous families with children. Conservatives argue that many homeless are alcoholics, drug users, or mentally ill. In contrast, many liberals argue that homelessness is caused by a reduction in welfare benefits and by excessively priced housing. They want more shelters to be built for the homeless.",
+            "questions": [
+                {
+                    "question": " Why according to the passage, it is difficult to estimate the number of homeless people?",
+                    "options": [
+                        "~It is not a problem",
+                        "~The data is not sufficient",
+                        "=The number depends on how the homeless are defined",
+                        "~The data is too much to handle"
+                    ],
+                    "id": "605"
+                },
+                {
+                    "question": "What kinds of people mostly constitute the street“ homeless category?",
+                    "options": [
+                        "~Families",
+                        "=Youthful runaways",
+                        "~Old people",
+                        "~Middle aged people"
+                    ],
+                    "id": "606"
+                },
+                {
+                    "question": " We can understand from the reading that the number of homeless people ----",
+                    "options": [
+                        "~is not so great as many people think",
+                        "~is on the increase in many countries",
+                        "~ is counted annually",
+                        "=is difficult to know"
+                    ],
+                    "id": "607"
+                },
+                {
+                    "question": " According to the passage, liberals ----",
+                    "options": [
+                        "~think that the problem of homelessness cannot be solved",
+                        "=want more shelters for the homeless",
+                        "~are of the opinion that most homeless people are mentally ill",
+                        "~want the government to ban sleeping on park benches"
+                    ],
+                    "id": "608"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "A book has just been published to help parents to deal with their children's naughty behavior at home. The author, Dr James Bruno, says that the first positive discipline technique is for parents to remain calm because nervous parents don't get good results. Parents who cannot often remain calm find that their children stop taking any notice of them. The second challenge is to know how to correct bad behavior in an effective way. For instance, punishing children by preventing them from watching their favorite TV program is not an ideal solution. Dr Bruno believes parents should establish clear rules for children to follow. If children refuse to follow these, they know they will be disciplined. Finally, the most effective way of encouraging good behavior is to give positive feedback as often as possible, to show that it is not only naughtiness that attracts attention.",
+            "questions": [
+                {
+                    "question": " What is the topic of the book that has been published?",
+                    "options": [
+                        "~World Peace",
+                        "~Management Skills",
+                        "=How to discipline children",
+                        "~Global warming"
+                    ],
+                    "id": "609"
+                },
+                {
+                    "question": "Parents who cannot remain calm-----",
+                    "options": [
+                        "~Find it easier to handle their children",
+                        "=Find that their children stop taking any notice of them",
+                        "~Find it much easier to grab the attention of their children",
+                        "~Find it manageable"
+                    ],
+                    "id": "610"
+                },
+                {
+                    "question": "According to the article, when parents get angry too often, ----",
+                    "options": [
+                        "~they yell at their children to make them obey an order",
+                        "~they utter increasing number of verbal warnings",
+                        "=children often act as if they didn't hear them",
+                        "~None of the above"
+                    ],
+                    "id": "611"
+                },
+                {
+                    "question": "The author of the book seems to suggest that in order to discipline children, parents first of all should ----",
+                    "options": [
+                        "=find an effective way to correct their children's behavior",
+                        "~treat them as harshly as possible",
+                        "~stop beating them",
+                        "~Should lose their temper"
+                    ],
+                    "id": "612"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "In bringing up children, every parent, regardless of ethnicity, income, education, or geographic location, watches eagerly the child's acquisition of each new skill. However, it is often tempting to hurry the child beyond his natural learning rate, which can set up dangerous feelings of failure and states of worry in the child. This might happen at any stage. A young child might be encouraged to learn to read before he knows the meaning of the words he reads. On the other hand, though, if a child is left alone too much, or without any learning opportunities, he loses his natural enthusiasm for life and his desire to find out new things for himself. Parents vary greatly in their degree of strictness towards their children. Some may be especially strict in money matters. Others are severed over times of coming home at night or punctuality for meals. In general, the controls imposed represent the needs of the parents and the values of the community as much as the child's own benefit.",
+            "questions": [
+                {
+                    "question": "How does the act of hurrying the child beyond his natural learning rate impact the overall development of the child?",
+                    "options": [
+                        "~It does not have any negative impact",
+                        "~It has positive impact",
+                        "=It creates up dangerous feelings of failure and states of worry in the child.",
+                        "~It does not have any impact"
+                    ],
+                    "id": "613"
+                },
+                {
+                    "question": "According to the passage, in the process of children's learning new skills, parents ----",
+                    "options": [
+                        "~must encourage them to read before they know the meaning of the words they read",
+                        "=should create as many learning opportunities as possible for themselves",
+                        "~must exert strict control over the children",
+                        "~should leave them alone"
+                    ],
+                    "id": "614"
+                },
+                {
+                    "question": "It is pointed out in the reading that ----",
+                    "options": [
+                        "~parents should be strict with their children",
+                        "~parents often enforce strict regulations on their children's eating habits",
+                        "=parental restrictions vary, and are not always enforced for the benefit of the children alone",
+                        "~parents must maintain strict control over their children's pocket money"
+                    ],
+                    "id": "615"
+                },
+                {
+                    "question": "As we understand from the passage, watching the child's acquisition of new skills ----",
+                    "options": [
+                        "=is universal among parents",
+                        "~ensures the security of their children",
+                        "~will make him lose interest in learning new things",
+                        "~sets up dangerous states of worry in the parents"
+                    ],
+                    "id": "616"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "When early humans hunted and gathered food, they were not in control of their environment. They could only interact with their surroundings as lower organisms did. When humans learned to make fire, however, they became capable of altering their environment. To provide themselves with fuel they stripped bark from trees, causing the trees to die. Clearings were burned in forests to increase the growth of grass and to provide a greater grazing area for the wild animals that humans fed upon. This development led to farming and the domestication of animals. Fire also provided the means for cooking plants which had previously been inedible. Only when the process of meeting the basic need for food reached a certain level of sophistication was it possible for humans to follow other pursuits such as the founding of cities.",
+            "questions": [
+                {
+                    "question": "In the passage, to which other form of living organisms have the early human beings compared?",
+                    "options": [
+                        "~To reptiles",
+                        "~To amphibians",
+                        "~To plants",
+                        "=To lower organisms"
+                    ],
+                    "id": "617"
+                },
+                {
+                    "question": "This passage is mainly concerned with ----",
+                    "options": [
+                        "~the role of hunting as a source of food",
+                        "=how the discovery of fire changed the development of mankind",
+                        "~basic food-gathering techniques of early humans",
+                        "~None of the above"
+                    ],
+                    "id": "618"
+                },
+                {
+                    "question": " One can infer from the passage that the discovery of how to make fire ---",
+                    "options": [
+                        "~improved the hunting skills of early humans",
+                        "~caused early humans to interact with their surroundings as lower organisms did",
+                        "=increased alimentary options for early humans",
+                        "~taught early humans how to live with lower organisms"
+                    ],
+                    "id": "619"
+                },
+                {
+                    "question": "As we understand from the passage, early humans ----",
+                    "options": [
+                        "~were the prey of many predators",
+                        "=used fire as a tool to alter their surroundings",
+                        "~didn't eat plants before they learned how to control fire",
+                        "~Used many modern tools to make their surroundings better"
+                    ],
+                    "id": "620"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "People produce all kinds of food waste. And they produce a lot of it. The report says that a third of all food produced in the world is never eaten. The full cost of the world’s food waste could total $400 billion a year. Billions could be saved if the amount of food waste were reduced. The food thrown away by retailers and consumers in wealthy nations could feed all of the world’s 870 million hungry people. A family of four wastes about $1,600 worth of food each year. The waste numbers are all expected to grow unless steps are taken. The production of food uses vast amounts of water, land and fertilizer. Food waste in landfills creates methane, a potent greenhouse gas. This gas is about seven percent of total polluting emissions worldwide. Reducing food waste can make a difference. Composting is one solution. However, there are other ways to reduce food waste. Extending expiration dates will reduce waste. Selling smaller portions of food also will reduce waste. Changes in the way food products are made may be helpful. One company changed the way it wrapped dough in the shell of its pot pies. That change saved 235 tons of dough a year. An expert said, “We need to find ways to deal with food waste, but we need to prevent it in the first place.” ",
+            "questions": [
+                {
+                    "question": "Fill in the blanks : The food thrown away by¬---------------and ---------------in wealthy nations could feed all of the world's 870 million hungry people.",
+                    "options": [
+                        "~students and children",
+                        "=retailers and consumers",
+                        "~farmers and retailers",
+                        "~Merchants and students"
+                    ],
+                    "id": "621"
+                },
+                {
+                    "question": "What essential sources are needs to production of food ?",
+                    "options": [
+                        "~Water and air",
+                        "~Land and fertilizer",
+                        "~Fertilizer and air",
+                        "=Water, Land and fertilizer"
+                    ],
+                    "id": "622"
+                },
+                {
+                    "question": "Which gas does the food waste in landfills create?",
+                    "options": [
+                        "~Ethane",
+                        "=Methane",
+                        "~Acetylene",
+                        "~Propane"
+                    ],
+                    "id": "623"
+                },
+                {
+                    "question": "How many tons of dough a year was saved by one company as mentioned towards the end os the passage?",
+                    "options": [
+                        "~240 tons",
+                        "~250 tons",
+                        "~240 tons",
+                        "=235 tons"
+                    ],
+                    "id": "624"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Most of the time when people resist the idea that climate matters, it is because doing something about it would cost money. Advocates say a better climate would save money. They say productivity would go up and the number of sick days would go down. This is the debate now and in the future. A new study shows what improving air quality would do. Reducing pollution leads to better respiratory function in children ages 11 to 15. These are the most important years for lung development. The lungs you have developed at that age are the lungs you will have for the rest of your life. Scientists know that air pollution leads to smaller lung capacity and compromised breathing in children. They did not know what the effect would be on childrens’ lungs if the air quality improved. Now they know.  Researchers monitored air quality in three communities on the west coast. The study took place over a 17-year period when air quality improved.  The study measured how much air the youngsters could blow in and out of a device. It also measured lung capacity.  The study found that the lung development in the children born later in the study period (when air quality had most improved) was “more robust.” unhealthy lung function dropped from 8 percent in earlier participants to 3.5 percent in the later participants. There were no differences based on gender, race or ethnicity. The study said that clean air would increase the lifespan of people raised in those communities. ",
+            "questions": [
+                {
+                    "question": "How can better climate save money ?",
+                    "options": [
+                        "~By balancing productivity",
+                        "~By increasing the number of sick days",
+                        "~By decreasing productivity",
+                        "=By increasing productivity and reducing number of sick days"
+                    ],
+                    "id": "625"
+                },
+                {
+                    "question": "The respiratory system in  which age group gets impacted more when pollution is reduced?",
+                    "options": [
+                        "=Children between 11-15 yrs",
+                        "~Children between 5-10 yrs",
+                        "~Children between 0-5 yrs",
+                        "~Children between 8-10 yrs"
+                    ],
+                    "id": "626"
+                },
+                {
+                    "question": "How is lung capacity and air pollution related?",
+                    "options": [
+                        "~No relation at all",
+                        "=Air pollution leads to smaller lung capacity",
+                        "~Air pollution has no impact on lung capacity",
+                        "~Lung capacity increases"
+                    ],
+                    "id": "627"
+                },
+                {
+                    "question": "ow long did the research on the west coast go on ?",
+                    "options": [
+                        "~10 yrs",
+                        "~12 yrs",
+                        "=17 yrs",
+                        "~20 yrs"
+                    ],
+                    "id": "628"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "A dabbawala; also spelled as dabbawalla or dabbawallah; is a person in India, most commonly in Mumbai, who is part of a delivery system that collects hot food in lunch boxes from the residences of workers in the late morning, delivers the lunches to the workplace utilizing various modes of transport, predominantly bicycles and the railway trains, and returns the empty boxes to the customer's residence that afternoon. They are also made use of by prominent meal suppliers in Mumbai where they ferry ready, cooked meals from central kitchens to the customers and back. In Mumbai, most officegoers prefer to eat home-cooked food rather than eat outside, usually for reasons of taste and hygiene, hence the concept. A number of work-from-home women also supply such home-cooked meals, delivering through the dabbawala network. ",
+            "questions": [
+                {
+                    "question": "Where are dabbawalas most commonly found in India?",
+                    "options": [
+                        "~Hyderabad",
+                        "~Ahmedabad",
+                        "~Delhi",
+                        "=Mumbai"
+                    ],
+                    "id": "629"
+                },
+                {
+                    "question": "What do the dabbawalas supply?",
+                    "options": [
+                        "=Lunch",
+                        "~Breakfast",
+                        "~Dinner",
+                        "~Snacks"
+                    ],
+                    "id": "630"
+                },
+                {
+                    "question": "How do dabbawalas supply food?",
+                    "options": [
+                        "=Using bicycles and trains",
+                        "~Using buses and trains",
+                        "~Using boats and cars",
+                        "~Using cars and bicycles"
+                    ],
+                    "id": "631"
+                },
+                {
+                    "question": "Who prefer to eat home-cooked food in Mumbai according to the above passage?",
+                    "options": [
+                        "~Sailors",
+                        "=Officegoers",
+                        "~Ministers",
+                        "~Only women"
+                    ],
+                    "id": "632"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Aristotle, who lived from 384 BC to 322 BC, taught that the heart contained the intelligence. Except for a few guesses like this, he observed carefully. He described the habits and the bodily structure (anatomy) of many animals, birds and fish. Another Greek, Galen, who lived in the second century AD, performed biological experiments. Both careful observation of living things and experiments are used today in the study of biology. Galen observed and described the internal anatomy of the human body.-He described many parts that he saw in the body. But he was not always careful. He sometimes described what he expected to see and did not look carefully to see what was really there. For centuries after Galen, people studied anatomy from his books instead of trusting their own observations.",
+            "questions": [
+                {
+                    "question": "According to the passage, what did Aristotle believe to be the source of intelligence?",
+                    "options": [
+                        "~Head",
+                        "=Heart",
+                        "~It is a trait that is inculcated",
+                        "~No correct answer is available"
+                    ],
+                    "id": "633"
+                },
+                {
+                    "question": "Who introduced the concept of experiments in the study of Biology?",
+                    "options": [
+                        "~Aristotle",
+                        "~Copernicus",
+                        "=Galen",
+                        "~Socrates"
+                    ],
+                    "id": "634"
+                },
+                {
+                    "question": "It's obvious that Aristotle ----",
+                    "options": [
+                        "=died in his sixties",
+                        "~observed only birds and fish",
+                        "~thinks that it is the brain which contains the intelligence",
+                        "~described both the habits and the structure of animals better than anyone else"
+                    ],
+                    "id": "635"
+                },
+                {
+                    "question": "It can be inferred from the passage that ----",
+                    "options": [
+                        "~there is a strong link between Galen and Aristotle in terms of friendship",
+                        "~Galen studied the external part of the body while Aristotle studied the internal part",
+                        "=the studies of Aristotle couldn't satisfy the expectations of people",
+                        "~people never trusted the knowledge of Galen"
+                    ],
+                    "id": "636"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Often mistaken for insects, spiders actually belong to a different classification of creatures, called arachnids. They're insects' worst enemies. Although a few species, such as the black widow and the brown recluse, are dangerous, the majority are harmless to humans. Moreover, they can be helpful. Pest control, for example is just one of the many ways spiders can help us. Because they kill far more pests than commercial insecticides do. In the future, perhaps if farmers employ armies of spiders to protect their fields, our grocery bills will be lower and our soil and water and food will have fewer pesticide remains.",
+            "questions": [
+                {
+                    "question": "What specific classifications of creatures do spiders belong?",
+                    "options": [
+                        "~Insects",
+                        "~Bugs",
+                        "~Flies",
+                        "=Arachnids"
+                    ],
+                    "id": "637"
+                },
+                {
+                    "question": "Quite contrary to the popular belief ----",
+                    "options": [
+                        "~the black widow is a dangerous species of the spider",
+                        "=a spider is not a kind of insect at all",
+                        "~same species of spiders are dangerous",
+                        "~None of the above"
+                    ],
+                    "id": "638"
+                },
+                {
+                    "question": " The black widow and the brown recluse ----",
+                    "options": [
+                        "~are often confused with other species of spiders",
+                        "~do the greatest harm to soil, water, and food",
+                        "=are two of the few dangerous species of spiders",
+                        "~don't belong to the classification of creatures called 'arachnids'."
+                    ],
+                    "id": "639"
+                },
+                {
+                    "question": " In the future, agricultural products might be cheaper and healthier if ----",
+                    "options": [
+                        "~farmers used cheaper commercial insecticides",
+                        "=armies of spiders are employed to protect the fields",
+                        "~some species of spiders weren't so harmful",
+                        "~None of the above"
+                    ],
+                    "id": "640"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Homer is a Greek epic poet. Both the date and the place of his birth and death are not known precisely, but recent research suggests a date between 1050 and 800 BC. It has even been claimed that no such man as Homer existed and that the Iliad and the Odyssey are collections of traditional ballads and not the work of one man. In any event they were known all over the Greek-speaking world before the sixth century BC. The Iliad is an epic poem dealing with the siege of Troy by the Greeks. The Odyssey describes the wandering of Odysseus, a Greek seafarer, on his way back to Ithaca after the fall of Troy.",
+            "questions": [
+                {
+                    "question": "We can infer from the passage that ----.",
+                    "options": [
+                        "~it's not definite when and where Homer was born",
+                        "~recent research shows the impossibility of finding Homer's birth date",
+                        "=some suggest that he was born between 1050 and 800 BC .",
+                        "~Some suggest that he was born between 1150 and 300 BC"
+                    ],
+                    "id": "641"
+                },
+                {
+                    "question": "According to the passage, there is yet another theory about Homer which states that :",
+                    "options": [
+                        "=There is no proof that Homer existed ever",
+                        "~Though it has been proved that Homer existed , yet his works are not yet determined",
+                        "~Both the date and the place of his birth and death are not known precisely",
+                        "~There is always a proof that Homer existed"
+                    ],
+                    "id": "642"
+                },
+                {
+                    "question": "The Odyssey ----",
+                    "options": [
+                        "~belongs to another poet rather than Homer",
+                        "=explains the voyage of a sailor",
+                        "~doesn't have a specific protagonist",
+                        "~is an anonymous work of the Greek nation"
+                    ],
+                    "id": "643"
+                },
+                {
+                    "question": "The works of Homer ----",
+                    "options": [
+                        "~have no potential readers",
+                        "=deal with the siege of Troy by the Greeks",
+                        "~have been thought to have different writers",
+                        "~None of the above"
+                    ],
+                    "id": "644"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "The stratosphere is a layer of the earth's atmosphere. It lies above the troposphere. It begins 10 miles above the equator and 6 miles above the earth's Polar Regions. Little moisture enters the stratosphere, so clouds are rare. Even though the stratosphere has complex wind systems, violent storms don't occur there. That's why airline pilots prefer to fly in the stratosphere. Temperatures increase with altitude in the stratosphere. The lower layer has a temperature of 28 degrees Fahrenheit. The upper layer has a temperature of about -67 degrees Fahrenheit. The upper part of the stratosphere is called the stratopause. The stratopause lies 30 miles above the earth's surface. The stratopause contains most of the atmosphere's ozone which shields humans and other living things from ultraviolet radiation from the sun.",
+            "questions": [
+                {
+                    "question": "Why are clouds rare in the stratosphere?",
+                    "options": [
+                        "~There is no moisture",
+                        "=Due to little moisture",
+                        "~Due to excess amount of heat",
+                        "~None of the above"
+                    ],
+                    "id": "645"
+                },
+                {
+                    "question": "What is the layer just below the stratosphere ?",
+                    "options": [
+                        "~Atmosphere",
+                        "~Crust",
+                        "=Troposphere",
+                        "~Stratopause"
+                    ],
+                    "id": "646"
+                },
+                {
+                    "question": "Stratosphere ----",
+                    "options": [
+                        "=is preferred by the pilots since it has a smooth air condition",
+                        "~has different levels above the equator and the polars due to air warmth",
+                        "~is sixteen miles high from the earth in total",
+                        "~is avoided by pilots because of its air condition"
+                    ],
+                    "id": "647"
+                },
+                {
+                    "question": "What is the upper part of the stratosphere called",
+                    "options": [
+                        "~thermosphere",
+                        "~mesosphere",
+                        "~troposphere",
+                        "=Stratopause"
+                    ],
+                    "id": "648"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "All viruses are made up of two kinds of substance. First, all viruses contain proteins. Proteins are chemical substances that occur in all living creatures. A particle, or molecule, of a protein consists of a long chain of substances called amino acids. There are about 20 different kinds of amino acid in proteins. These can be arranged in any order on the protein chain. Different kinds of plant or animal contain proteins with different arrangements of amino acids. The protein generally forms the outer coat of a virus. This outer layer of protein encloses the second kind of substance found in all viruses - nucleic acid.",
+            "questions": [
+                {
+                    "question": "All Viruses are made up of :",
+                    "options": [
+                        "~Three kinds of substances",
+                        "=Two kinds of substances",
+                        "~No substance at all",
+                        "~Five kinds of substances"
+                    ],
+                    "id": "649"
+                },
+                {
+                    "question": "It is clear from the passage that ----",
+                    "options": [
+                        "~proteins are greatly damaged by viruses",
+                        "=it is impossible to find a living thing with no proteins",
+                        "~the amount of proteins differs in each animal or plant",
+                        "~it is easy to find a living thing with proteins"
+                    ],
+                    "id": "650"
+                },
+                {
+                    "question": " The arrangement of amino acids ----.",
+                    "options": [
+                        "=varies among each living thing",
+                        "~is determined by the kinds of proteins",
+                        "~has nothing to do with proteins",
+                        "~ is very simple in the proteins of the viruses"
+                    ],
+                    "id": "651"
+                },
+                {
+                    "question": "The second substance of the viruses ----",
+                    "options": [
+                        "=Is nucleic acid",
+                        "~Is amino acid",
+                        "~Is another form of protein",
+                        "~Is carbohydrate"
+                    ],
+                    "id": "652"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Earthquake is a sudden movement in Earth's crust which produces vibration. These vibrations may be detectable only by sensitive instruments called seismographs, or else they may kill thousands as they destroy cities. Many earthquakes are caused when rocks move along faults. Severe earthquakes are most common near the edges of the 'plates' in the Earth's crust, such as around the Pacific Ocean, along the mid-Atlantic ridge and in the Mediterranean and South- West Asian regions. They occur when the plates move. So earthquakes are caused by volcanic action, explosions and other factors. Earthquakes under the sea trigger off huge waves called tsunamis.",
+            "questions": [
+                {
+                    "question": "hat is the immediate reaction when earthquakes happen?",
+                    "options": [
+                        "=Vibration of the earth's crust",
+                        "~Storm",
+                        "~Thunder",
+                        "~Lightening"
+                    ],
+                    "id": "653"
+                },
+                {
+                    "question": "How can the intensity of earthquakes be measured?",
+                    "options": [
+                        "~By Satellites",
+                        "=By seismographs",
+                        "~By Vernier Calipers",
+                        "~By Telescope"
+                    ],
+                    "id": "654"
+                },
+                {
+                    "question": "According to the passage, ----",
+                    "options": [
+                        "~seismographs may devastate cities if not detected",
+                        "=earthquakes are more likely to happen where there are faults",
+                        "~sudden movements in the earth's crust are called volcanic eruptions",
+                        "~earthquakes are caused by huge waves called tsunamis"
+                    ],
+                    "id": "655"
+                },
+                {
+                    "question": "It's obvious in the passage that ----",
+                    "options": [
+                        "~many big cities are founded upon the faults",
+                        "~big cities are more likely to confront earthquakes",
+                        "~movement of rocks along the faults trigger tsunamis",
+                        "=Earth's most perilous places are the Pacific Ocean, the Mid-Atlantic, South-West Asia and the Mediterranean"
+                    ],
+                    "id": "656"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Sometimes an animal copes with a changed situation, not by adapting to it, but by moving from it to another location. There it may still have to adapt, but the type of adaptation may be easier. There are primitive races of man that have attempted to avoid the pressures or changes that civilization brings. They have had to adjust to living in remote or harsh condition. Examples are the pygmies of the Congo who have escaped into the thickest jungles which are full of dangers. They have learned to obtain a living there and to cope with wild animals. African bush men manage to live off the arid Kalahari Desert where there is hardly any other life. Life is tough for the bush men but they are left in peace. These social adaptations could well lead to biological adaptations over a number of generations, but this is a very slow progress and it is unlikely that any one person would be aware of it taking place.",
+            "questions": [
+                {
+                    "question": " Instead of adapting, an animal ----",
+                    "options": [
+                        "~goes around for finding a prey",
+                        "=moves into different habitat from time to time",
+                        "~is in need of food and water",
+                        "~prefers not to live in another environment"
+                    ],
+                    "id": "657"
+                },
+                {
+                    "question": "Why do animals change location instead of adapting to the change?",
+                    "options": [
+                        "=The conditions become easier to adapt.",
+                        "~They look for shelter only",
+                        "~They prefer to move constantly",
+                        "~They get bored of staying in one location."
+                    ],
+                    "id": "658"
+                },
+                {
+                    "question": "What has been the result of primitive races of man who have attempted to avoid the pressures or changes that civilization brings?",
+                    "options": [
+                        "~They did not face any challenges",
+                        "~They lived comfortably",
+                        "=They have had to adjust to living in remote or harsh condition",
+                        "~They have had to fight with dangerous animals"
+                    ],
+                    "id": "659"
+                },
+                {
+                    "question": "It is clear in the passage that ----",
+                    "options": [
+                        "~life is hard for the bushmen so they gave up",
+                        "~No man has more difficulties than African bushmen",
+                        "=Possibly the slow change is still taking place in mankind today but is unnoticed",
+                        "~Quite similar to humans, animals give up to changes as well"
+                    ],
+                    "id": "660"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Aristotle, who lived from 384 BC to 322 BC, taught that the heart contained the intelligence. Except for a few guesses like this, he observed carefully. He described the habits and the bodily structure (anatomy) of many animals, birds and fish. Another Greek, Galen, who lived in the second century AD, performed biological experiments. Both careful observation of living things and experiments are used today in the study of biology. Galen observed and described the internal anatomy of the human body.-He described many parts that he saw in the body. But he was not always careful. He sometimes described what he expected to see and did not look carefully to see what was really there. For centuries after Galen, people studied anatomy from his books instead of trusting their own observations.",
+            "questions": [
+                {
+                    "question": "According to the passage, what did Aristotle believe to be the source of intelligence?",
+                    "options": [
+                        "~Head",
+                        "=Heart",
+                        "~It is a trait that is inculcated",
+                        "~It is inherited"
+                    ],
+                    "id": "661"
+                },
+                {
+                    "question": "In order to observe the anatomy , how did Aristotle expand his study?",
+                    "options": [
+                        "~He studied only humans",
+                        "=He also studied many animals , birds and fish",
+                        "~He relied completely on intuition",
+                        "~He believed only in his sixth sense"
+                    ],
+                    "id": "662"
+                },
+                {
+                    "question": "Who introduced the concept of experiments in the study of Biology?",
+                    "options": [
+                        "~Aristotle",
+                        "~Copernicus",
+                        "=Galen",
+                        "~Pythagoras"
+                    ],
+                    "id": "663"
+                },
+                {
+                    "question": "It's obvious that Aristotle ----",
+                    "options": [
+                        "=died in his sixties",
+                        "~observed only birds and fish",
+                        "~thinks that it is the brain which contains the intelligence",
+                        "~described both the habits and the structure of animals better than anyone else"
+                    ],
+                    "id": "664"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Often mistaken for insects, spiders actually belong to a different classification of creatures, called arachnids. They're insects' worst enemies. Although a few species, such as the black widow and the brown recluse, are dangerous, the majority are harmless to humans. Moreover, they can be helpful. Pest control, for example is just one of the many ways spiders can help us. Because they kill far more pests than commercial insecticides do. In the future, perhaps if farmers employ armies of spiders to protect their fields, our grocery bills will be lower and our soil and water and food will have fewer pesticide remains.",
+            "questions": [
+                {
+                    "question": "What specific classifications of creatures do spiders belong?",
+                    "options": [
+                        "~Insects",
+                        "~Bugs",
+                        "~Flies",
+                        "=Arachnids"
+                    ],
+                    "id": "665"
+                },
+                {
+                    "question": "According to the passage, how can it be inferred that spiders can be helpful towards humans.",
+                    "options": [
+                        "~They help in maintaining ecological balance",
+                        "=They can help in pest control",
+                        "~They can be helpful in producing thread",
+                        "~They are helpful towards insects"
+                    ],
+                    "id": "666"
+                },
+                {
+                    "question": "Quite contrary to the popular belief ----",
+                    "options": [
+                        "~the black widow is a dangerous species of the spider",
+                        "=a spider is not a kind of insect at all",
+                        "~same species of spiders are dangerous",
+                        "~spiders eat plants"
+                    ],
+                    "id": "667"
+                },
+                {
+                    "question": " The black widow and the brown recluse ----",
+                    "options": [
+                        "~are often confused with other species of spiders",
+                        "~do the greatest harm to soil, water, and food",
+                        "=are two of the few dangerous species of spiders",
+                        "~don't belong to the classification of creatures called 'arachnids'."
+                    ],
+                    "id": "668"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Homer is a Greek epic poet. Both the date and the place of his birth and death are not known precisely, but recent research suggests a date between 1050 and 800 BC. It has even been claimed that no such man as Homer existed and that the Iliad and the Odyssey are collections of traditional ballads and not the work of one man. In any event they were known all over the Greek-speaking world before the sixth century BC. The Iliad is an epic poem dealing with the siege of Troy by the Greeks. The Odyssey describes the wandering of Odysseus, a Greek seafarer, on his way back to Ithaca after the fall of Troy.",
+            "questions": [
+                {
+                    "question": "We can infer from the passage that ----.",
+                    "options": [
+                        "~it's definite when and where Homer was born",
+                        "~recent research shows the impossibility of finding Homer's birth date",
+                        "=some suggest that he was born between 1050 and 800 BC .",
+                        "~some believe that these details are hidden"
+                    ],
+                    "id": "669"
+                },
+                {
+                    "question": "ccording to the passage, there is yet another theory about Homer which states that :",
+                    "options": [
+                        "=There is no proof that Homer existed ever",
+                        "~The entire concept is vague",
+                        "~Historians are confused",
+                        "~It will take years to discover the truth"
+                    ],
+                    "id": "670"
+                },
+                {
+                    "question": "The Odyssey ----",
+                    "options": [
+                        "~belongs to another poet rather than Homer",
+                        "=explains the voyage of a sailor",
+                        "~doesn't have a specific protagonist",
+                        "~is an anonymous work of the Greek nation"
+                    ],
+                    "id": "671"
+                },
+                {
+                    "question": "It can be understood from the passage that :",
+                    "options": [
+                        "=Irrespective of the authenticity of Homer's works, they were known all over the Greek-speaking world before the sixth century BC",
+                        "~People did not know about The Odyssey",
+                        "~Homer wrote many short stories as well",
+                        "~The Iliad is a short story"
+                    ],
+                    "id": "672"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Like human beings, ants can be both cooperative and aggressive towards one another; in fact, certain species of ants survive by raiding other ant colonies and enslaving the offspring. Scientists believe that these “slave maker” ants cannot survive on their own and need other ants to take care of them. The only way in which they can achieve this is by raiding other colonies and seizing the larvae and pupae; they then carry them back to their own colonies and raise them as slaves. Once their slaves die, they raid new colonies, capture new larvae, and acquire a new supply of slaves. ",
+            "questions": [
+                {
+                    "question": "How has the author compared ants to human beings ?",
+                    "options": [
+                        "~By comparing their working style",
+                        "~By comparing their intellect",
+                        "=By comparing their cooperative and aggressive nature towards one another",
+                        "~There is no comparison made"
+                    ],
+                    "id": "673"
+                },
+                {
+                    "question": "Which unique survival fact has been shared by the author about a certain species of ants ?",
+                    "options": [
+                        "~No such fact has been discussed in the passage",
+                        "=That they raid other ant colonies and enslave the offspring",
+                        "~That they work with the ants of other colonies",
+                        "~That they form armies and work together"
+                    ],
+                    "id": "674"
+                },
+                {
+                    "question": "What is the common belief about  â€œslave makerâ€? ants ?",
+                    "options": [
+                        "~That they are very calm in nature.",
+                        "~They do not believe in attacking other ants",
+                        "=They cannot take care of themselves and need slaves",
+                        "~They are very friendly in nature"
+                    ],
+                    "id": "675"
+                },
+                {
+                    "question": "The author wrote to ________",
+                    "options": [
+                        "=illustrate the unusual way in which certain ant species survive",
+                        "~convince the reader that ants can play a beneficial role",
+                        "~compare and contrast the distinct roles that ants play",
+                        "~amuse the reader with amusing facts about ants"
+                    ],
+                    "id": "676"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "I had been sick for a long time. When the day came for me to leave the hospital, I barely knew how to walk anymore, could barely remember who I was supposed to be. Make an effort, the doctor said, and in three or four months you’ll be back in the swing of things. I didn’t believe him, but I followed his advice anyway. They had given me up for dead, and now that I had confounded their predictions and mysteriously failed to die, what choice did I have but to live as though a future life were waiting for me?",
+            "questions": [
+                {
+                    "question": "How can one say that the author had been sick for a long time?",
+                    "options": [
+                        "~The author has mentioned the number of days of being in the hospital",
+                        "~The author has been sick for a short time",
+                        "=On the day of discharge, the author had almost forgotten who he was and how to walk",
+                        "~The information is not sufficient"
+                    ],
+                    "id": "677"
+                },
+                {
+                    "question": "What is the most appropriate meaning of â€œswing of things â€œ?",
+                    "options": [
+                        "=Back to normal life",
+                        "~Being depressed",
+                        "~Being sick",
+                        "~Not being able to walk"
+                    ],
+                    "id": "678"
+                },
+                {
+                    "question": "What can be the most appropriate meaning of  â€œ given me up for dead â€œ ?",
+                    "options": [
+                        "~Healthy",
+                        "~Fit and fine",
+                        "=Being as good as dead",
+                        "~Fit to be discharged"
+                    ],
+                    "id": "679"
+                },
+                {
+                    "question": "The author wrote to _______",
+                    "options": [
+                        "=describe a very difficult time in his life",
+                        "~present information about doctors and their advice",
+                        "~frighten the reader with a disturbing story",
+                        "~amuse the reader with a humorous story"
+                    ],
+                    "id": "680"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "According to some scholars, puzzles may even be older than recorded history. In a fascinating book, entitled Ancient Puzzles, Dominic Olivastro speculates that around eleven thousand years ago a tribe living near Lake Edward in modern-day Zaire, who were the ancestors of the Ishango, invented what appears to be the first mathematical game of humanity, consisting of two “dice”: bones on which notches represent numbers.",
+            "questions": [
+                {
+                    "question": "According to the common belief , what can be said about puzzles ?",
+                    "options": [
+                        "~They are the gift of the modern era",
+                        "~They came to existence only after birth of computers",
+                        "=They may even be older than recorded history",
+                        "~This information has not been shared in the passage."
+                    ],
+                    "id": "681"
+                },
+                {
+                    "question": "Which book has been mentioned here as â€œfascinating â€œ ?",
+                    "options": [
+                        "~Ancient History",
+                        "~Medieval History",
+                        "~Ice Age",
+                        "=Ancient Puzzles"
+                    ],
+                    "id": "682"
+                },
+                {
+                    "question": "What is the location of â€œLake Edwardâ€? as mentioned in the passage ?",
+                    "options": [
+                        "~Cairo",
+                        "=Modern day Zaire",
+                        "~England",
+                        "~Not specified in the passage"
+                    ],
+                    "id": "683"
+                },
+                {
+                    "question": "The author's purpose is to _____",
+                    "options": [
+                        "~entertain the reader with a fascinating story about puzzles",
+                        "~persuade the reader that it is important to play mathematical puzzles",
+                        "~convince the reader that Dominic Olivastro is an authority on the history of puzzles",
+                        "=present factual information about the history of puzzles"
+                    ],
+                    "id": "684"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "The study of history provides many benefits. First, we learn from the past. We may repeat mistakes, but, at least, we have the opportunity to avoid them. Second, history teaches us what questions to ask about the present. Contrary to some people’s view, the study of history is not the memorization of names, dates, and places. It is the thoughtful examination of the forces that have shaped the courses of human life. We can examine events from the past and then draw inferences about current events. History teaches us about likely outcomes. Another benefit of the study of history is the broad range of human experience which is covered. War and peace are certainly covered as are national and international affairs. However, matters of culture (art, literature, and music) are also included in historical study. Human nature is an important part of history: emotions like passion, greed, and insecurity have influenced the shaping of world affairs. Anyone who thinks that the study of history is boring has not really studied history.",
+            "questions": [
+                {
+                    "question": "What is the main idea of this passage?",
+                    "options": [
+                        "=Studying history helps us to live in today's world.",
+                        "~Studying history is not just memorization.",
+                        "~The role of education is to help students deal with real life.",
+                        "~Students should study both national and international history"
+                    ],
+                    "id": "685"
+                },
+                {
+                    "question": "In the first paragraph, inferences means",
+                    "options": [
+                        "~Graphs",
+                        "~Articles",
+                        "=Conclusions",
+                        "~Circumferences"
+                    ],
+                    "id": "686"
+                },
+                {
+                    "question": "What is the author's views about pattern to be followed in order to study History ?",
+                    "options": [
+                        "~Memorize names",
+                        "~Memorize important dates",
+                        "~Learn the names of places",
+                        "=Examine the past and draw conclusions about present"
+                    ],
+                    "id": "687"
+                },
+                {
+                    "question": "What is the other broad range that History covers as mentioned in the passage?",
+                    "options": [
+                        "=Human experience",
+                        "~Information about battles",
+                        "~Information about continents",
+                        "~Information about inventions"
+                    ],
+                    "id": "688"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Scientists have known for a long time that vitamin D is essential for humans. If children have a vitamin D or calcium deficiency, they can develop rickets, a softening of the bones. New studies are showing that people of all ages need vitamin D to help them fight off diseases by keeping their immune systems strong. Our bodies can make vitamin D when our skin is exposed to sunlight. However, it’s best to eat a diet that is rich in the vitamin.",
+            "questions": [
+                {
+                    "question": "The main idea of this paragraph is that vitamin D _______",
+                    "options": [
+                        "~is found in milk",
+                        "~has been studied by scientists",
+                        "~is no secret",
+                        "=is important for good health"
+                    ],
+                    "id": "689"
+                },
+                {
+                    "question": "If something is essential, it is _______",
+                    "options": [
+                        "~harmful",
+                        "~expensive",
+                        "~dreadful",
+                        "=needed"
+                    ],
+                    "id": "690"
+                },
+                {
+                    "question": " When you have a deficiency of something, you _______",
+                    "options": [
+                        "~have all you need",
+                        "=do not have enough",
+                        "~ look like an onion",
+                        "~are rich"
+                    ],
+                    "id": "691"
+                },
+                {
+                    "question": "Which statement is false?",
+                    "options": [
+                        "~Some foods contain vitamin D",
+                        "~Our bodies can use sunlight to make vitamin D",
+                        "~Some people don't have to get vitamin D from food",
+                        "=If you're a child, you will definitely get rickets if you don't play in the sun"
+                    ],
+                    "id": "692"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "FoxNews.com reports that Dr. Richard B. Hoover, an astrobiologist at NASA, believes that he has found the fossils of bacteria in meteorites. In other words, he claims to have found traces of life from outer space. Not surprisingly, his claim is controversial; many scientists do not accept that Dr. Hoover has come to the correct conclusion from what he has observed. Therefore, he has invited over 5,000 scientists to review his work and to publish their comments. ", "questions": [
+                {
+                    "question": "Bacteria are a _______",
+                    "options": [
+                        "~group of scientists",
+                        "~place where meteors come from",
+                        "~kind of restaurant",
+                        "=form of life"
+                    ],
+                    "id": "693"
+                },
+                {
+                    "question": "When something is controversial, people _______",
+                    "options": [
+                        "~get sick from it",
+                        "~believe it is ancient and extremely rare",
+                        "=have strong disagreements about it",
+                        "~brush their teeth with it"
+                    ],
+                    "id": "694"
+                },
+                {
+                    "question": "Dr. Hoover seems confident that his research will be proven correct because _______",
+                    "options": [
+                        "~he is named after a vacuum cleaner",
+                        "=he has invited many scientists to look closely at his work",
+                        "~he works for NASA",
+                        "~he gets a rash when he touches meteorites"
+                    ],
+                    "id": "695"
+                },
+                {
+                    "question": "Based on the reading selection, which statement is true?",
+                    "options": [
+                        "~No one believes that Dr. Hoover has made an important discovery",
+                        "~Astrobiologists are smarter than other scientists",
+                        "=Dr. Hoover believes he has found fossils of bacteria",
+                        "~Dr. Hoover did his work without using a microscope"
+                    ],
+                    "id": "696"
+                }
+            ]
+        },
+        {
+            "note": "Read the following passage and answer the question given below: ",
+            "passage": "Carson’s older sister, Madison, is a very good student. She isn’t satisfied to just get by in school. She’s involved in extra activities including band and the Good Citizens Club. Almost every day after school, Madison and Carson have fun at the local winter sports facility. Carson glides down the mountainside without ever losing his balance. Madison has a different style. She often soars into the air, lands in various twisted positions, and waits for her snowboard to join her on the ground. ", "questions": [
+                {
+                    "question": "Which statement is not supported by the paragraph?",
+                    "options": [
+                        "~Music is part of Madison's school experience.",
+                        "~Madison is a straight A student",
+                        "~Carson is younger than Madison",
+                        "=Madison is a member of at least one club"
+                    ],
+                    "id": "697"
+                },
+                {
+                    "question": "What is the main idea of the first paragraph?",
+                    "options": [
+                        "~Madison is not at all friendly.",
+                        "~Madison likes to waste her time.",
+                        "=Madison is a very good student.",
+                        "~Madison is cruel and unusual."
+                    ],
+                    "id": "698"
+                },
+                {
+                    "question": "From the second paragraph, we can conclude that _______",
+                    "options": [
+                        "=Carson prefers skiing to snowboarding.",
+                        "~ Madison and Carson do not live in Florida.",
+                        "~Madison is as graceful as a swan.",
+                        "~It never snows in Vermont."
+                    ],
+                    "id": "699"
+                },
+                {
+                    "question": "The second paragraph informs us that _______",
+                    "options": [
+                        "~Madison doesn't like winter sports because she always falls.",
+                        "~Carson owns a plane.",
+                        "~Madison loves tennis.",
+                        "=Both Carson and Madison enjoy their time on the snowy slopes."
+                    ],
+                    "id": "6100"
+                }
+            ]
+        }
+        
+    ]
+}

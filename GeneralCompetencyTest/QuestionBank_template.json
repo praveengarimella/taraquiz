@@ -1,0 +1,84 @@
+{
+    "name": "General Competency Test",
+    "section": [
+        {
+            "name": "Aptitude Test",
+            "subsection": [
+                {
+                    "name": "A1-Sentences",
+                    "questions": [],
+                    "note": "Select the correct form of the sentence for the following questions, some of the sentences may be correct in their original form:",
+                    "types": "question"
+                },
+                {
+                    "name": "A2-Reading",
+                    "passageArray": [],
+                    "types": "passage"
+                },
+                {
+                    "name": "A3-Numerical",
+                    "questions": [],
+                    "types": "question",
+                    "note": ""
+                },
+                {
+                    "name": "A4-Reasoning",
+                    "questions": [],
+                    "types": "question",
+                    "note": ""
+                },
+                {
+                    "name": "A5-Composition",
+                    "questions": [],
+                    "types": "essay",
+                    "note": "Write The Essay Here"
+                }
+            ]
+        },
+        {
+            "name": "English Comprehension Test",
+            "subsection": [
+                {
+                    "name": "E1-Reading",
+                    "passageArray": [],
+                    "types": "passage"
+                },
+                {
+                    "name": "E2-Listening",
+                    "videoArray": [],
+                    "note": "Listen to the video given and answer the following questions:",
+                    "types": "video"
+                },
+                {
+                    "name": "E3-Speaking",
+                    "questions": [],
+                    "types": "record",
+                    "note": ""
+                },
+                {
+                    "name": "E4-Writing",
+                    "questions": [],
+                    "types": "essay",
+                    "note": "Write the essay here"
+                }
+            ]
+        },
+        {
+            "name": "Telugu Comprehension Test",
+            "subsection": [
+                {
+                    "name": "T1-Reading",
+                    "passageArray": [],
+                    "types": "passage"
+                    
+                },
+                {
+                    "name": "T2-Listening",
+                    "videoArray": [],
+                    "note": "Listen to the video given and answer the following questions:",
+                    "types": "video"
+                }
+            ]
+        }
+    ]
+}
