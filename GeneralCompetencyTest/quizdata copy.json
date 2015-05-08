@@ -1,0 +1,445 @@
+{
+    "name": "General Competency Test",
+    "section": [
+        {
+            "name": "Aptitude Test",
+            "subsection": [
+                {
+                    "name": "A1 : Sentences",
+                    "questions": [
+                        {
+                            "question": "The factory workers have been on strike since January.",
+                            "options": [
+                                "=The factory workers have been on strike since January.", 
+                                "~The factory workers have been in strike since January.",
+                                "~The factory workers have been about strike since January.",
+                                "~The factory workers have been through strike since January."
+                            ],
+                            "id" : "1"
+                        },
+                        {
+                            "question": "Spain is one of a largest European countries.",
+                            "options": [
+                                "~Spain is one of a largest European countries.",
+                                "~Spain is one of an largest European countries.",
+                                "~Spain is one of largest European countries.",
+                                "=Spain is one of the largest European countries."
+                            ],
+                            "id" : "2"
+                        },
+                        {
+                            "question": "I got an lot of good presents for my birthday.",
+                            "options": [
+                                "~I got an lot of good presents for my birthday.",
+                                "~I got the lot of good presents for my birthday.",
+                                "=I got a lot of good presents for my birthday.",
+                                "~I got lot of good presents for my birthday."
+                            ],
+                            "id" : "3"
+                        },
+                        {
+                            "question": "I can spell as well as the most students.",
+                            "options": [
+                                "~I can spell as well as the most students.",
+                                "~I can spell as well as an most students.",
+                                "~I can spell as well as a most students.",
+                                "=I can spell as well as most students."
+                            ],
+                            "id" : "4"
+                        },
+                        {
+                            "question": "I have an wonderful idea!",
+                            "options": [
+                                "~I have an wonderful idea!",
+                                "=I have a wonderful idea!",
+                                "~I have the wonderful idea!",
+                                "~I have wonderful idea!"
+                            ],
+                            "id" : "5"
+                        },
+                        {
+                            "question": "Is this the bad time? Should I call you later?",
+                            "options": [
+                                "~Is this the bad time? Should I call you later?",
+                                "~Is this bad time? Should I call you later?",
+                                "~Is this one bad time? Should I call you later?",
+                                "=Is this a bad time? Should I call you later?"
+                            ],
+                            "id" : "6"
+                        },
+                        {
+                            "question": "The President of the USA lives in White House.",
+                            "options": [
+                                "~The President of the USA lives in White House.",
+                                "=The President of the USA lives in the White House.",
+                                "~​The President of the USA lives in a White House.",
+                                "~​The President of USA lives in an White House."
+                            ],
+                            "id" : "7"
+                        },
+                        {
+                            "question": "Several friends played baseball together.",
+                            "options": [
+                                "=Several friends played baseball together.",
+                                "~Several friends will played baseball together.",
+                                "~Several friends plays baseball together.",
+                                "~Several friends to play baseball together."
+                            ],
+                            "id" : "8"
+                        },
+                        {
+                            "question": "We playing a computer game at the moment.",
+                            "options": [
+                                "~We playing a computer game at the moment.",
+                                "~We will playing a computer game at the moment.",
+                                "=We are playing a computer game at the moment.",
+                                "~We played a computer game at the moment."
+                            ],
+                            "id" : "9"
+                        },
+                        {
+                            "question": "Nandini often forgotten her homework.",
+                            "options": [
+                                "~Nandini often forgotten her homework.",
+                                "~Nandini often forget her homework.",
+                                "=Nandini often forgets her homework.",
+                                "~Nandini often forgetful her homework."
+                            ],
+                            "id" : "10"
+                        }
+                    ],
+                    "note": "Select the correct form of the sentence for the following questions, some of the sentences may be correct in their original form:",
+                    "types": "question"
+                },
+                {
+                    "name": "A2: Reading",
+                    "questions": [
+                        {
+                            "question": "The main purpose of this memorandum is to",
+                            "options": [
+                                "~Alert the librarian that it’s time to renew books collection",
+                                "~Inform the Accounts and admin officer to purchase the books",
+                                "=Guide library dept through the process of renewing their books collection",
+                                "~Inform department heads to submit details of books required"
+                            ],
+                            "id" : "11"
+                        }
+                    ],
+                    "note": "Read the following passage and answer the question given below: ",
+                    "types" : "passage",
+                    "passage": "We want to inform the library department to upgrade the collection of books currently available with the University. Each department head has been asked to list out the additional books in their domain and send it to chief librarian. Please check the available list with the proposed list of books and finalize books to be purchased. Submit the final list to the Accounts and admin officer for approval and purchase."
+                }, 
+                {
+                    "name": "A3: Numerical",
+                    "questions": [
+                        {
+                            "question": "A student had to secure 40% marks to pass. He got 440 marks and failed by 40 marks. Find the maximum marks.",
+                            "options": [
+                                "~900",
+                                "~1000",
+                                "~1100",
+                                "=1200"
+                            ],
+                            "id" : "12" 
+                        },
+                        {
+                            "question": "Electricity tariff is increased by 10% and consumption is decreased by 10%. Find the percentage increase or decrease in the expenditure.",
+                            "options": [
+                                "~No change",
+                                "~1% increase",
+                                "=1% decrease",
+                                "~5% increase"
+                            ],
+                            "id" : "13"
+                        },
+                        {
+                            "question": "A car completes a certain journey in 10 hours. It covers first half of the distance at 40 kmph and rest at 60 kmph. The total distance travelled is",
+                            "options": [
+                                "~500 km",
+                                "=480 km",
+                                "~520 km",
+                                "~none"
+                            ],
+                            "id" : "14"
+                        },
+                        {
+                            "question": "A and B start a business. A invests Rs 1200 for 8 months and B invests Rs 2000 for 5 months. If the profit received at the end of the year was Rs 4900, find the profit of A.",
+                            "options": [
+                                "=Rs 2400",
+                                "~Rs 2000",
+                                "~Rs 1800",
+                                "~Rs 2200"
+                            ],
+                            "id" : "15"
+                        },
+                        {
+                            "question": "The average weight of a class of 20 students is 48 kg. If the weight of the teacher be included the average weight becomes 50 kg. Find the weight of teacher.",
+                            "options": [
+                                "~80 kgs",
+                                "=90 kgs",
+                                "~100 kgs",
+                                "~70 kgs"
+                            ],
+                            "id" : "16"
+                        }
+                    ],
+                    "types": "question",
+                    "note": ""
+                },
+                {
+                    "name": "A4: Reasoning",
+                    "questions": [
+                        {
+                            "question": "5. Find out the wrong number in the series: 22, 66, 121, 279, 594",
+                            "options": [
+                                "~33",
+                                "~121",
+                                "=279",
+                                "~594"
+                            ],
+                            "id" : "17"
+                        },
+                        {
+                            "question": "6. A, B, C, D and E are sitting on a bench. A is sitting next to B, C is sitting next to D, D is not sitting with E who is on the left end of the bench. C is on the second position from the right. A is to the right of B and E. A and C are sitting together. In which position A is sitting ?",
+                            "options": [
+                                "~Between B and D",
+                                "=Between B and C",
+                                "~Between E and D",
+                                "~Between C and E"
+                            ],
+                            "id" : "18"
+                        }
+                    ],
+                    "types": "question",
+                    "note": ""
+                },       
+                {
+                    "name": "A5: Composition",
+                    "questions": [
+                        {
+                            "question": "Write an essay to explain your views on the issue given below in 100-150 words: 'Do backward people still need reservation, Explain?'",
+                            "options": [],
+                            "id" : "19"
+                        }
+                    ],
+                    "types": "essay",
+                    "note": "Write The Essay Here"
+                }
+            ]
+        },
+        {
+            "name": "English Comprehension Test",
+            "subsection": [
+            {
+                    "name": "E1: Reading",
+                    "questions": [
+                        {
+                            "question": "Why according to the passage, it is difficult to estimate the number of homeless people?",
+                            "options": [
+                                "~It is not a problem",
+                                "~The data is not sufficient",
+                                "=The number depends on how the homeless are defined",
+                                "~The data is too much to handle"     
+                            ],
+                            "id" : "20"
+                        },
+                        {
+                            "question": "What kinds of people mostly constitute the street – homeless category?",
+                            "options": [
+                                "~Families",
+                                "=Youthful runaways",
+                                "~Old people",
+                                "~Middle aged people"     
+                            ],
+                            "id" : "21"
+                        },
+                        {
+                            "question": "We can understand from the reading that the number of homeless people ----",
+                            "options": [
+                                "~is not so great as many people think",
+                                "~is on the increase in many countries",
+                                "~is counted annually",
+                                "=is difficult to know"
+                            ],
+                            "id" : "22"
+                        },
+                        {
+                            "question": "According to the passage, liberals ----",
+                            "options": [
+                                "~think that the problem of homelessness cannot be solved",
+                                "=want more shelters for the homeless",
+                                "~are of the opinion that most homeless people are mentally ill",
+                                "~want the government to ban sleeping on park benches"
+                            ],
+                            "id" : "23"
+                        }
+                    ],
+                    "note": "Read the following passage and answer the questions",
+                    "types" : "passage",
+                    "passage": "The sad situation of the homeless remains a problem. It is difficult to estimate how many people are homeless because the number depends on how the homeless are defined. There are street people - those who sleep in bus stations, parks, and other areas. Many of these people are youthful runaways. There are the so-called sheltered homeless - those who sleep in government supported or privately funded shelters. Many of these individuals used to live with their families or friends. While street people are almost always single, the sheltered homeless include numerous families with children. Conservatives argue that many homeless are alcoholics, drug users, or mentally ill. In contrast, many liberals argue that homelessness is caused by a reduction in welfare benefits and by excessively priced housing. They want more shelters to be built for the homeless."
+                },
+                {
+                    "name": "E2: Listening",
+                    "questions": [
+                        {
+                            "question": "Why did Salman Khan get started with the videos online",
+                            "options": [
+                                "~To teach his nephew how to upload videos on to youtube",
+                                "~Just because he enjoyed the experience of uploading such videos",
+                                "~He wanted to demonstrate to children how to use videos",
+                                "=He was trying to tutor his cousins through the videos"
+                            ],
+                            "id" : "24"
+                        },
+                        {
+                            "question": "Salman Khan got started with the videos online to teach his cousins located in",
+                            "options": [
+                                "~California",
+                                "~New York",
+                                "~Canada",
+                                "=New Orleans"
+                            ],
+                            "id" : "25"
+                        },
+                        {
+                            "question": "What did Salman Khan’s cousins prefer?",
+                            "options": [
+                                "=his lectures on YouTube ",
+                                "~his lectures at home",
+                                "~His lectures in school",
+                                "~his lectures on music"
+                            ],
+                            "id" : "26"
+                        },
+                        {
+                            "question": "What does Khan speak while quoting an example of the school",
+                            "options": [
+                                "~How the school rejected Khan academy sessions for their Math classes",
+                                "~How the teachers criticized that Khan academy gets children stuck in their concepts",
+                                "~How the children turned weak in their knowledge after listening to Khan academy lectures",
+                                "=How school used khan academy for Maths classes and to improve students’ understanding"
+                            ],
+                            "id" : "27"
+                        }
+                    ],
+                    "note": "Listen to the video given and answer the following questions:",
+                    "types": "video",
+                    "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhfs\" frameborder=\"0\" allowfullscreen></iframe>"
+                },
+                {
+                    "name": "E3: Writing",
+                    "questions": [
+                        {
+                            "question": "Write about the following topic in 100 to 150 words: 'Is college education in India not world class?'",
+                            "options": [],
+                            "id" : "28"
+                        }
+                    ],
+                    "types": "essay",
+                    "note": "Write the essay here"
+                }
+            ]
+        },
+        {
+            "name": "Telugu Comprehension Test",
+            "subsection": [
+            {
+                    "name": "T1: Reading",
+                    "questions": [
+                        {
+                            "question": "అన్ని ప్రాంతాలను అభివృద్ధి చేస్తామని ఎవరు అన్నారు?",
+                            "options": [
+                                "~భా జ పా నేత శ్రీ కిషన్ రెడ్డి",
+                                "=శ్రీ వై ఎస్ ఆర్ జగన్మోహన్ రెడ్డి",
+                                "~తెలంగాణా ముఖ్యమంత్రి శ్రీ కె చంద్రశేఖర్రావు",
+                                "~ఆంధ్రప్రదేశ్ ముఖ్యమంత్రి శ్రీ చంద్రబాబు నాయుడు"     
+                            ],
+                            "id" : "29"
+                        },
+                        {
+                            "question": "చంద్రబాబు నాయుడు ఎక్కడ మాట్లాడారు?",
+                            "options": [
+                                "~తెలంగాణా శాసనమండలి",
+                                "~ఏపి శాసనమండలి",
+                                "~పబ్లిక్ మీటింగులో",
+                                "=ఢిల్లీ పర్యటనలో"     
+                            ],
+                            "id" : "30"
+                        },
+                        {
+                            "question": "రుణ మాఫీ కోసం ఎంత డబ్బు విడుదల చేసినట్లు చెప్పారు?",
+                            "options": [
+                                "~7 వేల కోట్లు",
+                                "=42 కోట్లు",
+                                "~10 కోట్లు",
+                                "~7 లక్షలు"
+                            ],
+                            "id" : "31"
+                        },
+                        {
+                            "question": "రెండు నెలల్లో ఎవరికీ ఆర్థిక సాయం చేస్తామని సి ఎం చెప్పారు?",
+                            "options": [
+                                "~రిటైర్డ్ ఉద్యోగులకు",
+                                "~డ్వాక్రా సంఘాలకు",
+                                "=వృద్ధులకు",
+                                "~విద్యార్థులకు"
+                            ],
+                            "id" : "32"
+                        }
+                    ],
+                    "note": "Read the following passage and answer the questions",
+                    "types" : "passage",
+                    "passage": "అన్ని ప్రాంతాలను సమానంగా అభివృద్ధి చేస్తాం.... ప్రభుత్వానికి అందరూ సహకరించాలని ఏపీ ముఖ్యమంత్రి చంద్రబాబు నాయుడు కోరారు. ఏపీ శాసన మండలిలో సి ఎం మాట్లాడుతూఎన్నికల్లో ఇచ్చిన హామీల అమలుకు కట్టుబడి ఉన్నామని స్పష్హ్టం చేశారు. రుణమాఫీ కోసం రూ. 7 వేల కోట్లు విడుదల చేసినట్లు చెప్పారు. 42 లక్షల మందికి పించన్లు ఇస్తున్నాం, లబ్దిదారులకునేరుగా ఇంటి వద్దే పించన్లు పంపిణీ చేస్తామని తెలిపారు. రెండు నెలల్లో డ్వాక్రా సంఘాలకు రూ. 10 వేలు చొప్పున ఆర్ధిక సాయం అందిస్తామని వెల్లడించారు."
+                },
+                {
+                    "name": "E2: Listening",
+                    "questions": [
+                        {
+                            "question": "వై యస్ జగన్ అసెంబ్లీలో స్పీకర్ కు ఏమని ఫిర్యాదు చేసారు?",
+                            "options": [
+                                "~ప్రతిపక్ష నాయకులు వాక్ అవుట్ చేసారని",
+                                "~తమకు మాట్లాడే అవకాశం ఇవ్వలేదని",
+                                "=ప్రతిపక్ష నాయకులు పేదవాళ్ళకు కొత్త ఇల్లు కట్టి ఇవ్వలేదని",
+                                "~పైవి ఏవి కావు"
+                            ],
+                            "id" : "33"
+                        },
+                        {
+                            "question": "వై .యస్. జగన్ ఫిర్యాదుకు ఎవరు సమాధానమిచ్చారు?",
+                            "options": [
+                                "~శ్రీ చంద్రబాబు నాయుడు",
+                                "~స్పీకర్",
+                                "=ఘంటా శ్రీనివాస రావు",
+                                "~యనమల రామకృష్ణుడు"
+                            ],
+                            "id" : "34"
+                        },
+                        {
+                            "question": "రాష్ట్ర కాపిటల్ నిర్మాణానికి సింగపూర్ ఎన్ని ఎకరాలు కావాలని ప్రతిపాదించింది?",
+                            "options": [
+                                "~20 వేల ఎకరాలు",
+                                "~15 వేల ఎకరాలు",
+                                "~10 వేల ఎకరాలు",
+                                "=100 ఎకరాలు"
+                            ],
+                            "id" : "35"
+                        },
+                        {
+                            "question": "రాజేంద్రనాథ్ గారు తెలుగుదేశం పార్టీని ఏమని ఆరోపించారు?",
+                            "options": [
+                                "~రాష్ట్ర రాజధాని నిర్మాణానికి సింగపూర్ గవర్నమెంట్ సాయపడటం లేదని TDP వ్యాక్యనిచ్చినట్లు",
+                                "~రాష్ట్ర రాజధాని నిర్మాణానికి తెలంగాణ ప్రభుత్వం సాయపడటం లేదని TDP వ్యాక్యనిచ్చినట్లు",
+                                "=రాష్ట్ర రాజధాని నిర్మాణానికి గవర్నమెంట్ అఫ్ ఇండియా సాయపడటం లేదని TDP వ్యాక్యనిచ్చినట్లు",
+                                "~పైవి ఏవి కావు"
+                            ],
+                            "id" : "36"
+                        }
+                    ],
+                    "note": "Listen to the video given and answer the following questions:",
+                    "types": "video",
+                    "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/_BpqSUv7fRw\" frameborder=\"0\" allowfullscreen></iframe>"
+                }
+            ]
+        }
+    ]
+}

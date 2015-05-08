@@ -92,6 +92,8 @@ $(function() {
 			}
 			if (this.questionIndex < this.questions.length) {
 				this.questionIndex++;
+				if(this.questionIndex == this.questions.length)
+					this.questionIndex = this.questions.length - 1;
 				this.question = this.questions[this.questionIndex];
 			}
 		},
@@ -109,7 +111,7 @@ $(function() {
 		init : function() {
 			$.post("/getquizstatus")
 				.done(function(data){
-					console.log("info: questions loaded from server");
+					console.log("info: questions loaded from server" + data);
 					data = JSON.parse(data);
 					quizModel.init(data)
 					startView.init();
@@ -147,11 +149,14 @@ $(function() {
 				.done(function(data){
 					console.log("Success:" + data);
 					data = JSON.parse(data)
-					if(data.testEnd)
+					if(data.testEnd) {
 						quizModel.testEnd = true;
+					}
 					if(quizModel.getQuizStatus() == "END")
 						resultView.init();
 					if(quizModel.getQuizStatus() == "INPROGRESS") {
+						if(quizModel.questionIndex == quizModel.questions.length - 1)
+							alert("select End Test Button to end your test");
 						questionView.showNextQuestion();
 					}
 				});
@@ -196,7 +201,6 @@ $(function() {
 					console.log("ping response " + data)
 					data = JSON.parse(data);
 					quizModel.setQuizStatus(data.quizStatus);
-					console.log(data.timeRemaining);
 					if(!data.timeRemaining) {
 						this.pingThread = clearInterval();
 					}
@@ -358,8 +362,6 @@ $(function() {
 				questionView.render();
 				progressView.init();
 			}
-			else
-			 	alert("select End Test Button to end your test");
 		},
 
 		showNextQuestion: function() {
@@ -465,7 +467,7 @@ $(function() {
 					Wami.startListening();
 				record.disabled=true;
 				stop.disabled=false;
-				var recordingUrl ="https://speedy-coder-93515.appspot.com/audio";
+				var recordingUrl ="https://wise-logic-91506.appspot.com/audio";
 				Wami.startRecording(recordingUrl);
 				/*var t=120;
 				var display=$('flash');

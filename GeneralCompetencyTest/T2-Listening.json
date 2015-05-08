@@ -4,7 +4,7 @@
     "note": "Listen to the video given and answer the following questions:",
     "videoArray": [
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-1.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-1.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "పద్మ పురస్కారాల ప్రధానోత్సవం ఎక్కడ జరిగింది?",
@@ -49,7 +49,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-2.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-2.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ఇస్రో ఎంత సమయంలో ఉపగ్రహాన్ని నిర్దిష్ట కక్ష్యలో ప్రవేశపెట్టింది?",
@@ -94,7 +94,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-3.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-3.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "యోగ గురువుకు చంద్రబాబు సర్కారు భూమిని ఎక్కడ కేటాయించింది?",
@@ -139,7 +139,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-4.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-4.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ముఖ్యమంత్రి కె సి ఆర్ గారు తన ఎన్నవ జన్మదిన వేడుకలను జరుపుకున్నారు?",
@@ -184,7 +184,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-5.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-5.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "బిసిసిఐ కార్యధర్శి పదవిని ఎవరు దక్కించుకున్నారు?",
@@ -229,7 +229,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-6.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-6.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "కేంద్ర స్త్రీ శిశు సంక్షేమ శాఖా మంత్రి ఎవరు?",
@@ -274,7 +274,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-7.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-7.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "వరంగల్ లోని ప్రముఖ చారిత్రక కట్టడం ఏది?",
@@ -319,7 +319,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-8.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-8.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "కార్డాన్ సెర్చ్ లో ఎంత మందిని అనుమానితులుగా గుర్తించారు?",
@@ -364,7 +364,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-9.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-9.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ఎన్ డి ఏ ప్రభుత్వం లో చేరే ఆలోచన ఏ పార్టి కి లేదని మంత్రి స్పంష్టం చేసారు",
@@ -409,7 +409,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-10.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-10.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "వై ఎస్ ఆర్ సి పి పార్టీ ఎక్కడ నిరసనలు చేయాలని అనుకుంది?",
@@ -454,7 +454,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-11.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-11.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "గతం లో రైతులకి ఏ పథకం ద్వార లక్ష రూపాయలు అప్పుగా ఇచ్చేవారు?",
@@ -499,7 +499,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-12.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-12.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ప్లీనరీకి ఆహ్వానించిన ప్రతినిధుల సంఖ్య ఎంత?",
@@ -544,7 +544,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-13.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-13.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "భూమా నాగిరెడ్డి ఏ నియోజక వర్గానికి M L A?",
@@ -589,7 +589,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-14.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-14.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "కొండ చరియలు ఏ ప్రాంతంలో విరిగి పడ్డాయి?",
@@ -634,7 +634,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-15.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-15.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ఏ బాదితులు జగన్ మోహన్ రెడ్డి ని కలిశారు?",
@@ -679,7 +679,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-16.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-16.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "కాంగ్రెస్ తరపున నారాయణ రెడ్డి గారు ఎప్పుడు పోటిచేశారు?",
@@ -724,7 +724,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-17.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-17.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "మైక్రోసాఫ్ట్ విడుదల చేసిన కొత్త బ్రౌజరు ఏది?",
@@ -769,7 +769,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-18.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-18.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "పల్సర్ 200 సి సి బైక్ ని ఏ కంపెనీ లాంచ్ చేసింది?",
@@ -814,7 +814,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-19.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-19.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "ఎన్ని రకాల భారతీయ కూరలను హలో కర్రీ కంపెనీ అందిస్తుంది?",
@@ -859,7 +859,7 @@
             ]
         },
         {
-            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-20.mp3\" frameborder=\"0\" allowfullscreen></iframe>",
+            "link": "<iframe width=\"560\" height=\"315\" src=\"stylesheets/audio-20.mp3\" autoplay=0 frameborder=\"0\" allowfullscreen></iframe>",
             "questions": [
                 {
                     "question": "సంఘటన స్థలానికి ఎన్ని అగ్నిమాపక శకటాలు చేరుకున్నాయి?",

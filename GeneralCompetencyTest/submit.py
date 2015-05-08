@@ -414,8 +414,6 @@ class checklogin(webapp2.RequestHandler):
                 Response(useremailid=User(emailid=user.email(),name=user.nickname())).put()
             sp=userDetails.query(userDetails.email==user.email()).get()
             template=None
-            print sp
-            logging.error("checkllajn")
             if sp is not None:
                 template= JINJA_ENVIRONMENT.get_template('quiz.html')
             else:
@@ -747,14 +745,13 @@ class registrationdataHandler(webapp2.RequestHandler):
             vals = json.loads(cgi.escape(self.request.body))
             vals = vals['jsonData']
             userDetails(name=vals['name'],email=user.email(),phno=vals['phno'],street=vals['add1'],city=vals['add2'],state=vals['add3'],pincode=vals['pincode']).put()
-            obj = {u"message": "success"}
-            ss=json.dumps(vals)
-            self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
-            self.response.write(ss)
+            template = JINJA_ENVIRONMENT.get_template('quiz.html')
+            self.response.write(template.render())
         else:
             login_url = users.create_login_url(self.request.path)
             self.redirect(login_url)
 
+class startquiz(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()
         if user:
@@ -813,7 +810,8 @@ class endtest(webapp2.RequestHandler):
 application = webapp2.WSGIApplication([
     ('/', homepage),
     ('/checklogin',checklogin),
-    ('/startquiz',registrationdataHandler),
+    ('/startquiz', startquiz),
+    ('/savepersonaldata',registrationdataHandler),
     ('/registration',registration),
     ('/submitanswer', submitAnswer),
     ('/getResult', getResult),

@@ -123,14 +123,14 @@
 				data=JSON.stringify({jsonData: data});
 				console.log(data);
 				
-					$.post("/startquiz", data)
-					.done(function(){
-						location.href = "/startquiz";			
-					})
-					.fail(function(){
-						console.log("PING Failed");
-				});
-
+					$.post("/savepersonaldata", data)
+							.done(function(data){
+								console.log(data);
+								location.href = "/startquiz";
+							})
+							.fail(function(){
+								console.log("PING Failed");
+							});
 				
 			} else {
 				return false;
