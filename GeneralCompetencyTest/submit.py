@@ -131,6 +131,7 @@ def getAnswer(qid):
                         if op[0] == "=":
                             return op[1:len(op)]
 def getQuestionPaper(qid_list):
+    logging.error("questions with sno")
     json_temp=json.loads(open('QP_template.json').read())
     #print qid_list
     i=0;j=0;k=0;l=0;m=0;n=0;p=0;q=0;r=0;s=0;t=0
@@ -143,7 +144,7 @@ def getQuestionPaper(qid_list):
                     if int(key["id"]) == qid:
                           #print key
                           json_temp["section"][0]["subsection"][0]["questions"].append(key)
-                          json_temp["section"][0]["subsection"][0]["questions"][i]["serialno"]=i+1
+                          json_temp["section"][0]["subsection"][0]["questions"][i]["serialno"] = qid_list[qid]
                           i +=1
         if qid in range(201,301):
               a2_readjson=json.loads(open('A2-Reading.json').read())
@@ -152,27 +153,27 @@ def getQuestionPaper(qid_list):
                     if int(pid) == qid:
                           json_temp["section"][0]["subsection"][1]["passage"]=key["passage"]
                           json_temp["section"][0]["subsection"][1]["questions"]=key["questions"]
-                          json_temp["section"][0]["subsection"][1]["questions"][0]["serialno"]=1
+                          json_temp["section"][0]["subsection"][1]["questions"][0]["serialno"] = qid_list[qid]
         if qid in range(301,401):
               a3_numjson=json.loads(open('A3-Numerical.json').read())
               for key in a3_numjson["questions"]:
                     if int(key["id"]) == qid:
                           json_temp["section"][0]["subsection"][2]["questions"].append(key)
-                          json_temp["section"][0]["subsection"][2]["questions"][j]["serialno"]=j+1
+                          json_temp["section"][0]["subsection"][2]["questions"][j]["serialno"] = qid_list[qid]
                           j +=1
         if qid in range(401,501):
               a4_reasjson=json.loads(open('A4-Reasoning.json').read())
               for key in a4_reasjson["questions"]:
                     if int(key["id"]) == qid:
                           json_temp["section"][0]["subsection"][3]["questions"].append(key)
-                          json_temp["section"][0]["subsection"][3]["questions"][k]["serialno"]=k+1
+                          json_temp["section"][0]["subsection"][3]["questions"][k]["serialno"] = qid_list[qid]
                           k +=1
         if qid in range(501,601):
               a5_essayjson=json.loads(open('A5-Composition.json').read())
               for key in a5_essayjson["questions"]:
                     if int(key["id"]) == qid:
                           json_temp["section"][0]["subsection"][4]["questions"].append(key)
-                          json_temp["section"][0]["subsection"][4]["questions"][l]["serialno"]=l+1
+                          json_temp["section"][0]["subsection"][4]["questions"][l]["serialno"] = qid_list[qid]
                           l += 1
         if qid in range(601,701):
               e1_readjson=json.loads(open('E1-Reading.json').read())
@@ -182,7 +183,7 @@ def getQuestionPaper(qid_list):
                           if int(pid) == qid:
                                 json_temp["section"][1]["subsection"][0]["passage"]=key["passage"]
                                 json_temp["section"][1]["subsection"][0]["questions"].append(qn)
-                                json_temp["section"][1]["subsection"][0]["questions"][m]["serialno"]=m+1
+                                json_temp["section"][1]["subsection"][0]["questions"][m]["serialno"] = qid_list[qid]
                                 m +=1
         if qid in range(701,801):
               e2_lsnjson=json.loads(open('E2-Listening.json').read())
@@ -192,21 +193,21 @@ def getQuestionPaper(qid_list):
                           if int(pid) == qid:
                                 json_temp["section"][1]["subsection"][1]["link"]=key["link"]
                                 json_temp["section"][1]["subsection"][1]["questions"].append(qn)
-                                json_temp["section"][1]["subsection"][1]["questions"][n]["serialno"]=n+1
+                                json_temp["section"][1]["subsection"][1]["questions"][n]["serialno"] = qid_list[qid]
                                 n +=1
         if qid in range(801,901):
               e3_spkjson=json.loads(open('E3-Speaking.json').read())
               for key in e3_spkjson["questions"]:
                     if int(key["id"]) == qid:
                           json_temp["section"][1]["subsection"][2]["questions"].append(key)
-                          json_temp["section"][1]["subsection"][2]["questions"][p]["serialno"]=p+1
+                          json_temp["section"][1]["subsection"][2]["questions"][p]["serialno"] = qid_list[qid]
                           p += 1
         if qid in range(901,1001):
               e4_wrtjson=json.loads(open('E4-Writing.json').read())
               for key in e4_wrtjson["questions"]:
                     if int(key["id"]) == qid:
                           json_temp["section"][1]["subsection"][3]["questions"].append(key)
-                          json_temp["section"][1]["subsection"][3]["questions"][q]["serialno"]=q+1
+                          json_temp["section"][1]["subsection"][3]["questions"][q]["serialno"] = qid_list[qid]
                           q += 1
         if qid in range(1001,1101):
               t1_readjson=json.loads(open('T1-Reading.json').read())
@@ -216,7 +217,7 @@ def getQuestionPaper(qid_list):
                           if int(pid) == qid:
                                 json_temp["section"][2]["subsection"][0]["passage"]=key["passage"]
                                 json_temp["section"][2]["subsection"][0]["questions"].append(qn)
-                                json_temp["section"][2]["subsection"][0]["questions"][r]["serialno"]=r+1
+                                json_temp["section"][2]["subsection"][0]["questions"][r]["serialno"] = qid_list[qid]
                                 r += 1
         if qid in range(1101,1201):
               t2_lsnjson=json.loads(open('T2-Listening.json').read())
@@ -226,7 +227,7 @@ def getQuestionPaper(qid_list):
                           if int(pid) == qid:
                                 json_temp["section"][2]["subsection"][1]["link"]=key["link"]
                                 json_temp["section"][2]["subsection"][1]["questions"].append(qn)
-                                json_temp["section"][2]["subsection"][1]["questions"][s]["serialno"]=s+1
+                                json_temp["section"][2]["subsection"][1]["questions"][s]["serialno"] = qid_list[qid]
                                 s += 1
     #ss=json.dumps(json_temp)
     return json_temp
@@ -434,9 +435,9 @@ class getquizstatus(webapp2.RequestHandler):
             logging.error("random values")
             if r1:
                 isRandomized = True
-                qid_list=[]
+                qid_list={}
                 for data in r1:
-                    qid_list.append(data.qno);
+                    qid_list[int(data.qno)] = data.serialno
                 json_data=getQuestionPaper(qid_list)
             else:
                 isRandomized = False

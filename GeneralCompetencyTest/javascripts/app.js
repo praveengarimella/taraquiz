@@ -58,6 +58,7 @@ $(function() {
 				}
 			});
 			this.questions = questionsArray;
+			console.log(this.questions);
 
 			/*
 			 *	Set the question index to the first question that is not attempted
