@@ -58,7 +58,6 @@ $(function() {
 				}
 			});
 			this.questions = questionsArray;
-			console.log(this.questions);
 
 			/*
 			 *	Set the question index to the first question that is not attempted
@@ -266,8 +265,8 @@ $(function() {
 
 			confirm("Do you want to end the test?");
 			resultView.init();
-			console.log("score"+resultView.totalScore);
-			var data = {"testend":true, "finalScore": resultView.totalScore};
+			console.log("score="+resultView.totalScore);
+			var data = {"testend":true, "finalScore": resultView.finalScore};
 
 			data=JSON.stringify({jsonData: data});
 			console.log("endtest" + data);
@@ -461,54 +460,20 @@ $(function() {
 			var record=document.getElementById('record');
 			var stop=document.getElementById('stop');
 			stop.disabled=true;
-			var time;
-			var again=false;
 			record.onclick= function()
 			{
-				if(again)
-					Wami.startListening();
 				record.disabled=true;
 				stop.disabled=false;
 				var recordingUrl ="https://speedy-coder-93515.appspot.com/audio";
 				Wami.startRecording(recordingUrl);
-				/*var t=120;
-				var display=$('flash');
-				startTimer(t,display);*/
-				time=setInterval(function(){
-					Wami.stopListening();
-					record.disabled=false;
-					stop.disabled=true;
-					clearInterval(time);
-					again=true;
-					alert("Recording time is over. Now you can submit.");},120000);
 			}
 			stop.onclick= function()
 			{
-				clearInterval(time);
 				Wami.stopListening();
 				record.disabled=false;
 				stop.disabled=true;
-				again=true;
 			}
 		},
-
-		/*startTimer : function (duration, display) 
-		{
-		    var timer = duration, minutes, seconds;
-		    setInterval(function () {
-		        minutes = parseInt(timer / 60, 10)
-		        seconds = parseInt(timer % 60, 10);
-
-		        minutes = minutes < 10 ? "0" + minutes : minutes;
-		        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-		        display.text(minutes + ":" + seconds);
-
-		        if (--timer < 0) {
-		            timer = duration;
-		        }
-		    }, 1000);
-		},*/
 
 		displayOptions : function() {
 			var q = quizModel.question;
@@ -653,18 +618,20 @@ $(function() {
 			octopus.getResults();
 			var resultHTML = '<table class="table table-hover">';
 			resultHTML += '<tr><th>Q. No.</th><th>Score</th><th>Response Time</th></tr>';
-			this.totalScore = 0;
+			totalScore = 0;
 			$.each(quizModel.result.question,function(index, value){
 				//console.log(value.currentQuestion, value.q_score, value.responsetime);
 				resultHTML += '<tr><td>' + value.currentQuestion + '</td>';
 				resultHTML += '<td>' + value.q_score + '</td>'
 				resultHTML += '<td>' + Math.round(value.responsetime) + '</td></tr>';
-				this.totalScore += value.q_score;
+				totalScore += value.q_score;
 			});
 			resultHTML += '</table>';
-			this.questionNote.html('<p class="lead">Your total score is: ' + this.totalScore + '</p>');
+			this.questionNote.html('<p class="lead">Your total score is: ' + totalScore + '</p>');
 			this.questionPane.hide();
 			this.navBar.hide();
+			this.finalScore = totalScore;
+			console.log(this.finalScore);
 		}
 	};
 
