@@ -1,0 +1,155 @@
+{
+    "name": "A4: Reasoning",
+    "questions": [
+        {
+            "question": "I am facing East. I turn 180 degreesin the clockwise direction and then 90 degreesin the anti – clockwise direction. Which direction am I facing now?",
+            "options": [
+                "~East",
+                "~West",
+                "~North",
+                "=South"
+            ],
+            "id": "401"
+        },
+        {
+            "question": " Find the next number in the series.8, 27, 125, 343___,",
+            "options": [
+                "~512",
+                "=1331",
+                "~729",
+                "~1000"
+            ],
+            "id": "402"
+        },
+        {
+            "question": "City ‘K’ is situated to the West of city ‘L’ City ‘M’ is situated to the North of city ‘L’. City ‘N’ is situated towards the South of city ‘M’. In which direction is city ‘L’ situated with respect to city ‘N’?",
+            "options": [
+                "~North",
+                "~South",
+                "~East",
+                "=Cannot be determined"
+            ],
+            "id": "403"
+        },
+        {
+            "question": "If Akash is the brother of the son of Sundar’s son, then how is Akash related to Sundar?",
+            "options": [
+                "~Brother",
+                "~Father",
+                "=Grandson",
+                "~Grandfather"
+            ],
+            "id": "404"
+        },
+        {
+            "question": "If MAN is coded as 28, what will be the code number for CHILD?",
+            "options": [
+                "~30",
+                "~42",
+                "=36",
+                "~38"
+            ],
+            "id": "405"
+        },
+        {
+            "question": " Find the odd man out : 1225, 625, 125, 25, 5",
+            "options": [
+                "~5",
+                "~25",
+                "~125",
+                "=1225"
+            ],
+            "id": "406"
+        },
+        {
+            "question": "arshini and Sowmya are standing 10 m apart and Harshini is towards Sowmya’s left. Both start travelling towards North, walk for about 30 m and then turn right to travel 40 m further. Harshini then takes a left turn, travels 20 m and stops but Sowmya takes a right turn to travel 10 m. Sowmya again turns right, travels 10 m and stops. How far are they from each other?",
+            "options": [
+                "~10 m",
+                "~20 m",
+                "~25 m",
+                "=30 m"
+            ],
+            "id": "407"
+        },
+        {
+            "question": "Pointing towards a man in a photograph, a woman said, “He is the father of the brother of my father”. How is the man related to the woman?",
+            "options": [
+                "=Grandfather",
+                "~Father",
+                "~Uncle",
+                "~Uncle or Father"
+            ],
+            "id": "408"
+        },
+        {
+            "question": "Four people played a game of chess, where each one plays with every other player exactly once. What is the maximum number of points that any player could gather if every win gets him one point",
+            "options": [
+                "=3",
+                "~4",
+                "~5",
+                "~6"
+            ],
+            "id": "409"
+        },
+        {
+            "question": "Lakshmi has same number of sisters as she has brothers, but her brother Shashank has twice as many sisters as he has brothers. How many children are there in the family?",
+            "options": [
+                "~4",
+                "~5",
+                "~6",
+                "=7"
+            ],
+            "id": "410"
+        },
+        {
+            "question": "Find the next in the series. TYU, NSO, HMI, ___",
+            "options": [
+                "=BGC",
+                "~AGC",
+                "~CGC",
+                "~GBC"
+            ],
+            "id": "411"
+        },
+        {
+            "question": "Find the missing number in the series 4, 16, 36, ___, 100, 144",
+            "options": [
+                "~60",
+                "~72",
+                "~68",
+                "=64"
+            ],
+            "id": "412"
+        },
+        {
+            "question": "Find the next letters in the series LRX, DJP, VBH, NTZ, ___",
+            "options": [
+                "~ELS",
+                "=FLR",
+                "~FMR",
+                "~GKS"
+            ],
+            "id": "413"
+        },
+        {
+            "question": "Analogy question 5 : 24 : : 8 : ___",
+            "options": [
+                "~64",
+                "~62",
+                "~61",
+                "=63"
+            ],
+            "id": "414"
+        },
+        {
+            "question": "Find the next number in the series. 4, 25, 64, 121, 196, ___",
+            "options": [
+                "~361",
+                "~256",
+                "~225",
+                "=289"
+            ],
+            "id": "415"
+        }
+    ]
+}

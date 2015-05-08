@@ -1,0 +1,637 @@
+{
+    "name": "E2: Listening",
+    "types": "video",
+    "note": "Listen to the video given and answer the following questions:",
+    "videoArray": [
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Why did Salman Khan get started with the videos online",
+                    "options": [
+                        "~To teach his nephew how to upload videos on to youtube",
+                        "~Just because he enjoyed the experience of uploading such videos",
+                        "~He wanted to demonstrate to children how to use videos",
+                        "=He was trying to tutor his cousins through the videos"
+                    ],
+                    "id": "701"
+                },
+                {
+                    "question": "Salman Khan got started with the videos online to teach his cousins located in",
+                    "options": [
+                        "~California",
+                        "~New York",
+                        "~Canada",
+                        "=New Orleans"
+                    ],
+                    "id": "702"
+                },
+                {
+                    "question": "What did Salman Khan’s cousins prefer?",
+                    "options": [
+                        "=his lectures on YouTube",
+                        "~his lectures at home",
+                        "~His lectures in school",
+                        "~his lectures on music"
+                    ],
+                    "id": "703"
+                },
+                {
+                    "question": "What does Khan speak while quoting an example of the school",
+                    "options": [
+                        "~How the school rejected Khan academy sessions for their Math classes",
+                        "~How the teachers criticized that Khan academy gets children stuck in their concepts",
+                        "~How the children turned weak in their knowledge after listening to Khan academy lectures",
+                        "=How school used khan academy for Maths classes and to improve students’ understanding"
+                    ],
+                    "id": "704"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/24d4rfnsOxg\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "When did the speaker say she left India?",
+                    "options": [
+                        "~20 years ago",
+                        "~2 years ago",
+                        "~35 years ago",
+                        "~3 years ago"
+                    ],
+                    "id": "705"
+                },
+                {
+                    "question": "Where did she say she has gone to?",
+                    "options": [
+                        "~Germany",
+                        "~United States",
+                        "~China",
+                        "~Pakistan"
+                    ],
+                    "id": "706"
+                },
+                {
+                    "question": "Why did she thank India for?",
+                    "options": [
+                        "~For the honor it gave",
+                        "~For her upbringing",
+                        "~For the films she watched",
+                        "~For the vacation she had"
+                    ],
+                    "id": "707"
+                },
+                {
+                    "question": "What is the first lesson she wants to talk about?",
+                    "options": [
+                        "~Never go to college",
+                        "~Be a lifelong student",
+                        "~Be a lifelong teacher",
+                        "~None of the above"
+                    ],
+                    "id": "708"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/PsgAlAtw4N4\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Which parliament is the speaker thanking?",
+                    "options": [
+                        "~American parliament",
+                        "~Australian parliament",
+                        "~Korean parliament",
+                        "=European parliament"
+                    ],
+                    "id": "709"
+                },
+                {
+                    "question": "What was the occasion during which the speaker was delivering his talk?",
+                    "options": [
+                        "~Golden jubilee year of Indian constitution",
+                        "~Golden jubilee year of Canadian constitution",
+                        "~Silver jubilee year of European union",
+                        "=Golden jubilee year of the European Union"
+                    ],
+                    "id": "710"
+                },
+                {
+                    "question": "When did the Tamil speaker he referred to said that the world citizens are his kith and kin?",
+                    "options": [
+                        "~2000 years back",
+                        "~300 years back",
+                        "=3000 years back",
+                        "~1000 years back"
+                    ],
+                    "id": "711"
+                },
+                {
+                    "question": "Whow according to him can order in nation is achieved?",
+                    "options": [
+                        "=Harmony in home",
+                        "~Harmony in metropolitan cities",
+                        "~Harmony in rural villages",
+                        "~Harmony in developing towns"
+                    ],
+                    "id": "712"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/2Dd6ln9Fhdg\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Where does the speaker say she stored the teas that she collected?",
+                    "options": [
+                        "~Mother’s bag",
+                        "=Father’s old trunk",
+                        "~Attic",
+                        "~In her kitchen"
+                    ],
+                    "id": "713"
+                },
+                {
+                    "question": "Which place did the speaker go to study about tea?",
+                    "options": [
+                        "~China",
+                        "~Japan",
+                        "=Sri Lanka",
+                        "~Malaysia"
+                    ],
+                    "id": "714"
+                },
+                {
+                    "question": "What did she find about different kinds of tea?",
+                    "options": [
+                        "~That they come from different plants",
+                        "~They come from different factories",
+                        "=They all come from the same plant",
+                        "~They all come from the same factory"
+                    ],
+                    "id": "715"
+                },
+                {
+                    "question": "Which country’s tea producers did the speaker start working with as part of her initiative ‘Tea Trunk’?",
+                    "options": [
+                        "~Russia",
+                        "~Singapore",
+                        "~Nepal",
+                        "=India"
+                    ],
+                    "id": "716"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/UNZNbcf5Hd8\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Who is the speaker representing?",
+                    "options": [
+                        "~Adults",
+                        "~Youth",
+                        "=Children",
+                        "~Old people"
+                    ],
+                    "id": "717"
+                },
+                {
+                    "question": "Whom did the speaker meet 20 years ago?",
+                    "options": [
+                        "=A small skinny child laborer",
+                        "~A child mother",
+                        "~A Columbian woman",
+                        "~A group of children"
+                    ],
+                    "id": "718"
+                },
+                {
+                    "question": "What is the speaker’s aim?",
+                    "options": [
+                        "~Poverty  eradication",
+                        "=Child liberty",
+                        "~World Peace",
+                        "~Upliftment of women"
+                    ],
+                    "id": "719"
+                },
+                {
+                    "question": "When did the speaker meet the Columbian mother?",
+                    "options": [
+                        "~20 years ago",
+                        "~10 years ago",
+                        "=12 years ago",
+                        "~1 year ago"
+                    ],
+                    "id": "720"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/vxkM3lw2OZc\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Where did the speaker meet Siddharth?",
+                    "options": [
+                        "~At the railway station",
+                        "~At the bus station",
+                        "~At the  sea port",
+                        "=At the Airport"
+                    ],
+                    "id": "721"
+                },
+                {
+                    "question": "What was Siddharth suffering from?",
+                    "options": [
+                        "~Fever",
+                        "~Cancer",
+                        "=Cerebral Palsy",
+                        "~Conjunctivitis"
+                    ],
+                    "id": "722"
+                },
+                {
+                    "question": "How much did Siddharth score in Computer Science?",
+                    "options": [
+                        "~99%",
+                        "=100%",
+                        "~80%",
+                        "~70%"
+                    ],
+                    "id": "723"
+                },
+                {
+                    "question": "Who recognized Ramanujan’s mathematical genius?",
+                    "options": [
+                        "~Prof  English",
+                        "=Prof  Hardy",
+                        "~Ramanujan himself",
+                        "~Abdu Kalam"
+                    ],
+                    "id": "724"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/bLKRlZOS4Po\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "According to the speaker, what is most important word in the English language today?",
+                    "options": [
+                        "~Money",
+                        "~Job",
+                        "~Dreams",
+                        "=Attitude"
+                    ],
+                    "id": "725"
+                },
+                {
+                    "question": "What determines our success?",
+                    "options": [
+                        "~Position",
+                        "~Qualification",
+                        "=Disposition",
+                        "~Experience"
+                    ],
+                    "id": "726"
+                },
+                {
+                    "question": "When will others treat us with discourtesy?",
+                    "options": [
+                        "=When we treat them with discourtesy",
+                        "~When  we lie to them",
+                        "~When we don’t  make any choices in life",
+                        "~When  we give them money"
+                    ],
+                    "id": "727"
+                },
+                {
+                    "question": "Why do people get promotions , according to the speaker?",
+                    "options": [
+                        "~Due to hard work",
+                        "=Because of Attitude",
+                        "~Due to smart work",
+                        "~Because of consistent performance."
+                    ],
+                    "id": "728"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/f4vJpmkzIz8\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Who claimed that there was no connection between Africa and India?",
+                    "options": [
+                        "~People",
+                        "=Historians",
+                        "~Politicians",
+                        "~Economists"
+                    ],
+                    "id": "729"
+                },
+                {
+                    "question": "When did Vasco da gama reach India?",
+                    "options": [
+                        "~1500",
+                        "~1948",
+                        "=1498",
+                        "~1600"
+                    ],
+                    "id": "730"
+                },
+                {
+                    "question": "Whose civilizations was advanced?",
+                    "options": [
+                        "~India’s",
+                        "~Europe’s",
+                        "=Africa’s",
+                        "~Asia’s"
+                    ],
+                    "id": "731"
+                },
+                {
+                    "question": "What do we  see on the right side of the king in the carving?",
+                    "options": [
+                        "~Soldiers walking",
+                        "~People playing",
+                        "~A man",
+                        "=Several people wearing skirts"
+                    ],
+                    "id": "732"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/PlhC43feC90.\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Who cannot do Math?",
+                    "options": [
+                        "~All the people of the world",
+                        "=Children",
+                        "~Politicians",
+                        "~Business men"
+                    ],
+                    "id": "733"
+                },
+                {
+                    "question": "Who founded Vedic Math?",
+                    "options": [
+                        "~Birju Maharaj",
+                        "~Ramanujan",
+                        "~Shakuntala Devi",
+                        "=Tirthaji"
+                    ],
+                    "id": "734"
+                },
+                {
+                    "question": "Which country’s children have a problem with multiplications?",
+                    "options": [
+                        "~London",
+                        "~Nepal",
+                        "=Africa",
+                        "~India"
+                    ],
+                    "id": "735"
+                },
+                {
+                    "question": "Why were the calculators withdrawn in the UK?",
+                    "options": [
+                        "~As they are damaged",
+                        "~Because they are  expensive",
+                        "~They  were too big to carry",
+                        "=They are harmful to the brain."
+                    ],
+                    "id": "736"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "   What did the speaker say she would use to introduce Mr.Obama ?",
+                    "options": [
+                        "~Short poem",
+                        "=Short story",
+                        "~Short dialogue",
+                        "~Long script"
+                    ],
+                    "id": "737"
+                },
+                {
+                    "question": "   Which were the groups she volunteered with an objective to change them?",
+                    "options": [
+                        "~One from  remand home and another from government school",
+                        "~One from Government school and another from private school",
+                        "=One from remand home  and another from private school",
+                        "~Both groups from different remand homes"
+                    ],
+                    "id": "738"
+                },
+                {
+                    "question": "   What according to the speaker does Pravah- NGO do?",
+                    "options": [
+                        "~Run schools",
+                        "~Run coaching centers",
+                        "=Nurture young leaders",
+                        "~Organize events"
+                    ],
+                    "id": "739"
+                },
+                {
+                    "question": "   Why did the speaker narrate the story in her speech?",
+                    "options": [
+                        "=Because Barack Obama also talks of need for empathy",
+                        "~Because Barack Obama likes stories",
+                        "~Because Indians like stories",
+                        "~Because politicians like stories"
+                    ],
+                    "id": "740"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "   The month of January is named after which of these gods?",
+                    "options": [
+                        "~Greek god",
+                        "~Indian god",
+                        "=Roman god",
+                        "~Italian god"
+                    ],
+                    "id": "741"
+                },
+                {
+                    "question": "   Who said, â€œ If you donâ€™t know which boat  you are sailing to, no wind is favorable for youâ€?",
+                    "options": [
+                        "~Aristotle",
+                        "~Socrates",
+                        "~Plato",
+                        "=Saneca"
+                    ],
+                    "id": "742"
+                },
+                {
+                    "question": "    What gives us good results and makes us successful, according to the speaker?",
+                    "options": [
+                        "~Individuality",
+                        "~Team work",
+                        "=Ownership",
+                        "~Being Proactive"
+                    ],
+                    "id": "743"
+                },
+                {
+                    "question": "   How should we live our lives?",
+                    "options": [
+                        "~Wasting time",
+                        "~Putting only some amount of efforts",
+                        "~Taking responsibility",
+                        "=Making the best of every single moment"
+                    ],
+                    "id": "744"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "   What is the speaker talking about",
+                    "options": [
+                        "~Confidence in Presentations",
+                        "~Attitude in Presentations",
+                        "=Facial expressions in Presentations",
+                        "~Team work"
+                    ],
+                    "id": "745"
+                },
+                {
+                    "question": "Why should we smile while communicating?",
+                    "options": [
+                        "=It connects with people",
+                        "~It makes you feel ugly",
+                        "~To overcome your fear",
+                        "~To communicate well"
+                    ],
+                    "id": "746"
+                },
+                {
+                    "question": "According to the speaker, what should match with our expressions?",
+                    "options": [
+                        "~Face",
+                        "=Words",
+                        "~Eye",
+                        "~Legs"
+                    ],
+                    "id": "747"
+                },
+                {
+                    "question": "How can we avoid crutch gestures?",
+                    "options": [
+                        "~By sitting",
+                        "=By standing in the front of the mirror and observing crutch gestures",
+                        "~By sleeping",
+                        "~By not doing anything."
+                    ],              
+                    "id": "748"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "Which company is  Nikesh Arora representing in the video",
+                    "options": [
+                        "~Face book",
+                        "=Google",
+                        "~Microsoft",
+                        "~Cognizant"
+                    ],
+                    "id": "749"
+                },
+                {
+                    "question": "What did Nikesh prefer to do in the class?",
+                    "options": [
+                        "~Ask a lot of questions",
+                        "~Ask some questions",
+                        "=Preferred sitting in the back of the class and preferred not to react",
+                        "~Never talked in the class"
+                    ],
+                    "id": "750"
+                },
+                {
+                    "question": "Why did he do a degree in finance?",
+                    "options": [
+                        "~He was interested in finance",
+                        "~His father suggested him to  do a course in finance",
+                        "~He  did not have enough money",
+                        "=He applied for jobs in the finance industry but was rejected as he did not have degree in finance"
+                    ],
+                    "id": "751"
+                },
+                {
+                    "question": "When did he graduate from the business school in the US?",
+                    "options": [
+                        "=1992",
+                        "~1993",
+                        "~1190",
+                        "~1994"
+                    ],
+                    "id": "752"
+                }
+            ]
+        },
+        {
+            "link": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nTFEUsudhf\" frameborder=\"0\" allowfullscreen></iframe>",
+            "questions": [
+                {
+                    "question": "What did Laxman want to be in his childhood?",
+                    "options": [
+                        "~Politician",
+                        "~Actor",
+                        "=Doctor",
+                        "~Cricketer"
+                    ],
+                    "id": "753"
+                },
+                {
+                    "question": "Why is cricket a religion in India?",
+                    "options": [
+                        "=Because every single person in India loves it and plays cricket",
+                        "~As it is a very famous game",
+                        "~It is a gentlemen game",
+                        "~It an interesting game"
+                    ],
+                    "id": "754"
+                },
+                {
+                    "question": "Where does Laxman want to set up a sports school?",
+                    "options": [
+                        "~Bangalore",
+                        "~Pune",
+                        "~Delhi",
+                        "=Hyderabad"
+                    ],
+                    "id": "755"
+                },
+                {
+                    "question": "How can a country build itâ€™s future",
+                    "options": [
+                        "~With education",
+                        "=With education and sports",
+                        "~With students",
+                        "~With politicians"
+                    ],
+                    "id": "756"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,707 @@
+{
+    "name": "A1 : Sentences",
+    "questions": [
+        {
+            "question": "I'm off for two weeks at August.",
+            "options": [
+                "~I'm off for two weeks at August.",
+                "=I'm off for two weeks in August.",
+                "~I'm off for two weeks on August.",
+                "~I'm off for two weeks between August."
+            ],
+            "id": "101"
+        },
+        {
+            "question": "The factory workers have been on strike since January.",
+            "options": [
+                "=The factory workers have been on strike since January.",
+                "~The factory workers have been in strike since January.",
+                "~The factory workers have been about strike since January.",
+                "~The factory workers have been through strike since January."
+            ],
+            "id": "102"
+        },
+        {
+            "question": "During our visit to Japan, we saw a lot of interesting places.",
+            "options": [
+                "=During our visit to Japan, we saw a lot of interesting places.",
+                "~While our visit to Japan, we saw a lot of interesting places.",
+                "~Through our visit to Japan, we saw a lot of interesting places.",
+                "~When our visit to Japan, we saw a lot of interesting places."
+            ],
+            "id": "103"
+        },
+        {
+            "question": "Another way of saying 'old-fashioned' is 'beside the times'.",
+            "options": [
+                "~Another way of saying 'old-fashioned' is 'beside the times'.",
+                "=Another way of saying 'old-fashioned' is 'behind the times'.",
+                "~Another way of saying 'old-fashioned' is 'outside the times'.",
+                "~Another way of saying 'old-fashioned' is 'beforethe times'."
+            ],
+            "id": "104"
+        },
+        {
+            "question": "Spain is one of a largest European countries.",
+            "options": [
+                "~Spain is one of a largest European countries.",
+                "~Spain is one of an largest European countries.",
+                "~Spain is one of largest European countries.",
+                "=Spain is one of the largest European countries."
+            ],
+            "id": "105"
+        },
+        {
+            "question": "Let’s go to the Mexico.",
+            "options": [
+                "~Let’s go to the Mexico.",
+                "=Let’s go to Mexico.",
+                "~Let’s go to a Mexico.",
+                "~Let’s go to an Mexico."
+            ],
+            "id": "106"
+        },
+        {
+            "question": "I got an lot of good presents for my birthday.",
+            "options": [
+                "~I got an lot of good presents for my birthday.",
+                "~I got the lot of good presents for my birthday.",
+                "=I got a lot of good presents for my birthday.",
+                "~I got lot of good presents for my birthday."
+            ],
+            "id": "107"
+        },
+        {
+            "question": "Do you have pen I could borrow?",
+            "options": [
+                "~Do you have pen I could borrow?",
+                "~Do you have the pen I could borrow?",
+                "~Do you have an pen I could borrow?",
+                "=Do you have a pen I could borrow?"
+            ],
+            "id": "108"
+        },
+        {
+            "question": "Do you remember exact date when the war started?",
+            "options": [
+                "~Do you remember exact date when the war started?",
+                "=Do you remember the exact date when the war started?",
+                "~Do you remember an exact date when war started?",
+                "~Do you remember a exact date when the war started?"
+            ],
+            "id": "109"
+        },
+        {
+            "question": "I can spell as well as the most students.",
+            "options": [
+                "~I can spell as well as the most students.",
+                "~I can spell as well as anmost students.",
+                "~I can spell as well as a most students.",
+                "=I can spell as well as most students."
+            ],
+            "id": "110"
+        },
+        {
+            "question": "I have an wonderful idea!",
+            "options": [
+                "~I have an wonderful idea!",
+                "=I have a wonderful idea!",
+                "~I have the wonderful idea!",
+                "~I have wonderful idea!"
+            ],
+            "id": "111"
+        },
+        {
+            "question": "Someone call an doctor!",
+            "options": [
+                "~Someone call an doctor!",
+                "=Someone call the doctor!",
+                "~Someone call doctor!",
+                "~Someone call doctors!"
+            ],
+            "id": "112"
+        },
+        {
+            "question": "Is this the bad time? Should I call you later?",
+            "options": [
+                "~Is this the bad time? Should I call you later?",
+                "~Is this bad time? Should I call you later?",
+                "~Is this one bad time? Should I call you later?",
+                "=Is this a bad time? Should I call you later?"
+            ],
+            "id": "113"
+        },
+        {
+            "question": "I know the shortcut to reach the theatre on time.",
+            "options": [
+                "~I know the shortcut to reach the theatre on time.",
+                "~I know shortcut to reach the theatre on time.",
+                "~I know an shortcut to reach the theatre on time.",
+                "=I know a shortcut to reach the theatre on time."
+            ],
+            "id": "114"
+        },
+        {
+            "question": "The President of the USA lives in White House.",
+            "options": [
+                "~The President of the USA lives in White House.",
+                "=The President of the USA lives in the White House.",
+                "~The President of the USA lives in a White House.",
+                "~The President of USA lives in anWhite House."
+            ],
+            "id": "115"
+        },
+        {
+            "question": "I spoke with the specialist I told you about.",
+            "options": [
+                "=I spoke with the specialist I told you about.",
+                "~I spoke with a specialist I told you about.",
+                "~I spoke with anspecialist I told you about.",
+                "~I spoke with specialist I told you about."
+            ],
+            "id": "116"
+        },
+        {
+            "question": "Mount Everest is tallest mountain.",
+            "options": [
+                "~Mount Everest is tallest mountain.",
+                "~Mount Everest is a tallest mountain.",
+                "=Mount Everest is the tallest mountain.",
+                "~Mount Everest is one tallest mountain."
+            ],
+            "id": "117"
+        },
+        {
+            "question": "Several friends played baseball together.",
+            "options": [
+                "=Several friends played baseball together.",
+                "~Several friends will played baseball together.",
+                "~Several friends plays baseball together.",
+                "~Several friends to play baseball together."
+            ],
+            "id": "118"
+        },
+        {
+            "question": "She cross the street.",
+            "options": [
+                "~She cross the street.",
+                "=She crossed the street.",
+                "~She havecrossed the street.",
+                "~She crossing the street."
+            ],
+            "id": "119"
+        },
+        {
+            "question": "The workers hasa new schedule.",
+            "options": [
+                "~The workers hasa new schedule.",
+                "~The workers given a new schedule.",
+                "~The workers had been a new schedule.",
+                "=The workers have a new schedule."
+            ],
+            "id": "120"
+        },
+        {
+            "question": "Ambika meet Sonia at the corner.",
+            "options": [
+                "~Ambika meet Sonia at the corner.",
+                "=Ambika met Sonia at the corner.",
+                "~Ambikato meet Sonia at the corner.",
+                "~Ambikameeted Sonia at the corner."
+            ],
+            "id": "121"
+        },
+        {
+            "question": "Hari jog in the morning.",
+            "options": [
+                "~Hari jog in the morning.",
+                "~Hari joggerin the morning.",
+                "=Hari will jog in the morning.",
+                "~Hari jogging in the morning."
+            ],
+            "id": "122"
+        },
+        {
+            "question": "Every morning Ambika get up and feeds the cat.",
+            "options": [
+                "~Every morning Ambika gets up and feeds the cat.",
+                "~Every morning Ambika get up and feed the cat.",
+                "=Every morning Ambika gets up and feeds the cat.",
+                "~Every morning Ambika gets up and feed the cat."
+            ],
+            "id": "123"
+        },
+        {
+            "question": "Bala hopes that Dinesh will win the race.",
+            "options": [
+                "=Bala hopes that Dinesh will win the race.",
+                "~Balahope that Dinesh wins the race.",
+                "~Balawill hoping that Dinesh will win the race.",
+                "~Bala hoped that Dinesh won the race."
+            ],
+            "id": "124"
+        },
+        {
+            "question": "We playing a computer game at the moment.",
+            "options": [
+                "~We playing a computer game at the moment.",
+                "~We will playing a computer game at the moment.",
+                "=We are playing a computer game at the moment.",
+                "~We played a computer game at the moment."
+            ],
+            "id": "125"
+        },
+        {
+            "question": "Nandini often forgottenher homework.",
+            "options": [
+                "~Nandini often forgottenher homework.",
+                "~Nandini often forget her homework.",
+                "=Nandini often forgets her homework.",
+                "~Nandini often forgetful her homework."
+            ],
+            "id": "126"
+        },
+        {
+            "question": "I have preparing lunch.",
+            "options": [
+                "~I have preparing lunch.",
+                "=I am preparing lunch.",
+                "~I did preparing lunch.",
+                "~I am prepared lunch."
+            ],
+            "id": "127"
+        },
+        {
+            "question": "Janani will already typed five pages when her computer crashed.",
+            "options": [
+                "~Janani will already typed five pages when her computer crashed.",
+                "~Janani already typed five pages when her computer crashed.",
+                "~Janani could already typed five pages when her computer crashed.",
+                "=Janani had already typed five pages when her computer crashed."
+            ],
+            "id": "128"
+        },
+        {
+            "question": "I correcting it by the end of the day.",
+            "options": [
+                "~I correcting it by the end of the day.",
+                "~I may corrected it by the end of the day.",
+                "~I correct it by the end of the day.",
+                "=I will correct it by the end of the day."
+            ],
+            "id": "129"
+        },
+        {
+            "question": "They leaving work at the end of the hour.",
+            "options": [
+                "~They leaving work at the end of the hour.",
+                "~They leaves work at the end of the hour.",
+                "=They leave work at the end of the hour.",
+                "~They will left work at the end of the hour."
+            ],
+            "id": "130"
+        },
+        {
+            "question": "Have you received any informations?",
+            "options": [
+                "=Have you received any information?",
+                "~Had you received any informations?",
+                "~Have they received any informations?",
+                "~Had you received any information?"
+            ],
+            "id": "131"
+        },
+        {
+            "question": "She sings good",
+            "options": [
+                "=She sings well.",
+                "~She sings best",
+                "~She sings bad",
+                "~She sings good"
+            ],
+            "id": "132"
+        },
+        {
+            "question": "Everybody came accept Ram",
+            "options": [
+                "~Everybody have come except Ram",
+                "=Everybody came except Ram",
+                "~Everybody had come accept Ram",
+                "~Everybody has come accept Ram"
+            ],
+            "id": "133"
+        },
+        {
+            "question": "It is past your bedtime.",
+            "options": [
+                "~It has passed your bedtime.",
+                "=It is past your bedtime",
+                "~You bedtime is passed",
+                "~It also past your bedtime"
+            ],
+            "id": "134"
+        },
+        {
+            "question": "He felled off the ladder and broke his leg",
+            "options": [
+                "~He felled from the ladder and broke his leg",
+                "~He felt from ladder and broke his leg",
+                "=He fell off the ladder and broke his leg",
+                "~He felled off the ladder and broke his leg"
+            ],
+            "id": "135"
+        },
+        {
+            "question": "She told to me about it.",
+            "options": [
+                "=She told me about it.",
+                "~She telled me about it",
+                "~She spoke me about it",
+                "~She told to me about it"
+            ],
+            "id": "136"
+        },
+        {
+            "question": "The train is now approaching at the CST.",
+            "options": [
+                "=The train is now approaching the CST.",
+                "~The train is now approaching at the CST.",
+                "~The train is now approaching to the CST.",
+                "~The train is now approaching on the CST."
+            ],
+            "id": "137"
+        },
+        {
+            "question": "He excepted the award with great pleasure.",
+            "options": [
+                "=He accepted the award with great pleasure.",
+                "~He accept award with great pleasure",
+                "~He excepted the ward with great pleasure.",
+                "~He except the award with great pleasure"
+            ],
+            "id": "138"
+        },
+        {
+            "question": "If we both put our cards on the table it would be easier for us to come to an agreement.",
+            "options": [
+                "=If we both put our cards on the table it would be easier for us to come to an agreement.",
+                "~If we both put our wallets on the table it would be easier for us to come to an agreement.",
+                "~If we both put our plans on the table it would be easier for us to come to an agreement.",
+                "~If we both put our thoughts on the table it would be easier for us to come to an agreement."
+            ],
+            "id": "139"
+        },
+        {
+            "question": "I spent a quiet afternoon at home reading to myself.",
+            "options": [
+                "~I spent an quiet afternoon at home reading to myself.",
+                "~I spent a quiet afternoon at home reading to herself.",
+                "~I spent a quiet afternoon at home reading to himself.",
+                "=I spent a quiet afternoon at home reading to myself."
+            ],
+            "id": "140"
+        },
+        {
+            "question": "In five minutes I will had been working for ten hours.",
+            "options": [
+                "~In five minutes I will had been working for ten hours.",
+                "=In five minutes, I will have been working for ten hours.",
+                "~In five minutes I will be working for ten hours.",
+                "~In five minutes, I had been working for ten hours."
+            ],
+            "id": "141"
+        },
+        {
+            "question": "I will like more tea she said to the server.",
+            "options": [
+                "~I will like more tea she said to the server.",
+                "~“I will like more tea,” she said to the server.",
+                "=“I would like more tea,” she said to the server.",
+                "~I like more tea,” she said to the server."
+            ],
+            "id": "142"
+        },
+        {
+            "question": "If he try hard enuf, Bill can become an actor some day.",
+            "options": [
+                "~If he try hard enuf, Bill can become an actor some day.",
+                "=If he tries hard enough, Bill could become an actor some day.",
+                "~If he tries hard enough, Bill can become an actor some day.",
+                "~If he try hard enough, Bill can become an actor some day."
+            ],
+            "id": "143"
+        },
+        {
+            "question": "Today is Monday May four 2015.",
+            "options": [
+                "~Today is Monday May four 2015.",
+                "~Today is Monday May fourth 2015.",
+                "~Today is Monday, May fourth 2015.",
+                "=Today is Monday, May fourth, 2015."
+            ],
+            "id": "144"
+        },
+        {
+            "question": "I simply cannot wait to get there!",
+            "options": [
+                "=I simply cannot wait to get there!",
+                "~I simply cannot wait to getting there!",
+                "~I cannot simply wait to get there!",
+                "~I cannot wait simply to get there!"
+            ],
+            "id": "145"
+        },
+        {
+            "question": "Me and my friend are gonna go to the beach next weekend.",
+            "options": [
+                "~Me and my friend are gonna go to the beach next weekend.",
+                "=My friend and I are going to go to the beach next weekend.",
+                "~My friend and me are going to the beach next weekend.",
+                "~My friend are gonna to the beach next weekend."
+            ],
+            "id": "146"
+        },
+        {
+            "question": "What he got for Diwali? she asked.",
+            "options": [
+                "~What he got for Diwali? she asked.",
+                "~“What he get for Diwali?” she asked.",
+                "=“What did he get for Diwali?” she asked.",
+                "~“What he gets for Diwali?” she asked."
+            ],
+            "id": "147"
+        },
+        {
+            "question": "When are we going?",
+            "options": [
+                "=When are we going?",
+                "~When we are going?",
+                "~When going are we?",
+                "~When we going?"
+            ],
+            "id": "148"
+        },
+        {
+            "question": "We going now?",
+            "options": [
+                "~We going now?",
+                "=Are we going now?",
+                "~We going are now?",
+                "~We are go now?"
+            ],
+            "id": "149"
+        },
+        {
+            "question": "Anyone wanna play with me?",
+            "options": [
+                "~Anyone wanna play with me?",
+                "~Anyone does wanting to play with me?",
+                "=Does anyone want to play with me?",
+                "~Anyone does wants t play with me?"
+            ],
+            "id": "150"
+        },
+        {
+            "question": "I has not seen them yet.",
+            "options": [
+                "~I has not seen them yet.",
+                "~I not seen them yet.",
+                "=I have not seen them yet.",
+                "~I have not see them yet."
+            ],
+            "id": "151"
+        },
+        {
+            "question": "Hell be comin soon so dont worry.",
+            "options": [
+                "~Hell be comin soon so dont worry.",
+                "~He’ll be comin soon so don’t worry.",
+                "~He’ll be coming soon so don’t worry.",
+                "=He’ll be coming soon, so don’t worry."
+            ],
+            "id": "152"
+        },
+        {
+            "question": "He likes cats, but she don’t like cats.",
+            "options": [
+                "~He likes cats, but she don’t like cats.",
+                "~He likes cats, but she don’t likes cats.",
+                "=He likes cats, but she doesn’t like cats.",
+                "~He like cats, but she doesn’t like cats."
+            ],
+            "id": "153"
+        },
+        {
+            "question": "When I get home, I will make dinner.",
+            "options": [
+                "=When I get home, I will make dinner.",
+                "~When I got home, I will make dinner.",
+                "~When I get home, I make dinner.",
+                "~When I got home, I make dinner."
+            ],
+            "id": "154"
+        },
+        {
+            "question": "My friends house is big red and expensive.",
+            "options": [
+                "~My friends house is big red and expensive.",
+                "=My friend’s house is big, red, and expensive.",
+                "~My friend’s house is big red and expensive.",
+                "~My friends house is big, red, and expensive."
+            ],
+            "id": "155"
+        },
+        {
+            "question": "The old car doesn’t need to be fixed.",
+            "options": [
+                "~The old car doesn’t need fixed.",
+                "=The old car doesn’t need to be fixed.",
+                "~The old car do need to be fixed.",
+                "~The old car doesn’t need to be fix."
+            ],
+            "id": "156"
+        },
+        {
+            "question": "“Jeevan,” she said, “Could you please be quiet?”",
+            "options": [
+                "~Jeevan she said, Could you please be quiet?",
+                "~“Jeevan,” she said, “Can you please go quiet?”",
+                "=“Jeevan,” she said, “Could you please be quiet?”",
+                "~Jeevan, she said, Could you please quiet?"
+            ],
+            "id": "157"
+        },
+        {
+            "question": "We going to the super market later?",
+            "options": [
+                "~We going to the super market later?",
+                "~Are we go to the super market later?",
+                "~Are we going the super market later?",
+                "=Are we going to the super market later?"
+            ],
+            "id": "158"
+        },
+        {
+            "question": "Spot my dog is the faster runner in the hole neighborhood.",
+            "options": [
+                "~Spot my dog is the faster runner in the hole neighborhood.",
+                "=Spot, my dog, is the fastest runner in the whole neighborhood.",
+                "~Spot, my dog, is the faster runner in the whole neighborhood.",
+                "~Spot my dog is the fastest runner in the whole neighborhood."
+            ],
+            "id": "159"
+        },
+        {
+            "question": "Once the train arrives we will be on are way.",
+            "options": [
+                "~Once the train arrives we will be on our way.",
+                "~Once the train arrives we will be on are way.",
+                "=Once the train arrives, we will be on our way.",
+                "~Once the train arrives, we will be on are way."
+            ],
+            "id": "160"
+        },
+        {
+            "question": "Apollo 11 was the first manned mission to land on the moon.",
+            "options": [
+                "=Apollo 11 was the first manned mission to land on the moon.",
+                "~Apollo 11 is the first manned mission to land on the moon.",
+                "~Apollo 11 be the first manned mission to land on the moon.",
+                "~Apollo 11 the first manned mission to land on the moon."
+            ],
+            "id": "161"
+        },
+        {
+            "question": "The cashere gave me two thousand and sixteen hundred rupees sixty paise.",
+            "options": [
+                "~The cashere gave me two thousand and sixteen hundred rupees sixty paise.",
+                "~The cashier gave me two thousand and sixteen hundred rupees sixty paise.",
+                "=The cashier gave me two thousand and sixteen hundred rupees and sixty paise.",
+                "~The cashere gave me two thousand and sixteen hundred rupees and sixty paise."
+            ],
+            "id": "162"
+        },
+        {
+            "question": "I no have time.",
+            "options": [
+                "~I no have time.",
+                "=I do not have time.",
+                "~I do have not time.",
+                "~I not have time."
+            ],
+            "id": "163"
+        },
+        {
+            "question": "Doctor suggested patient to take vacation.",
+            "options": [
+                "~Doctor suggested patient to take vacation.",
+                "~Doctor suggest patient to take vacation.",
+                "=The doctor suggested that the patient should take a vacation.",
+                "~The doctor suggested that patient should take vacation."
+            ],
+            "id": "164"
+        },
+        {
+            "question": "Learning the Sanskrit isn’t easy.",
+            "options": [
+                "~Learning the Sanskrit isn’t easy.",
+                "~Learning Sanskrit isn’t the easy.",
+                "~The learning Sanskrit isn’t easy.",
+                "=Learning Sanskrit isn’t easy."
+            ],
+            "id": "165"
+        },
+        {
+            "question": "His health is more better.",
+            "options": [
+                "~His health is more better.",
+                "~His health is most better.",
+                "~His health is betterer.",
+                "=His health is much better."
+            ],
+            "id": "166"
+        },
+        {
+            "question": "Why you did not come?",
+            "options": [
+                "~Why you did not come?",
+                "~Why not you come?",
+                "=Why did you not come?",
+                "~Why not you did come?"
+            ],
+            "id": "167"
+        },
+        {
+            "question": "Let us discuss about this matter.",
+            "options": [
+                "~Let us discuss about this matter.",
+                "=Let us discuss this matter.",
+                "~Let us discuss in this matter.",
+                "~Let us discuss for this matter."
+            ],
+            "id": "168"
+        },
+        {
+            "question": "Tomorrow we will be going to Tulasis party.",
+            "options": [
+                "~Tomorrow we will be going to Tulasis party.",
+                "~Tomorrow we will be going, to Tulasi’s party.",
+                "=Tomorrow, we will be going to Tulasi’s party.",
+                "~Tomorrow we will be going to Tulasi’s party."
+            ],
+            "id": "169"
+        },
+        {
+            "question": "I am going to buy three apple.",
+            "options": [
+                "~I am going to buy three apple.",
+                "~I going to buy three apples.",
+                "~I go to buy three apples.",
+                "=I am going to buy three apples."
+            ],
+            "id": "170"
+        }
+    ],
+    "note": "Select the correct form of the sentence for the following questions, some of the sentences may be correct in their original form:",
+    "types": "question"
+}
