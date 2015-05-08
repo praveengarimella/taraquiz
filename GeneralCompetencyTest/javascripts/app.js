@@ -457,20 +457,54 @@ $(function() {
 			var record=document.getElementById('record');
 			var stop=document.getElementById('stop');
 			stop.disabled=true;
+			var time;
+			var again=false;
 			record.onclick= function()
 			{
+				if(again)
+					Wami.startListening();
 				record.disabled=true;
 				stop.disabled=false;
 				var recordingUrl ="https://speedy-coder-93515.appspot.com/audio";
 				Wami.startRecording(recordingUrl);
+				/*var t=120;
+				var display=$('flash');
+				startTimer(t,display);*/
+				time=setInterval(function(){
+					Wami.stopListening();
+					record.disabled=false;
+					stop.disabled=true;
+					clearInterval(time);
+					again=true;
+					alert("Recording time is over. Now you can submit.");},120000);
 			}
 			stop.onclick= function()
 			{
+				clearInterval(time);
 				Wami.stopListening();
 				record.disabled=false;
 				stop.disabled=true;
+				again=true;
 			}
 		},
+
+		/*startTimer : function (duration, display) 
+		{
+		    var timer = duration, minutes, seconds;
+		    setInterval(function () {
+		        minutes = parseInt(timer / 60, 10)
+		        seconds = parseInt(timer % 60, 10);
+
+		        minutes = minutes < 10 ? "0" + minutes : minutes;
+		        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+		        display.text(minutes + ":" + seconds);
+
+		        if (--timer < 0) {
+		            timer = duration;
+		        }
+		    }, 1000);
+		},*/
 
 		displayOptions : function() {
 			var q = quizModel.question;
