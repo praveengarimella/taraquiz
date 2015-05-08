@@ -264,8 +264,12 @@ $(function() {
 			this.endtest.click(function(){
 
 			confirm("Do you want to end the test?");
-			var data = {"testend":true};
+			resultView.init();
+			console.log("score"+resultView.totalScore);
+			var data = {"testend":true, "finalScore": resultView.totalScore};
+
 			data=JSON.stringify({jsonData: data});
+			console.log("endtest" + data);
 			$.post("/endtest", data)
 				.done(function(data){
 					console.log("Success:" + data);
@@ -274,7 +278,7 @@ $(function() {
 					console.log("testend Failed");
 			 	});
 			 	octopus.stopPing();
-			 	resultView.init();
+			 	
 			});
 		},
 
@@ -614,16 +618,16 @@ $(function() {
 			octopus.getResults();
 			var resultHTML = '<table class="table table-hover">';
 			resultHTML += '<tr><th>Q. No.</th><th>Score</th><th>Response Time</th></tr>';
-			totalScore = 0;
+			this.totalScore = 0;
 			$.each(quizModel.result.question,function(index, value){
 				//console.log(value.currentQuestion, value.q_score, value.responsetime);
 				resultHTML += '<tr><td>' + value.currentQuestion + '</td>';
 				resultHTML += '<td>' + value.q_score + '</td>'
 				resultHTML += '<td>' + Math.round(value.responsetime) + '</td></tr>';
-				totalScore += value.q_score;
+				this.totalScore += value.q_score;
 			});
 			resultHTML += '</table>';
-			this.questionNote.html('<p class="lead">Your total score is: ' + totalScore + '</p>');
+			this.questionNote.html('<p class="lead">Your total score is: ' + this.totalScore + '</p>');
 			this.questionPane.hide();
 			this.navBar.hide();
 		}
