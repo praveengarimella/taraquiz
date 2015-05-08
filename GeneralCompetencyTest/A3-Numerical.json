@@ -1,0 +1,355 @@
+{
+    "name": "A3 : Numerical",
+    "questions": [
+        {
+            "question": "A newspaper in a town is published every day. One copy has 24 pages. Everyday 85,000 copies are printed. On Sundays 15000 more copies are printed. How many total pages are printed on Sundays?",
+            "options": [
+                "~20,40,000",
+                "=24,00,000",
+                "~10,20,000",
+                "~12,00,000"
+            ],
+            "id": "301"
+        },
+        {
+            "question": "20% of a number is 60. What is 15% of the same number?",
+            "options": [
+                "~30",
+                "~25",
+                "~50",
+                "=45"
+            ],
+            "id": "302"
+        },
+        {
+            "question": "By selling a watch for Rs 960, a profit of 20% is made. What is the gain or loss percentage if it is sold for Rs 760.",
+            "options": [
+                "~No loss, no gain",
+                "=5% loss",
+                "~5% gain",
+                "~10% gain"
+            ],
+            "id": "303"
+        },
+        {
+            "question": "A, B and C invested Rs 64000, Rs 72000 and Rs 92000 respectively to carry on a business. What is the share of C in the annual profit of Rs 11400?",
+            "options": [
+                "=4600",
+                "~3600",
+                "~3200",
+                "~5200"
+            ],
+            "id": "304"
+        },
+        {
+            "question": "Find the difference between the greatest and the least number that can be written using the digits 6, 0, 7, 4, 3 each only once.",
+            "options": [
+                "=45963",
+                "~72963",
+                "~36063",
+                "~45936"
+            ],
+            "id": "305"
+        },
+        {
+            "question": "The sum of three consecutive even numbers is 90. What is the middle number ?",
+            "options": [
+                "~24",
+                "~26",
+                "~28",
+                "=30"
+            ],
+            "id": "306"
+        },
+        {
+            "question": "A house wife has savings of Rs 25000 with her. She placed an order for purchasing 4 chairs costing Rs 4500 each and a table costing Rs 5500. How much money will remain with her after the purchase?",
+            "options": [
+                "~4500",
+                "=1500",
+                "~2500",
+                "~3500"
+            ],
+            "id": "307"
+        },
+        {
+            "question": "Determine the smallest 3-digit number which is exactly divisible by 5, 10 and 15.",
+            "options": [
+                "~100",
+                "=120",
+                "~105",
+                "~110"
+            ],
+            "id": "308"
+        },
+        {
+            "question": "Determine the greatest 3-digit number exactly divisible by 10, 20 and 30.",
+            "options": [
+                "~900",
+                "~990",
+                "~930",
+                "=960"
+            ],
+            "id": "309"
+        },
+        {
+            "question": "A person had to multiply two numbers. Instead of multiplying by 35, he multiplied by 53 and the product went up by 540. What was the raised product?",
+            "options": [
+                "~1720",
+                "~920",
+                "=1590",
+                "~780"
+            ],
+            "id": "310"
+        },
+        {
+            "question": "A box of 100 packets consists of 1kg packets and 2kg packets. Total weight of box is 160kg. How many 2kg packets are present in the box ?",
+            "options": [
+                "~70",
+                "~30",
+                "~40",
+                "=60"
+            ],
+            "id": "311"
+        },
+        {
+            "question": "With 3/4th full tank, a vehicle travels 18 miles. How much distance is travelled with 1/3rd full tank?",
+            "options": [
+                "~10",
+                "~9",
+                "=8",
+                "~6"
+            ],
+            "id": "312"
+        },
+        {
+            "question": "Wind blows 160 miles in 190 min. For 80 miles how much time is required?",
+            "options": [
+                "~190 min",
+                "=95 min",
+                "~120 min",
+                "~150 min"
+            ],
+            "id": "313"
+        },
+        {
+            "question": "A person was fined for exceeding the speed limit by 10mph. Another person was also fined for exceeding the same speed limit by twice the amount. If the second person was travelling at a speed of 35 mph, find the speed limit.",
+            "options": [
+                "=15",
+                "~10",
+                "~20",
+                "~25"
+            ],
+            "id": "314"
+        },
+        {
+            "question": "A person who decided to go weekend trip should not exceed 8 hours driving in a day. Average speed of forward journey is 40kmph and return journeyaverage speed is 60 kmph. How far can he select a picnic spot?",
+            "options": [
+                "~384 kms",
+                "=192 kms",
+                "~160 kms",
+                "~320 kms"
+            ],
+            "id": "315"
+        },
+        {
+            "question": " A bike is filled with four and half litres of petrol for full round trip. Fuel consumed in going is 1/4 times more than the fuel consumed in coming.",
+            "options": [
+                "~null",
+                "~null",
+                "~null",
+                "~null"
+            ],
+            "id": "316"
+        },
+        {
+            "question": "What is the fuel consumed in coming?",
+            "options": [
+                "~1.20 litres",
+                "~1.50 litres",
+                "~1.75 litres",
+                "=2 litres"
+            ],
+            "id": "317"
+        },
+        {
+            "question": " A work is done by two people in 24 min. One of them can do the same work alone in 40 min. How much time is required by the second person to do the same work alone?",
+            "options": [
+                "~45 min",
+                "~50 min",
+                "=60 min",
+                "~70 min"
+            ],
+            "id": "318"
+        },
+        {
+            "question": "One fast typist types some matter in 2hr and another slow typist types the same matter in 3hr. If both of them do it together in how much time will they finish?",
+            "options": [
+                "~1 hr 20 min",
+                "~1 hr 15 min",
+                "~1 hr 10 min",
+                "=1 hr 12 mins"
+            ],
+            "id": "319"
+        },
+        {
+            "question": "If Rs200/- is available to pay for typing a research report & typist A produces 42 pages and typist B produces 28 pages. How much should typist A receive",
+            "options": [
+                "~Rs 150",
+                "~Rs 140",
+                "=Rs 120",
+                "~Rs 130"
+            ],
+            "id": "320"
+        },
+        {
+            "question": "A cricket batsman’s average in first 25 innings was 25. After the 26th innings his average was 26 how many runs he scored in the 26th innings?",
+            "options": [
+                "=15",
+                "~50",
+                "~25",
+                "~26"
+            ],
+            "id": "321"
+        },
+        {
+            "question": "When 8 is subtracted out from two third of X, the result is 25 more than one third of X. Find X.",
+            "options": [
+                "~89",
+                "~113",
+                "~131",
+                "=99"
+            ],
+            "id": "322"
+        },
+        {
+            "question": "6 reduced from 1/5 of a number is 7 reduced from half of the same number. Find the number",
+            "options": [
+                "~22/3",
+                "~7/3",
+                "=10/3",
+                "~11/3"
+            ],
+            "id": "323"
+        },
+        {
+            "question": "Anil is twice as fast as Mohith. Mohith is thrice as fast as Annie. The distance covered by Annie in 54 minutes will be covered by Mohith in ___ minutes",
+            "options": [
+                "~9 min",
+                "~21 min",
+                "~15 min",
+                "=18 min"
+            ],
+            "id": "324"
+        },
+        {
+            "question": "At the time of his marriage Arunachalam was 29 years old. During marriage, his wife was younger by 3 ½ years. 20 years afterwards the total ages of Arunachalam, his wife and their only son Kamalraj is 110 years. What is the age of Kamalraj now?",
+            "options": [
+                "~12 yrs",
+                "~14 yrs",
+                "~16.5 yrs",
+                "=15.5 yrs"
+            ],
+            "id": "325"
+        },
+        {
+            "question": "In a group of 50 people, 35 people speak Hindi, 25 people speak both Hindi and Telugu, and all the people speak at least one of the two languages. The number of people who speak Telugu is",
+            "options": [
+                "~20",
+                "~25",
+                "=15",
+                "~10"
+            ],
+            "id": "326"
+        },
+        {
+            "question": " and Q can do a piece of work in 20 days, Q and R in 24 days, and R and P in 15 days. If all three of them are working, what part of the work is done in one day",
+            "options": [
+                "~19/120",
+                "~17/240",
+                "~17/120",
+                "=19/240"
+            ],
+            "id": "327"
+        },
+        {
+            "question": "he number ‘X’ is exactly divisible by 5. The remainder after the division of the number ‘Y’ by 5 is equal to 1 and the remainder after the division of the number ‘Z’ by 5 is equal to 2. What is the remainder when the number (2X + 3Y – 4Z) is divided by 5?",
+            "options": [
+                "=0",
+                "~1",
+                "~2",
+                "~3"
+            ],
+            "id": "328"
+        },
+        {
+            "question": "The sum of two integers is 10 and the sum of their reciprocals is 5 /12. Then the larger of these integers is",
+            "options": [
+                "~3",
+                "=4",
+                "~5",
+                "~6"
+            ],
+            "id": "329"
+        },
+        {
+            "question": "A man purchases 2 watches for Rs. 560. He sells one at 15% profit and the other at 10% loss. He neither gains nor loses. Thus, the cost prices of 2 watches are",
+            "options": [
+                "~Rs.260 and Rs.300",
+                "~Rs.210 and Rs.350",
+                "~Rs270 and Rs.290",
+                "=Rs.224 and Rs.336"
+            ],  
+            "id": "330"
+        },
+        {
+            "question": "Suraj went to his college which is 8 kms towards the South from his hostel. His roommate Sandeep went to a clinic which is 6 kms towards the Westfrom the hostel. What is the shortest distance between the clinic and college?",
+            "options": [
+                "~9 km",
+                "~9.5 kms",
+                "~7 kms",
+                "=10 kms"
+            ],
+            "id": "331"
+        },
+        {
+            "question": "How many times does the digit 6 appear when you count from 11 to 100?",
+            "options": [
+                "~17",
+                "=19",
+                "~21",
+                "~20"
+            ],
+            "id": "332"
+        },
+        {
+            "question": "If A is more than B by 20%, by what % B is less than A?",
+            "options": [
+                "~16.33",
+                "=16.67",
+                "~17",
+                "~18"
+            ],
+            "id": "333"
+        },
+        {
+            "question": "When a particular positive number is divided by 5, the remainder is 2. If the same number is divided by 6, the remainder is 1. If the difference between the quotients of division is 3, then find the number.",
+            "options": [
+                "~37",
+                "~67",
+                "~127",
+                "=97"
+            ],
+            "id": "334"
+        },
+        {
+            "question": "If March 5th, 1999 was on Friday, what day of the week will be March 5th, 2000?",
+            "options": [
+                "~Saturday",
+                "~Friday",
+                "=Sunday",
+                "~Thursday"
+            ],
+            "id": "335"
+        }
+    ]
+}
