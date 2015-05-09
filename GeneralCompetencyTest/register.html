@@ -107,7 +107,7 @@
 		document.getElementById("submitbtn").onclick = function () {
 
 			var result = mandatory();
-			console.log(result+" is the given error	");
+//			console.log(result+" is the given error	");
 			if(result == true) {
 				var data = { 
 
@@ -118,18 +118,18 @@
 					"add3" : document.getElementById("ad3").value, 
 					"pincode":document.getElementById("pincode").value
 				}
-				console.log(data);
+//				console.log(data);
 			
 				data=JSON.stringify({jsonData: data});
-				console.log(data);
+//				console.log(data);
 				
 					$.post("/savepersonaldata", data)
 							.done(function(data){
-								console.log(data);
+//								console.log(data);
 								location.href = "/startquiz";
 							})
 							.fail(function(){
-								console.log("PING Failed");
+//								console.log("PING Failed");
 							});
 				
 			} else {

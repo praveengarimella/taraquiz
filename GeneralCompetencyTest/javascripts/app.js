@@ -69,7 +69,7 @@ $(function() {
 				q = index;
 			});
 			this.questionIndex = q;
-			console.log("question index is:" + this.questionIndex)
+			//console.log("question index is:" + this.questionIndex)
 		},
 		getQuizStatus : function() {
 			// get the status of the quiz by looking into the questions array
@@ -82,7 +82,7 @@ $(function() {
 		nextQuestion : function() {
 			// returns the next questions and updates the pointer
 			var quizStatus = this.getQuizStatus();
-			console.log(quizStatus);
+			//console.log(quizStatus);
 			if (quizStatus == "START")
 				this.questionIndex = -1;
 			if (quizStatus == "END"){
@@ -110,12 +110,12 @@ $(function() {
 		init : function() {
 			$.post("/getquizstatus")
 				.done(function(data){
-					console.log("info: questions loaded from server" + data);
+					//console.log("info: questions loaded from server" + data);
 					data = JSON.parse(data);
 					quizModel.init(data)
 					startView.init();
 					var status = quizModel.getQuizStatus();
-					console.log("quiz status" + status);
+					//console.log("quiz status" + status);
 					if (status == "END")
 						resultView.init();
 					else
@@ -146,7 +146,7 @@ $(function() {
 			data = JSON.stringify({jsonData: submittedQuestion});
 			$.post("/submitanswer", data)
 				.done(function(data){
-					console.log("Success:" + data);
+					//console.log("Success:" + data);
 					data = JSON.parse(data)
 					if(data.testEnd) {
 						quizModel.testEnd = true;
@@ -168,14 +168,14 @@ $(function() {
 			// with response answer and response time
 			q.responseAnswer = responseAnswer;
 			q.responseTime = responseTS;
-			console.log(q);
+			//console.log(q);
 			// call server side submit function
 			// creating json file for submit response
 			var data = {"currentQuestion": q.id, "draft":responseAnswer,"responsetime":q.responseTime}
 			data=JSON.stringify({jsonData: data});
 			$.post("/autosaveEssay", data)
 				.done(function(data){
-					console.log("Success:" + data);
+					//console.log("Success:" + data);
 				});
 		},
 		getResults : function() {
@@ -197,7 +197,7 @@ $(function() {
 			$.post("/testtime")
 
 				.done(function(data){
-					console.log("ping response " + data)
+					//console.log("ping response " + data)
 					data = JSON.parse(data);
 					quizModel.setQuizStatus(data.quizStatus);
 					if(!data.timeRemaining) {
@@ -206,8 +206,24 @@ $(function() {
 					progressView.renderTime(data.timeRemaining);
 				})
 				.fail(function(){
-					console.log("PING Failed");
+					//console.log("PING Failed");
 				});
+		},
+		endTest : function() {
+			resultView.init();
+			//console.log("score="+resultView.totalScore);
+			var data = {"testend":true, "finalScore": resultView.finalScore};
+
+			data=JSON.stringify({jsonData: data});
+			//console.log("endtest" + data);
+			$.post("/endtest", data)
+				.done(function(data){
+					//console.log("Success:" + data);
+				})
+				.fail(function(data){
+					//console.log("testend Failed");
+				});
+			octopus.stopPing();
 		}
 	};
 
@@ -267,23 +283,9 @@ $(function() {
 			this.endtest.hide();
 
 			this.endtest.click(function(){
-
-			confirm("Do you want to end the test?");
-			resultView.init();
-			console.log("score="+resultView.totalScore);
-			var data = {"testend":true, "finalScore": resultView.finalScore};
-
-			data=JSON.stringify({jsonData: data});
-			console.log("endtest" + data);
-			$.post("/endtest", data)
-				.done(function(data){
-					console.log("Success:" + data);
-			 	})
-			 	.fail(function(data){
-					console.log("testend Failed");
-			 	});
-			 	octopus.stopPing();
-			 	
+				if(confirm("Do you want to end the test?") == true) {
+					octopus.endTest();
+				}
 			});
 		},
 
@@ -444,8 +446,21 @@ $(function() {
 			var essayText = "";
 			if(quizModel.question.responseAnswer)
 				essayText = quizModel.question.responseAnswer;
-			this.questionPane.append('<div><textarea style="width: 600px; height: 200px">' +
+
+			// create text area
+			var words = document.createElement("div");
+			words.setAttribute("id", "words");
+			this.questionPane.append(words);
+
+			this.questionPane.append('<div><textarea style="width: 500px; height: 200px">' +
 			essayText + '</textarea>');
+			$('textarea').keyup(function () {
+				var value = $(this).val();
+				var regex = /\s+/gi;
+				var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+				//console.log("word count" + wordCount);
+				$("#words").html("Word Count: " + wordCount);
+			});
 		},
 
 		displayVideo : function() {
@@ -458,6 +473,9 @@ $(function() {
 					id: 'flash'
 				});
 			var q = quizModel.question;
+			var instructions = "<ol><li><b>Select allow recording in flash player settings</b></li><li>Click on close button</li>" +
+				"<li>Click on record button</li><li>Speak into the microphone</li><li>Click on Stop</li><li>Submit your answer.</li></ol>";
+			this.questionPane.append(instructions);
 			this.questionPane.append('<div><button id="record" class="btn btn-danger">Record</button>'+
 			'&nbsp;&nbsp<button id="stop" class="btn btn-info">Stop</button></div>');
 			var record=document.getElementById('record');
@@ -558,7 +576,7 @@ $(function() {
 				if(!question.status)
 					$("#"+index).attr('disabled','disabled');
 				$("#"+index).click(function(){
-					console.log("progress:" + this.id);
+					//console.log("progress:" + this.id);
 					quizModel.setQuestion(this.id);
 					questionView.showQuestion();
 				});
@@ -585,10 +603,11 @@ $(function() {
 			if(remainingTime <= 0) {
 				buttonColor = "btn-danger";
 				buttonText = "Time is up!"
-				window.setInterval(function(){
-					location.reload();
-				},3000);
-				resultView.init();
+				octopus.endTest();
+				//window.setInterval(function(){
+				//	location.reload();
+				//},3000);
+				//resultView.init();
 			}
 			this.timeBox.html('<button type="button" class="btn btn-lg btn-block '+ buttonColor +'">'+
 			buttonText +'</button>');
@@ -634,7 +653,7 @@ $(function() {
 			this.questionPane.hide();
 			this.navBar.hide();
 			this.finalScore = totalScore;
-			console.log(this.finalScore);
+			//console.log(this.finalScore);
 		}
 	};
 
