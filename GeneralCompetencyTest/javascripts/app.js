@@ -156,7 +156,7 @@ $(function() {
 						resultView.init();
 					if(quizModel.getQuizStatus() == "INPROGRESS") {
 						if(quizModel.questionIndex == quizModel.questions.length - 1)
-							alert("select End Test Button to end your test");
+							alert("Click on End Test button to finish.");
 						questionView.showNextQuestion();
 					}
 				});
@@ -257,13 +257,14 @@ $(function() {
 				}
 			});
 
-			this.endtest = $('#end-test');
+			this.endtestdiv = $('#end-test');
 			var btn = document.createElement("BUTTON");
-			var t = document.createTextNode("End test");
+			var t = document.createTextNode("End Test");
 			btn.appendChild(t);
-			btn.setAttribute("id", "endbtn");				
-			this.endtest.addClass("btn btn-lg btn-block")
-			this.endtest.append(btn);
+			btn.setAttribute("id", "endbtn");
+			this.endtestdiv.append(btn);
+			this.endtest = $("#endbtn");
+			this.endtest.addClass("btn btn-danger");
 			this.endtest.hide();
 
 			this.endtest.click(function(){
