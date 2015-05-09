@@ -332,6 +332,7 @@ class TestDetails(ndb.Model):
     delays=ndb.FloatProperty(indexed=True)
     testend= ndb.BooleanProperty(default=False)
     lastPing = ndb.DateTimeProperty(auto_now_add=True)
+    score = ndb.IntegerProperty(indexed = True)
 
 class Response(ndb.Model):
     """Sub model for representing question details"""
@@ -799,12 +800,16 @@ class endtest(webapp2.RequestHandler):
         if user:
             val = json.loads(cgi.escape(self.request.body))
             val = val['jsonData']
+            print(val)
+            logging.error("error in finalScore")
             testend = val['testend']
+            score = val['finalScore']
             print(testend)
             data1 = TestDetails.query(TestDetails.email == user.email()).get()
             print(user.email())      
             if data1:
                 data1.testend = testend
+                data1.score = score
                 data1.put()
 
 application = webapp2.WSGIApplication([
